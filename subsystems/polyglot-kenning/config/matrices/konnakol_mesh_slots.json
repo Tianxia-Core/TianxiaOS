@@ -1,0 +1,42 @@
+{
+  "rhythmic_system": "CARNATIC-KONNAKOL-TDMA",
+  "base_tala": "Khanda Chapu (3 + 2 = 5)",
+  "epoch_ms": 1000,
+  "nodes": [
+    {
+      "node": "hetzner-core",
+      "ip": "10.77.0.1",
+      "gati": "Tisra",
+      "subdivision": 3,
+      "solkattu": "Tha-Ki-Ta"
+    },
+    {
+      "node": "xps-9310",
+      "ip": "10.77.0.2",
+      "gati": "Chatusra",
+      "subdivision": 4,
+      "solkattu": "Tha-Ka-Dhi-Mi"
+    },
+    {
+      "node": "lat-5591",
+      "ip": "10.77.0.3",
+      "gati": "Khanda_3_2",
+      "subdivision": 5,
+      "solkattu": "Tha-Ki-Ta|Tha-Ka"
+    },
+    {
+      "node": "pixel-8-pro",
+      "ip": "10.77.0.4",
+      "gati": "Misra_3_2_2",
+      "subdivision": 7,
+      "solkattu": "Tha-Ki-Ta|Tha-Ka|Dhi-Mi"
+    },
+    {
+      "node": "poco-x5",
+      "ip": "10.77.0.5",
+      "gati": "Sankeerna",
+      "subdivision": 9,
+      "solkattu": "Tha-Ka-Dhi-Mi|Tha-Ki-Ta|Tha-Ka"
+    }
+  ]
+}

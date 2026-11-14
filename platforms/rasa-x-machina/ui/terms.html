@@ -1,0 +1,257 @@
+<!-- ffp: FFP-UI-TERMS frontend html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Terms of Service — Rasa-X-Machina · tianxiaOS</title>
+<meta name="description" content="Sovereign commercial Terms of Service for Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ) governing tianxiaOS v8.7.0, signed multi-OS executables, 28 polyglot portals, and 29-currency settlement."/>
+<link rel="canonical" href="https://rasaxmachina.com/terms"/>
+<link rel="icon" type="image/svg+xml" href="/icon.svg"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --bg: #080808;
+    --panel: rgba(14, 15, 24, 0.84);
+    --border: rgba(124, 92, 255, 0.30);
+    --accent: #c084fc;
+    --mint: #00f59b;
+    --fg: #f8fafc;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 82% 8%, rgba(124, 92, 255, 0.13), transparent 40%),
+                radial-gradient(circle at 14% 14%, rgba(34, 211, 238, 0.08), transparent 36%),
+                var(--bg);
+    color: var(--fg);
+    line-height: 1.68;
+    min-height: 100dvh;
+  }
+  .tx-home-nav {
+    position: fixed;
+    top: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99980;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.42rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(10, 10, 18, 0.86);
+    border: 1px solid rgba(124, 92, 255, 0.38);
+    box-shadow: 0 0 60px -12px rgba(124, 92, 255, 0.55);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    max-width: calc(100vw - 1.25rem);
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tx-home-nav::-webkit-scrollbar { display: none; }
+  .tx-nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.92rem;
+    padding: 0.32rem 0.78rem;
+    letter-spacing: 0;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .tx-home-nav a.tx-nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.76rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .tx-home-nav a.tx-nav-link:hover, .tx-home-nav a.tx-nav-link.active {
+    color: #fff;
+    background: rgba(255,255,255,0.09);
+  }
+  .tx-nav-right-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.25rem;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 0.45rem;
+    flex-wrap: nowrap;
+  }
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: calc(5.6rem + var(--safe-top)) 1.5rem 3.5rem;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.34rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.73rem;
+    font-weight: 600;
+    background: rgba(124, 92, 255, 0.14);
+    border: 1px solid rgba(124, 92, 255, 0.34);
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.65rem;
+  }
+  h2 {
+    font-size: 1.16rem;
+    color: var(--mint);
+    margin: 2rem 0 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  p, li {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1.1rem;
+    padding: 1.4rem 1.5rem;
+    margin: 1.4rem 0;
+    backdrop-filter: blur(20px);
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.09);
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem calc(3.5rem + var(--safe-bottom));
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<nav class="tx-home-nav" aria-label="Legal &amp; Primary Navigation">
+  <a href="/" class="tx-nav-brand tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</a>
+  <a href="/" class="tx-nav-link">⚡ Storefront</a>
+  <a href="/about" class="tx-nav-link">About</a>
+  <a href="/collins" class="tx-nav-link">Founder</a>
+  <a href="/estonia" class="tx-nav-link" style="color:#38bdf8;font-weight:600">🇪🇪 Estonia ↗</a>
+  <a href="/privacy" class="tx-nav-link">Privacy</a>
+  <a href="/terms" class="tx-nav-link active" aria-current="page">Terms</a>
+  <div class="tx-nav-right-cluster"></div>
+</nav>
+
+<main id="main-content" tabindex="-1">
+  <div class="eyebrow">⚖️ SOVEREIGN COMMERCIAL TERMS · BUILD LAW v5.0-SOVEREIGN-FOUNDER-CANON</div>
+  <h1>Terms of Service</h1>
+  <p><strong>Effective Revision:</strong> November 2026 · <strong>Platform Release:</strong> <code>tianxiaOS v8.7.0</code> · Governed under Build Law <code>v5.0-SOVEREIGN-FOUNDER-CANON</code></p>
+
+  <div class="card">
+    <strong style="color:var(--mint);font-family:'JetBrains Mono',monospace">🏛️ CORPORATE &amp; REGULATORY STATUS DISCLOSURE:</strong>
+    <p style="margin-top:0.45rem;margin-bottom:0">
+      Services across <code>rasaxmachina.com</code> and its 28 governed portals are operated by <strong>Rasa-X-Machina</strong>, founded by Principal Systems Architect <a href="/collins">Collins Takem</a> (<button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified Contact</button>). <strong>RASA-X-MACHINA OÜ</strong> is our proposed Estonian private limited company to be incorporated in Tallinn upon approval of Dealum Application <code>#179423</code> by the Estonian Startup Committee under § 100¹ of the Estonian Aliens Act (<em>Välismaalaste seadus</em>).
+    </p>
+  </div>
+
+  <h2>1. Acceptance &amp; Scope</h2>
+  <p>By accessing <code>rasaxmachina.com</code>, any of its 28 governed subdomains/portals, downloading signed executables, or purchasing any blueprint, recurring SaaS telemetry stream, cyber-defense suite, or VRTTI architecture sprint, you agree to these Terms of Service and our <a href="/privacy">GDPR++ Sovereign Privacy Policy</a>.</p>
+
+  <h2>2. Sovereign Software, Signed Multi-OS Packages &amp; Architecture Sprints</h2>
+  <p>Rasa-X-Machina provides polyglot autonomous AI infrastructure (<strong>tianxiaOS v8.7.0</strong>), cryptographically signed executables across 7 formats (<code>.deb</code>, <code>.rpm</code>, <code>.AppImage</code>, <code>flake.nix</code>, <code>.tar.gz</code>, Windows <code>.exe</code>, and Android <code>.apk</code> accompanied by OpenSSL <code>Ed25519</code> signatures and CycloneDX 1.5 SBOMs), recurring telemetry streams, active cyber-defense suites (<strong>Faery Fortress</strong> &amp; <strong>MANAS</strong>), Bayesian postal evidentiary dossiers (<strong>Murua Universal Tracer</strong>), and institutional <strong>VRTTI</strong> architecture sprints across <strong>42 global markets, 25 languages, and 29 supported currencies</strong> (<code>EUR</code> default).</p>
+
+  <h2>3. Single-Currency Settlement, Subscriptions &amp; Statement Descriptors</h2>
+  <p>All 21 commercial SKUs are displayed and settled strictly in your chosen single currency via Stripe, Solana Pay, Base L2, Gumroad, Paddle, or HTTP <code>x402</code> machine micropayments, reconciled deterministically in <strong>Veritas-Rex TetraLedger</strong>. Recurring subscriptions (<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="29">€29</span>/mo Starter &amp; Alpha streams through enterprise enclave retainers) may be cancelled at any time without penalty; service continues through the paid billing period. Card statements display an explicit 22-character <code>RASAXM*</code> descriptor.</p>
+
+  <h2>4. 30-Day Sovereign Guarantee &amp; Milestone Escrow</h2>
+  <p>First-time digital blueprint and self-serve SaaS subscription orders carry a 30-day satisfaction guarantee (aligned with and exceeding EU Consumer Rights Directive 2011/83/EU standards). Institutional VRTTI architecture sprints (<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="2500">€2,500</span>–<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="10000">€10,000</span>+) are milestone-escrowed against cryptographically signed technical deliverables. Reach our executive desk (<button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified Contact</button>) for rapid resolution.</p>
+
+  <h2>5. Cryptographic Signature Verification &amp; Acceptable Use</h2>
+  <ul>
+    <li><strong>Binary Verification:</strong> Users deploying offline executables should verify SHA-256 checksums and detached <code>Ed25519</code> signatures (<code>RELEASE_SIGNING_KEY.pub.pem</code>) prior to production execution.</li>
+    <li><strong>Capability Boundaries:</strong> You agree not to use Rasa-X-Machina software, security scanners (<code>AegisScan</code>), APIs, or enclaves for unlawful offensive cyber operations, unauthorized system intrusion, sanctions evasion, malware distribution, or any activity prohibited by European Union law or payment-rail acceptable use policies.</li>
+  </ul>
+
+  <h2>6. Intellectual Property &amp; Client Sovereignty</h2>
+  <p>tianxiaOS core substrate, codecs, Build Law specifications, and brand marks remain the intellectual property of Rasa-X-Machina (to be assigned into RASA-X-MACHINA OÜ upon Tallinn incorporation). Clients retain <strong>100% sovereign ownership</strong> of their own data, cryptographic keys, prompts, configurations, and custom client-commissioned sprint deliverables.</p>
+
+  <h2>7. GDPR++ Data Protection &amp; &lt;50ms Cryptoshredding</h2>
+  <p>All data handling adheres strictly to Privacy by Design (PbD), Security by Design (SbD), zero third-party advertising cookies, automatic <code>Sec-GPC: 1</code> enforcement, and instantaneous <code>&lt;50ms</code> post-quantum ephemeral key cryptoshredding under our <a href="/privacy">GDPR++ Policy</a>.</p>
+
+  <h2>8. Limitation of Liability &amp; Governing Law</h2>
+  <p>Except where mandatory statutory consumer or data-protection laws apply, software, telemetry feeds, and threat radar streams are provided on an "as-is" basis without implied warranties of uninterrupted fitness, and aggregate liability is capped at the fees paid by you during the preceding 12 months. These Terms are governed by the laws of the European Union and the Republic of Estonia, with non-consumer commercial disputes subject to the jurisdiction of Harju County Court (<em>Harju Maakohus</em>, Tallinn) upon Tallinn incorporation.</p>
+
+  <h2>9. Direct Legal &amp; Executive Contact</h2>
+  <p>Legal, enterprise procurement, and compliance inquiries: <button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified Legal Contact</button> · Founder Profile &amp; Verified Channels: <a href="/collins">rasaxmachina.com/collins</a> · Security Disclosures: <a href="/.well-known/security.txt">/.well-known/security.txt</a></p>
+</main>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div>© 2026 <strong>Rasa-X-Machina</strong> (Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong>). Founded by <a href="/collins">Collins Takem</a>.</div>
+    <div>
+      <a href="/">Storefront</a> ·
+      <a href="/about">About</a> ·
+      <a href="/collins">Founder</a> ·
+      <a href="/privacy">Privacy Policy (GDPR++)</a> ·
+      <a href="/.well-known/security.txt">security.txt</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Scour Intelligence TUI
+Comment=Real-Time ArXiv, GitHub, DeFiLlama, Threat & x402 Merged Signal Feed
+Exec=foot -T "tianxiaOS Scour Intelligence TUI" /usr/local/bin/tianxia tui --app scour
+Icon=utilities-terminal
+Terminal=false
+Categories=Network;System;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

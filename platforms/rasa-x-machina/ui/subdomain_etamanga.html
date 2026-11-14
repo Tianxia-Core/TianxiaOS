@@ -1,0 +1,425 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-ETAMANGA frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-ETAMANGA frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>ETAMANGA — Sovereign Substrate Chain & Token Governance</title>
+<meta name="description" content="ETAMANGA sovereign Substrate blockchain, Solana utility token (ETMA), validator network, and protocol-level treasury governance. Founded by Collins Takem."/>
+<link rel="canonical" href="https://etamanga.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #d8b4fe;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a855f7;
+    box-shadow: 0 0 10px #a855f7;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 40%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.18rem;
+    color: #e2e8f0;
+    line-height: 1.65;
+    max-width: 820px;
+    margin-bottom: 2.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media(max-width: 750px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    backdrop-filter: blur(20px);
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-val {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d8b4fe;
+    margin-top: 0.4rem;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  @media(max-width: 800px) { .prod-grid { grid-template-columns: 1fr; } }
+  .prod-box {
+    background: rgba(18, 10, 26, 0.65);
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    border-radius: 1.4rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(30px);
+    transition: transform 0.2s ease;
+  }
+  .prod-box:hover { transform: translateY(-3px); }
+  .prod-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.35rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .prod-price {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+  }
+  .prod-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .prod-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem;
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .prod-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .prod-features li::before {
+    content: "✓";
+    color: #a855f7;
+    font-weight: 700;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #9333ea, #c084fc);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.6);
+  }
+  .auth-box {
+    border-top: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    padding-top: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .auth-box a {
+    color: #d8b4fe;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .auth-box a:hover { text-decoration: underline; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#a855f7;font-weight:700;font-size:0.86rem">ETAMANGA</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com">Flagship</a>
+    <a class="nav-link" href="/tracer">Logistics</a>
+    <a class="nav-link" href="/yield">Yield Bridge</a>
+    <a class="nav-link" href="/collins">Founder</a>
+    <a class="nav-link" href="/shop">Storefront</a>
+  </div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <span class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    SOVEREIGN SUBSTRATE MAINNET & SOLANA UTILITY TOKEN
+  </span>
+
+  <h1>ETAMANGA Sovereign Chain & Governance</h1>
+  <p class="lead">
+    High-throughput Substrate blockchain and Solana utility token ($ETMA). Powers autonomous
+    transaction settlement, validator rewards, and unlocks protocol discounts across the
+    entire <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> sovereign ecosystem.
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Fixed Token Supply</div>
+      <div class="stat-val">1.00 B ETMA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Inflation Rate</div>
+      <div class="stat-val" style="color:#34d399">0.00%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Protocol Fee Discount</div>
+      <div class="stat-val" style="color:#fde047">10% Flat</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Substrate RPC Status</div>
+      <div class="stat-val" id="etm-rpc-stat" style="color:#22d3ee">OPERATIONAL</div>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-box">
+      <div>
+        <h3 class="prod-title">ETMA on Solana</h3>
+        <div class="prod-price">pump.fun / Raydium</div>
+        <p class="prod-desc">
+          Instant liquidity and trading on Solana. Holding ETMA unlocks fee exemptions on
+          NomenAgora domain escrows and a 10% discount on all Tianxia software suites.
+        </p>
+        <ul class="prod-features">
+          <li><strong>$ETMA Solana Mint:</strong> <code>6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2</code></li>
+          <li><strong>Solana Treasury:</strong> <code>88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq</code></li>
+          <li><strong>$EFM Base L2 ERC-20:</strong> <code>0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D</code></li>
+          <li><strong>Substrate SS58:</strong> <code>5ETWKfzzvPptL4qBmhNcT5L4rT5NU4zt7oedkFDoACm2KrWj</code></li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem">
+        <a class="btn-primary" href="https://pump.fun/coin/6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2" target="_blank" rel="noopener">
+          ◎ Trade $ETMA on Solana (Pump.fun) ↗
+        </a>
+        <a class="btn-primary" style="background:rgba(96,165,250,0.18);border:1px solid rgba(96,165,250,0.45);color:#93c5fd" href="https://basescan.org/token/0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D" target="_blank" rel="noopener">
+          🔵 Inspect $EFM on Base L2 (Basescan) ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="prod-box">
+      <div>
+        <h3 class="prod-title">Sovereign Validator Enrollment</h3>
+        <div class="prod-price"><span class="tx-store-price" data-base-curr="EUR" data-base-amt="499">€499</span> / mo · PoA Governance</div>
+        <p class="prod-desc">
+          Enroll an authorized sovereign validator node into the ETAMANGA Substrate mesh.
+          Process zero-fee reality transactions and participate in governance votes.
+        </p>
+        <ul class="prod-features">
+          <li>Native Substrate Client Binary & Specs</li>
+          <li>Post-Quantum WireGuard Peer Mesh</li>
+          <li>Consensus Block Production Rewards</li>
+          <li>Automated DSS-14 Compliance Gates</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem">
+        <a class="btn-primary" href="https://buy.stripe.com/bJe9ASgHnb6Nfg70AL9AA0d" target="_blank" rel="noopener">
+          💳 Enroll Validator via Stripe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="499">€499</span>/mo) ↗
+        </a>
+        <a class="btn-primary" style="background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.4);color:#34d399" href="/pay?plan=enterprise">
+          ◎ Settle Validator in Crypto (SOL / Base / $ETMA) ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section aria-labelledby="wb-etamanga-heading" style="background:rgba(10,8,20,0.88);border:1px solid rgba(168,85,247,0.35);border-radius:1.4rem;padding:1.75rem;margin:2.5rem 0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <div style="font-family:monospace;font-size:0.75rem;color:#c084fc;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem">LIVE SUBSTRATE TELEMETRY · 127.0.0.1:9944 PROXY</div>
+        <h2 id="wb-etamanga-heading" style="font-size:1.3rem;color:#fff;margin:0">ETAMANGA Chain Live Block Header &amp; Peer Health Console</h2>
+      </div>
+      <span id="etm-lat" style="font-family:monospace;font-size:0.78rem;color:#34d399">Ready</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.9rem">
+      <button type="button" class="etm-q-btn btn-primary" data-m="chain_getHeader" style="padding:0.55rem 1rem;font-size:0.8rem">Inspect Latest Header</button>
+      <button type="button" class="etm-q-btn btn-primary" data-m="system_health" style="background:rgba(168,85,247,0.18);border:1px solid rgba(168,85,247,0.45);padding:0.55rem 1rem;font-size:0.8rem">Check Peer Health</button>
+      <button type="button" class="etm-q-btn btn-primary" data-m="system_properties" style="background:rgba(168,85,247,0.18);border:1px solid rgba(168,85,247,0.45);padding:0.55rem 1rem;font-size:0.8rem">Token Properties</button>
+      <button type="button" class="etm-q-btn btn-primary" data-m="system_version" style="background:rgba(168,85,247,0.18);border:1px solid rgba(168,85,247,0.45);padding:0.55rem 1rem;font-size:0.8rem">Node Version</button>
+    </div>
+    <pre id="etm-rpc-out" aria-live="polite" style="background:#05050a;border:1px solid rgba(255,255,255,0.1);border-radius:0.9rem;padding:1rem;font-family:monospace;font-size:0.78rem;color:#d8b4fe;overflow-x:auto;margin:0">Loading latest block header from /api/v1/etamanga/rpc...</pre>
+  </section>
+
+  <div class="auth-box">
+    <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> · Autonomous Architecture & Digital Asset Syndicate (29 Currencies · 42 Markets)<br/>
+    Principal Systems Architect & Founder: <strong>Collins Takem</strong> · Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong><br/>
+    <div style="margin-top:0.6rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/pay">Payment & Crypto Hub</a> ·
+      <a href="/yield">Yield Bridge</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/tracer">Murua Universal Tracer</a> ·
+      <a href="/shop">The Fortress Market</a>
+    </div>
+  </div>
+</main>
+<script>
+(function() {
+  const out = document.getElementById('etm-rpc-out');
+  const lat = document.getElementById('etm-lat');
+  const stat = document.getElementById('etm-rpc-stat');
+  let seq = 1;
+
+  async function callChain(method) {
+    lat.textContent = `Calling ${method}...`;
+    try {
+      const t0 = performance.now();
+      const res = await fetch('/api/v1/etamanga/rpc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: seq++, method, params: [] })
+      });
+      const data = await res.json();
+      const ms = Math.round(performance.now() - t0);
+      lat.textContent = `${method} · ${ms} ms`;
+      if (stat) stat.textContent = data.live_daemon ? 'LIVE :9944' : 'OPERATIONAL';
+      out.textContent = JSON.stringify(data, null, 2);
+    } catch (e) {
+      lat.textContent = 'RPC Error';
+      out.textContent = 'Chain query error: ' + e.message;
+    }
+  }
+
+  document.querySelectorAll('.etm-q-btn').forEach(btn => {
+    btn.addEventListener('click', () => callChain(btn.getAttribute('data-m')));
+  });
+  callChain('chain_getHeader');
+})();
+</script>
+</body>
+</html>

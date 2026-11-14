@@ -1,0 +1,449 @@
+<!-- ffp: FFP-SUB-NDIMMORWYN frontend html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ndimmôrwyn: 5-Cadence Autonomous Market & Opportunity Miner — ndimmorwyn.rasaxmachina.com</title>
+<meta name="description" content="The economic intelligence heart of tianxiaOS—continuously scouring DeFi yields, CISA threat feeds, GitHub velocity, arXiv breakthroughs, and 147 B2B engineering vacancies across 41 RGUs."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --bg: #050509;
+    --panel: rgba(14, 15, 24, 0.86);
+    --border: rgba(124, 92, 255, 0.28);
+    --accent: #7c5cff;
+    --mint: #00f59b;
+    --cyan: #38bdf8;
+    --text: #f4f4f8;
+    --muted: #9ca3af;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 15% 10%, rgba(124,92,255,0.16), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0,245,155,0.10), transparent 45%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 9, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0.9rem 1.5rem;
+  }
+  .nav-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #fff; }
+  main.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--mint);
+    background: rgba(0, 245, 155, 0.1);
+    border: 1px solid rgba(0, 245, 155, 0.3);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+    color: #fff;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 78ch;
+    margin-bottom: 2rem;
+  }
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--mint));
+    color: #040406;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.35);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.82rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.35rem;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mint);
+    margin-bottom: 0.25rem;
+  }
+  .stat-lbl {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+  }
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 1.1rem;
+    padding: 1.6rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.55rem;
+  }
+  .feature-card p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+  .pricing-banner {
+    background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(0,245,155,0.08));
+    border: 1px solid rgba(0, 245, 155, 0.35);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .price-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mint);
+  }
+  footer.tx-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .tx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<header class="topbar">
+  <div class="nav-wrap">
+    <a href="/" class="brand" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#e2e8f0;font-weight:700;font-size:0.86rem;letter-spacing:0.04em">NDIMMORWYN</span></a>
+    <nav class="nav-links" aria-label="Subdomain Navigation">
+      <a href="/">← Main Storefront (21 SKUs)</a>
+      <a href="/shop">Fortress Market</a>
+      <a href="/pay">6-Rail Payment Hub</a>
+      <a href="/estonia">🇪🇪 Startup Estonia Guide</a>
+      <a href="/trust">Trust &amp; GDPR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="container" tabindex="-1">
+  <span class="eyebrow">SKU-TX-07 · AUTONOMOUS ECONOMIC SCOUR ENGINE · STMT: RASAXMACHINA ALPHASIG</span>
+  <h1>Ndimmôrwyn: 5-Cadence Autonomous Market & Opportunity Miner</h1>
+  <p class="lead">The economic intelligence heart of tianxiaOS—continuously scouring DeFi yields, CISA threat feeds, GitHub velocity, arXiv breakthroughs, and 147 B2B engineering vacancies across 41 RGUs.</p>
+
+  <div class="cta-bar">
+    <a class="btn-primary tx-express-stripe" data-plan="alpha" href="/api/v1/stripe-express?plan=alpha" target="_blank" rel="noopener">
+      💳 Subscribe to Ndimmôrwyn Feed (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span> / month) ↗
+    </a>
+    <a class="btn-outline" href="/pay?plan=alpha">◎ Pay via Solana / Base L2 / 6 Rails (-10%) ↗</a>
+    <a class="btn-outline" href="/#calculator">🏛️ Scope Custom VRTTI Sprint ↗</a>
+  </div>
+
+  <section class="stats-grid" aria-label="Key Operational Metrics">
+      <div class="stat-card">
+        <div class="stat-val">474 Live Signals</div>
+        <div class="stat-lbl">Merged Multi-Cadence Telemetry</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">39 / 41 RGUs</div>
+        <div class="stat-lbl">Active Opportunity Coverage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">147 Vacancies</div>
+        <div class="stat-lbl">B2B Sprint Strike Targets</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">5 Cadences</div>
+        <div class="stat-lbl">Real-Time Scour & Deduplication</div>
+      </div>
+  </section>
+
+  <section class="features-grid" aria-label="Architectural Capabilities">
+      <article class="feature-card">
+        <h3>Multi-Source Signal Ingestion (tx_scour.py)</h3>
+        <p>Automated ingestion across DeFiLlama, CISA KEV, Feodo Tracker, GitHub trending repositories, arXiv CS/AI preprints, and x402 merchant directories.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Quantitative Autonomous Yield Scoring (tx_opportunities_miner.py)</h3>
+        <p>Ranks every opportunity by autonomous compute-efficiency ratio, marginal inference cost, and deterministic unit-economics thresholds.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Autonomous B2B Vacancy-to-Sprint Mapping</h3>
+        <p>Identifies high-compensation remote systems engineering bottlenecks and maps them directly to 5-Day VRTTI Architecture Sprint deliverables.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Closed-Loop Capital Allocation</h3>
+        <p>Feeds verified yield and commercial demand signals directly into the Sovereign Cockpit and Veritas-Rex treasury ledger.</p>
+      </article>
+  </section>
+
+  <section class="workbench-panel" aria-labelledby="wb-dss14-heading" style="background:rgba(8,10,16,0.92);border:1px solid rgba(124,92,255,0.34);border-radius:1.25rem;padding:1.75rem;margin-bottom:3rem;box-shadow:0 20px 50px rgba(0,0,0,0.45)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem">DAŚAVIDYĀYĀNA 14-LENS GATE · LIVE CODE &amp; SPEC VERIFIER</div>
+        <h2 id="wb-dss14-heading" style="font-size:1.3rem;color:#fff;margin:0">Evaluate Source Code Against All 14 Sovereign Lenses (PARAMASIVA Gate)</h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+        <button type="button" class="dss-sample btn-outline" data-sample="rust" style="cursor:pointer;font-size:0.76rem;padding:0.45rem 0.8rem">Sample: Compliant Rust FFP</button>
+        <button type="button" class="dss-sample btn-outline" data-sample="warn" style="cursor:pointer;font-size:0.76rem;padding:0.45rem 0.8rem">Sample: Shell Gate Violations</button>
+      </div>
+    </div>
+    <p style="font-size:0.88rem;color:#cbd5e1;margin-bottom:0.9rem">Paste a module header, shell runner, or service specification to verify FFP pairing, eval innocence, loop timeout discipline, anti-fail-fast recovery, and truthful logging via <code>POST /api/v1/dss14/check</code>.</p>
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;align-items:center">
+      <label for="dss-lang" style="font-size:0.82rem;color:#cbd5e1;font-weight:600">Target Language:</label>
+      <select id="dss-lang" style="background:#05070c;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);border-radius:0.55rem;padding:0.45rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem">
+        <option value="rust">rust</option>
+        <option value="bash">bash</option>
+        <option value="python">python</option>
+        <option value="typescript">typescript</option>
+        <option value="nix">nix</option>
+      </select>
+      <button type="button" id="dss-run-btn" class="btn-primary" style="cursor:pointer;border:none;font-size:0.82rem;padding:0.55rem 1.15rem">Run 14-Lens Gate Check</button>
+      <span id="dss-summary-badge" style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--mint)"></span>
+    </div>
+    <label for="dss-code-input" class="tx-sr-only" style="position:absolute;left:-9999px">Code snippet for DSS-14.2 14-lens evaluation</label>
+    <textarea id="dss-code-input" rows="7" style="width:100%;background:#05070c;color:#e2e8f0;border:1px solid rgba(255,255,255,0.14);border-radius:0.85rem;padding:0.9rem;font-family:'JetBrains Mono',monospace;font-size:0.79rem;line-height:1.5;margin-bottom:1rem">// ffp: FFP-MARKET-FEED concurrent-daemon rust
+use std::env;
+use std::time::Duration;
+
+pub fn poll_feed() -> Result&lt;usize, String&gt; {
+    let endpoint = env::var("TX_FEED_URL").unwrap_or_else(|_| "https://api.rasaxmachina.com".into());
+    let _timeout = Duration::from_secs(5);
+    tracing::info!(target: "audit_ledger", endpoint = %endpoint, "poll_feed_tick");
+    Ok(1)
+}</textarea>
+    <div id="dss-lenses-grid" aria-live="polite" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.65rem"></div>
+  </section>
+
+  <section class="pricing-banner" aria-label="Direct Acquisition">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);text-transform:uppercase;margin-bottom:0.3rem">
+        ndimmorwyn.rasaxmachina.com · CLUSTER: SYSTEM · ROUTING: CF_WORKER
+      </div>
+      <h2 style="font-size:1.35rem;color:#fff;margin-bottom:0.35rem">Ready to deploy SKU-TX-07?</h2>
+      <p style="font-size:0.88rem;color:#cbd5e1">Billed in your chosen currency (29 currencies across 42 markets supported) with Veritas-Rex Merkle receipt attestation.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="price-big">
+        <span class="tx-store-price" data-base-curr="EUR" data-base-amt="29">€29</span>
+        <span style="font-size:0.85rem;color:var(--muted);font-weight:400">/ month</span>
+      </div>
+      <div style="margin-top:0.6rem">
+        <a class="btn-primary tx-express-stripe" data-plan="alpha" href="/api/v1/stripe-express?plan=alpha" target="_blank" rel="noopener">
+          Instant Stripe Checkout ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-bottom">
+    <div>© 2026 Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ). Founded by Collins Takem. <a href="/privacy" style="color:#a78bfa">Privacy Policy (GDPR)</a> · <a href="/terms" style="color:#a78bfa">Terms of Service</a> · <a href="/.well-known/security.txt" style="color:#a78bfa">security.txt</a></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint)">DSS-14.2 SEALED · WCAG 2.2 AA · GDPR ART. 25</div>
+  </div>
+</footer>
+<script>
+(function() {
+  const input = document.getElementById('dss-code-input');
+  const langSel = document.getElementById('dss-lang');
+  const grid = document.getElementById('dss-lenses-grid');
+  const badge = document.getElementById('dss-summary-badge');
+
+  const SAMPLES = {
+    rust: {
+      lang: 'rust',
+      code: '// ffp: FFP-MARKET-FEED concurrent-daemon rust\nuse std::env;\nuse std::time::Duration;\n\npub fn poll_feed() -> Result<usize, String> {\n    let endpoint = env::var("TX_FEED_URL").unwrap_or_else(|_| "https://api.rasaxmachina.com".into());\n    let _timeout = Duration::from_secs(5);\n    tracing::info!(target: "audit_ledger", endpoint = %endpoint, "poll_feed_tick");\n    Ok(1)\n}'
+    },
+    warn: {
+      lang: 'bash',
+      code: '#!/usr/bin/env bash\nset -e\ncd /home/developer/scripts\nwhile true; do\n  eval "$UNTRUSTED_CMD"\ndone'
+    }
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  async function runCheck() {
+    badge.textContent = 'Evaluating 14 lenses...';
+    try {
+      const t0 = performance.now();
+      const res = await fetch('/api/v1/dss14/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: input.value, language: langSel.value })
+      });
+      const data = await res.json();
+      const ms = Math.round(performance.now() - t0);
+      if (!data.ok || !Array.isArray(data.lenses)) {
+        badge.textContent = 'Evaluation error';
+        return;
+      }
+      badge.textContent = `PARAMASIVA: ${data.paramasiva_gate} · ${data.passed_lenses}/${data.total_lenses} PASS (${data.score_pct}%) · ${ms} ms`;
+      badge.style.color = data.paramasiva_gate === 'CONCURS' ? 'var(--mint)' : '#fbbf24';
+      grid.innerHTML = data.lenses.map(l => {
+        const ok = l.status === 'PASS';
+        const border = ok ? 'rgba(0,245,155,0.28)' : 'rgba(251,191,36,0.45)';
+        const col = ok ? 'var(--mint)' : '#fbbf24';
+        return `<div style="background:rgba(255,255,255,0.03);border:1px solid ${border};border-radius:0.75rem;padding:0.75rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;font-weight:700;color:#fff">${esc(l.id)}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;color:${col}">${esc(l.status)}</span>
+          </div>
+          <div style="font-size:0.78rem;color:#cbd5e1;font-weight:600;margin-bottom:0.2rem">${esc(l.name)}</div>
+          <div style="font-size:0.74rem;color:#94a3b8;line-height:1.45">${esc(l.detail)}</div>
+        </div>`;
+      }).join('');
+    } catch (e) {
+      badge.textContent = 'Network error: ' + e.message;
+    }
+  }
+
+  document.querySelectorAll('.dss-sample').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = SAMPLES[btn.getAttribute('data-sample')];
+      if (s) {
+        langSel.value = s.lang;
+        input.value = s.code;
+        runCheck();
+      }
+    });
+  });
+  document.getElementById('dss-run-btn').addEventListener('click', runCheck);
+  runCheck();
+})();
+</script>
+</body>
+</html>

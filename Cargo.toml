@@ -1,0 +1,27 @@
+# ffp: FFP-ROOT-WORKSPACE concurrent-daemon rust
+[workspace]
+resolver = "2"
+members = [
+  "subsystems/ephemeral-cockpit/src/tx-ephemeral-hud",
+  "subsystems/crownforge-codex",
+  "subsystems/ndimmorwyn-enterprise",
+  "subsystems/polyglot-kenning",
+  "subsystems/murua-telemetry",
+  "subsystems/txsuite",
+  "crates/tianxia-suite",
+]
+
+[workspace.package]
+version = "8.7.0"
+edition = "2021"
+authors = ["Collins Takem <collinstaken525-cloud@users.noreply.github.com>"]
+license = "BUSL-1.1"
+repository = "https://github.com/Tianxia-Core/TianxiaOS"
+homepage = "https://rasaxmachina.com"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

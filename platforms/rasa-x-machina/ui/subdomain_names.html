@@ -1,0 +1,647 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-NAMES frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-NAMES frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>NomenAgora — 60-Handle Telegram Digital Asset Syndicate & Escrow</title>
+<meta name="description" content="NomenAgora governs a 100% equity-retained digital namespace syndicate of 60 premium Telegram handles with automated secondary escrow and cross-promotional syndication."/>
+<link rel="canonical" href="https://names.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #7dd3fc;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #0284c7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    line-height: 1.6;
+    max-width: 780px;
+    margin-bottom: 2.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media(max-width: 750px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    backdrop-filter: blur(20px);
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-val {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-top: 0.4rem;
+  }
+  .card-glass {
+    background: rgba(15, 12, 28, 0.65);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(30px);
+  }
+  table.handles {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.88rem;
+  }
+  table.handles th, table.handles td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+  }
+  table.handles th {
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .b-bot { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+  .b-app { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+  .b-ch { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  @media(max-width: 800px) { .prod-grid { grid-template-columns: 1fr; } }
+  .prod-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .prod-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.35rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .prod-price {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+  }
+  .prod-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #0284c7, #38bdf8);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.55);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-box {
+    background: #08111a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 1.4rem;
+    max-width: 580px;
+    width: 100%;
+    padding: 2.2rem;
+    box-shadow: 0 0 90px -20px rgba(56, 189, 248, 0.35);
+  }
+  .modal-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem;
+    color: #fff;
+  }
+  .form-group {
+    margin-bottom: 1.1rem;
+  }
+  .form-lbl {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--tx-ink-dim, #94a3b8);
+    margin-bottom: 0.35rem;
+  }
+  .form-ctrl {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.92rem;
+  }
+  .form-ctrl:focus {
+    outline: none;
+    border-color: #38bdf8;
+  }
+  .auth-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .auth-footer a { color: #38bdf8; text-decoration: none; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<header class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#38bdf8;font-weight:700;font-size:0.86rem">NOMENAGORA</span></a>
+  <nav class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com/#radar">Flagship Radar</a>
+    <a class="nav-link" href="https://rasaxmachina.com/#storefront">Storefront</a>
+    <a class="nav-link" href="https://rasaxmachina.com/#calculator">Retainer Calculator</a>
+    <a class="nav-link" href="/cockpit">Sovereign Cockpit</a>
+  </nav>
+</header>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <div class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    CLUSTER: SYNDICATE · ROUTE: cf_worker · ICP: ICP-COLLECTOR, ICP-TRADER · FQDN: names.rasaxmachina.com
+  </div>
+
+  <h1>NomenAgora Syndicate</h1>
+  <p class="lead">
+    Permanent digital namespace layer of <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong>. Instead of liquidating handles on auction blocks, we retain 100% equity across 60 interconnected Telegram assets, operating high-velocity automated trading bots, broadcast networks, and zero-counterparty handle secondary escrow.
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Retained Handles</div>
+      <div class="stat-val">60 Assets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Broadcast Channels</div>
+      <div class="stat-val">45 Nodes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Automated Bots</div>
+      <div class="stat-val">9 Bots</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Escrow Settlement</div>
+      <div class="stat-val" style="color:#34d399;font-size:1.15rem">CRYPTOGRAPHIC</div>
+    </div>
+  </div>
+
+  <section class="card-glass" aria-labelledby="wb-names-heading" style="margin-bottom:1.8rem;border-color:rgba(52,211,153,0.38)">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-bottom:0.7rem">
+      <div>
+        <div style="font-family:monospace;font-size:0.74rem;color:#34d399;text-transform:uppercase;letter-spacing:0.1em">LIVE NAMESPACE AVAILABILITY &amp; ESCROW QUOTER · /API/V1/NAMES/CHECK</div>
+        <h2 id="wb-names-heading" style="margin:0.2rem 0 0;color:#fff;font-size:1.25rem">Check Sovereign Handle Normalization, Quality Score &amp; Instant Reservation Quote</h2>
+      </div>
+      <span id="nm-check-lat" style="font-family:monospace;font-size:0.75rem;color:#38bdf8">Ready</span>
+    </div>
+    <div style="display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:0.85rem">
+      <label for="nm-handle-in" style="position:absolute;left:-9999px">Handle to check</label>
+      <input id="nm-handle-in" class="form-ctrl" value="@solswapbot" placeholder="Enter @handle (e.g. @solswapbot, @quantumvault, @dexrouter)" style="flex:1;min-width:220px"/>
+      <button type="button" id="nm-check-btn" class="btn-primary" style="cursor:pointer;border:none">Check Handle &amp; Quote</button>
+    </div>
+    <div id="nm-check-out" aria-live="polite" style="background:rgba(4,9,16,0.9);border:1px solid rgba(255,255,255,0.1);border-radius:0.85rem;padding:0.95rem;font-family:monospace;font-size:0.79rem;color:#cbd5e1">Checking @solswapbot...</div>
+  </section>
+
+  <div class="card-glass">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-bottom:0.8rem">
+      <h3 style="margin:0;color:#38bdf8;font-size:1.25rem">Featured Syndicate Namespace Directory</h3>
+      <span style="font-size:0.75rem;color:#34d399;font-family:var(--tx-font-mono, monospace)">● NOMENAGORA_REGISTRY (ACTIVE)</span>
+    </div>
+    <p style="font-size:0.9rem;color:#cbd5e1;margin:0 0 1rem">
+      High-traffic nodes operating across Telegram, funnelling cross-promotional attention into sovereign advisory, products, and alpha streams.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table class="handles">
+        <thead>
+          <tr>
+            <th>Handle</th>
+            <th>Asset Type</th>
+            <th>Operational Cluster</th>
+            <th>Core Substrate Function</th>
+            <th>Direct Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@solswapbot</code></td>
+            <td><span class="badge b-bot">BOT</span></td>
+            <td>Trading & Liquidity</td>
+            <td>Automated Solana DEX swap gateway</td>
+            <td><button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.75rem" onclick="openInquiryModal('namespace_syndicate', 'Inquire: @solswapbot Escrow', 500)">Acquire Escrow</button></td>
+          </tr>
+          <tr>
+            <td><code>@tonsolbots</code></td>
+            <td><span class="badge b-app">MINI-APP</span></td>
+            <td>Cross-Chain Infrastructure</td>
+            <td>Telegram Mini-App for TON/Solana bridging</td>
+            <td><button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.75rem" onclick="openInquiryModal('namespace_syndicate', 'Inquire: @tonsolbots Escrow', 800)">Acquire Escrow</button></td>
+          </tr>
+          <tr>
+            <td><code>@mevbotscan</code></td>
+            <td><span class="badge b-bot">BOT</span></td>
+            <td>Alpha Telemetry</td>
+            <td>Real-time MEV flash loan detection & alert feed</td>
+            <td><button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.75rem" onclick="openInquiryModal('namespace_syndicate', 'Inquire: @mevbotscan Escrow', 450)">Acquire Escrow</button></td>
+          </tr>
+          <tr>
+            <td><code>@daovietnam</code></td>
+            <td><span class="badge b-ch">CHANNEL</span></td>
+            <td>Regional Community</td>
+            <td>Southeast Asian Web3 localized broadcast node</td>
+            <td><button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.75rem" onclick="openInquiryModal('namespace_syndicate', 'Inquire: @daovietnam Escrow', 600)">Acquire Escrow</button></td>
+          </tr>
+          <tr>
+            <td><code>@solpumpdesk</code></td>
+            <td><span class="badge b-ch">CHANNEL</span></td>
+            <td>Market Signals</td>
+            <td>Solana token launch radar & liquidity tracking</td>
+            <td><button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.75rem" onclick="openInquiryModal('namespace_syndicate', 'Inquire: @solpumpdesk Escrow', 350)">Acquire Escrow</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-box">
+      <div>
+        <span class="tx-badge" style="margin-bottom:0.6rem">ZERO-COUNTERPARTY ESCROW</span>
+        <h3 class="prod-title">NomenAgora Handle Escrow</h3>
+        <div class="prod-price"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="299">€277</span>+ <small style="font-size:0.85rem;color:#94a3b8">/ asset</small></div>
+        <p class="prod-desc">
+          Cryptographically signed, zero-counterparty-risk secondary acquisition and escrow for Telegram usernames, Fragment numbers, and sovereign domain handles.
+        </p>
+      </div>
+      <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
+        <a class="btn-primary" href="https://rasaxmachina.com/#storefront">Storefront Acquisition ↗</a>
+        <button class="btn-secondary" onclick="openInquiryModal('namespace_syndicate', 'NomenAgora Handle Escrow', 299)">Book Escrow</button>
+      </div>
+    </div>
+
+    <div class="prod-box" style="border-color: rgba(56, 189, 248, 0.4)">
+      <div>
+        <span class="tx-badge" style="margin-bottom:0.6rem;background:rgba(56,189,248,0.2)">SYNDICATE LIQUIDITY RETENTION</span>
+        <h3 class="prod-title">Namespace Promotion Retainer</h3>
+        <div class="prod-price"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="1500">€1,388</span> <small style="font-size:0.85rem;color:#94a3b8">/ month</small></div>
+        <p class="prod-desc">
+          Syndicate-wide cross-promotional placement across 45 broadcast channels and 9 interactive bots, funnelling verified Web3 traders and sovereign operators directly to your dApp.
+        </p>
+      </div>
+      <div style="display:flex;gap:0.8rem;flex-wrap:wrap">
+        <button class="btn-primary" onclick="openInquiryModal('namespace_syndicate', 'Namespace Promotion Retainer', 1500)">Retain Syndicate Network</button>
+        <a class="btn-secondary" href="https://rasaxmachina.com/#calculator">Configure Scope ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="auth-footer">
+    <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> · Autonomous Digital Asset Syndicate (29 Currencies · 42 Markets)<br/>
+    Principal Systems Architect & Founder: <strong>Collins Takem</strong> · Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong><br/>
+    <div style="margin-top:0.6rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/radar">Threat Radar</a> ·
+      <a href="/yield">Yield Bridge</a> ·
+      <a href="/cockpit">Sovereign Cockpit HUD</a>
+    </div>
+  </footer>
+</main>
+
+<!-- Proposal Inquiry Modal -->
+<div id="tx-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h3 class="modal-title" id="m-title">Register Namespace Inquiry</h3>
+      <button style="background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer" onclick="closeInquiryModal()">✕</button>
+    </div>
+    <form id="inquiry-form" onsubmit="submitInquiry(event)">
+      <input type="hidden" id="inq-category" value="namespace_syndicate"/>
+      <div class="form-group">
+        <label class="form-lbl">Executive / Buyer Name</label>
+        <input class="form-ctrl" id="inq-name" required placeholder="e.g. Asset Director"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Corporate Email (SLA Target)</label>
+        <input class="form-ctrl" type="email" id="inq-email" required placeholder="buyer@domain.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Telegram Handle or Entity</label>
+        <input class="form-ctrl" id="inq-org" placeholder="@targethandle or Firm Name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Target Escrow Budget</label>
+        <input class="form-ctrl" type="number" id="inq-budget" value="299"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Handle Specification or Syndication Goals</label>
+        <textarea class="form-ctrl" id="inq-brief" rows="3" placeholder="Detail target username, escrow timeline, or promotional reach requirements..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%">Submit Scope & Generate Merkle Receipt</button>
+      <div id="inq-result" style="margin-top:1rem;font-size:0.85rem"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openInquiryModal(cat, title, budget) {
+    document.getElementById('inq-category').value = cat || 'namespace_syndicate';
+    document.getElementById('m-title').textContent = title || 'Register Namespace Inquiry';
+    if (budget) document.getElementById('inq-budget').value = budget;
+    document.getElementById('tx-modal').style.display = 'flex';
+  }
+
+  function closeInquiryModal() {
+    document.getElementById('tx-modal').style.display = 'none';
+  }
+
+  async function submitInquiry(e) {
+    e.preventDefault();
+    const resultDiv = document.getElementById('inq-result');
+    resultDiv.innerHTML = '<span style="color:#94a3b8">Sanitizing vector and computing Merkle signature...</span>';
+    const payload = {
+      client_name: document.getElementById('inq-name').value,
+      email: document.getElementById('inq-email').value,
+      organization: document.getElementById('inq-org').value,
+      category: document.getElementById('inq-category').value,
+      scope_tier: 'namespace_escrow_acquisition',
+      estimated_budget: parseFloat(document.getElementById('inq-budget').value) || 299,
+      currency: 'USD',
+      sla: 'dss14_hardened',
+      brief: document.getElementById('inq-brief').value
+    };
+
+    try {
+      const res = await fetch('/api/v1/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(52,211,153,0.15);border:1px solid #34d399;border-radius:8px;padding:0.8rem;color:#34d399">
+            <strong>✓ Scope Registered: ${data.inquiry_id}</strong><br/>
+            Merkle Sig: <code style="font-size:0.75rem">${data.merkle_sig.slice(0, 24)}...</code><br/>
+            Founder Collins Takem will respond within 4 hours.
+          </div>
+        `;
+        document.getElementById('inquiry-form').reset();
+      } else {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;border-radius:8px;padding:0.8rem;color:#f87171">
+            <strong>✕ Submission Rejected:</strong> ${data.error || 'Validation failed'}<br/>
+            ${data.reason ? '<small>' + data.reason + '</small>' : ''}
+          </div>
+        `;
+      }
+    } catch (err) {
+      resultDiv.innerHTML = '<div style="color:#f87171">Network error during submission.</div>';
+    }
+  }
+
+  (function() {
+    const input = document.getElementById('nm-handle-in');
+    const btn = document.getElementById('nm-check-btn');
+    const out = document.getElementById('nm-check-out');
+    const lat = document.getElementById('nm-check-lat');
+
+    function esc(s) {
+      return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    async function checkHandle() {
+      const h = (input.value || '').trim();
+      lat.textContent = 'Checking...';
+      try {
+        const t0 = performance.now();
+        const res = await fetch('/api/v1/names/check?handle=' + encodeURIComponent(h));
+        const d = await res.json();
+        const ms = Math.round(performance.now() - t0);
+        lat.textContent = `${ms} ms`;
+        if (!d.ok) {
+          out.innerHTML = `<span style="color:#f87171">${esc(d.status)}: ${esc(d.reason)}</span>`;
+          return;
+        }
+        out.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem">
+          <div>
+            <div style="color:#fff;font-weight:700;font-size:0.95rem;margin-bottom:0.2rem">${esc(d.handle)} ➔ <span style="color:#38bdf8">${esc(d.fqdn_namespace)}</span></div>
+            <div style="color:#94a3b8;font-size:0.78rem">Status: <strong style="color:#34d399">${esc(d.status)}</strong> · Quality Score: <strong>${d.quality_index_100}/100</strong> · Attestation: <code>${esc(d.quote_attestation_id)}</code></div>
+          </div>
+          <div style="display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap">
+            <span style="font-size:1rem;font-weight:800;color:#34d399"><span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="${Number(d.reservation_quote_eur)}">€${Number(d.reservation_quote_eur).toLocaleString()}</span></span>
+            <button type="button" class="btn-secondary" style="padding:0.4rem 0.85rem;font-size:0.78rem" onclick="openInquiryModal('namespace_syndicate', 'Reserve ${esc(d.handle)}', ${Number(d.reservation_quote_eur)})">Book Escrow</button>
+          </div>
+        </div>`;
+      } catch (e) {
+        lat.textContent = 'Error';
+        out.textContent = 'Handle lookup failed: ' + e.message;
+      }
+    }
+
+    btn.addEventListener('click', checkHandle);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); checkHandle(); } });
+    checkHandle();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,1439 @@
+{
+  "version": "9.0.0-42markets-29currencies-25langs",
+  "counts": {
+    "languages": 25,
+    "markets": 42,
+    "currencies": 29,
+    "html_files": 36,
+    "surface_strings": 4038,
+    "reusable_cores": 3692,
+    "patterns": 19
+  },
+  "languages": {
+    "en": {
+      "lang": "en",
+      "dir": "ltr",
+      "name": "English",
+      "native_name": "English",
+      "markets": [
+        "EE",
+        "GB",
+        "US",
+        "CA",
+        "AU",
+        "NZ",
+        "SG",
+        "HK",
+        "NG",
+        "KE",
+        "ZA",
+        "IN",
+        "PK",
+        "MT",
+        "CY",
+        "AE",
+        "SA",
+        "EU",
+        "GLOBAL"
+      ],
+      "pack_url": "/i18n/en.json"
+    },
+    "et": {
+      "lang": "et",
+      "dir": "ltr",
+      "name": "Estonian",
+      "native_name": "Eesti",
+      "markets": [
+        "EE",
+        "EU"
+      ],
+      "pack_url": "/i18n/et.json"
+    },
+    "de": {
+      "lang": "de",
+      "dir": "ltr",
+      "name": "German",
+      "native_name": "Deutsch",
+      "markets": [
+        "DE",
+        "CH",
+        "BE",
+        "EU"
+      ],
+      "pack_url": "/i18n/de.json"
+    },
+    "fr": {
+      "lang": "fr",
+      "dir": "ltr",
+      "name": "French",
+      "native_name": "Français",
+      "markets": [
+        "FR",
+        "CA",
+        "BE",
+        "CH",
+        "EU"
+      ],
+      "pack_url": "/i18n/fr.json"
+    },
+    "es": {
+      "lang": "es",
+      "dir": "ltr",
+      "name": "Spanish",
+      "native_name": "Español",
+      "markets": [
+        "ES",
+        "MX",
+        "CL",
+        "AR",
+        "CO",
+        "US",
+        "EU"
+      ],
+      "pack_url": "/i18n/es.json"
+    },
+    "pt": {
+      "lang": "pt",
+      "dir": "ltr",
+      "name": "Portuguese",
+      "native_name": "Português",
+      "markets": [
+        "BR",
+        "EU"
+      ],
+      "pack_url": "/i18n/pt.json"
+    },
+    "it": {
+      "lang": "it",
+      "dir": "ltr",
+      "name": "Italian",
+      "native_name": "Italiano",
+      "markets": [
+        "IT",
+        "CH",
+        "EU"
+      ],
+      "pack_url": "/i18n/it.json"
+    },
+    "nl": {
+      "lang": "nl",
+      "dir": "ltr",
+      "name": "Dutch",
+      "native_name": "Nederlands",
+      "markets": [
+        "NL",
+        "BE",
+        "EU"
+      ],
+      "pack_url": "/i18n/nl.json"
+    },
+    "pl": {
+      "lang": "pl",
+      "dir": "ltr",
+      "name": "Polish",
+      "native_name": "Polski",
+      "markets": [
+        "PL",
+        "EU"
+      ],
+      "pack_url": "/i18n/pl.json"
+    },
+    "fi": {
+      "lang": "fi",
+      "dir": "ltr",
+      "name": "Finnish",
+      "native_name": "Suomi",
+      "markets": [
+        "FI",
+        "EU"
+      ],
+      "pack_url": "/i18n/fi.json"
+    },
+    "lt": {
+      "lang": "lt",
+      "dir": "ltr",
+      "name": "Lithuanian",
+      "native_name": "Lietuvių",
+      "markets": [
+        "LT",
+        "EU"
+      ],
+      "pack_url": "/i18n/lt.json"
+    },
+    "bg": {
+      "lang": "bg",
+      "dir": "ltr",
+      "name": "Bulgarian",
+      "native_name": "Български",
+      "markets": [
+        "BG",
+        "EU"
+      ],
+      "pack_url": "/i18n/bg.json"
+    },
+    "el": {
+      "lang": "el",
+      "dir": "ltr",
+      "name": "Greek",
+      "native_name": "Ελληνικά",
+      "markets": [
+        "GR",
+        "CY",
+        "EU"
+      ],
+      "pack_url": "/i18n/el.json"
+    },
+    "mt": {
+      "lang": "mt",
+      "dir": "ltr",
+      "name": "Maltese",
+      "native_name": "Malti",
+      "markets": [
+        "MT",
+        "EU"
+      ],
+      "pack_url": "/i18n/mt.json"
+    },
+    "sv": {
+      "lang": "sv",
+      "dir": "ltr",
+      "name": "Swedish",
+      "native_name": "Svenska",
+      "markets": [
+        "SE",
+        "FI",
+        "EU"
+      ],
+      "pack_url": "/i18n/sv.json"
+    },
+    "no": {
+      "lang": "no",
+      "dir": "ltr",
+      "name": "Norwegian",
+      "native_name": "Norsk",
+      "markets": [
+        "NO"
+      ],
+      "pack_url": "/i18n/no.json"
+    },
+    "tr": {
+      "lang": "tr",
+      "dir": "ltr",
+      "name": "Turkish",
+      "native_name": "Türkçe",
+      "markets": [
+        "TR",
+        "CY"
+      ],
+      "pack_url": "/i18n/tr.json"
+    },
+    "ar": {
+      "lang": "ar",
+      "dir": "rtl",
+      "name": "Arabic",
+      "native_name": "العربية",
+      "markets": [
+        "AE",
+        "SA"
+      ],
+      "pack_url": "/i18n/ar.json"
+    },
+    "ur": {
+      "lang": "ur",
+      "dir": "rtl",
+      "name": "Urdu",
+      "native_name": "اردو",
+      "markets": [
+        "PK"
+      ],
+      "pack_url": "/i18n/ur.json"
+    },
+    "hi": {
+      "lang": "hi",
+      "dir": "ltr",
+      "name": "Hindi",
+      "native_name": "हिन्दी",
+      "markets": [
+        "IN"
+      ],
+      "pack_url": "/i18n/hi.json"
+    },
+    "sw": {
+      "lang": "sw",
+      "dir": "ltr",
+      "name": "Swahili",
+      "native_name": "Kiswahili",
+      "markets": [
+        "KE"
+      ],
+      "pack_url": "/i18n/sw.json"
+    },
+    "vi": {
+      "lang": "vi",
+      "dir": "ltr",
+      "name": "Vietnamese",
+      "native_name": "Tiếng Việt",
+      "markets": [
+        "VN"
+      ],
+      "pack_url": "/i18n/vi.json"
+    },
+    "ko": {
+      "lang": "ko",
+      "dir": "ltr",
+      "name": "Korean",
+      "native_name": "한국어",
+      "markets": [
+        "KR"
+      ],
+      "pack_url": "/i18n/ko.json"
+    },
+    "zh-HK": {
+      "lang": "zh-HK",
+      "dir": "ltr",
+      "name": "Traditional Chinese (HK)",
+      "native_name": "繁體中文 (香港)",
+      "markets": [
+        "HK",
+        "SG"
+      ],
+      "pack_url": "/i18n/zh-HK.json"
+    },
+    "ja": {
+      "lang": "ja",
+      "dir": "ltr",
+      "name": "Japanese",
+      "native_name": "日本語",
+      "markets": [
+        "JP"
+      ],
+      "pack_url": "/i18n/ja.json"
+    }
+  },
+  "markets": {
+    "EE": {
+      "code": "EE",
+      "flag": "🇪🇪",
+      "name": "Estonia",
+      "native_name": "Eesti",
+      "currency": "EUR",
+      "default_lang": "et",
+      "languages": [
+        "et",
+        "en"
+      ],
+      "regime": "Estonian Aliens Act § 100¹ (Dealum #179423 Under Committee Review) · AKI / IKS · EU AI Act · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle · x402",
+      "edge": "Hetzner EU Rosenpass PQ Relay (Cloudflare Anycast · ~12ms Baltic RTT)",
+      "lang": "et",
+      "dir": "ltr"
+    },
+    "DE": {
+      "code": "DE",
+      "flag": "🇩🇪",
+      "name": "Germany",
+      "native_name": "Deutschland",
+      "currency": "EUR",
+      "default_lang": "de",
+      "languages": [
+        "de",
+        "en"
+      ],
+      "regime": "BSI IT-Grundschutz · DSGVO++ · NIS2 & DORA Sovereign Enclave · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Hetzner EU Rosenpass PQ Relay (Cloudflare Anycast · <9ms DE RTT)",
+      "lang": "de",
+      "dir": "ltr"
+    },
+    "FR": {
+      "code": "FR",
+      "flag": "🇫🇷",
+      "name": "France",
+      "native_name": "France",
+      "currency": "EUR",
+      "default_lang": "fr",
+      "languages": [
+        "fr",
+        "en"
+      ],
+      "regime": "CNIL RGPD++ · ANSSI SecNumCloud Principles · NIS2 & EU AI Act · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) Cartes Bancaires / SEPA · Solana Pay · Base L2 · Paddle",
+      "edge": "European Rosenpass PQ Relay (~17ms Paris RTT)",
+      "lang": "fr",
+      "dir": "ltr"
+    },
+    "GB": {
+      "code": "GB",
+      "flag": "🇬🇧",
+      "name": "United Kingdom",
+      "native_name": "United Kingdom",
+      "currency": "GBP",
+      "default_lang": "en",
+      "languages": [
+        "en"
+      ],
+      "regime": "UK GDPR / DUAA · NCSC Zero-Trust Enclave Alignment · GDPR++ v2030.4",
+      "rails": "Stripe GBP (£) Cards / Faster Payments · Solana Pay · Base L2 · Paddle",
+      "edge": "European Rosenpass PQ Relay (~21ms London RTT)",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "US": {
+      "code": "US",
+      "flag": "🇺🇸",
+      "name": "United States",
+      "native_name": "United States",
+      "currency": "USD",
+      "default_lang": "en",
+      "languages": [
+        "en",
+        "es"
+      ],
+      "regime": "CCPA / CPRA · NIST FIPS 203 Post-Quantum · Sec-GPC: 1 Auto-Honored · GDPR++ v2030.4",
+      "rails": "Stripe USD ($) Cards / Link · Base L2 USDC · Solana Pay · Gumroad · x402",
+      "edge": "Global Anycast TLS 1.3 + Sovereign PQ Tunnel",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "CH": {
+      "code": "CH",
+      "flag": "🇨🇭",
+      "name": "Switzerland",
+      "native_name": "Schweiz / Suisse / Svizzera",
+      "currency": "CHF",
+      "default_lang": "de",
+      "languages": [
+        "de",
+        "fr",
+        "it",
+        "en"
+      ],
+      "regime": "Swiss revFADP (nDSG) · FINMA Zero-Knowledge Enclave Standard · GDPR++ v2030.4",
+      "rails": "Native Stripe CHF · Solana Pay · Base L2 USDC · x402",
+      "edge": "European Rosenpass PQ Relay (~15ms Zurich RTT)",
+      "lang": "de",
+      "dir": "ltr"
+    },
+    "SE": {
+      "code": "SE",
+      "flag": "🇸🇪",
+      "name": "Sweden",
+      "native_name": "Sverige",
+      "currency": "SEK",
+      "default_lang": "sv",
+      "languages": [
+        "sv",
+        "en"
+      ],
+      "regime": "IMY Dataskydd++ · NIS2 & Nordic Sovereign Infrastructure · GDPR++ v2030.4",
+      "rails": "Native Stripe SEK (kr) · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Baltic/Nordic Rosenpass PQ Relay (~11ms Stockholm RTT)",
+      "lang": "sv",
+      "dir": "ltr"
+    },
+    "NO": {
+      "code": "NO",
+      "flag": "🇳🇴",
+      "name": "Norway",
+      "native_name": "Norge",
+      "currency": "NOK",
+      "default_lang": "no",
+      "languages": [
+        "no",
+        "en"
+      ],
+      "regime": "Datatilsynet Personvern++ · NSM Zero-Trust & NIS2 · GDPR++ v2030.4",
+      "rails": "Native Stripe NOK (kr) · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Nordic Rosenpass PQ Relay (~15ms Oslo RTT)",
+      "lang": "no",
+      "dir": "ltr"
+    },
+    "SG": {
+      "code": "SG",
+      "flag": "🇸🇬",
+      "name": "Singapore",
+      "native_name": "Singapore / 新加坡",
+      "currency": "SGD",
+      "default_lang": "en",
+      "languages": [
+        "en",
+        "zh-HK"
+      ],
+      "regime": "Singapore PDPA & MAS TRM Cyber-Resilience · GDPR++ v2030.4",
+      "rails": "Native Stripe SGD (S$) · Solana Pay · Base L2 USDC · Agentic x402",
+      "edge": "APAC Sovereign Edge + Post-Quantum Mesh",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "JP": {
+      "code": "JP",
+      "flag": "🇯🇵",
+      "name": "Japan",
+      "native_name": "日本",
+      "currency": "JPY",
+      "default_lang": "ja",
+      "languages": [
+        "ja",
+        "en"
+      ],
+      "regime": "APPI (個人情報保護法) · Post-Quantum Cryptoshredding (<50ms) · GDPR++ v2030.4",
+      "rails": "Native Stripe JPY (¥) · Solana Pay · Base L2 · x402",
+      "edge": "APAC TLS 1.3 Edge + Post-Quantum Rosenpass Relay",
+      "lang": "ja",
+      "dir": "ltr"
+    },
+    "EU": {
+      "code": "EU",
+      "flag": "🇪🇺",
+      "name": "European Union",
+      "native_name": "European Union",
+      "currency": "EUR",
+      "default_lang": "en",
+      "languages": [
+        "en",
+        "de",
+        "fr",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "et",
+        "fi",
+        "lt",
+        "bg",
+        "el",
+        "mt",
+        "sv",
+        "pt"
+      ],
+      "regime": "EU GDPR (2016/679) · EU AI Act · NIS2 & DORA · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR · x402",
+      "edge": "Hetzner European Post-Quantum Rosenpass Mesh",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "GLOBAL": {
+      "code": "GLOBAL",
+      "flag": "🌐",
+      "name": "Global (International)",
+      "native_name": "Global",
+      "currency": "USD",
+      "default_lang": "en",
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "ar",
+        "zh-HK",
+        "ja"
+      ],
+      "regime": "ISO/IEC 27701 · NIST FIPS 203 ML-KEM-1024 · GDPR++ Sovereign Horizon v2030.4",
+      "rails": "Stripe Multi-Currency · Solana Pay · Base L2 · Gumroad · Paddle · x402",
+      "edge": "Global Anycast TLS 1.3 + Post-Quantum WireGuard Mesh",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "HK": {
+      "code": "HK",
+      "flag": "🇭🇰",
+      "name": "Hong Kong",
+      "native_name": "香港",
+      "currency": "HKD",
+      "default_lang": "zh-HK",
+      "languages": [
+        "zh-HK",
+        "en"
+      ],
+      "regime": "Hong Kong PDPO (Cap. 486) · HKMA Cyber Resilience · GDPR++ v2030.4",
+      "rails": "Stripe HKD (HK$) Cards / FPS · Solana Pay · Base L2 USDC · x402",
+      "edge": "APAC East Edge + Post-Quantum Rosenpass Tunnel",
+      "lang": "zh-HK",
+      "dir": "ltr"
+    },
+    "CA": {
+      "code": "CA",
+      "flag": "🇨🇦",
+      "name": "Canada",
+      "native_name": "Canada",
+      "currency": "CAD",
+      "default_lang": "en",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "regime": "PIPEDA & Québec Law 25 · Post-Quantum Cryptoshredding · GDPR++ v2030.4",
+      "rails": "Native Stripe CAD (CA$) · Base L2 USDC · Solana Pay · Paddle",
+      "edge": "North American TLS 1.3 Edge + PQ Sovereign Relay",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "VN": {
+      "code": "VN",
+      "flag": "🇻🇳",
+      "name": "Vietnam",
+      "native_name": "Việt Nam",
+      "currency": "VND",
+      "default_lang": "vi",
+      "languages": [
+        "vi",
+        "en"
+      ],
+      "regime": "Vietnam PDPD (Decree 13/2023/ND-CP) · Sovereign Enclave Isolation · GDPR++ v2030.4",
+      "rails": "Stripe VND (₫) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "SEA Edge Ingress + Post-Quantum WireGuard Relay",
+      "lang": "vi",
+      "dir": "ltr"
+    },
+    "KR": {
+      "code": "KR",
+      "flag": "🇰🇷",
+      "name": "South Korea",
+      "native_name": "대한민국",
+      "currency": "KRW",
+      "default_lang": "ko",
+      "languages": [
+        "ko",
+        "en"
+      ],
+      "regime": "South Korea PIPA (개인정보 보호법) · ISMS-P Enclave Standard · GDPR++ v2030.4",
+      "rails": "Stripe KRW (₩) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "Northeast Asia TLS 1.3 Edge + Post-Quantum Mesh",
+      "lang": "ko",
+      "dir": "ltr"
+    },
+    "NG": {
+      "code": "NG",
+      "flag": "🇳🇬",
+      "name": "Nigeria",
+      "native_name": "Nigeria",
+      "currency": "NGN",
+      "default_lang": "en",
+      "languages": [
+        "en"
+      ],
+      "regime": "Nigeria Data Protection Act (NDPA 2023) · Zero-Trust Cryptoshredding · GDPR++ v2030.4",
+      "rails": "Stripe NGN (₦) International Cards · Solana Pay · Base L2 USDC · x402",
+      "edge": "West Africa Anycast Edge + EU Rosenpass PQ Relay",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "KE": {
+      "code": "KE",
+      "flag": "🇰🇪",
+      "name": "Kenya",
+      "native_name": "Kenya",
+      "currency": "KES",
+      "default_lang": "sw",
+      "languages": [
+        "sw",
+        "en"
+      ],
+      "regime": "Kenya Data Protection Act (ODPC) · Zero-Knowledge Audit · GDPR++ v2030.4",
+      "rails": "Stripe KES (KSh) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "East Africa Anycast Edge + EU Rosenpass PQ Relay",
+      "lang": "sw",
+      "dir": "ltr"
+    },
+    "BR": {
+      "code": "BR",
+      "flag": "🇧🇷",
+      "name": "Brazil",
+      "native_name": "Brasil",
+      "currency": "BRL",
+      "default_lang": "pt",
+      "languages": [
+        "pt",
+        "en"
+      ],
+      "regime": "Brazil LGPD (Lei 13.709) · ANPD Post-Quantum Sovereignty · GDPR++ v2030.4",
+      "rails": "Stripe BRL (R$) Cards · Solana Pay · Base L2 USDC · Paddle MoR · x402",
+      "edge": "South America TLS 1.3 Edge + Post-Quantum Mesh",
+      "lang": "pt",
+      "dir": "ltr"
+    },
+    "MX": {
+      "code": "MX",
+      "flag": "🇲🇽",
+      "name": "Mexico",
+      "native_name": "México",
+      "currency": "MXN",
+      "default_lang": "es",
+      "languages": [
+        "es",
+        "en"
+      ],
+      "regime": "Mexico LFPDPPP (INAI) · Zero-Knowledge Enclave Protection · GDPR++ v2030.4",
+      "rails": "Stripe MXN (MX$) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "LATAM North TLS 1.3 Edge + PQ Sovereign Tunnel",
+      "lang": "es",
+      "dir": "ltr"
+    },
+    "CL": {
+      "code": "CL",
+      "flag": "🇨🇱",
+      "name": "Chile",
+      "native_name": "Chile",
+      "currency": "CLP",
+      "default_lang": "es",
+      "languages": [
+        "es",
+        "en"
+      ],
+      "regime": "Chile Data Protection Law 21.719 · Cybersecurity Framework 21.663 · GDPR++ v2030.4",
+      "rails": "Stripe CLP (CLP$) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "Southern Cone TLS 1.3 Edge + PQ Sovereign Relay",
+      "lang": "es",
+      "dir": "ltr"
+    },
+    "AR": {
+      "code": "AR",
+      "flag": "🇦🇷",
+      "name": "Argentina",
+      "native_name": "Argentina",
+      "currency": "ARS",
+      "default_lang": "es",
+      "languages": [
+        "es",
+        "en"
+      ],
+      "regime": "Argentina LPDP (Ley 25.326 · AAIP) · Cryptographic Solvency · GDPR++ v2030.4",
+      "rails": "Stripe ARS (AR$) · Solana Pay ($SOL/USDC) · Base L2 USDC · x402",
+      "edge": "Southern Cone TLS 1.3 Edge + Post-Quantum Mesh",
+      "lang": "es",
+      "dir": "ltr"
+    },
+    "CO": {
+      "code": "CO",
+      "flag": "🇨🇴",
+      "name": "Colombia",
+      "native_name": "Colombia",
+      "currency": "COP",
+      "default_lang": "es",
+      "languages": [
+        "es",
+        "en"
+      ],
+      "regime": "Colombia Ley 1581 (SIC Habeas Data) · Enclave Isolation · GDPR++ v2030.4",
+      "rails": "Stripe COP (COL$) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "Andean TLS 1.3 Edge + Post-Quantum WireGuard Mesh",
+      "lang": "es",
+      "dir": "ltr"
+    },
+    "IN": {
+      "code": "IN",
+      "flag": "🇮🇳",
+      "name": "India",
+      "native_name": "भारत",
+      "currency": "INR",
+      "default_lang": "hi",
+      "languages": [
+        "hi",
+        "en"
+      ],
+      "regime": "India DPDP Act 2023 · CERT-In Enclave Telemetry · GDPR++ v2030.4",
+      "rails": "Stripe INR (₹) Cards · Solana Pay · Base L2 USDC · Paddle MoR · x402",
+      "edge": "South Asia Anycast Edge + Post-Quantum Rosenpass Mesh",
+      "lang": "hi",
+      "dir": "ltr"
+    },
+    "PK": {
+      "code": "PK",
+      "flag": "🇵🇰",
+      "name": "Pakistan",
+      "native_name": "پاکستان",
+      "currency": "PKR",
+      "default_lang": "ur",
+      "languages": [
+        "ur",
+        "en"
+      ],
+      "regime": "Pakistan PDPA Framework & Zero-Trust Enclave Hardening · GDPR++ v2030.4",
+      "rails": "Stripe PKR (Rs) Cards · Solana Pay · Base L2 USDC · Gumroad · x402",
+      "edge": "South Asia TLS 1.3 Edge + EU Post-Quantum Relay",
+      "lang": "ur",
+      "dir": "rtl"
+    },
+    "PL": {
+      "code": "PL",
+      "flag": "🇵🇱",
+      "name": "Poland",
+      "native_name": "Polska",
+      "currency": "PLN",
+      "default_lang": "pl",
+      "languages": [
+        "pl",
+        "en"
+      ],
+      "regime": "UODO RODO++ · NIS2 & EU AI Act Enclave Compliance · GDPR++ v2030.4",
+      "rails": "Stripe PLN (zł) Cards / BLIK · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Central Europe Rosenpass PQ Relay (~11ms Warsaw RTT)",
+      "lang": "pl",
+      "dir": "ltr"
+    },
+    "FI": {
+      "code": "FI",
+      "flag": "🇫🇮",
+      "name": "Finland",
+      "native_name": "Suomi",
+      "currency": "EUR",
+      "default_lang": "fi",
+      "languages": [
+        "fi",
+        "sv",
+        "en"
+      ],
+      "regime": "Tietosuojavaltuutettu · Traficom Kyberturvallisuus & NIS2 · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Baltic/Nordic Rosenpass PQ Relay (~9ms Helsinki RTT)",
+      "lang": "fi",
+      "dir": "ltr"
+    },
+    "LT": {
+      "code": "LT",
+      "flag": "🇱🇹",
+      "name": "Lithuania",
+      "native_name": "Lietuva",
+      "currency": "EUR",
+      "default_lang": "lt",
+      "languages": [
+        "lt",
+        "en"
+      ],
+      "regime": "VDAI BDAR++ · NKSC Cyber-Resilience & NIS2 · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Baltic Rosenpass PQ Relay (~13ms Vilnius RTT)",
+      "lang": "lt",
+      "dir": "ltr"
+    },
+    "BG": {
+      "code": "BG",
+      "flag": "🇧🇬",
+      "name": "Bulgaria",
+      "native_name": "България",
+      "currency": "BGN",
+      "default_lang": "bg",
+      "languages": [
+        "bg",
+        "en"
+      ],
+      "regime": "CPDP (КЗЛД) GDPR++ · NIS2 & EU AI Act Sovereign Enclave · GDPR++ v2030.4",
+      "rails": "Stripe BGN (лв) / EUR SEPA · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Southeast Europe Rosenpass PQ Relay (~22ms Sofia RTT)",
+      "lang": "bg",
+      "dir": "ltr"
+    },
+    "BE": {
+      "code": "BE",
+      "flag": "🇧🇪",
+      "name": "Belgium",
+      "native_name": "België / Belgique",
+      "currency": "EUR",
+      "default_lang": "nl",
+      "languages": [
+        "nl",
+        "fr",
+        "de",
+        "en"
+      ],
+      "regime": "APD/GBA GDPR++ · CCB NIS2 Cyber Framework & EU AI Act · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) Bancontact / SEPA · Solana Pay · Base L2 · Paddle",
+      "edge": "Western Europe Rosenpass PQ Relay (~14ms Brussels RTT)",
+      "lang": "nl",
+      "dir": "ltr"
+    },
+    "NL": {
+      "code": "NL",
+      "flag": "🇳🇱",
+      "name": "The Netherlands",
+      "native_name": "Nederland",
+      "currency": "EUR",
+      "default_lang": "nl",
+      "languages": [
+        "nl",
+        "en"
+      ],
+      "regime": "Autoriteit Persoonsgegevens AVG++ · NCSC-NL NIS2 · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) iDEAL / SEPA / Cards · Solana Pay · Base L2 · Paddle",
+      "edge": "Western Europe Rosenpass PQ Relay (~12ms Amsterdam RTT)",
+      "lang": "nl",
+      "dir": "ltr"
+    },
+    "TR": {
+      "code": "TR",
+      "flag": "🇹🇷",
+      "name": "Turkey",
+      "native_name": "Türkiye",
+      "currency": "TRY",
+      "default_lang": "tr",
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "regime": "Turkey KVKK (Law No. 6698) · Post-Quantum Cryptoshredding · GDPR++ v2030.4",
+      "rails": "Stripe TRY (₺) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "Eurasia TLS 1.3 Edge + EU Rosenpass PQ Relay",
+      "lang": "tr",
+      "dir": "ltr"
+    },
+    "AU": {
+      "code": "AU",
+      "flag": "🇦🇺",
+      "name": "Australia",
+      "native_name": "Australia",
+      "currency": "AUD",
+      "default_lang": "en",
+      "languages": [
+        "en"
+      ],
+      "regime": "Australian Privacy Principles (APPs) & ASD Essential Eight · GDPR++ v2030.4",
+      "rails": "Native Stripe AUD (A$) · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Oceania Edge Ingress + Post-Quantum WireGuard Mesh",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "NZ": {
+      "code": "NZ",
+      "flag": "🇳🇿",
+      "name": "New Zealand",
+      "native_name": "New Zealand / Aotearoa",
+      "currency": "NZD",
+      "default_lang": "en",
+      "languages": [
+        "en"
+      ],
+      "regime": "New Zealand Privacy Act 2020 (OPC) & NZISM Zero-Trust · GDPR++ v2030.4",
+      "rails": "Stripe NZD (NZ$) Cards · Solana Pay · Base L2 USDC · Paddle MoR",
+      "edge": "Oceania TLS 1.3 Edge + Post-Quantum Sovereign Mesh",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "IT": {
+      "code": "IT",
+      "flag": "🇮🇹",
+      "name": "Italy",
+      "native_name": "Italia",
+      "currency": "EUR",
+      "default_lang": "it",
+      "languages": [
+        "it",
+        "en"
+      ],
+      "regime": "Garante Privacy GDPR++ · ACN NIS2 & EU AI Act Enclave · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Southern Europe Rosenpass PQ Relay (~19ms Milan RTT)",
+      "lang": "it",
+      "dir": "ltr"
+    },
+    "ES": {
+      "code": "ES",
+      "flag": "🇪🇸",
+      "name": "Spain",
+      "native_name": "España",
+      "currency": "EUR",
+      "default_lang": "es",
+      "languages": [
+        "es",
+        "en"
+      ],
+      "regime": "AEPD LOPDGDD++ · CCN-CERT ENS & NIS2 Sovereign Enclave · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Iberian Rosenpass PQ Relay (~24ms Madrid RTT)",
+      "lang": "es",
+      "dir": "ltr"
+    },
+    "CY": {
+      "code": "CY",
+      "flag": "🇨🇾",
+      "name": "Cyprus",
+      "native_name": "Κύπρος / Kıbrıs",
+      "currency": "EUR",
+      "default_lang": "el",
+      "languages": [
+        "el",
+        "tr",
+        "en"
+      ],
+      "regime": "Cyprus Commissioner GDPR++ · DSA Cyber-Security & NIS2 · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Eastern Med TLS 1.3 Edge + EU Rosenpass PQ Relay",
+      "lang": "el",
+      "dir": "ltr"
+    },
+    "GR": {
+      "code": "GR",
+      "flag": "🇬🇷",
+      "name": "Greece",
+      "native_name": "Ελλάδα",
+      "currency": "EUR",
+      "default_lang": "el",
+      "languages": [
+        "el",
+        "en"
+      ],
+      "regime": "HDPA (ΑΠΔΠΧ) GDPR++ · NCSA Greece NIS2 & EU AI Act · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Southeast Europe Rosenpass PQ Relay (~26ms Athens RTT)",
+      "lang": "el",
+      "dir": "ltr"
+    },
+    "MT": {
+      "code": "MT",
+      "flag": "🇲🇹",
+      "name": "Malta",
+      "native_name": "Malta",
+      "currency": "EUR",
+      "default_lang": "mt",
+      "languages": [
+        "mt",
+        "en"
+      ],
+      "regime": "IDPC Malta GDPR++ · MDIA Digital Assurance & DORA/NIS2 · GDPR++ v2030.4",
+      "rails": "Stripe EUR (€) SEPA / Cards · Solana Pay · Base L2 · Paddle MoR",
+      "edge": "Mediterranean TLS 1.3 Edge + EU Rosenpass PQ Relay",
+      "lang": "mt",
+      "dir": "ltr"
+    },
+    "ZA": {
+      "code": "ZA",
+      "flag": "🇿🇦",
+      "name": "South Africa",
+      "native_name": "South Africa",
+      "currency": "ZAR",
+      "default_lang": "en",
+      "languages": [
+        "en"
+      ],
+      "regime": "South Africa POPIA (Information Regulator) · Zero-Trust Enclave · GDPR++ v2030.4",
+      "rails": "Stripe ZAR (R) Cards · Solana Pay · Base L2 USDC · Paddle · x402",
+      "edge": "Southern Africa Anycast Edge + EU Post-Quantum Relay",
+      "lang": "en",
+      "dir": "ltr"
+    },
+    "AE": {
+      "code": "AE",
+      "flag": "🇦🇪",
+      "name": "United Arab Emirates",
+      "native_name": "الإمارات العربية المتحدة",
+      "currency": "AED",
+      "default_lang": "ar",
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "regime": "UAE Federal PDPL (Decree-Law 45) · ADGM / DIFC Sovereign Enclave · GDPR++ v2030.4",
+      "rails": "Stripe AED Cards · Solana Pay · Base L2 USDC · Paddle · Agentic x402",
+      "edge": "Gulf Sovereign TLS 1.3 Edge + Post-Quantum Rosenpass Mesh",
+      "lang": "ar",
+      "dir": "rtl"
+    },
+    "SA": {
+      "code": "SA",
+      "flag": "🇸🇦",
+      "name": "Saudi Arabia",
+      "native_name": "المملكة العربية السعودية",
+      "currency": "SAR",
+      "default_lang": "ar",
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "regime": "Saudi SDAIA PDPL & NCA Essential Cybersecurity Controls (ECC) · GDPR++ v2030.4",
+      "rails": "Stripe SAR Cards · Solana Pay · Base L2 USDC · Paddle · Agentic x402",
+      "edge": "Gulf Sovereign TLS 1.3 Edge + Post-Quantum Rosenpass Mesh",
+      "lang": "ar",
+      "dir": "rtl"
+    }
+  },
+  "currencies": {
+    "EUR": {
+      "code": "EUR",
+      "symbol": "€",
+      "name": "Euro",
+      "rate": 1.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "EE",
+        "DE",
+        "FR",
+        "FI",
+        "LT",
+        "BE",
+        "NL",
+        "IT",
+        "ES",
+        "CY",
+        "GR",
+        "MT",
+        "EU"
+      ],
+      "rate_from_eur": 1.0,
+      "rate_from_usd": 0.925926
+    },
+    "USD": {
+      "code": "USD",
+      "symbol": "$",
+      "name": "US Dollar",
+      "rate": 1.08,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "US",
+        "GLOBAL"
+      ],
+      "rate_from_eur": 1.08,
+      "rate_from_usd": 1.0
+    },
+    "GBP": {
+      "code": "GBP",
+      "symbol": "£",
+      "name": "British Pound",
+      "rate": 0.85,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "GB"
+      ],
+      "rate_from_eur": 0.85,
+      "rate_from_usd": 0.787037
+    },
+    "CHF": {
+      "code": "CHF",
+      "symbol": "CHF ",
+      "name": "Swiss Franc",
+      "rate": 0.95,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "CH"
+      ],
+      "rate_from_eur": 0.95,
+      "rate_from_usd": 0.87963
+    },
+    "SEK": {
+      "code": "SEK",
+      "symbol": "kr ",
+      "name": "Swedish Krona",
+      "rate": 11.45,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "SE"
+      ],
+      "rate_from_eur": 11.45,
+      "rate_from_usd": 10.601852
+    },
+    "NOK": {
+      "code": "NOK",
+      "symbol": "kr ",
+      "name": "Norwegian Krone",
+      "rate": 11.7,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "NO"
+      ],
+      "rate_from_eur": 11.7,
+      "rate_from_usd": 10.833333
+    },
+    "SGD": {
+      "code": "SGD",
+      "symbol": "S$",
+      "name": "Singapore Dollar",
+      "rate": 1.45,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "SG"
+      ],
+      "rate_from_eur": 1.45,
+      "rate_from_usd": 1.342593
+    },
+    "JPY": {
+      "code": "JPY",
+      "symbol": "¥",
+      "name": "Japanese Yen",
+      "rate": 164.0,
+      "decimals": 0,
+      "zero_decimal": true,
+      "countries": [
+        "JP"
+      ],
+      "rate_from_eur": 164.0,
+      "rate_from_usd": 151.851852
+    },
+    "HKD": {
+      "code": "HKD",
+      "symbol": "HK$",
+      "name": "Hong Kong Dollar",
+      "rate": 8.4,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "HK"
+      ],
+      "rate_from_eur": 8.4,
+      "rate_from_usd": 7.777778
+    },
+    "CAD": {
+      "code": "CAD",
+      "symbol": "CA$",
+      "name": "Canadian Dollar",
+      "rate": 1.5,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "CA"
+      ],
+      "rate_from_eur": 1.5,
+      "rate_from_usd": 1.388889
+    },
+    "VND": {
+      "code": "VND",
+      "symbol": "₫",
+      "name": "Vietnamese Dong",
+      "rate": 27500.0,
+      "decimals": 0,
+      "zero_decimal": true,
+      "countries": [
+        "VN"
+      ],
+      "rate_from_eur": 27500.0,
+      "rate_from_usd": 25462.962963
+    },
+    "KRW": {
+      "code": "KRW",
+      "symbol": "₩",
+      "name": "South Korean Won",
+      "rate": 1490.0,
+      "decimals": 0,
+      "zero_decimal": true,
+      "countries": [
+        "KR"
+      ],
+      "rate_from_eur": 1490.0,
+      "rate_from_usd": 1379.62963
+    },
+    "NGN": {
+      "code": "NGN",
+      "symbol": "₦",
+      "name": "Nigerian Naira",
+      "rate": 1750.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "NG"
+      ],
+      "rate_from_eur": 1750.0,
+      "rate_from_usd": 1620.37037
+    },
+    "KES": {
+      "code": "KES",
+      "symbol": "KSh ",
+      "name": "Kenyan Shilling",
+      "rate": 140.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "KE"
+      ],
+      "rate_from_eur": 140.0,
+      "rate_from_usd": 129.62963
+    },
+    "BRL": {
+      "code": "BRL",
+      "symbol": "R$",
+      "name": "Brazilian Real",
+      "rate": 6.15,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "BR"
+      ],
+      "rate_from_eur": 6.15,
+      "rate_from_usd": 5.694444
+    },
+    "MXN": {
+      "code": "MXN",
+      "symbol": "MX$",
+      "name": "Mexican Peso",
+      "rate": 21.6,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "MX"
+      ],
+      "rate_from_eur": 21.6,
+      "rate_from_usd": 20.0
+    },
+    "CLP": {
+      "code": "CLP",
+      "symbol": "CLP$",
+      "name": "Chilean Peso",
+      "rate": 1035.0,
+      "decimals": 0,
+      "zero_decimal": true,
+      "countries": [
+        "CL"
+      ],
+      "rate_from_eur": 1035.0,
+      "rate_from_usd": 958.333333
+    },
+    "ARS": {
+      "code": "ARS",
+      "symbol": "AR$",
+      "name": "Argentine Peso",
+      "rate": 1090.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "AR"
+      ],
+      "rate_from_eur": 1090.0,
+      "rate_from_usd": 1009.259259
+    },
+    "COP": {
+      "code": "COP",
+      "symbol": "COL$",
+      "name": "Colombian Peso",
+      "rate": 4680.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "CO"
+      ],
+      "rate_from_eur": 4680.0,
+      "rate_from_usd": 4333.333333
+    },
+    "INR": {
+      "code": "INR",
+      "symbol": "₹",
+      "name": "Indian Rupee",
+      "rate": 91.5,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "IN"
+      ],
+      "rate_from_eur": 91.5,
+      "rate_from_usd": 84.722222
+    },
+    "PKR": {
+      "code": "PKR",
+      "symbol": "Rs ",
+      "name": "Pakistani Rupee",
+      "rate": 301.0,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "PK"
+      ],
+      "rate_from_eur": 301.0,
+      "rate_from_usd": 278.703704
+    },
+    "PLN": {
+      "code": "PLN",
+      "symbol": "zł ",
+      "name": "Polish Zloty",
+      "rate": 4.32,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "PL"
+      ],
+      "rate_from_eur": 4.32,
+      "rate_from_usd": 4.0
+    },
+    "BGN": {
+      "code": "BGN",
+      "symbol": "лв ",
+      "name": "Bulgarian Lev",
+      "rate": 1.9558,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "BG"
+      ],
+      "rate_from_eur": 1.9558,
+      "rate_from_usd": 1.810926
+    },
+    "TRY": {
+      "code": "TRY",
+      "symbol": "₺",
+      "name": "Turkish Lira",
+      "rate": 37.8,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "TR"
+      ],
+      "rate_from_eur": 37.8,
+      "rate_from_usd": 35.0
+    },
+    "AUD": {
+      "code": "AUD",
+      "symbol": "A$",
+      "name": "Australian Dollar",
+      "rate": 1.65,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "AU"
+      ],
+      "rate_from_eur": 1.65,
+      "rate_from_usd": 1.527778
+    },
+    "NZD": {
+      "code": "NZD",
+      "symbol": "NZ$",
+      "name": "New Zealand Dollar",
+      "rate": 1.81,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "NZ"
+      ],
+      "rate_from_eur": 1.81,
+      "rate_from_usd": 1.675926
+    },
+    "ZAR": {
+      "code": "ZAR",
+      "symbol": "R ",
+      "name": "South African Rand",
+      "rate": 19.4,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "ZA"
+      ],
+      "rate_from_eur": 19.4,
+      "rate_from_usd": 17.962963
+    },
+    "AED": {
+      "code": "AED",
+      "symbol": "AED ",
+      "name": "UAE Dirham",
+      "rate": 3.97,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "AE"
+      ],
+      "rate_from_eur": 3.97,
+      "rate_from_usd": 3.675926
+    },
+    "SAR": {
+      "code": "SAR",
+      "symbol": "SAR ",
+      "name": "Saudi Riyal",
+      "rate": 4.05,
+      "decimals": 2,
+      "zero_decimal": false,
+      "countries": [
+        "SA"
+      ],
+      "rate_from_eur": 4.05,
+      "rate_from_usd": 3.75
+    }
+  }
+}

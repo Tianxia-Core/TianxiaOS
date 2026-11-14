@@ -1,0 +1,12 @@
+{
+  "name": "Neural Pattern Recognition",
+  "multiplier": 10,
+  "sources": ["kr Samsung", "jp NEC", "cn Alibaba"],
+  "description": "Neural network-based pattern recognition for anomaly detection",
+  "implementation": {
+    "model_type": "lstm-autoencoder",
+    "input_features": 64,
+    "hidden_layers": 3,
+    "anomaly_threshold": 0.95
+  }
+}

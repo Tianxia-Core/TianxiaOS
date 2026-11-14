@@ -1,0 +1,15 @@
+[Unit]
+Description=TianxiaOS Biomimetic Filippov Router & TreasuryEscrow Waterfall
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /var/lib/tianxia/python/tx_biomimetic_orchestrator.py --daemon
+Restart=always
+RestartSec=500ms
+MemoryMax=128M
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

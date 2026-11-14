@@ -1,0 +1,42 @@
+# ffp: FFP-CROWN-000 cargo-manifest declarative
+[package]
+name = "tianxiaos_crownforge_codex"
+version = "8.6.0"
+edition = "2021"
+authors = ["TianxiaOS Sovereign Architecture Team"]
+description = "TianxiaOS V8.6.0 Supplementary Codex: Omphalos Reasonwashing (ORW-22), Noetic Kenning, TREMOR-PHEROMONE, EGO-NAGA, Maha Madpie & 72/2048-Node Omni-Lattice"
+
+[dependencies]
+blake3 = { version = "1.8", features = ["std", "serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.11"
+
+[lib]
+name = "tianxiaos_crownforge_codex"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tx_crownforge_daemon"
+path = "src/bin/tx_crownforge_daemon.rs"
+
+[[bin]]
+name = "tx_omphalos_orw22"
+path = "src/bin/tx_omphalos_orw22.rs"
+
+[[bin]]
+name = "tx_noetic_kenning"
+path = "src/bin/tx_noetic_kenning.rs"
+
+[[bin]]
+name = "tx_tremor_pheromone"
+path = "src/bin/tx_tremor_pheromone.rs"
+
+[[bin]]
+name = "tx_ego_naga"
+path = "src/bin/tx_ego_naga.rs"
+
+[[bin]]
+name = "tx_maha_madpie"
+path = "src/bin/tx_maha_madpie.rs"

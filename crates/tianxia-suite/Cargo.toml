@@ -1,0 +1,16 @@
+# ffp: FFP-TX-SUITE-MANIFEST concurrent-daemon rust
+[package]
+name = "tianxia-suite"
+version = "8.7.0"
+edition = "2021"
+authors = ["Collins Takem <collinstaken525-cloud@users.noreply.github.com>"]
+description = "TianxiaOS Sovereign CLI & 9-App Fullscreen TUI Suite (Zero External Dependencies)"
+license = "BUSL-1.1"
+repository = "https://github.com/Tianxia-Core/TianxiaOS"
+homepage = "https://rasaxmachina.com"
+
+[[bin]]
+name = "tianxia"
+path = "src/main.rs"
+
+[dependencies]

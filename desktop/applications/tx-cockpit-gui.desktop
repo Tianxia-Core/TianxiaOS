@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Sovereign Cockpit PWA
+Comment=Dedicated Sovereign Cockpit (:8081) Wayland Chromeless Dashboard
+Exec=/usr/local/bin/tx-cockpit-gui
+Icon=web-browser
+Terminal=false
+Categories=Network;System;
+StartupWMClass=TianxiaCockpitPWA
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

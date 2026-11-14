@@ -1,0 +1,78 @@
+{
+  "schema_version": "5.0.0",
+  "build_law_edition": "v5.0-SOVEREIGN-FOUNDER-CANON",
+  "timestamp_utc": "2026-11-14T12:15:52.351824+00:00",
+  "status": "MATHEMATICALLY_SEALED_AND_VERIFIED",
+  "monotonic_ratchet_passed": true,
+  "mirrors_in_sync": true,
+  "mahavidya_domains_verified": 14,
+  "ratchet_clauses_verified": 33,
+  "merkle_root_sha256": "aa84a8bde811f752ffc35475a3a8cbaccdb0edcd762aec025c309d8116b22146",
+  "hmac_sha256_signature": "beaa051120024d1afb89af73a93ea5848f6f55fda4f1810d12836327fb503f4c",
+  "canonical_file_sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+  "files": [
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/AGENTS.md",
+      "rel_path": "AGENTS.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/CLAUDE.md",
+      "rel_path": "CLAUDE.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/GEMINI.md",
+      "rel_path": "GEMINI.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/TianxiaOS/AGENTS.md",
+      "rel_path": "TianxiaOS/AGENTS.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/TianxiaOS/BUILD_LAW.md",
+      "rel_path": "TianxiaOS/BUILD_LAW.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/tianxia/AGENTS.md",
+      "rel_path": "tianxia/AGENTS.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    },
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/tianxia/BUILD_LAW.md",
+      "rel_path": "tianxia/BUILD_LAW.md",
+      "size_bytes": 58073,
+      "line_count": 342,
+      "sha256": "ded5789feb5ba74814a247b1c3d01a423983f9f4cb1498e50aeb079ab57ce0df",
+      "blake2b": "af820b3236bc6f02538ecc5f33c32fc7a5c378d2c07c93a48d25826c448cf243"
+    }
+  ],
+  "vector_attack_findings": [],
+  "four_surfaces_synced": [
+    "1. GitHub (Tianxia-Core/TianxiaOS [Rasa-X-Machina] & Signed Linux/Win/Android Releases)",
+    "2. Website & 28 Polyglot Web Apps (rasaxmachina.com · 42 Markets · 25 Languages · 29 Currencies)",
+    "3. Terminal User Interface (tianxia Rust 9-Tab Suite & tianxia/bin/tx_tui.py)",
+    "4. TianxiaOS Desktop GUI on latitude-tianxia (GTK4/Libadwaita Apps + Hyprland + Waybar + Cockpit :8081)"
+  ]
+}

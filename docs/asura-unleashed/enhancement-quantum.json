@@ -1,0 +1,12 @@
+{
+  "name": "Quantum-Resistant Security",
+  "multiplier": 10,
+  "sources": ["il NSO", "uk NCSC", "in CERT-In"],
+  "description": "Post-quantum cryptographic algorithms for future-proofing",
+  "implementation": {
+    "key_exchange": "CRYSTALS-Kyber",
+    "signature": "CRYSTALS-Dilithium",
+    "hash": "SPHINCS+",
+    "hybrid_mode": true
+  }
+}

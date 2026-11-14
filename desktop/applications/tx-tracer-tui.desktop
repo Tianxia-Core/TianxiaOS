@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Murua Consignment TUI
+Comment=Bayesian Untracked Consignment Tracer & UPU 2IPD Corridor Engine
+Exec=foot -T "tianxiaOS Murua Consignment TUI" /usr/local/bin/tianxia tui --app tracer
+Icon=utilities-terminal
+Terminal=false
+Categories=Network;Utility;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

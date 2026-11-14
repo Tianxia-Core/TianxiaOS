@@ -1,0 +1,12 @@
+{
+  "name": "Cryptographic Integrity",
+  "multiplier": 10,
+  "sources": ["il CyberArk", "uk NCC", "cn Tencent"],
+  "description": "Cryptographic verification of all system components",
+  "implementation": {
+    "hash_algorithm": "SHA-384",
+    "signature_algorithm": "Ed25519",
+    "key_rotation": "24-hours",
+    "verification_depth": "full-closure"
+  }
+}

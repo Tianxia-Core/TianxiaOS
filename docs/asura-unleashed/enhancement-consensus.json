@@ -1,0 +1,12 @@
+{
+  "name": "Distributed Consensus",
+  "multiplier": 10,
+  "sources": ["ru Positive", "in Quick Heal", "jp NICT"],
+  "description": "Consensus-based decision making across distributed nodes",
+  "implementation": {
+    "algorithm": "raft",
+    "quorum_size": "majority",
+    "heartbeat_interval": "1s",
+    "election_timeout": "5s"
+  }
+}

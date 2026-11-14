@@ -1,0 +1,39 @@
+name: Capability / FFP Proposal
+description: Propose a new Function-Feature Pair (FFP) aligned with DSS-14.2 & Daśavidyāyāna NL
+title: "[FFP]: "
+labels: ["enhancement", "ffp-proposal"]
+body:
+  - type: input
+    id: ffp_id
+    attributes:
+      label: Proposed FFP Identifier & Fitness Class
+      placeholder: "e.g., FFP-PQ-BEACON concurrent-daemon rust"
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Primary DSS-14.2 Mahāvidyā Domain
+      options:
+        - "1. Kālī (Lifecycle & Ephemeral Eviction)"
+        - "2. Tārā (Zero-Trust Mesh Transit)"
+        - "3. Tripura Sundarī (Harmonic UI & Subpixel HUD)"
+        - "4. Bhuvanēśvarī (Multi-Node Display Topology)"
+        - "5. Bhairavī (Boundary Defense & Cgroup Hardening)"
+        - "6. Chhinnamastā (Zero-Copy /dev/shm Ring Buffers)"
+        - "7. Dhūmāvatī (Zero-Knowledge Vault Isolation)"
+        - "8. Bāgalamukhī (Capability Proxy & ACL Gates)"
+        - "9. Mātaṅgī (Polyglot AST Parsing)"
+        - "10. Kamalā (Resource Provisioning & MicroVM CoW)"
+        - "11. Pratyaṅgirā (Thermal & Anomaly Arrest)"
+        - "12. Annapūrṇā (Power-Aware Workqueues)"
+        - "13. Mahāsarasvatī (Merkle Telemetry & Solvency)"
+        - "14. Paramaśiva (Declarative NixOS Substrate)"
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Problem Statement, Market Resonance & Verification Criteria
+    validations:
+      required: true

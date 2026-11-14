@@ -1,0 +1,31 @@
+name: Bug Report
+description: Report a reproducible defect across TianxiaOS, GUI/TUI, Mesh, or Web Portals
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected Surface
+      options:
+        - "TianxiaOS NixOS / Systemd Daemon (latitude-tianxia)"
+        - "Sovereign CLI / Interactive TUI / Desktop GUI"
+        - "Linux / Windows / Android Signed Executable"
+        - "Web Portal / 28 Subdomains / Localization (42 Markets)"
+        - "Tailscale / WireGuard + Rosenpass PQ Mesh"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce & Expected vs Actual Behavior
+      placeholder: "1. Run `tianxia verify-law`...\n2. Observe..."
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: OS, Architecture & Version
+      placeholder: "e.g., NixOS 25.05 x86_64 / Windows 11 x86_64 / Android 16 ARM64 — v8.6.0"
+    validations:
+      required: true

@@ -1,0 +1,839 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-SHOP frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-SHOP frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>The Fortress Market — Sovereign Digital Assets & Software</title>
+<meta name="description" content="Official storefront for RASA-X-MACHINA software suites, autonomous blueprints, intelligence streams, and VRTTI engineering sprints. Founded by Collins Takem."/>
+<link rel="canonical" href="https://shop.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(250, 204, 21, 0.12);
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    color: #fde047;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #facc15;
+    box-shadow: 0 0 10px #facc15;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fde047 40%, #eab308 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.18rem;
+    color: #e2e8f0;
+    line-height: 1.65;
+    max-width: 820px;
+    margin-bottom: 2.5rem;
+  }
+  .top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    border-radius: 1rem;
+  }
+  .currency-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: #94a3b8;
+  }
+  .currency-select {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  @media(max-width: 950px) { .prod-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width: 650px) { .prod-grid { grid-template-columns: 1fr; } }
+  .prod-card {
+    background: rgba(15, 12, 28, 0.65);
+    border: 1px solid rgba(124, 92, 255, 0.28);
+    border-radius: 1.4rem;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(30px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .prod-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 92, 255, 0.6);
+  }
+  .prod-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c084fc;
+    margin-bottom: 0.4rem;
+  }
+  .prod-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.25rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .prod-price {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+  }
+  .prod-desc {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+  .btn-buy {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #7c5cff, #c084fc);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
+  .btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px -10px rgba(124, 92, 255, 0.55);
+  }
+  /* Checkout Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #0e0a1a;
+    border: 1px solid rgba(124, 92, 255, 0.35);
+    border-radius: 1.4rem;
+    max-width: 520px;
+    width: 100%;
+    padding: 2.2rem;
+    box-shadow: 0 0 90px -20px rgba(124, 92, 255, 0.35);
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .modal-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.35rem;
+    margin: 0;
+    color: #fff;
+  }
+  .btn-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-lbl {
+    display: block;
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .form-ctrl {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    border-radius: 0.6rem;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.92rem;
+    box-sizing: border-box;
+  }
+  .form-ctrl:focus {
+    outline: none;
+    border-color: #c084fc;
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+  }
+  .auth-box {
+    border-top: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    padding-top: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .auth-box a {
+    color: #fde047;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .auth-box a:hover { text-decoration: underline; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#fde047;font-weight:700;font-size:0.86rem">FORTRESS MARKET</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com">Flagship</a>
+    <a class="nav-link" href="/tracer">Logistics</a>
+    <a class="nav-link" href="/collins">Founder</a>
+    <a class="nav-link" href="/vrtti">Architecture Sprints</a>
+    <a class="nav-link" href="/ledger">Reality Ledger</a>
+  </div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <span class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    OFFICIAL STOREFRONT · ETMA TOKEN 10% DISCOUNT APPLIED
+  </span>
+
+  <h1>The Fortress Market</h1>
+  <p class="lead">
+    Production software suites, autonomous blueprints, intelligence streams, and executive engineering
+    retainers. Governed by Collins Takem under <strong>DSS-14 Build Law</strong> with automated Stripe
+    settlement and cryptographic Merkle licensing.
+  </p>
+
+  <div class="top-controls">
+    <div style="font-size:0.88rem;color:#cbd5e1">
+      ⚡ <strong>Clear Bank Statement Descriptors:</strong> Every purchase displays <code>RASAXMACHINA * [SKU]</code> on your statement. Use code <code style="color:#fde047;background:rgba(250,204,21,0.15);padding:0.15rem 0.45rem;border-radius:4px">ETMA10</code> for 10% protocol discount.
+    </div>
+    <div class="currency-toggle" style="flex-wrap:wrap;gap:0.5rem">
+      <select id="shop-locale-select" class="currency-select" title="Select Country / Market &amp; Interface Language" aria-label="Select Country and Interface Language" onchange="onShopLocaleChange(this.value)">
+        <option value="EE:en">🇪🇪 EE · English</option>
+        <option value="EE:et">🇪🇪 EE · Eesti</option>
+        <option value="US:en">🇺🇸 US · English</option>
+        <option value="GB:en">🇬🇧 GB · English</option>
+        <option value="DE:de">🇩🇪 DE · Deutsch</option>
+        <option value="DE:en">🇩🇪 DE · English</option>
+        <option value="CH:de">🇨🇭 CH · Deutsch</option>
+        <option value="CH:fr">🇨🇭 CH · Français</option>
+        <option value="FR:fr">🇫🇷 FR · Français</option>
+        <option value="SE:sv">🇸🇪 SE · Svenska</option>
+        <option value="NO:no">🇳🇴 NO · Norsk</option>
+        <option value="CA:en">🇨🇦 CA · English</option>
+        <option value="CA:fr">🇨🇦 CA · Français</option>
+        <option value="AU:en">🇦🇺 AU · English</option>
+        <option value="SG:en">🇸🇬 SG · English</option>
+        <option value="JP:ja">🇯🇵 JP · 日本語</option>
+        <option value="JP:en">🇯🇵 JP · English</option>
+      </select>
+      <select id="currency-select" class="currency-select" title="Select Billing Currency" aria-label="Select Billing Currency" onchange="changeCurrency(this.value)">
+        <option value="EUR">€ EUR (Euro)</option>
+        <option value="USD">$ USD (US Dollar)</option>
+        <option value="GBP">£ GBP (British Pound)</option>
+        <option value="CHF">CHF (Swiss Franc)</option>
+        <option value="SEK">kr SEK (Swedish Krona)</option>
+        <option value="NOK">kr NOK (Norwegian Krone)</option>
+        <option value="DKK">kr DKK (Danish Krone)</option>
+        <option value="PLN">zł PLN (Polish Złoty)</option>
+        <option value="CZK">Kč CZK (Czech Koruna)</option>
+        <option value="HUF">Ft HUF (Hungarian Forint)</option>
+        <option value="RON">lei RON (Romanian Leu)</option>
+        <option value="BGN">лв BGN (Bulgarian Lev)</option>
+        <option value="ISK">kr ISK (Icelandic Króna)</option>
+        <option value="CAD">CA$ CAD (Canadian Dollar)</option>
+        <option value="AUD">A$ AUD (Australian Dollar)</option>
+        <option value="NZD">NZ$ NZD (New Zealand Dollar)</option>
+        <option value="SGD">S$ SGD (Singapore Dollar)</option>
+        <option value="JPY">¥ JPY (Japanese Yen)</option>
+        <option value="HKD">HK$ HKD (Hong Kong Dollar)</option>
+        <option value="KRW">₩ KRW (South Korean Won)</option>
+        <option value="TWD">NT$ TWD (New Taiwan Dollar)</option>
+        <option value="AED">AED (UAE Dirham)</option>
+        <option value="SAR">SAR (Saudi Riyal)</option>
+        <option value="ILS">₪ ILS (Israeli Shekel)</option>
+        <option value="INR">₹ INR (Indian Rupee)</option>
+        <option value="BRL">R$ BRL (Brazilian Real)</option>
+        <option value="MXN">MX$ MXN (Mexican Peso)</option>
+        <option value="ZAR">R ZAR (South African Rand)</option>
+        <option value="TRY">₺ TRY (Turkish Lira)</option>
+        <option value="SOL">◎ SOL (Solana)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="prod-grid" id="shop-prod-grid"></div>
+
+  <div class="auth-box">
+    <strong>Rasa-X-Machina (Proposed Estonian Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ · Dealum #179423)</strong> · Sovereign Digital Asset Syndicate &amp; Software<br/>
+    Principal Systems Architect &amp; Founder: <strong>Collins Takem</strong> · Governed under DSS-14.2 Build Law · 29 Currencies · 42 Markets<br/>
+    <div style="margin-top:0.6rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/pay">Payment &amp; Crypto Hub</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/vrtti">Architecture Sprints</a> ·
+      <a href="/tracer">Murua Universal Tracer</a> ·
+      <a href="/ledger">Reality Ledger</a>
+    </div>
+  </div>
+</main>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal-box" style="max-width:580px">
+    <div class="modal-head">
+      <h3 class="modal-title" id="buy-modal-title">Acquire Capability</h3>
+      <button class="btn-close" onclick="closeBuyModal()">✕</button>
+    </div>
+
+    <div style="margin-bottom:1rem;padding:0.8rem;background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.28);border-radius:0.75rem">
+      <div style="font-size:0.7rem;color:#c084fc;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">
+        ⚡ Instant Multi-Currency Settlement Links
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.45rem">
+        <a id="shop-direct-stripe" href="/api/v1/stripe-express?plan=manual" target="_blank" rel="noopener" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.55rem;font-size:0.8rem">
+          💳 Pay with Stripe ↗
+        </a>
+        <a id="shop-direct-gumroad" href="https://coltak.gumroad.com/l/wbevjc" target="_blank" rel="noopener" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.55rem;font-size:0.8rem;background:linear-gradient(135deg,#ec4899,#8b5cf6)">
+          📦 Buy on Gumroad ↗
+        </a>
+        <a id="shop-direct-sol" href="solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.55rem;font-size:0.8rem;background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.4);color:#34d399">
+          ◎ Solana / $ETMA (-10%) ↗
+        </a>
+        <a id="shop-direct-hub" href="/pay" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.55rem;font-size:0.8rem;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.4);color:#60a5fa">
+          🔵 Base L2 / All 6 Rails ↗
+        </a>
+      </div>
+    </div>
+
+    <form id="buy-form" onsubmit="submitBuy(event)">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(124,92,255,0.2);border-radius:0.75rem;padding:0.9rem;margin-bottom:1.2rem;font-size:0.85rem">
+        <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem">
+          <span style="color:#94a3b8">Product &amp; SKU:</span>
+          <span id="buy-item-name" style="color:#c084fc;font-weight:700">Tianxia Operator's Manual</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem">
+          <span style="color:#94a3b8">Card Statement Descriptor:</span>
+          <code id="buy-item-stmt" style="color:#fde047">RASAXMACHINA OPMANUAL</code>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="color:#94a3b8">Total Due (Selected Currency):</span>
+          <span id="buy-item-total" style="color:#34d399;font-weight:800">€29</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl" for="buy-email">Billing Email</label>
+        <input type="email" id="buy-email" class="form-ctrl" placeholder="operator@sovereign-node.org" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl" for="buy-promo">Promo / ETMA Token Code (-10%)</label>
+        <input type="text" id="buy-promo" class="form-ctrl" placeholder="ETMA10 or EFM10"/>
+      </div>
+      <button type="submit" id="btn-submit-buy" class="btn-buy" style="width:100%;padding:0.85rem">
+        Generate Live Checkout Session &amp; Seal Receipt ↗
+      </button>
+    </form>
+    <div id="buy-result" style="display:none;margin-top:1.25rem;padding:1rem;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);border-radius:0.75rem;font-size:0.85rem">
+      <div id="buy-result-title" style="font-weight:700;color:#34d399;margin-bottom:0.35rem">✓ TETRALEDGER RECEIPT SEALED — COMPLETE SETTLEMENT</div>
+      <div id="buy-receipt-details" style="font-family:var(--tx-font-mono);font-size:0.75rem;color:#fff;line-height:1.6"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let curCurrency = 'EUR';
+let curCountry = 'EE';
+let curLang = 'en';
+
+const FX_CURRENCIES = {
+  EUR: { symbol: '€', rate_from_eur: 1.0, rate_from_usd: 0.925, zero_decimal: false },
+  USD: { symbol: '$', rate_from_eur: 1.08, rate_from_usd: 1.0, zero_decimal: false },
+  GBP: { symbol: '£', rate_from_eur: 0.85, rate_from_usd: 0.79, zero_decimal: false },
+  CHF: { symbol: 'CHF ', rate_from_eur: 0.96, rate_from_usd: 0.89, zero_decimal: false },
+  SEK: { symbol: 'kr ', rate_from_eur: 11.40, rate_from_usd: 10.55, zero_decimal: false },
+  NOK: { symbol: 'kr ', rate_from_eur: 11.65, rate_from_usd: 10.78, zero_decimal: false },
+  DKK: { symbol: 'kr ', rate_from_eur: 7.46, rate_from_usd: 6.91, zero_decimal: false },
+  PLN: { symbol: 'zł ', rate_from_eur: 4.30, rate_from_usd: 3.98, zero_decimal: false },
+  CZK: { symbol: 'Kč ', rate_from_eur: 25.20, rate_from_usd: 23.33, zero_decimal: false },
+  HUF: { symbol: 'Ft ', rate_from_eur: 398.0, rate_from_usd: 368.5, zero_decimal: true },
+  RON: { symbol: 'lei ', rate_from_eur: 4.98, rate_from_usd: 4.61, zero_decimal: false },
+  BGN: { symbol: 'лв ', rate_from_eur: 1.96, rate_from_usd: 1.81, zero_decimal: false },
+  ISK: { symbol: 'kr ', rate_from_eur: 149.0, rate_from_usd: 138.0, zero_decimal: true },
+  CAD: { symbol: 'CA$', rate_from_eur: 1.48, rate_from_usd: 1.37, zero_decimal: false },
+  AUD: { symbol: 'A$', rate_from_eur: 1.65, rate_from_usd: 1.53, zero_decimal: false },
+  NZD: { symbol: 'NZ$', rate_from_eur: 1.79, rate_from_usd: 1.66, zero_decimal: false },
+  SGD: { symbol: 'S$', rate_from_eur: 1.45, rate_from_usd: 1.34, zero_decimal: false },
+  JPY: { symbol: '¥', rate_from_eur: 163.0, rate_from_usd: 151.0, zero_decimal: true },
+  HKD: { symbol: 'HK$', rate_from_eur: 8.42, rate_from_usd: 7.80, zero_decimal: false },
+  KRW: { symbol: '₩', rate_from_eur: 1490.0, rate_from_usd: 1380.0, zero_decimal: true },
+  TWD: { symbol: 'NT$', rate_from_eur: 35.1, rate_from_usd: 32.5, zero_decimal: true },
+  AED: { symbol: 'AED ', rate_from_eur: 3.97, rate_from_usd: 3.67, zero_decimal: false },
+  SAR: { symbol: 'SAR ', rate_from_eur: 4.05, rate_from_usd: 3.75, zero_decimal: false },
+  ILS: { symbol: '₪', rate_from_eur: 3.98, rate_from_usd: 3.69, zero_decimal: false },
+  INR: { symbol: '₹', rate_from_eur: 90.8, rate_from_usd: 84.1, zero_decimal: false },
+  BRL: { symbol: 'R$', rate_from_eur: 6.15, rate_from_usd: 5.69, zero_decimal: false },
+  MXN: { symbol: 'MX$', rate_from_eur: 21.6, rate_from_usd: 20.0, zero_decimal: false },
+  ZAR: { symbol: 'R ', rate_from_eur: 19.4, rate_from_usd: 18.0, zero_decimal: false },
+  TRY: { symbol: '₺', rate_from_eur: 37.2, rate_from_usd: 34.4, zero_decimal: false },
+  SOL: { symbol: '◎', rate_from_eur: 0.0072, rate_from_usd: 0.0067, zero_decimal: false }
+};
+
+const COUNTRY_DEFAULT_CURRENCY = {
+  EE: 'EUR', DE: 'EUR', FR: 'EUR', NL: 'EUR', FI: 'EUR', ES: 'EUR', IT: 'EUR', PT: 'EUR', IE: 'EUR', AT: 'EUR', BE: 'EUR', LU: 'EUR', LT: 'EUR', LV: 'EUR', SK: 'EUR', SI: 'EUR', GR: 'EUR', CY: 'EUR', MT: 'EUR', HR: 'EUR',
+  US: 'USD', GB: 'GBP', CH: 'CHF', SE: 'SEK', NO: 'NOK', DK: 'DKK', PL: 'PLN', CZ: 'CZK', HU: 'HUF', RO: 'RON', BG: 'BGN', IS: 'ISK',
+  CA: 'CAD', AU: 'AUD', NZ: 'NZD', SG: 'SGD', JP: 'JPY', HK: 'HKD', KR: 'KRW', TW: 'TWD', AE: 'AED', SA: 'SAR', IL: 'ILS', IN: 'INR', BR: 'BRL', MX: 'MXN', ZA: 'ZAR', TR: 'TRY'
+};
+
+const SHOP_CATALOG = [
+  { id: 'blueprint_5k', sku: 'SKU-TX-01', stmt: 'RASAXMACHINA 5KBLUEPR', tag: '⚡ SKU-TX-01 · DIGITAL BLUEPRINT', title: 'Tianxia 5K Blueprint', basePrice: 9, baseCurr: 'EUR', mode: '', desc: 'Rapid revenue generation architecture: zero-to-5K autonomous execution playbook, RGU templates, and multi-rail settlement wiring.', gumroad: 'https://coltak.gumroad.com/l/fgvhn' },
+  { id: 'kai3_codex', sku: 'SKU-TX-02', stmt: 'RASAXMACHINA KAI3CDX', tag: '⚡ SKU-TX-02 · ENGINEERING CODEX', title: 'KAI³ Sovereign Codex', basePrice: 19, baseCurr: 'EUR', mode: '', desc: 'Tri-vector ENHAN³ engineering manual: resilience, O(1) velocity, and capability-gated security for autonomous agent swarms.', gumroad: 'https://coltak.gumroad.com/l/rqgnq' },
+  { id: 'asura_matrix', sku: 'SKU-TX-03', stmt: 'RASAXMACHINA ASURAMTX', tag: '⚡ SKU-TX-03 · STRATEGY DOCTRINE', title: 'Asura Strategy Matrix', basePrice: 19, baseCurr: 'EUR', mode: '', desc: 'Asymmetric market positioning, active cyber-deception doctrine, and sovereign syndicate capital allocation handbook.', gumroad: 'https://coltak.gumroad.com/l/dsxuo' },
+  { id: 'cv_rewrite', sku: 'SKU-TX-04', stmt: 'RASAXMACHINA JOBMATCH', tag: '⚡ SKU-TX-04 · CAREER AI SUITE', title: 'JobMatch CV Rewriter', basePrice: 19, baseCurr: 'EUR', mode: '', desc: 'Executive resume & technical dossier optimizer with a strict 50% semantic match firewall and zero fabricated claims.', gumroad: 'https://coltak.gumroad.com/l/ekpnaz' },
+  { id: 'manual', sku: 'SKU-TX-05', stmt: 'RASAXMACHINA OPMANUAL', tag: '⚡ SKU-TX-05 · MASTER ARCHITECTURE', title: "Operator's Manual (41 RGUs)", basePrice: 29, baseCurr: 'EUR', mode: '', desc: 'Complete architecture blueprint: 41 sovereign RGUs, 6 live payment rails, and multi-agent orchestration runbooks.', gumroad: 'https://coltak.gumroad.com/l/wbevjc' },
+  { id: 'starter', sku: 'SKU-TX-06', stmt: 'RASAXMACHINA COCKPIT', tag: '🛰️ SKU-TX-06 · SAAS CONTROL PLANE', title: 'Sovereign Cockpit Suite', basePrice: 29, baseCurr: 'EUR', mode: '/ mo', desc: 'Multi-node operator control plane linking NixOS Workhorse Hub, Hetzner PQ Relay, and Mobile Enclaves with sub-ms telemetry.', gumroad: 'https://coltak.gumroad.com/l/twylx' },
+  { id: 'alpha', sku: 'SKU-TX-07', stmt: 'RASAXMACHINA ALPHASIG', tag: '🛰️ SKU-TX-07 · YIELD INTELLIGENCE', title: 'RasaXM Alpha Signals', basePrice: 29, baseCurr: 'EUR', mode: '/ mo', desc: 'Cross-venue arbitrage signals, MEV-protected routing, and DeFiLlama high-yield stablecoin bridge alerts.' },
+  { id: 'ledger', sku: 'SKU-TX-08', stmt: 'RASAXMACHINA VERITAS', tag: '🛰️ SKU-TX-08 · SOLVENCY FEED', title: 'Veritas-Rex Audit Feed', basePrice: 49, baseCurr: 'EUR', mode: '/ mo', desc: 'Continuous cryptographic reality ledger proofs, quad-ledger reconciliation, and real-time proof-of-reserves.' },
+  { id: 'pro', sku: 'SKU-TX-09', stmt: 'RASAXMACHINA PROMESH', tag: '🛰️ SKU-TX-09 · PRO ENCLAVE MESH', title: 'Tianxia Pro Enclave (5 Nodes)', basePrice: 99, baseCurr: 'EUR', mode: '/ mo', desc: 'Multi-node post-quantum Rosenpass + Tailscale enclave cluster for teams running up to 5 autonomous compute/relay nodes.', gumroad: 'https://coltak.gumroad.com/l/cbwfy' },
+  { id: 'vault_toolkit', sku: 'SKU-TX-10', stmt: 'RASAXMACHINA FORTRESS', tag: '🛡️ SKU-TX-10 · DEFENSE & VAULT', title: 'Faery Fortress & Secret Vault', basePrice: 149, baseCurr: 'EUR', mode: '', desc: 'Aethervault cryptographic secret isolation, CISA KEV automated sinkhole ingestion, and MANAS System-1 AI vector firewall.' },
+  { id: 'tracer', sku: 'SKU-TX-11', stmt: 'RASAXMACHINA TRACER', tag: '🛰️ SKU-TX-11 · LOGISTICS PRO API', title: 'Murua Tracer Pro API', basePrice: 149, baseCurr: 'EUR', mode: '/ mo', desc: 'Bayesian state-space tracking for untracked mail, automated UPU Form CN08 dossiers, and INR dispute shielding.' },
+  { id: 'escrow', sku: 'SKU-TX-12', stmt: 'RASAXMACHINA ESCROW', tag: '🛡️ SKU-TX-12 · SYNDICATE ESCROW', title: 'NomenAgora Handle Escrow', basePrice: 299, baseCurr: 'USD', mode: '', desc: 'Cryptographically verified secondary acquisition and escrow for high-value Telegram handles and sovereign namespace assets.' },
+  { id: 'enterprise', sku: 'SKU-TX-13', stmt: 'RASAXMACHINA ENTRPRS', tag: '🛡️ SKU-TX-13 · ENTERPRISE MESH', title: 'Enterprise Sovereign Validator', basePrice: 499, baseCurr: 'EUR', mode: '/ mo', desc: 'Full enterprise license for the 2,816-node omni-lattice scheduler, ETAMANGA PoA validator node, and AF_XDP telemetry bus.', gumroad: 'https://coltak.gumroad.com/l/daahft' },
+  { id: 'syndicate_retainer', sku: 'SKU-TX-14', stmt: 'RASAXMACHINA SYNDRET', tag: '🛡️ SKU-TX-14 · SYNDICATE RETAINER', title: 'NomenAgora Broker Retainer', basePrice: 1500, baseCurr: 'USD', mode: '/ mo', desc: 'Dedicated institutional namespace acquisition, secondary Fragment portfolio management, and Telegram Mini-App brokerage.' },
+  { id: 'vrtti_audit', sku: 'SKU-TX-15', stmt: 'RASAXMACHINA VRTTIAUD', tag: '🏛️ SKU-TX-15 · 48H ARCHITECTURE AUDIT', title: 'VRTTI 2-Day Architecture Audit', basePrice: 2500, baseCurr: 'USD', mode: '', desc: 'Rapid 48-hour principal architecture diagnostic, LLM token OpEx audit, and security boundary teardown by Collins Takem.' },
+  { id: 'audit', sku: 'SKU-TX-16', stmt: 'RASAXMACHINA ZTAUDIT', tag: '🏛️ SKU-TX-16 · ZERO-TRUST AUDIT', title: 'Zero-Trust Security Assessment', basePrice: 3500, baseCurr: 'USD', mode: '', desc: 'Comprehensive penetration test, delimiter smuggling scan, and SSRF probe audit across LLM pipelines and cloud enclaves.' },
+  { id: 'liquidity', sku: 'SKU-TX-17', stmt: 'RASAXMACHINA LIQENGN', tag: '🏛️ SKU-TX-17 · ON-CHAIN ENGINE', title: 'Autonomous Liquidity Engine', basePrice: 4800, baseCurr: 'USD', mode: '', desc: 'Self-hosted liquidity rebalancing daemon with Jito-Solana and Flashbots MEV protection across Solana and Base DEX pools.' },
+  { id: 'vrtti_5k', sku: 'SKU-TX-18', stmt: 'RASAXMACHINA VRTTI5K', tag: '🏛️ SKU-TX-18 · 5-DAY DELIVERY SPRINT', title: 'VRTTI 5-Day Architecture Sprint', basePrice: 5000, baseCurr: 'USD', mode: '', desc: 'Direct high-velocity systems implementation, threat model, and production agentic swarm deployment led by Collins Takem.' },
+  { id: 'founder_retainer', sku: 'SKU-TX-19', stmt: 'RASAXMACHINA EXECRET', tag: '🏛️ SKU-TX-19 · PRINCIPAL ADVISORY', title: 'Executive Principal Retainer', basePrice: 5000, baseCurr: 'USD', mode: '/ mo', desc: 'Direct principal advisory, board-level systems architecture review, and sovereign AI strategy with founder Collins Takem.' },
+  { id: 'retainer', sku: 'SKU-TX-20', stmt: 'RASAXMACHINA CTORET', tag: '🏛️ SKU-TX-20 · DEDICATED CTO', title: 'Fractional CTO & Systems Retainer', basePrice: 6000, baseCurr: 'USD', mode: '/ mo', desc: 'Ongoing principal systems stewardship, autonomous agent supervision, and DSS-14.2 compliance leadership by Collins Takem.' },
+  { id: 'vrtti_10k', sku: 'SKU-TX-21', stmt: 'RASAXMACHINA VRTTI10K', tag: '🏛️ SKU-TX-21 · TURNKEY SUBSTRATE', title: 'Sovereign Substrate Turnkey (10K)', basePrice: 10000, baseCurr: 'USD', mode: '', desc: 'End-to-end deployment of closed-loop local LLM inference, encrypted memory lattices, Faery Fortress defense, and 6-rail settlement.' }
+];
+
+let activeBuyItem = SHOP_CATALOG[4];
+
+function convertAmt(baseAmt, baseCurr, targetCurr) {
+  const info = FX_CURRENCIES[targetCurr] || FX_CURRENCIES.EUR;
+  if (targetCurr === baseCurr) return info.zero_decimal ? Math.round(baseAmt) : baseAmt;
+  const rate = (baseCurr === 'USD') ? info.rate_from_usd : info.rate_from_eur;
+  const raw = baseAmt * rate;
+  if (targetCurr === 'SOL') return +(raw.toFixed(2));
+  return Math.max(1, Math.round(raw));
+}
+
+function fmtAmt(amt, curr) {
+  const info = FX_CURRENCIES[curr] || FX_CURRENCIES.EUR;
+  if (curr === 'SOL') return `◎${amt}`;
+  return `${info.symbol}${Number(amt).toLocaleString()}`;
+}
+
+const SHOP_I18N = {
+  en: {
+    h1: "The Fortress Market",
+    lead: "Production software suites, autonomous blueprints, intelligence streams, and executive engineering retainers. Governed by Collins Takem under <strong>DSS-14.2 Build Law</strong> with automated Stripe settlement and cryptographic Merkle licensing.",
+    buyVerb: "Buy"
+  },
+  et: {
+    h1: "Fortress Suveräänne E-pood",
+    lead: "Tootmistarkvara paketid, autonoomsed arhitektuurijoonised, luurevood ja juhtivad insenerilepingud. Loodud Collins Takemi poolt <strong>DSS-14.2 Build Law</strong> alusel automaatse Stripe arvelduse ja Merkle litsentsimisega.",
+    buyVerb: "Osta"
+  },
+  de: {
+    h1: "The Fortress Market — Souveräner Software-Shop",
+    lead: "Produktionsreife Software-Suiten, autonome Blueprints, Intelligence-Streams und Executive Engineering Retainer unter <strong>DSS-14.2 Build Law</strong> mit Stripe-Abrechnung und kryptografischer Merkle-Lizenzierung.",
+    buyVerb: "Kaufen"
+  },
+  fr: {
+    h1: "Boutique Souveraine Fortress",
+    lead: "Suites logicielles de production, codex d'ingénierie autonomes, flux d'intelligence et sprints exécutifs gouvernés sous la <strong>Loi DSS-14.2</strong> avec règlement Stripe et licence Merkle.",
+    buyVerb: "Acheter"
+  },
+  sv: {
+    h1: "Fortress Market — Suverän Programvarubutik",
+    lead: "Produktionsklara programvarusviter, autonoma ritningar, intelligensströmmar och exekutiva arkitektursprintar under <strong>DSS-14.2 Build Law</strong>.",
+    buyVerb: "Köp"
+  },
+  no: {
+    h1: "Fortress Market — Suveren Programvarebutikk",
+    lead: "Produksjonsklare programvarepakker, autonome kodekser, intelligensstrømmer og eksekutive arkitektursprinter under <strong>DSS-14.2 Build Law</strong>.",
+    buyVerb: "Kjøp"
+  },
+  ja: {
+    h1: "Fortress ソブリン・ストアフロント",
+    lead: "本番稼働ソフトウェアスイート、自律設計書、インテリジェンス配信、エグゼクティブ設計スプリント。<strong>DSS-14.2 Build Law</strong> に基づき Stripe 即時決済と Merkle ライセンスを提供します。",
+    buyVerb: "購入"
+  }
+};
+
+let _shopSyncLock = false;
+
+function applyShopI18n() {
+  if (!Object.prototype.hasOwnProperty.call(SHOP_I18N, curLang)) return;
+  const d = SHOP_I18N[curLang];
+  const h1 = document.querySelector('#main-content h1');
+  if (h1) h1.textContent = d.h1;
+  const lead = document.querySelector('#main-content .lead');
+  if (lead && curLang === 'en') lead.innerHTML = d.lead;
+}
+
+function renderShopGrid() {
+  const grid = document.getElementById('shop-prod-grid');
+  const stripeCurr = (curCurrency === 'SOL') ? 'EUR' : curCurrency;
+  const d = SHOP_I18N[curLang] || SHOP_I18N.en;
+  grid.innerHTML = SHOP_CATALOG.map(item => {
+    const conv = convertAmt(item.basePrice, item.baseCurr, curCurrency);
+    const disp = fmtAmt(conv, curCurrency);
+    const expressUrl = `/api/v1/stripe-express?plan=${encodeURIComponent(item.id)}&currency=${encodeURIComponent(stripeCurr)}&lang=${encodeURIComponent(curLang)}&country=${encodeURIComponent(curCountry)}`;
+    return `
+      <div class="prod-card">
+        <div>
+          <span class="prod-tag">${item.tag}</span>
+          <h3 class="prod-title">${item.title}</h3>
+          <div class="prod-price">${disp}${item.mode ? ` <span style="font-size:0.88rem;color:#94a3b8">${item.mode}</span>` : ''}</div>
+          <p class="prod-desc">${item.desc}</p>
+          <div style="font-family:var(--tx-font-mono,monospace);font-size:0.7rem;color:#94a3b8;margin-bottom:1rem">
+            Statement: <code style="color:#fde047">${item.stmt}</code>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.45rem">
+          <a class="btn-buy" style="text-decoration:none;flex:1" href="${expressUrl}" target="_blank" rel="noopener">💳 ${d.buyVerb} (${disp}) ↗</a>
+          <button class="btn-buy" style="flex:1;background:rgba(124,92,255,0.22);border:1px solid rgba(124,92,255,0.5)" onclick="openBuyModal('${item.id}')">◎ Multi-Rail / -10%</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function syncShopControls() {
+  const locSel = document.getElementById('shop-locale-select');
+  const combo = (window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.getLocaleComboValue)
+    ? window.TX_CURRENCY_ENGINE.getLocaleComboValue(curCountry, curLang)
+    : `${curCountry}:${curLang}`;
+  if (locSel && [].some.call(locSel.options, o => o.value === combo)) {
+    locSel.value = combo;
+  }
+  const cSel = document.getElementById('currency-select');
+  if (cSel && cSel.value !== curCurrency) cSel.value = curCurrency;
+}
+
+function changeCurrency(curr) {
+  curCurrency = curr;
+  syncShopControls();
+  renderShopGrid();
+  if (!_shopSyncLock && window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.applyMaterialLocalization) {
+    _shopSyncLock = true;
+    try { window.TX_CURRENCY_ENGINE.applyMaterialLocalization(curCountry, curLang, curCurrency, true); } finally { _shopSyncLock = false; }
+  }
+}
+
+function onShopLocaleChange(comboVal) {
+  const parts = (comboVal || 'EE:en').split(':');
+  curCountry = parts[0] || 'EE';
+  curLang = parts[1] || 'en';
+  curCurrency = COUNTRY_DEFAULT_CURRENCY[curCountry] || 'EUR';
+  syncShopControls();
+  applyShopI18n();
+  renderShopGrid();
+  if (!_shopSyncLock && window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.applyMaterialLocalization) {
+    _shopSyncLock = true;
+    try { window.TX_CURRENCY_ENGINE.applyMaterialLocalization(curCountry, curLang, curCurrency, true); } finally { _shopSyncLock = false; }
+  }
+}
+
+window.onTxGlobalLocaleChange = function (country, lang, curr) {
+  if (_shopSyncLock) return;
+  _shopSyncLock = true;
+  try {
+    curCountry = country || curCountry;
+    curLang = lang || curLang;
+    curCurrency = curr || curCurrency;
+    syncShopControls();
+    applyShopI18n();
+    renderShopGrid();
+  } finally {
+    _shopSyncLock = false;
+  }
+};
+
+function openBuyModal(id) {
+  const item = SHOP_CATALOG.find(x => x.id === id) || SHOP_CATALOG[0];
+  activeBuyItem = item;
+  const targetCurr = (curCurrency === 'SOL') ? item.baseCurr : curCurrency;
+  const conv = convertAmt(item.basePrice, item.baseCurr, targetCurr);
+  const disp = fmtAmt(conv, targetCurr);
+
+  document.getElementById('buy-modal-title').textContent = `Acquire: ${item.title}`;
+  document.getElementById('buy-item-name').textContent = `${item.title} (${item.sku})`;
+  document.getElementById('buy-item-stmt').textContent = item.stmt;
+  document.getElementById('buy-item-total').textContent = `${disp} (${targetCurr})`;
+  document.getElementById('buy-result').style.display = 'none';
+  const btn = document.getElementById('btn-submit-buy');
+  btn.disabled = false;
+  btn.textContent = `Generate Live ${targetCurr} Checkout Session & Seal Receipt ↗`;
+
+  const sBtn = document.getElementById('shop-direct-stripe');
+  if (sBtn) sBtn.href = `/api/v1/stripe-express?plan=${encodeURIComponent(item.id)}&currency=${encodeURIComponent(targetCurr)}&lang=${encodeURIComponent(curLang)}&country=${encodeURIComponent(curCountry)}`;
+
+  const gBtn = document.getElementById('shop-direct-gumroad');
+  if (gBtn) {
+    if (item.gumroad) {
+      gBtn.href = item.gumroad;
+      gBtn.style.display = 'block';
+    } else {
+      gBtn.style.display = 'none';
+    }
+  }
+
+  const usdEquiv = convertAmt(item.basePrice, item.baseCurr, 'USD');
+  const solAmt = Math.max(0.05, +(usdEquiv / 145).toFixed(4));
+  const solBtn = document.getElementById('shop-direct-sol');
+  if (solBtn) solBtn.href = `solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq?amount=${solAmt}&label=RASA-X-MACHINA&message=${encodeURIComponent(item.title)}`;
+
+  const hubBtn = document.getElementById('shop-direct-hub');
+  if (hubBtn) hubBtn.href = `/pay?plan=${encodeURIComponent(item.id)}&currency=${encodeURIComponent(targetCurr)}`;
+
+  document.getElementById('buy-modal').classList.add('open');
+}
+
+function closeBuyModal() {
+  document.getElementById('buy-modal').classList.remove('open');
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeBuyModal();
+});
+
+async function submitBuy(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-submit-buy');
+  btn.disabled = true;
+  btn.textContent = 'Creating Live Multi-Rail Session...';
+
+  const email = document.getElementById('buy-email').value.trim();
+  const promo = document.getElementById('buy-promo').value.trim();
+  const targetCurr = (curCurrency === 'SOL') ? activeBuyItem.baseCurr : curCurrency;
+
+  try {
+    const res = await fetch('/api/v1/checkout', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        plan: activeBuyItem.id,
+        currency: targetCurr,
+        lang: curLang,
+        country: curCountry,
+        email: email,
+        promo: promo
+      })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      const box = document.getElementById('buy-result');
+      const titleEl = document.getElementById('buy-result-title');
+      box.style.display = 'block';
+      box.style.background = 'rgba(52,211,153,0.1)';
+      box.style.borderColor = 'rgba(52,211,153,0.3)';
+      if (titleEl) { titleEl.style.color = '#34d399'; titleEl.textContent = '✓ TETRALEDGER RECEIPT SEALED — COMPLETE SETTLEMENT'; }
+      const stripeUrl = data.stripe_checkout_url || data.stripe_payment_link;
+      const gumUrl = data.gumroad_url || activeBuyItem.gumroad;
+      const crypto = data.crypto || {};
+      const solUri = crypto.solana_pay_uri || 'solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq';
+      document.getElementById('buy-receipt-details').innerHTML = `
+        Receipt: <strong>${data.receipt_token}</strong> · SKU: <strong>${data.sku}</strong> (${data.currency_symbol || ''}${data.amount} ${data.currency})<br/>
+        Statement Descriptor: <code style="color:#fde047">${data.statement_descriptor}</code> · Merkle: ${data.merkle_attestation.substring(0, 20)}...
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.45rem;margin-top:0.65rem">
+          <a href="${stripeUrl}" target="_blank" rel="noopener" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.5rem;font-size:0.78rem">💳 Complete on Stripe (${data.currency}) ↗</a>
+          ${gumUrl ? `<a href="${gumUrl}" target="_blank" rel="noopener" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.5rem;font-size:0.78rem;background:linear-gradient(135deg,#ec4899,#8b5cf6)">📦 Buy on Gumroad ↗</a>` : ''}
+          <a href="${solUri}" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.5rem;font-size:0.78rem;background:rgba(52,211,153,0.18);border:1px solid #34d399;color:#34d399">◎ Pay with Solana ↗</a>
+          <a href="/pay?plan=${encodeURIComponent(data.plan)}&receipt=${encodeURIComponent(data.receipt_token)}" class="btn-buy" style="text-decoration:none;text-align:center;padding:0.5rem;font-size:0.78rem;background:rgba(96,165,250,0.18);border:1px solid #60a5fa;color:#60a5fa">🔵 Base L2 / All Rails ↗</a>
+        </div>
+      `;
+      btn.textContent = 'Checkout Session Ready ✓';
+    } else {
+      const box = document.getElementById('buy-result');
+      const titleEl = document.getElementById('buy-result-title');
+      box.style.display = 'block';
+      box.style.background = 'rgba(239,68,68,0.12)';
+      box.style.borderColor = 'rgba(239,68,68,0.4)';
+      if (titleEl) { titleEl.style.color = '#f87171'; titleEl.textContent = '✕ CHECKOUT REJECTED'; }
+      document.getElementById('buy-receipt-details').textContent = data.error || 'Unable to generate checkout session.';
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+    }
+  } catch (err) {
+    const box = document.getElementById('buy-result');
+    const titleEl = document.getElementById('buy-result-title');
+    box.style.display = 'block';
+    box.style.background = 'rgba(239,68,68,0.12)';
+    box.style.borderColor = 'rgba(239,68,68,0.4)';
+    if (titleEl) { titleEl.style.color = '#f87171'; titleEl.textContent = '✕ NETWORK ERROR'; }
+    document.getElementById('buy-receipt-details').textContent = err.message || 'Connection error';
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+  }
+}
+
+async function initShopGeo() {
+  try {
+    const savedCurr = localStorage.getItem('tx_pref_currency');
+    const savedCountry = localStorage.getItem('tx_pref_country');
+    const savedLang = localStorage.getItem('tx_pref_lang');
+    const res = await fetch('/api/v1/geo-currency');
+    if (res.ok) {
+      const geo = await res.json();
+      curCountry = savedCountry || geo.detected_country || 'EE';
+      curCurrency = savedCurr || geo.detected_currency || 'EUR';
+      curLang = savedLang || geo.detected_language || 'en';
+    }
+  } catch (_e) {}
+  syncShopControls();
+  applyShopI18n();
+  renderShopGrid();
+}
+initShopGeo();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+[
+  {"id": 1, "company": "Noah", "seed_raised": "$38M", "focus": "Stablecoin payments & virtual accounts", "vulnerability": "Cross-rail reconciliation drift", "rgu_offer": "€9,500 TetraLedger Sprint", "script_id": "SCRIPT-PAY-A"},
+  {"id": 2, "company": "Paid", "seed_raised": "$33.3M", "focus": "AI agent billing & card collection", "vulnerability": "Unhedged LLM token spikes destroying margins", "rgu_offer": "€1,250 Audit / €9,500 Sprint", "script_id": "SCRIPT-PAY-B"},
+  {"id": 3, "company": "OpenReserve", "seed_raised": "$25M", "focus": "24/7 on-chain banking & tokenized deposits", "vulnerability": "Hardware enclave isolation under OCC rules", "rgu_offer": "€14k/mo Fractional Architect", "script_id": "SCRIPT-PAY-A"},
+  {"id": 4, "company": "LIMITED", "seed_raised": "$21.5M", "focus": "Global business accounts, cards & stablecoins", "vulnerability": "ISO 8583 card swipe authorization latency", "rgu_offer": "€9,500 Sprint", "script_id": "SCRIPT-PAY-A"},
+  {"id": 5, "company": "Fin.com", "seed_raised": "$20M", "focus": "Stablecoin settlement meets local payment rails", "vulnerability": "Asynchronous retry double-spends on fiat off-ramps", "rgu_offer": "€1,250 Diagnostic", "script_id": "SCRIPT-PAY-A"},
+  {"id": 6, "company": "Codex", "seed_raised": "$15.8M", "focus": "Stablecoin FX, fiat conversion & cross-chain", "vulnerability": "High-frequency order-book memory contention", "rgu_offer": "€9,500 Sprint", "script_id": "SCRIPT-PAY-A"},
+  {"id": 7, "company": "pmtbox", "seed_raised": "$15M", "focus": "Merchant payments, risk & commerce data", "vulnerability": "Slow batch underwriting on merchant cash-flow", "rgu_offer": "€9,500 tx_nimue Integration", "script_id": "SCRIPT-PAY-B"},
+  {"id": 8, "company": "Polar", "seed_raised": "$11.8M", "focus": "Merchant of Record & billing for software", "vulnerability": "Agent-driven autonomous checkouts (x402) replay attacks", "rgu_offer": "€1,250 Audit / €8,800 Sprint", "script_id": "SCRIPT-PAY-B"},
+  {"id": 9, "company": "Ubyx", "seed_raised": "$10M", "focus": "Stablecoin clearing into bank accounts at par", "vulnerability": "Real-time issuer solvency scoring & state verification", "rgu_offer": "€9,500 Sprint", "script_id": "SCRIPT-PAY-A"},
+  {"id": 10, "company": "CEDAR", "seed_raised": "$9.9M", "focus": "Business cross-border payments via stablecoins", "vulnerability": "Multi-hop FX reconciliation drift", "rgu_offer": "€1,250 Diagnostic", "script_id": "SCRIPT-PAY-A"},
+  {"id": 11, "company": "CREEM", "seed_raised": "$8M", "focus": "Merchant of Record, checkout & billing for AI", "vulnerability": "Prompt-injected refund abuse & automated chargebacks", "rgu_offer": "€8,800 Sprint", "script_id": "SCRIPT-PAY-B"}
+]

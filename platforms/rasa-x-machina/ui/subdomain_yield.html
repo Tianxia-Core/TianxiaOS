@@ -1,0 +1,624 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-YIELD frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-YIELD frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Autotreasury Yield Bridge — Autonomous DeFi Scour & MEV Arbitrage</title>
+<meta name="description" content="Autotreasury dynamically scours high-yield stablecoin pools across Solana, Base, and Ethereum, proposing cryptographic rebalancing and MEV-shielded arbitrage."/>
+<link rel="canonical" href="https://yield.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    color: #a7f3d0;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 10px #34d399;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 50%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    line-height: 1.6;
+    max-width: 780px;
+    margin-bottom: 2.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media(max-width: 750px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    backdrop-filter: blur(20px);
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-val {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #34d399;
+    margin-top: 0.4rem;
+  }
+  .card-glass {
+    background: rgba(15, 12, 28, 0.65);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(30px);
+  }
+  table.yields {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.88rem;
+  }
+  table.yields th, table.yields td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+  }
+  table.yields th {
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .apy {
+    font-family: var(--tx-font-mono, monospace);
+    font-weight: 700;
+    color: #34d399;
+  }
+  .badge-tvl {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(52, 211, 153, 0.2);
+    color: #a7f3d0;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  @media(max-width: 800px) { .prod-grid { grid-template-columns: 1fr; } }
+  .prod-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .prod-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.35rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .prod-price {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+  }
+  .prod-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #10b981, #059669);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px -10px rgba(16, 185, 129, 0.55);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-box {
+    background: #09120e;
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    border-radius: 1.4rem;
+    max-width: 580px;
+    width: 100%;
+    padding: 2.2rem;
+    box-shadow: 0 0 90px -20px rgba(52, 211, 153, 0.35);
+  }
+  .modal-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem;
+    color: #fff;
+  }
+  .form-group {
+    margin-bottom: 1.1rem;
+  }
+  .form-lbl {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--tx-ink-dim, #94a3b8);
+    margin-bottom: 0.35rem;
+  }
+  .form-ctrl {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.92rem;
+  }
+  .form-ctrl:focus {
+    outline: none;
+    border-color: #34d399;
+  }
+  .auth-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .auth-footer a { color: #34d399; text-decoration: none; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<header class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#34d399;font-weight:700;font-size:0.86rem">YIELD</span></a>
+  <nav class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com/#radar">Flagship Radar</a>
+    <a class="nav-link" href="https://rasaxmachina.com/#storefront">Storefront</a>
+    <a class="nav-link" href="https://rasaxmachina.com/#calculator">Retainer Calculator</a>
+    <a class="nav-link" href="/cockpit">Sovereign Cockpit</a>
+  </nav>
+</header>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <div class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    CLUSTER: REVENUE · ROUTE: cf_worker · ICP: ICP-TRADER, ICP-TREASURER · FQDN: yield.rasaxmachina.com
+  </div>
+
+  <h1>Autotreasury Yield Bridge</h1>
+  <p class="lead">
+    Autonomous liquidity intelligence and high-frequency arbitrage execution engine of <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong>. Continuously scours vetted DeFi lending pools and cross-venue DEX/CEX spreads with MEV Flashbots and Jito protection.
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Solana Kamino USDC</div>
+      <div class="stat-val" id="kamino-apy">9.84%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">MarginFi USDT</div>
+      <div class="stat-val" id="marginfi-apy">11.45%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Arbitrage Spread</div>
+      <div class="stat-val" id="arb-bps">18.2 bps</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">MEV Shield Status</div>
+      <div class="stat-val" id="mev-status" style="color:#22d3ee;font-size:1.15rem">FLASHBOTS/JITO</div>
+    </div>
+  </div>
+
+  <div class="card-glass">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-bottom:0.8rem">
+      <h3 style="margin:0;color:#34d399;font-size:1.25rem">Live Scoured High-Yield Stablecoin Opportunities</h3>
+      <span style="font-size:0.75rem;color:#34d399;font-family:var(--tx-font-mono, monospace)">● SCOUR_CYCLE: 3600S (MIF+50 SOVEREIGN)</span>
+    </div>
+    <p style="font-size:0.9rem;color:#cbd5e1;margin:0 0 1rem">
+      Real-time on-chain yields scoured via automated DeFiLlama autotreasury protocols across Ethereum, Base, and Solana, filtered for TVL &gt; <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5" data-decimals="1" data-suffix="M">€4.6M</span>.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table class="yields">
+        <thead>
+          <tr>
+            <th>Protocol / Pool</th>
+            <th>Asset</th>
+            <th>Chain</th>
+            <th>TVL Liquidity</th>
+            <th>Verified APY</th>
+            <th>Audit Verification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>concrete:CTCOLBUSD1</strong></td>
+            <td>BUSD1</td>
+            <td>Ethereum</td>
+            <td><span class="badge-tvl"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="10.2" data-decimals="1" data-suffix="M">€9.4M</span> TVL</span></td>
+            <td class="apy">94.8%</td>
+            <td><span style="color:#34d399">✓ Verified On-Chain</span></td>
+          </tr>
+          <tr>
+            <td><strong>veranta:USDC</strong></td>
+            <td>USDC</td>
+            <td>Base</td>
+            <td><span class="badge-tvl"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="9.8" data-decimals="1" data-suffix="M">€9.1M</span> TVL</span></td>
+            <td class="apy">27.0%</td>
+            <td><span style="color:#34d399">✓ Verified On-Chain</span></td>
+          </tr>
+          <tr>
+            <td><strong>convex:REUSD-SCRVUSD</strong></td>
+            <td>crvUSD</td>
+            <td>Ethereum</td>
+            <td><span class="badge-tvl"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="8" data-decimals="1" data-suffix="M">€7.4M</span> TVL</span></td>
+            <td class="apy">17.6%</td>
+            <td><span style="color:#34d399">✓ Curve Audited</span></td>
+          </tr>
+          <tr>
+            <td><strong>pendle-v2:APYUSD</strong></td>
+            <td>APYUSD</td>
+            <td>Ethereum</td>
+            <td><span class="badge-tvl"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="17.8" data-decimals="1" data-suffix="M">€16.5M</span> TVL</span></td>
+            <td class="apy">17.0%</td>
+            <td><span style="color:#34d399">✓ Pendle Core</span></td>
+          </tr>
+          <tr>
+            <td><strong>centrifuge:USDC</strong></td>
+            <td>USDC</td>
+            <td>Plume Mainnet</td>
+            <td><span class="badge-tvl"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="20.7" data-decimals="1" data-suffix="M">€19.1M</span> TVL</span></td>
+            <td class="apy">15.6%</td>
+            <td><span style="color:#34d399">✓ RWA Collateralized</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-box">
+      <div>
+        <span class="tx-badge" style="margin-bottom:0.6rem">REAL-TIME ALPHA TELEMETRY</span>
+        <h3 class="prod-title">RasaXM Alpha Arbitrage Stream</h3>
+        <div class="prod-price"><span class="tx-store-price" data-base-curr="EUR" data-base-amt="29">€29</span> <small style="font-size:0.85rem;color:#94a3b8">/ month</small></div>
+        <p class="prod-desc">
+          Low-latency WebSocket signal stream delivering real-time cross-venue arbitrage spreads, MEV-protected routing routes, and liquidity pool dislocation triggers.
+        </p>
+      </div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+        <a class="btn-primary" href="https://buy.stripe.com/9B66oG62Ja2J9VN83d9AA09" target="_blank" rel="noopener">💳 Subscribe via Stripe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo) ↗</a>
+        <a class="btn-secondary" href="/pay?plan=alpha">◎ Pay with Crypto ↗</a>
+        <button class="btn-secondary" onclick="openInquiryModal('arbitrage_alpha', 'RasaXM Alpha Arbitrage Stream', 29)">Scope</button>
+      </div>
+    </div>
+
+    <div class="prod-box" style="border-color: rgba(52, 211, 153, 0.4)">
+      <div>
+        <span class="tx-badge" style="margin-bottom:0.6rem;background:rgba(52,211,153,0.2)">PRIVATE EXECUTION INFRASTRUCTURE</span>
+        <h3 class="prod-title">Custom MEV Execution Bot</h3>
+        <div class="prod-price"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="4800">€4,440</span> <small style="font-size:0.85rem;color:#94a3b8">/ deployment</small></div>
+        <p class="prod-desc">
+          Turnkey proprietary DEX/CEX arbitrage bot on Solana and Base. Features private Jito bundle submission, sub-millisecond route optimization, and self-custodial treasury integration.
+        </p>
+      </div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+        <a class="btn-primary" href="https://buy.stripe.com/3cIeVc8aRfn3aZRdnx9AA0a" target="_blank" rel="noopener">💳 Acquire via Stripe (<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="4800">€4,440</span>) ↗</a>
+        <a class="btn-secondary" href="/pay?plan=liquidity">◎ Pay with Crypto ↗</a>
+        <button class="btn-secondary" onclick="openInquiryModal('arbitrage_alpha', 'Custom MEV Execution Bot', 4800)">Scope</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="auth-footer">
+    <strong>Rasa-X-Machina (Proposed Estonian Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ · Dealum #179423)</strong> · Autonomous Financial Substrate &amp; Enterprise Syndicate<br/>
+    Principal Systems Architect &amp; Founder: <strong>Collins Takem</strong> · Governed under DSS-14.2 Build Law · 29 Currencies · 42 Markets<br/>
+    <div style="margin-top:0.6rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/radar">Threat Radar</a> ·
+      <a href="/names">Namespace Syndicate</a> ·
+      <a href="/cockpit">Sovereign Cockpit HUD</a>
+    </div>
+  </footer>
+</main>
+
+<!-- Proposal Inquiry Modal -->
+<div id="tx-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h3 class="modal-title" id="m-title">Register Arbitrage Scope</h3>
+      <button style="background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer" onclick="closeInquiryModal()">✕</button>
+    </div>
+    <form id="inquiry-form" onsubmit="submitInquiry(event)">
+      <input type="hidden" id="inq-category" value="arbitrage_alpha"/>
+      <div class="form-group">
+        <label class="form-lbl">Executive / Trader Name</label>
+        <input class="form-ctrl" id="inq-name" required placeholder="e.g. Managing Partner"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Corporate Email (SLA Target)</label>
+        <input class="form-ctrl" type="email" id="inq-email" required placeholder="partner@capital.io"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Fund / Desk / Treasury</label>
+        <input class="form-ctrl" id="inq-org" placeholder="e.g. Alpha Capital"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Estimated Budget</label>
+        <input class="form-ctrl" type="number" id="inq-budget" value="4800"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Strategy Brief & Capital Target</label>
+        <textarea class="form-ctrl" id="inq-brief" rows="3" placeholder="Detail target venues (Base, Solana), liquidity threshold, or private RPC requirements..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%">Submit Scope & Generate Merkle Receipt</button>
+      <div id="inq-result" style="margin-top:1rem;font-size:0.85rem"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  async function hydrateYield() {
+    try {
+      const res = await fetch('/api/v1/telemetry/public');
+      const data = await res.json();
+      if (data && data.ok && data.alpha_opportunity) {
+        if (data.alpha_opportunity.kamino_solana_usdc_apy) {
+          document.getElementById('kamino-apy').textContent = data.alpha_opportunity.kamino_solana_usdc_apy + '% APY';
+        }
+        if (data.alpha_opportunity.marginfi_solana_usdt_apy) {
+          document.getElementById('marginfi-apy').textContent = data.alpha_opportunity.marginfi_solana_usdt_apy + '% APY';
+        }
+        if (data.alpha_opportunity.dex_cex_arbitrage_bps) {
+          document.getElementById('arb-bps').textContent = data.alpha_opportunity.dex_cex_arbitrage_bps + ' bps';
+        }
+        if (data.alpha_opportunity.mev_shield_status) {
+          document.getElementById('mev-status').textContent = data.alpha_opportunity.mev_shield_status;
+        }
+      }
+    } catch (e) {
+      console.debug('Yield hydration fallback', e);
+    }
+  }
+
+  function openInquiryModal(cat, title, budget) {
+    document.getElementById('inq-category').value = cat || 'arbitrage_alpha';
+    document.getElementById('m-title').textContent = title || 'Register Arbitrage Scope';
+    if (budget) document.getElementById('inq-budget').value = budget;
+    document.getElementById('tx-modal').style.display = 'flex';
+  }
+
+  function closeInquiryModal() {
+    document.getElementById('tx-modal').style.display = 'none';
+  }
+
+  async function submitInquiry(e) {
+    e.preventDefault();
+    const resultDiv = document.getElementById('inq-result');
+    resultDiv.innerHTML = '<span style="color:#94a3b8">Sanitizing vector and computing Merkle signature...</span>';
+    const payload = {
+      client_name: document.getElementById('inq-name').value,
+      email: document.getElementById('inq-email').value,
+      organization: document.getElementById('inq-org').value,
+      category: document.getElementById('inq-category').value,
+      scope_tier: 'custom_arbitrage_infrastructure',
+      estimated_budget: parseFloat(document.getElementById('inq-budget').value) || 4800,
+      currency: 'USD',
+      sla: 'mission_critical_24_7',
+      brief: document.getElementById('inq-brief').value
+    };
+
+    try {
+      const res = await fetch('/api/v1/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(52,211,153,0.15);border:1px solid #34d399;border-radius:8px;padding:0.8rem;color:#34d399">
+            <strong>✓ Scope Registered: ${data.inquiry_id}</strong><br/>
+            Merkle Sig: <code style="font-size:0.75rem">${data.merkle_sig.slice(0, 24)}...</code><br/>
+            Founder Collins Takem will respond within 4 hours.
+          </div>
+        `;
+        document.getElementById('inquiry-form').reset();
+      } else {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;border-radius:8px;padding:0.8rem;color:#f87171">
+            <strong>✕ Submission Rejected:</strong> ${data.error || 'Validation failed'}<br/>
+            ${data.reason ? '<small>' + data.reason + '</small>' : ''}
+          </div>
+        `;
+      }
+    } catch (err) {
+      resultDiv.innerHTML = '<div style="color:#f87171">Network error during submission.</div>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', hydrateYield);
+</script>
+</body>
+</html>

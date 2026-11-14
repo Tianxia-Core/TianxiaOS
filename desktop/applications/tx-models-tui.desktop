@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Sovereign LLM Swarm TUI
+Comment=Constructal Sine-Meander Router & 10 Local Quantized Sovereign Models
+Exec=foot -T "tianxiaOS Sovereign LLM Swarm TUI" /usr/local/bin/tianxia tui --app models
+Icon=utilities-terminal
+Terminal=false
+Categories=Development;Science;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

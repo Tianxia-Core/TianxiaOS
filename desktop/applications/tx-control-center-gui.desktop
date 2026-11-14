@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Control Center
+Comment=14 Mahavidya Domains, Build Law Seal, Systemd Health & 1-Click App Matrix
+Exec=/usr/local/bin/tx-control-center-gui
+Icon=preferences-system
+Terminal=false
+Categories=System;Settings;Utility;
+StartupWMClass=com.rasaxmachina.TianxiaControlCenter
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

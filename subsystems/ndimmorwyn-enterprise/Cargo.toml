@@ -1,0 +1,46 @@
+# ffp: FFP-ENT-001 enterprise-cargo-manifest declarative
+[package]
+name = "tianxiaos_ndimmorwyn_enterprise"
+version = "8.0.0"
+edition = "2021"
+authors = ["TianxiaOS Core Sovereign Architecture Team"]
+description = "TianxiaOS & Ndimmôrwyn: Enterprise Production-Grade Architecture, Biomimetic SRM & Commercial Execution Engine"
+
+[dependencies]
+blake3 = { version = "1.8", features = ["std", "serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.11"
+
+[[bin]]
+name = "tx_spear_and_meter"
+path = "src/bin/tx_spear_and_meter.rs"
+
+[[bin]]
+name = "tx_srm_apex_daemon"
+path = "src/bin/tx_srm_apex_daemon.rs"
+
+[[bin]]
+name = "tx_tetraledger_aurum"
+path = "src/bin/tx_tetraledger_aurum.rs"
+
+[[bin]]
+name = "tx_void_shadow_lsp"
+path = "src/bin/tx_void_shadow_lsp.rs"
+
+[[bin]]
+name = "tx_biomimetic_router"
+path = "src/bin/tx_biomimetic_router.rs"
+
+[[bin]]
+name = "tx_dss14_validator"
+path = "src/bin/tx_dss14_validator.rs"
+
+[[bin]]
+name = "tx_career_spear_matcher"
+path = "src/bin/tx_career_spear_matcher.rs"
+
+[lib]
+name = "tianxiaos_ndimmorwyn_enterprise"
+path = "src/lib.rs"

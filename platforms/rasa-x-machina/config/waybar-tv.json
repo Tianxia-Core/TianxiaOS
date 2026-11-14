@@ -1,0 +1,104 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 8,
+  "modules-left": [
+    "custom/brand",
+    "hyprland/workspaces",
+    "custom/terminal",
+    "custom/tui",
+    "custom/cockpit",
+    "custom/storefront",
+    "custom/estonia",
+    "custom/github"
+  ],
+  "modules-center": [
+    "custom/node",
+    "custom/gdpr_seal",
+    "custom/kvm"
+  ],
+  "modules-right": [
+    "custom/agents",
+    "cpu",
+    "memory",
+    "clock",
+    "custom/power"
+  ],
+  "custom/brand": {
+    "format": "⬡ TIANXIA v4.3",
+    "tooltip": "TianxiaOS Sovereign Operating System — Click for Application & 4-Surface Menu",
+    "on-click": "/var/lib/tianxia/bin/tx_context_menu.sh",
+    "on-click-right": "/var/lib/tianxia/bin/tx_context_menu.sh"
+  },
+  "hyprland/workspaces": {
+    "format": "{id}: {name}",
+    "on-click": "activate"
+  },
+  "custom/terminal": {
+    "format": "💻 Terminal",
+    "tooltip": "Launch Swarm Foot Terminal",
+    "on-click": "foot"
+  },
+  "custom/tui": {
+    "format": "⌨️ TUI",
+    "tooltip": "Launch Native Sovereign Operator TUI (tx_tui.py)",
+    "on-click": "foot /var/lib/tianxia/bin/tx_tui.py"
+  },
+  "custom/cockpit": {
+    "format": "⚡ Cockpit",
+    "tooltip": "Launch Sovereign Cockpit HUD (:8081 / :9199)",
+    "on-click": "chromium --no-sandbox --app=http://127.0.0.1:9199/cockpit --ozone-platform=wayland"
+  },
+  "custom/storefront": {
+    "format": "🌐 28 Web Apps",
+    "tooltip": "Launch Rasa-X-Machina Storefront & 28 Subdomains (Ctrl+K)",
+    "on-click": "chromium --no-sandbox --app=http://127.0.0.1:9199/ --ozone-platform=wayland"
+  },
+  "custom/estonia": {
+    "format": "🇪🇪 Dealum #179423",
+    "tooltip": "Launch Estonian Startup Committee Evaluation Companion (rasaxmachina.com/estonia)",
+    "on-click": "chromium --no-sandbox --app=https://rasaxmachina.com/estonia --ozone-platform=wayland"
+  },
+  "custom/github": {
+    "format": "🐙 GitHub",
+    "tooltip": "Open collinstaken525-cloud/TianxiaOS Repository",
+    "on-click": "chromium --no-sandbox --app=https://github.com/collinstaken525-cloud/TianxiaOS --ozone-platform=wayland"
+  },
+  "custom/node": {
+    "format": "📺 latitude-tianxia [4/5 MESH · DP-1 TV]",
+    "tooltip": "Compute Workhorse Hub & Dual WayVNC (:5900/:5901) Appliance"
+  },
+  "custom/gdpr_seal": {
+    "format": "🛡️ GDPR++ · SEALED",
+    "tooltip": "Build Law v4.3 Daśavidyāyāna NL & GDPR++ <50ms PQ Cryptoshredding Verified",
+    "on-click": "chromium --no-sandbox --app=http://127.0.0.1:9199/api/v1/build-law/status --ozone-platform=wayland"
+  },
+  "custom/kvm": {
+    "format": "⇄ Pointer Bus",
+    "tooltip": "Click to toggle authoritative pointer across mesh nodes",
+    "on-click": "curl -s -X POST -H 'Content-Type: application/json' -d '{\"node\":\"pixel8pro\"}' http://127.0.0.1:9199/api/cockpit/pointer/handoff"
+  },
+  "custom/agents": {
+    "format": "🤖 41 RGUs · €0.00 Δ",
+    "tooltip": "41 Active RGUs · 21 Stripe SKUs (EUR + 10 Currencies) · Veritas-Rex €0.00 Discrepancy"
+  },
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "interval": 2
+  },
+  "memory": {
+    "format": "RAM: {percentage}%",
+    "interval": 3
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M:%S UTC}",
+    "timezones": ["UTC"],
+    "interval": 1
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power & Session Options",
+    "on-click": "/var/lib/tianxia/bin/tx_context_menu.sh"
+  }
+}

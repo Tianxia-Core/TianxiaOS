@@ -1,0 +1,17 @@
+[
+  {"id": 1, "platform": "Wellfound", "url": "https://wellfound.com", "target_tier": "Founding Engineers & Seed Tech Leads"},
+  {"id": 2, "platform": "Arc.dev", "url": "https://arc.dev", "target_tier": "Principal & Staff Remote Engineers"},
+  {"id": 3, "platform": "Toptal", "url": "https://toptal.com", "target_tier": "Top 3% Enterprise Architects"},
+  {"id": 4, "platform": "Contra", "url": "https://contra.com", "target_tier": "Independent Fractional Leads"},
+  {"id": 5, "platform": "We Work Remotely", "url": "https://weworkremotely.com", "target_tier": "DevOps & Core Systems"},
+  {"id": 6, "platform": "RemoteOK", "url": "https://remoteok.com", "target_tier": "Senior Full-Stack & Rust"},
+  {"id": 7, "platform": "Dynamite Jobs", "url": "https://dynamitejobs.com", "target_tier": "Operations & FinTech"},
+  {"id": 8, "platform": "Crossover", "url": "https://crossover.com", "target_tier": "Executive Enterprise Architects ($100k-$400k)"},
+  {"id": 9, "platform": "JustRemote", "url": "https://justremote.co", "target_tier": "Distributed Systems"},
+  {"id": 10, "platform": "Working Nomads", "url": "https://workingnomads.com", "target_tier": "Security Specialists"},
+  {"id": 11, "platform": "Remote.co", "url": "https://remote.co", "target_tier": "Technical Leadership"},
+  {"id": 12, "platform": "FlexJobs", "url": "https://flexjobs.com", "target_tier": "Long-term Contract Architects"},
+  {"id": 13, "platform": "Remotive", "url": "https://remotive.com", "target_tier": "Senior Backend Engineers"},
+  {"id": 14, "platform": "Hubstaff Talent", "url": "https://talent.hubstaff.com", "target_tier": "Direct Contractor Teams"},
+  {"id": 15, "platform": "Remote Woman", "url": "https://remotewoman.com", "target_tier": "Diversity & Leadership"}
+]

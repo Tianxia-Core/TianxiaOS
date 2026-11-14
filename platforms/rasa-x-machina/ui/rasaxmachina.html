@@ -1,0 +1,3604 @@
+<!-- ffp: FFP-UI-RASAXMACHINA frontend html -->
+<!doctype html>
+<!-- ffp: TX-RASAX-HOME frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>RASA-X-MACHINA — Sovereign Autonomous Architecture, Revenue & Defense</title>
+<meta name="description" content="RASA-X-MACHINA builds tianxiaOS — a polyglot seL4/NixOS autonomous AI substrate cutting LLM OpEx by 79.6%, GDPR++ post-quantum privacy, Faery Fortress defense, and a 28-subdomain sovereign web-app syndicate, founded by Collins Takem."/>
+<meta name="theme-color" content="#7c5cff"/>
+<link rel="canonical" href="https://rasaxmachina.com/"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="icon" type="image/svg+xml" href="/icon.svg"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RASA-X-MACHINA",
+  "founder": {
+    "@type": "Person",
+    "name": "Collins Takem",
+    "jobTitle": "Principal Systems Architect & Founder",
+    "url": "https://rasaxmachina.com/collins"
+  },
+  "url": "https://rasaxmachina.com",
+  "description": "Sovereign Autonomous Architecture: tianxiaOS, Ndimmôrwyn Autonomous Engine, Faery Fortress Hardening, NomenAgora Syndicate, and Persistent Substrate",
+  "sameAs": [
+    "https://github.com/Tianxia-Core",
+    "https://github.com/Tianxia-Core/tianxiaos-releases",
+    "https://x.com/rasaxmachina",
+    "https://x.com/tianxiaos",
+    "https://x.com/coltakrasax",
+    "https://rasaxmachina.com/collins",
+    "https://rasaxmachina.com/estonia",
+    "https://rasaxmachina.com/vrtti",
+    "https://rasaxmachina.com/ledger",
+    "https://rasaxmachina.com/names"
+  ]
+}
+</script>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void);
+    color: var(--tx-ink);
+    font-family: var(--tx-font-body);
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    position: relative;
+    z-index: 10;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: calc(5.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  #tx-stars {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Fixed Glass Navigation Bar */
+  .tx-home-nav {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(10, 10, 18, 0.78);
+    border: 1px solid var(--tx-hairline);
+    box-shadow: var(--tx-glow-purple);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    max-width: calc(100vw - 2rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tx-home-nav::-webkit-scrollbar { display: none; }
+  .tx-nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.92rem;
+    padding: 0.32rem 0.78rem;
+    letter-spacing: 0;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .tx-home-nav a.tx-nav-link {
+    color: var(--tx-ink-dim);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .tx-home-nav a.tx-nav-link:hover, .tx-home-nav a.tx-nav-link.active {
+    color: var(--tx-ink);
+    background: var(--tx-glass-strong);
+  }
+  .tx-nav-right-cluster {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.4rem;
+    border-left: 1px solid var(--tx-hairline-2);
+    padding-left: 0.5rem;
+  }
+  .tx-curr-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tx-hairline-2);
+    color: var(--tx-aurora-2);
+    font-family: var(--tx-font-mono);
+    font-size: 0.74rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    cursor: pointer;
+    outline: none;
+  }
+  .tx-cockpit-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: var(--tx-grad-royal);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 0 16px -2px rgba(124, 92, 255, 0.5);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .tx-cockpit-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 24px rgba(124, 92, 255, 0.7);
+  }
+
+  /* Hero Section */
+  .tx-hero {
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .tx-hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .tx-hero-left {
+    flex: 1;
+    min-width: 320px;
+    max-width: 740px;
+  }
+  .tx-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-family: var(--tx-font-mono);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tx-purple-4);
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+  .tx-live-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tx-aurora-3);
+    box-shadow: 0 0 8px var(--tx-aurora-3);
+  }
+  .tx-hero h1 {
+    font-family: var(--tx-font-display);
+    font-size: clamp(2.5rem, 5.5vw, 5.2rem);
+    line-height: 0.98;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.035em;
+    background: linear-gradient(120deg, #ffffff 25%, var(--tx-purple-4) 65%, var(--tx-purple-1));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tx-hero-desc {
+    color: var(--tx-ink-dim);
+    font-size: 1.12rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .tx-hero-desc strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .tx-hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .tx-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    background: var(--tx-grad-purple);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    box-shadow: var(--tx-glow);
+    transition: all 0.25s ease;
+  }
+  .tx-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px -4px rgba(168, 85, 247, 0.7);
+  }
+  .tx-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--tx-hairline);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .tx-btn-outline:hover {
+    background: var(--tx-glass-strong);
+    border-color: var(--tx-purple-4);
+  }
+
+  /* Reality Attestation Widget (Right Column of Hero) */
+  .tx-attest-box {
+    flex: 1;
+    min-width: 320px;
+    max-width: 480px;
+  }
+  .tx-attest-panel {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    padding: 0.5rem;
+    box-shadow: var(--tx-shadow-soft);
+  }
+  .tx-attest-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.75);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 1.5rem;
+  }
+  .tx-attest-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--tx-hairline-2);
+    padding-bottom: 0.75rem;
+  }
+  .tx-attest-title {
+    font-family: var(--tx-font-display);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tx-attest-status-pill {
+    font-family: var(--tx-font-mono);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(52, 211, 153, 0.15);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: var(--tx-aurora-3);
+  }
+  .tx-attest-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+    font-size: 0.82rem;
+  }
+  .tx-attest-lbl {
+    color: var(--tx-ink-dim);
+  }
+  .tx-attest-val {
+    font-family: var(--tx-font-mono);
+    color: #fff;
+    font-weight: 600;
+  }
+  .tx-merkle-preview {
+    font-family: var(--tx-font-mono);
+    font-size: 0.72rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--tx-hairline-2);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    color: var(--tx-aurora-2);
+    word-break: break-all;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .tx-btn-copy-mini {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: var(--tx-ink-dim);
+    border-radius: 4px;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.65rem;
+    cursor: pointer;
+  }
+  .tx-btn-copy-mini:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Live Threat & Opportunity Radar Banner */
+  .tx-radar-section {
+    margin-bottom: 4.5rem;
+  }
+  .tx-radar-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  @media (max-width: 1024px) {
+    .tx-radar-banner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .tx-radar-banner { grid-template-columns: 1fr; }
+  }
+  .tx-radar-card {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.4rem;
+    backdrop-filter: blur(24px);
+    transition: transform var(--tx-dur) var(--tx-ease), border-color 0.25s ease;
+  }
+  .tx-radar-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 12px 36px -10px rgba(124, 92, 255, 0.3);
+  }
+  .tx-radar-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.75);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .tx-radar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+  .tx-radar-cat {
+    font-size: 0.72rem;
+    font-family: var(--tx-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tx-ink-dim);
+  }
+  .tx-radar-val {
+    font-family: var(--tx-font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0.2rem 0;
+  }
+  .tx-radar-sub {
+    font-size: 0.82rem;
+    color: var(--tx-ink-dim);
+    line-height: 1.45;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .tx-radar-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--tx-purple-4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .tx-radar-action:hover {
+    color: #fff;
+  }
+
+  /* Storefront Category Filter Pills */
+  .tx-store-cat-bar {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    scrollbar-width: none;
+  }
+  .tx-store-cat-bar::-webkit-scrollbar { display: none; }
+  .tx-store-cat-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--tx-hairline-2);
+    color: var(--tx-ink-dim);
+    font-family: var(--tx-font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .tx-store-cat-btn:hover, .tx-store-cat-btn.active {
+    background: var(--tx-grad-royal);
+    border-color: var(--tx-purple-1);
+    color: #fff;
+    box-shadow: 0 0 16px -2px rgba(124, 92, 255, 0.4);
+  }
+
+  /* Interactive Scope & Proposal Calculator */
+  .tx-calc-section {
+    margin-bottom: 5rem;
+  }
+  .tx-calc-panel {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.5rem;
+    backdrop-filter: blur(28px);
+    box-shadow: var(--tx-shadow-soft);
+  }
+  .tx-calc-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.85);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 2.25rem;
+  }
+  .tx-calc-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 860px) {
+    .tx-calc-grid { grid-template-columns: 1fr; }
+  }
+  .tx-calc-block {
+    margin-bottom: 1.75rem;
+  }
+  .tx-calc-block-title {
+    font-size: 0.82rem;
+    font-family: var(--tx-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--tx-purple-4);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .tx-calc-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  @media (max-width: 540px) {
+    .tx-calc-options-grid { grid-template-columns: 1fr; }
+  }
+  .tx-calc-option {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--tx-hairline-2);
+    border-radius: 0.85rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tx-calc-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(168, 85, 247, 0.35);
+  }
+  .tx-calc-option.selected {
+    background: rgba(124, 92, 255, 0.15);
+    border-color: var(--tx-purple-1);
+    box-shadow: 0 0 16px -4px rgba(124, 92, 255, 0.4);
+  }
+  .tx-calc-option-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .tx-calc-option-sub {
+    font-size: 0.78rem;
+    color: var(--tx-ink-dim);
+    line-height: 1.4;
+  }
+  .tx-calc-price-card {
+    background: rgba(15, 12, 28, 0.7);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--tx-glow-purple);
+  }
+  .tx-calc-total-lbl {
+    font-size: 0.75rem;
+    font-family: var(--tx-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--tx-ink-dim);
+  }
+  .tx-calc-total-val {
+    font-family: var(--tx-font-display);
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--tx-aurora-3);
+    margin: 0.3rem 0;
+  }
+  .tx-calc-spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 1.75rem;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .tx-calc-spec-list li::before {
+    content: "✓ ";
+    color: var(--tx-aurora-3);
+    font-weight: 700;
+  }
+
+  /* Constituent Units Matrix */
+  .tx-units-section {
+    margin-bottom: 5rem;
+  }
+  .tx-units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .tx-unit-card {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.45rem;
+    backdrop-filter: blur(20px);
+    transition: transform var(--tx-dur) var(--tx-ease), border-color 0.25s ease;
+  }
+  .tx-unit-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 85, 247, 0.45);
+    box-shadow: 0 12px 36px -10px rgba(124, 92, 255, 0.25);
+  }
+  .tx-unit-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.7);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .tx-unit-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.85rem;
+  }
+  .tx-unit-name {
+    font-family: var(--tx-font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+  .tx-unit-role {
+    font-family: var(--tx-font-mono);
+    font-size: 0.72rem;
+    color: var(--tx-aurora-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .tx-unit-desc {
+    color: var(--tx-ink-dim);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    flex: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Section Headers */
+  .tx-sec-head {
+    margin-bottom: 2rem;
+  }
+  .tx-sec-tag {
+    font-family: var(--tx-font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tx-purple-4);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .tx-sec-title {
+    font-family: var(--tx-font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .tx-sec-sub {
+    color: var(--tx-ink-dim);
+    font-size: 1rem;
+    max-width: 65ch;
+    margin: 0;
+  }
+
+  /* Subdomain Interactive Directory */
+  .tx-sub-filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    scrollbar-width: none;
+  }
+  .tx-sub-filter-bar::-webkit-scrollbar { display: none; }
+  .tx-filter-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--tx-hairline-2);
+    color: var(--tx-ink-dim);
+    font-family: var(--tx-font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .tx-filter-btn:hover, .tx-filter-btn.active {
+    background: rgba(124, 92, 255, 0.2);
+    border-color: var(--tx-purple-4);
+    color: #fff;
+    box-shadow: 0 0 16px -4px rgba(124, 92, 255, 0.5);
+  }
+  .tx-filter-count {
+    font-family: var(--tx-font-mono);
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  .tx-search-container {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .tx-sub-search-input {
+    width: 100%;
+    background: rgba(15, 15, 25, 0.6);
+    border: 1px solid var(--tx-hairline);
+    border-radius: 999px;
+    padding: 0.85rem 1.5rem 0.85rem 3rem;
+    color: #fff;
+    font-family: var(--tx-font-body);
+    font-size: 0.95rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+  .tx-sub-search-input:focus {
+    border-color: var(--tx-purple-2);
+    box-shadow: 0 0 20px -4px rgba(168, 85, 247, 0.4);
+    background: rgba(20, 20, 35, 0.8);
+  }
+  .tx-search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tx-ink-dim);
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  /* Subdomains Grid */
+  .tx-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+  @media (max-width: 768px) {
+    .tx-sub-grid { grid-template-columns: 1fr; }
+  }
+  .tx-sub-card {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.45rem;
+    backdrop-filter: blur(20px);
+    transition: transform var(--tx-dur) var(--tx-ease), border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .tx-sub-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 85, 247, 0.45);
+    box-shadow: 0 12px 40px -10px rgba(124, 92, 255, 0.25);
+  }
+  .tx-sub-card-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.7);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .tx-sub-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+  .tx-sub-fqdn {
+    font-family: var(--tx-font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--tx-purple-4);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .tx-sub-routing-pill {
+    font-family: var(--tx-font-mono);
+    font-size: 0.65rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tx-hairline-2);
+    color: var(--tx-ink-dim);
+  }
+  .tx-sub-name {
+    font-family: var(--tx-font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.4rem;
+  }
+  .tx-sub-desc {
+    color: var(--tx-ink-dim);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    flex: 1;
+    margin-bottom: 1.25rem;
+  }
+  .tx-sub-icp-row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .tx-icp-chip {
+    font-family: var(--tx-font-mono);
+    font-size: 0.66rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    color: var(--tx-aurora-2);
+  }
+  .tx-sub-actions {
+    display: flex;
+    gap: 0.6rem;
+    border-top: 1px solid var(--tx-hairline-2);
+    padding-top: 0.9rem;
+  }
+  .tx-sub-launch-btn {
+    flex: 1;
+    text-align: center;
+    background: var(--tx-grad-royal);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .tx-sub-launch-btn:hover {
+    box-shadow: 0 0 16px rgba(124, 92, 255, 0.5);
+  }
+  .tx-sub-inspect-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tx-hairline-2);
+    color: var(--tx-ink-dim);
+    border-radius: 999px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tx-sub-inspect-btn:hover {
+    color: #fff;
+    background: var(--tx-glass-strong);
+  }
+
+  /* Sovereign Storefront & RGUs */
+  .tx-store-section {
+    margin-bottom: 5rem;
+  }
+  .tx-store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.75rem;
+  }
+  @media (max-width: 768px) {
+    .tx-store-grid { grid-template-columns: 1fr; }
+  }
+  .tx-store-card {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.5rem;
+    backdrop-filter: blur(24px);
+    transition: transform var(--tx-dur) var(--tx-ease), border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .tx-store-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 16px 50px -12px rgba(124, 92, 255, 0.35);
+  }
+  .tx-store-card.highlight {
+    border-color: rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 35px -8px rgba(168, 85, 247, 0.3);
+  }
+  .tx-store-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.8);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .tx-store-badge {
+    font-family: var(--tx-font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--tx-aurora-3);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  .tx-store-name {
+    font-family: var(--tx-font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .tx-store-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .tx-store-price {
+    font-family: var(--tx-font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .tx-store-price-sub {
+    font-size: 0.85rem;
+    color: var(--tx-ink-dim);
+  }
+  .tx-store-desc {
+    font-size: 0.88rem;
+    color: var(--tx-ink-dim);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .tx-store-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .tx-store-perks li::before {
+    content: "✓ ";
+    color: var(--tx-aurora-3);
+    font-weight: bold;
+  }
+  .tx-btn-buy {
+    background: var(--tx-grad-purple);
+    color: #fff;
+    border: none;
+    font-family: var(--tx-font-body);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 0 20px -4px rgba(168, 85, 247, 0.5);
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .tx-btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 32px rgba(168, 85, 247, 0.8);
+  }
+
+  /* Founder Profile Section */
+  .tx-founder-panel {
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.5rem;
+    backdrop-filter: blur(28px);
+    margin-bottom: 5rem;
+  }
+  .tx-founder-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.8);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .tx-founder-inner { grid-template-columns: 1fr; padding: 1.5rem; }
+  }
+  .tx-founder-info h2 {
+    font-family: var(--tx-font-display);
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+    margin: 0.4rem 0 1rem;
+    color: #fff;
+  }
+  .tx-founder-info p {
+    color: var(--tx-ink-dim);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .tx-founder-card-side {
+    background: rgba(20, 20, 32, 0.6);
+    border: 1px solid var(--tx-hairline-2);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+  }
+  .tx-founder-stat {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--tx-hairline-2);
+    padding-bottom: 0.75rem;
+  }
+  .tx-founder-stat:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .tx-founder-stat-lbl {
+    font-size: 0.72rem;
+    color: var(--tx-ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tx-founder-stat-val {
+    font-family: var(--tx-font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 0.2rem;
+  }
+
+  /* Interactive Checkout Drawer / Modal */
+  .tx-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(16px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .tx-modal-overlay.open {
+    display: flex;
+    animation: tx-fade 0.25s ease;
+  }
+  .tx-checkout-modal {
+    width: 100%;
+    max-width: 540px;
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.5rem;
+    box-shadow: 0 25px 80px -20px rgba(0,0,0,0.9);
+  }
+  .tx-checkout-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.95);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 2rem;
+  }
+  .tx-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .tx-modal-head h3 {
+    margin: 0;
+    font-family: var(--tx-font-display);
+    font-size: 1.35rem;
+    color: #fff;
+  }
+  .tx-btn-close {
+    background: transparent;
+    border: none;
+    color: var(--tx-ink-dim);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .tx-checkout-field {
+    margin-bottom: 1.25rem;
+  }
+  .tx-checkout-field label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--tx-ink-dim);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .tx-checkout-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tx-hairline);
+    border-radius: 0.6rem;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-family: var(--tx-font-body);
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    outline: none;
+  }
+  .tx-checkout-input:focus {
+    border-color: var(--tx-purple-2);
+  }
+  .tx-order-summary-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--tx-hairline-2);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .tx-order-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .tx-order-row:last-child {
+    margin-bottom: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--tx-hairline-2);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  /* Subdomain Detail Inspector Modal */
+  .tx-inspect-modal {
+    width: 100%;
+    max-width: 650px;
+    border-radius: var(--tx-r-outer);
+    background: var(--tx-glass);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.5rem;
+  }
+  .tx-inspect-inner {
+    border-radius: var(--tx-r-inner);
+    background: rgba(10, 10, 18, 0.95);
+    border: 1px solid var(--tx-hairline-2);
+    padding: 2rem;
+  }
+
+  /* Footer */
+  .tx-footer {
+    border-top: 1px solid var(--tx-hairline-2);
+    padding-top: 3rem;
+    margin-top: 4rem;
+  }
+  .tx-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 768px) {
+    .tx-footer-grid { grid-template-columns: 1fr; }
+  }
+  .tx-footer-col h4 {
+    font-family: var(--tx-font-display);
+    font-size: 0.95rem;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+  .tx-footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .tx-footer-col a {
+    color: var(--tx-ink-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+  }
+  .tx-footer-col a:hover {
+    color: #fff;
+  }
+  .tx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--tx-hairline-2);
+    padding-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--tx-ink-dim);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @keyframes tx-fade {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Chrome Modern Web Guidance 1.0 & WCAG 2.2 AA Enhancements */
+  .tx-units-section, .tx-radar-section, .tx-store-section, .tx-calc-section, .tx-founder-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+  }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<div class="tx-space" aria-hidden="true"></div><div class="tx-orb" aria-hidden="true"></div>
+<canvas id="tx-stars" aria-hidden="true"></canvas>
+<div class="tx-grain" aria-hidden="true"></div>
+
+<!-- Top Narrow Activity-Aware Floating Navigation Pill -->
+<nav class="tx-home-nav" aria-label="Primary Navigation">
+  <a href="/" class="tx-nav-brand tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</a>
+  <a href="#storefront" class="tx-nav-link" id="nav-link-store" data-i18n="nav_storefront" style="color:var(--tx-aurora-3);font-weight:700">⚡ Storefront</a>
+  <a href="/pay" class="tx-nav-link" id="nav-link-pay" data-i18n="nav_pay" style="color:#c084fc;font-weight:600">💳 Pay Hub ↗</a>
+  <a href="#architecture" class="tx-nav-link" id="nav-link-arch" data-i18n="nav_arch">2816-Node OS</a>
+  <a href="/about" class="tx-nav-link" id="nav-link-about">About</a>
+  <a href="/collins" class="tx-nav-link" id="nav-link-collins">Founder</a>
+  <a href="#calculator" class="tx-nav-link" id="nav-link-calc" data-i18n="nav_sprint">Calculator</a>
+  <a href="/estonia" class="tx-nav-link" id="nav-link-estonia" data-i18n="nav_estonia" style="color:#38bdf8;font-weight:600">🇪🇪 Estonia ↗</a>
+  <div class="tx-nav-right-cluster" style="display:inline-flex;align-items:center;gap:0.3rem;flex-wrap:nowrap">
+    <select id="tx-locale-toggle" class="tx-curr-select" title="Select Country / Market &amp; Interface Language" aria-label="Select Country and Interface Language">
+      <option value="EE:en">🇪🇪 EE · English</option>
+      <option value="EE:et">🇪🇪 EE · Eesti</option>
+      <option value="US:en">🇺🇸 US · English</option>
+      <option value="GB:en">🇬🇧 GB · English</option>
+      <option value="DE:de">🇩🇪 DE · Deutsch</option>
+      <option value="DE:en">🇩🇪 DE · English</option>
+      <option value="CH:de">🇨🇭 CH · Deutsch</option>
+      <option value="CH:fr">🇨🇭 CH · Français</option>
+      <option value="FR:fr">🇫🇷 FR · Français</option>
+      <option value="SE:sv">🇸🇪 SE · Svenska</option>
+      <option value="NO:no">🇳🇴 NO · Norsk</option>
+      <option value="CA:en">🇨🇦 CA · English</option>
+      <option value="CA:fr">🇨🇦 CA · Français</option>
+      <option value="AU:en">🇦🇺 AU · English</option>
+      <option value="SG:en">🇸🇬 SG · English</option>
+      <option value="JP:ja">🇯🇵 JP · 日本語</option>
+      <option value="JP:en">🇯🇵 JP · English</option>
+    </select>
+    <select id="tx-currency-toggle" class="tx-curr-select" title="Select Billing Currency (Charged in Chosen Currency on Stripe)" aria-label="Select Billing Currency">
+      <option value="EUR">EUR (€)</option>
+      <option value="USD">USD ($)</option>
+      <option value="GBP">GBP (£)</option>
+      <option value="CHF">CHF (Fr)</option>
+      <option value="SEK">SEK (kr)</option>
+      <option value="NOK">NOK (kr)</option>
+      <option value="CAD">CAD (CA$)</option>
+      <option value="AUD">AUD (A$)</option>
+      <option value="SGD">SGD (S$)</option>
+      <option value="JPY">JPY (¥)</option>
+      <option value="SOL">SOL (◎)</option>
+    </select>
+    <a href="/cockpit" class="tx-cockpit-cta-btn" data-i18n="nav_cockpit">Cockpit ↗</a>
+  </div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <!-- HERO SECTION -->
+  <section class="tx-hero">
+    <div class="tx-hero-header">
+      <div class="tx-hero-left">
+        <div class="tx-hero-eyebrow">
+          <span class="tx-live-pulse-dot"></span>
+          <span id="tx-hero-eyebrow-text"><span class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</span> · <span class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</span> v8.7.0 Crownforge · 4/5 Active Tailscale &amp; Hetzner PQ Mesh</span>
+        </div>
+        <h1 id="tx-hero-h1">We build machines<br/>that run themselves.</h1>
+        <p class="tx-hero-desc" id="tx-hero-desc-text">
+          Founded by <strong>Collins Takem</strong> and expanding into Tallinn, Estonia (proposed entity upon Startup Committee approval of Application #179423: <strong>RASA-X-MACHINA OÜ</strong>), <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> engineers <strong class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</strong> — a formally verified
+          seL4/NixOS sovereign AI operating system and <strong>2,816-node heterogeneous omni-lattice</strong> combining autonomous execution (<strong>Ndimmôrwyn</strong>),
+          active cyber-deception (<strong>Faery Fortress</strong>), and mathematical solvency (<strong>Veritas-Rex TetraLedger</strong>).
+        </p>
+        <div class="tx-hero-actions">
+          <a class="tx-btn-primary" href="#storefront" id="tx-hero-cta-store">⚡ Instant Capabilities (<span>From</span> <span class="tx-btn-price" data-base-curr="EUR" data-base-amt="9">€9</span>) ↓</a>
+          <a class="tx-btn-outline" href="#calculator" id="tx-hero-cta-sprint">🏛️ Book VRTTI Architecture Sprint (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="2500">€2,313</span>–<span class="tx-btn-price" data-base-curr="USD" data-base-amt="10000">€9,250</span>) ↓</a>
+          <a class="tx-btn-outline" href="#executables">📦 Signed Executables (Linux · Win · Android) ↓</a>
+          <a class="tx-btn-outline" href="/pay">Multi-Currency &amp; Crypto Hub ↗</a>
+          <a class="tx-btn-outline" href="/estonia">Startup Estonia Companion ↗</a>
+        </div>
+      </div>
+
+      <!-- REALITY ATTESTATION WIDGET -->
+      <div class="tx-attest-box" id="reality-ledger">
+        <div class="tx-attest-panel">
+          <div class="tx-attest-inner">
+            <div class="tx-attest-head">
+              <span class="tx-attest-title">🛡️ Substrate Reality Engine</span>
+              <span class="tx-attest-status-pill">CROWNFORGE v8.6.0</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">Founder &amp; Principal Architect</span>
+              <span class="tx-attest-val">Collins Takem (Tallinn, EE)</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">Active Tailscale &amp; PQ Mesh</span>
+              <span class="tx-attest-val" style="color:var(--tx-aurora-3)" id="tx-attest-mesh-nodes">4/5 Online (Latitude + Hetzner Cloudflare Anycast + 2 Mobile)</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">Omni-Lattice Topology</span>
+              <span class="tx-attest-val" style="color:var(--tx-aurora-2)">2,816 Nodes (2048 Core + 512 Edge + 256 RF)</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">Empirical Token OpEx Cut</span>
+              <span class="tx-attest-val" style="color:var(--tx-aurora-3)">79.6% (<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0.042" data-decimals="3">€0.039</span>/1M Ops · 7.2ms System-1)</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">DSS-14.2 Gate & AF_XDP</span>
+              <span class="tx-attest-val" style="color:var(--tx-aurora-3)">11.40 Mpps (&lt;3.8µs P99) · ADMITTED</span>
+            </div>
+            <div class="tx-attest-row">
+              <span class="tx-attest-lbl">Multi-Currency Settlement</span>
+              <span class="tx-attest-val" style="color:var(--tx-purple-4)" id="tx-attest-curr-status">Top 10 Global Currencies · 21 SKUs</span>
+            </div>
+            <div class="tx-merkle-preview">
+              <span id="tx-home-merkle">Merkle: 11a713d76af83e96a04d538651a8c47ac8df9e04b087ee782c97639ea3962dcd</span>
+              <button class="tx-btn-copy-mini" onclick="copyMerkleHash()">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4-DOMAIN PRODUCT & SOLUTION NAVIGATOR -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:0.9rem;margin-top:2rem">
+      <a href="#storefront" onclick="filterStorefrontCategory('impulse')" style="text-decoration:none;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.35);border-radius:1rem;padding:1rem 1.15rem;display:flex;flex-direction:column;gap:0.25rem;transition:transform 0.15s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--tx-font-mono);font-size:0.7rem;color:#34d399;font-weight:700">⚡ 01 · DIGITAL CODICES & TOOLS</span>
+          <span style="font-family:var(--tx-font-mono);font-size:0.68rem;color:#a7f3d0;background:rgba(52,211,153,0.18);padding:0.15rem 0.45rem;border-radius:999px">INSTANT ACCESS</span>
+        </div>
+        <div style="font-family:var(--tx-font-display);font-size:1.05rem;font-weight:700;color:#fff">Blueprints & Engineering Manuals</div>
+        <div style="font-size:0.78rem;color:var(--tx-ink-dim)">5K Blueprint, KAI³ Codex, Asura Strategy Matrix, JobMatch CV Optimizer, Operator's Manual</div>
+      </a>
+      <a href="#storefront" onclick="filterStorefrontCategory('software')" style="text-decoration:none;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.35);border-radius:1rem;padding:1rem 1.15rem;display:flex;flex-direction:column;gap:0.25rem;transition:transform 0.15s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--tx-font-mono);font-size:0.7rem;color:#38bdf8;font-weight:700">🛰️ 02 · CLOUD & OPERATOR SAAS</span>
+          <span style="font-family:var(--tx-font-mono);font-size:0.68rem;color:#bae6fd;background:rgba(56,189,248,0.18);padding:0.15rem 0.45rem;border-radius:999px">SUBSCRIPTION</span>
+        </div>
+        <div style="font-family:var(--tx-font-display);font-size:1.05rem;font-weight:700;color:#fff">Cockpit, Alpha & Telemetry Streams</div>
+        <div style="font-size:0.78rem;color:var(--tx-ink-dim)">Sovereign Cockpit Suite, Alpha Yield Feed, Veritas Solvency API, Pro 5-Node Mesh, Murua Tracer API</div>
+      </a>
+      <a href="#storefront" onclick="filterStorefrontCategory('security')" style="text-decoration:none;background:rgba(192,132,252,0.08);border:1px solid rgba(192,132,252,0.35);border-radius:1rem;padding:1rem 1.15rem;display:flex;flex-direction:column;gap:0.25rem;transition:transform 0.15s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--tx-font-mono);font-size:0.7rem;color:#c084fc;font-weight:700">🛡️ 03 · CYBER-DEFENSE & ESCROW</span>
+          <span style="font-family:var(--tx-font-mono);font-size:0.68rem;color:#e9d5ff;background:rgba(192,132,252,0.18);padding:0.15rem 0.45rem;border-radius:999px">ZERO-TRUST</span>
+        </div>
+        <div style="font-family:var(--tx-font-display);font-size:1.05rem;font-weight:700;color:#fff">Fortress, Vault & Asset Escrow</div>
+        <div style="font-size:0.78rem;color:var(--tx-ink-dim)">Faery Fortress & Secret Vault Suite, NomenAgora Digital Namespace Escrow, Enterprise Validator Mesh</div>
+      </a>
+      <a href="#storefront" onclick="filterStorefrontCategory('executive')" style="text-decoration:none;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.35);border-radius:1rem;padding:1rem 1.15rem;display:flex;flex-direction:column;gap:0.25rem;transition:transform 0.15s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:var(--tx-font-mono);font-size:0.7rem;color:#fbbf24;font-weight:700">🏛️ 04 · EXECUTIVE ENGINEERING</span>
+          <span style="font-family:var(--tx-font-mono);font-size:0.68rem;color:#fde68a;background:rgba(251,191,36,0.18);padding:0.15rem 0.45rem;border-radius:999px">TURNKEY SLA</span>
+        </div>
+        <div style="font-family:var(--tx-font-display);font-size:1.05rem;font-weight:700;color:#fff">VRTTI Sprints & Turnkey Substrate</div>
+        <div style="font-size:0.78rem;color:var(--tx-ink-dim)">2-Day Architecture Audit, Zero-Trust Security Assessment, Liquidity Engine, 5-Day Sprint, Fractional CTO, Turnkey 10K OS</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TIER-2 INSTITUTIONAL ARCHITECTURE & 2816-NODE OMNI-LATTICE DOSSIER -->
+  <section id="architecture" class="tx-units-section" style="margin-bottom: 5rem;">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">00 · Estonian Deep-Tech Flagship · <span class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</span> v8.7.0 Crownforge</span>
+      <h2 class="tx-sec-title">2,816-Node Heterogeneous Omni-Lattice & Tier-2 Thesis</h2>
+      <p class="tx-sec-sub">
+        Engineered under the Immutable Triad of tianxiaOS Build Law (<strong>DSS-14.2 14 Mahāvidyā Domains</strong>,
+        <strong>Polyglot FFP-First Selection</strong>, and <strong>SLECO-SO++ Runtime Standard</strong>), replacing fragile
+        Python/Docker agent wrappers with formally verified microkernels and zero-copy shared memory.
+      </p>
+    </div>
+
+    <div class="tx-units-grid">
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">2,816-Node Omni-Lattice</h3>
+            <span class="tx-sub-routing-pill" style="color:#34d399">NIX-HUG 5-TIER</span>
+          </div>
+          <div class="tx-unit-role">2048 Macro-Core + 512 Edge-Swarm + 256 RF Gateway</div>
+          <p class="tx-unit-desc">
+            Deterministic 16×16×8 macro-core execution matrix governed by the 5-tier <code>nix-hug</code> autarchic lifecycle
+            (Generation → Compilation → Deployment → Telemetry → Garbage Collection), fused with 512 Tensor G3 mobile CoAP/UDP
+            0-RTT edge nodes and 256 Dense-KAN RF sentinels executing in 20 CPU cycles.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="https://tianxia.rasaxmachina.com" target="_blank" rel="noopener">Tianxia OS Portal ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/cockpit">Live HUD</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">seL4 + LionsOS + Nanos</h3>
+            <span class="tx-sub-routing-pill" style="color:#38bdf8">11.40 MPPS AF_XDP</span>
+          </div>
+          <div class="tx-unit-role">Formally Verified Microkernel & Unikernel Isolation</div>
+          <p class="tx-unit-desc">
+            Mathematical proof of spatial and temporal isolation via capability-based <code>seL4_Untyped_Retype</code> and
+            Nanos single-address-space unikernels. Sub-15ms CoW boot latency, &lt;12MB RAM footprint per cell, and zero-copy
+            <code>AF_XDP</code> ring transit at <strong>11.40 Mpps (&lt;3.8µs P99 latency)</strong>.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="https://substrate.rasaxmachina.com" target="_blank" rel="noopener">Substrate Spec ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/trust">Zero-Trust Proof</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Polyglot Ephemeral Cockpit</h3>
+            <span class="tx-sub-routing-pill" style="color:#c084fc">RUST · OCAML · NIM · C</span>
+          </div>
+          <div class="tx-unit-role">Wayland Layer-Shell HUD & VirtWL Capability Proxy</div>
+          <p class="tx-unit-desc">
+            <strong>Rust</strong> SCTK Wayland HUD (&lt;1.4ms launch), <strong>OCaml</strong> <code>tx-virtwl-proxy</code>
+            state-machine blocking untrusted microVM clipboard snooping (<code>zwlr_data_control_manager_v1</code>),
+            <strong>Nim</strong> AST expression parser (&lt;45µs), and <strong>C AVX2</strong> Manas vector kernel (0.18ms).
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/cockpit">Launch Cockpit ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('cockpit')">Inspect</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">79.6% Token OpEx Cut</h3>
+            <span class="tx-sub-routing-pill" style="color:#fbbf24">CONSTRUCTAL ROUTER</span>
+          </div>
+          <div class="tx-unit-role">System-1 Pre-Filter &amp; Bejan Sine-Meander Flow</div>
+          <p class="tx-unit-desc">
+            Reduces enterprise LLM token OpEx by <strong>79.6% (<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0.042" data-decimals="3">€0.039</span> vs <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="12.40" data-decimals="2">€11.47</span> per 1M ops)</strong> via 7.2–14.0ms local
+            System-1 triage. Constructal Sine-Meander routing (Bejan's Law) eliminated HTTP 429 burst failures from
+            <strong>41.93% down to 0.00%</strong> across <code>n=2,722</code> production dispatch events (+72.2% throughput).
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="https://status.rasaxmachina.com" target="_blank" rel="noopener">Live Metrics ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="#calculator">ROI Scope</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Faery Fortress &amp; Veritas</h3>
+            <span class="tx-sub-routing-pill" style="color:#f43f5e">&gt;<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="1400">€1,295</span> SCAN COST</span>
+          </div>
+          <div class="tx-unit-role">Active Cyber-Deception &amp; 500GB Memory Paging</div>
+          <p class="tx-unit-desc">
+            <strong>Faery Fortress</strong> shifts adversary network reconnaissance cost from <strong><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="25.46" data-decimals="2">€23.55</span> to &gt;<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="1400">€1,295</span></strong>
+            (45+ days) via dynamic topology mutation. <strong>Veritas</strong> enables 300–500GB virtual memory paging on
+            8GB nodes, while <strong>Paid.ai + TetraLedger</strong> settle outcomes at <strong>95.26% gross margin</strong>.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/fortress">Fortress Portal ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/ledger" target="_blank" rel="noopener">Ledger</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Tier-2 Pre-Seed Thesis</h3>
+            <span class="tx-sub-routing-pill" style="color:#5eead4"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="25" data-suffix="M">€23M</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="35" data-suffix="M">€32M</span> VALUATION</span>
+          </div>
+          <div class="tx-unit-role"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="1.5" data-decimals="1" data-suffix="M">€1.4M</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="2.0" data-decimals="1" data-suffix="M">€1.9M</span> Pre-Seed · Proposed Tallinn OÜ (#179423)</div>
+          <p class="tx-unit-desc">
+            Submitted for active evaluation under Estonia's <em>Välismaalaste seadus</em> § 100¹ Startup Visa framework (Dealum #179423; proposed entity upon approval: RASA-X-MACHINA OÜ), aligned with
+            Tehnopol, NATO DIANA dual-use defense autonomy, and European sovereign cloud mandates. Backed by 125+ deployed
+            microservices, 41 RGUs, and cryptographically verifiable production telemetry.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/collins">Founder &amp; Investor Dossier ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="https://github.com/Tianxia-Core" target="_blank" rel="noopener">GitHub (Rasa-X-Machina) ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE THREAT & OPPORTUNITY RADAR BANNER (RAW DATA THAT CREATES NEED) -->
+  <section id="radar" class="tx-radar-section">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">01 · Real-Time Intelligence &amp; Need Quantification</span>
+      <h2 class="tx-sec-title">Live Telemetry &amp; Market Opportunity Radar</h2>
+      <p class="tx-sec-sub">
+        Cryptographically scraped, verified telemetry streams from the Tianxia sensor mesh and DeFi scours.
+        Raw data establishing urgency and direct conversion triggers across enterprise security and autonomous yields.
+      </p>
+    </div>
+
+    <div class="tx-radar-banner">
+      <!-- Card 1: CISA KEV Threat Radar -->
+      <div class="tx-radar-card">
+        <div class="tx-radar-inner">
+          <div class="tx-radar-top">
+            <span class="tx-radar-cat">Active Threat Surface</span>
+            <span class="tx-live-pulse-dot" style="background:#f43f5e;box-shadow:0 0 10px #f43f5e"></span>
+          </div>
+          <div class="tx-radar-val" id="radar-cisa-count">1,312 Exploited CVEs</div>
+          <p class="tx-radar-sub" id="radar-cisa-desc">
+            Active Known Exploited Vulnerabilities tracked by CISA. Actively targeted in production enclaves.
+          </p>
+          <a class="tx-radar-action" href="#storefront" onclick="filterStorefrontCategory('security')">
+            Engage Hardening Sprint ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Feodo Botnet Sinkhole -->
+      <div class="tx-radar-card">
+        <div class="tx-radar-inner">
+          <div class="tx-radar-top">
+            <span class="tx-radar-cat">Botnet C2 Defense</span>
+            <span class="tx-live-pulse-dot"></span>
+          </div>
+          <div class="tx-radar-val" id="radar-sinkhole-count">5 C2 Nodes Sinkholed</div>
+          <p class="tx-radar-sub">
+            Feodo Tracker active malware botnet C2 IPs intercepted and blocked at edge WireGuard boundary.
+          </p>
+          <a class="tx-radar-action" href="/radar" target="_blank" rel="noopener">
+            View Live Sinkhole Radar ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Alpha Arbitrage Yields -->
+      <div class="tx-radar-card">
+        <div class="tx-radar-inner">
+          <div class="tx-radar-top">
+            <span class="tx-radar-cat">Autonomous Yield</span>
+            <span class="tx-live-pulse-dot" style="background:#38bdf8;box-shadow:0 0 10px #38bdf8"></span>
+          </div>
+          <div class="tx-radar-val" id="radar-yield-val">9.84% – 11.45% APY</div>
+          <p class="tx-radar-sub" id="radar-yield-desc">
+            Kamino Solana USDC &amp; MarginFi USDT scoured rates. Live cross-DEX spread: 18.2 bps.
+          </p>
+          <a class="tx-radar-action" href="#storefront" onclick="openCheckout('alpha', 'RasaXM Alpha Arbitrage Stream', 29, 'EUR')">
+            Subscribe Alpha (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Veritas-Rex Mathematical Solvency -->
+      <div class="tx-radar-card">
+        <div class="tx-radar-inner">
+          <div class="tx-radar-top">
+            <span class="tx-radar-cat">Veritas-Rex Solvency</span>
+            <span class="tx-live-pulse-dot"></span>
+          </div>
+          <div class="tx-radar-val" id="radar-solvency-val"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0" data-decimals="2">€0.00</span> Discrepancy</div>
+          <p class="tx-radar-sub">
+            TetraLedger 4-way balanced settlement (Stripe ⇄ Gumroad ⇄ Solana ⇄ Ledger). Append-only Merkle proof.
+          </p>
+          <a class="tx-radar-action" href="/ledger" target="_blank" rel="noopener">
+            Inspect Reality Proof ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5: Murua Postal Telemetry & Dispute Shield -->
+      <div class="tx-radar-card">
+        <div class="tx-radar-inner">
+          <div class="tx-radar-top">
+            <span class="tx-radar-cat">Postal Telemetry</span>
+            <span class="tx-live-pulse-dot" style="background:#14b8a6;box-shadow:0 0 10px #14b8a6"></span>
+          </div>
+          <div class="tx-radar-val" id="radar-murua-val">95.9% UPU Reliability</div>
+          <p class="tx-radar-sub">
+            Universal Tracer: 62.4% false INR dispute reduction via Bayesian latent state estimation for untracked mail.
+          </p>
+          <a class="tx-radar-action" href="/tracer">
+            Open Murua Tracer ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL STOREFRONT & CAPABILITY MATRIX -->
+  <section id="storefront" class="tx-store-section">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag" data-i18n="store_tag">02 · Complete 21-SKU Capability Catalog · 29 Currencies, 42 Global Markets &amp; 6 Settlement Rails</span>
+      <h2 class="tx-sec-title" data-i18n="store_title">Sovereign Storefront &amp; Capability Matrix</h2>
+      <p class="tx-sec-sub">
+        Organized from instant <strong>digital engineering codices &amp; tools</strong> to <strong>recurring SaaS control planes</strong>,
+        <strong>cryptographic defense suites</strong>, and <strong>executive VRTTI architecture sprints</strong>. Select your preferred market, language, and billing currency above
+        across all <strong>42 global markets and 29 currencies</strong> to be billed directly in your chosen single currency with itemized 22-character card statement descriptors.
+      </p>
+    </div>
+
+    <!-- Storefront Category Pills -->
+    <div class="tx-store-cat-bar">
+      <button class="tx-store-cat-btn active" data-cat="all" data-i18n="cat_all">All Capabilities (21 SKUs)</button>
+      <button class="tx-store-cat-btn" data-cat="impulse" data-i18n="cat_codex">⚡ Digital Codices &amp; Tools (5)</button>
+      <button class="tx-store-cat-btn" data-cat="software" data-i18n="cat_saas">🛰️ SaaS, Cockpit &amp; Telemetry (5)</button>
+      <button class="tx-store-cat-btn" data-cat="security" data-i18n="cat_sec">🛡️ Security, Vault &amp; Escrow (4)</button>
+      <button class="tx-store-cat-btn" data-cat="executive" data-i18n="cat_exec">🏛️ Executive Sprints &amp; Retainers (7)</button>
+    </div>
+
+    <div class="tx-store-grid" id="tx-store-grid-container">
+      <!-- 1. SKU-TX-01: Tianxia 5K Blueprint (€9) -->
+      <div class="tx-store-card highlight" data-store-cat="impulse">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#34d399;border-color:rgba(52,211,153,0.4)">⚡ SKU-TX-01 · DIGITAL BLUEPRINT · STMT: RASAXMACHINA 5KBLUEPR</span>
+          <h3 class="tx-store-name">Tianxia 5K Rapid Autonomous Blueprint</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="9" data-eur="9" data-usd="10" data-sol="0.07">€9</span>
+            <span class="tx-store-price-sub">/ instant digital edition</span>
+          </div>
+          <p class="tx-store-desc">
+            Zero-to-5K autonomous execution architecture: step-by-step RGU deployment templates, multi-rail payment wiring, and System-1 prompt triage playbooks.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Instant PDF + JSON manifest download upon checkout</li>
+            <li>8-FFP microservice bounding templates &amp; SLECO-SO++ scripts</li>
+            <li>Multi-rail Stripe, Solana &amp; Base L2 settlement blueprints</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA 5KBLUEPR</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="blueprint_5k" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=blueprint_5k" target="_blank" rel="noopener">💳 Buy Now (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="9">€9</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('blueprint_5k', 'Tianxia 5K Rapid Autonomous Blueprint', 9, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SKU-TX-02: KAI³ Tri-Vector Engineering Codex (€19) -->
+      <div class="tx-store-card highlight" data-store-cat="impulse">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#34d399;border-color:rgba(52,211,153,0.4)">⚡ SKU-TX-02 · ENGINEERING CODEX · STMT: RASAXMACHINA KAI3CDX</span>
+          <h3 class="tx-store-name">KAI³ Tri-Vector Engineering Codex</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="19" data-eur="19" data-usd="21" data-sol="0.14">€19</span>
+            <span class="tx-store-price-sub">/ perpetual license</span>
+          </div>
+          <p class="tx-store-desc">
+            The complete ENHAN³ engineering manual for autonomous agent swarms: Resilience traps, O(1) velocity algorithms, and cgroup v2 capability hardening.
+          </p>
+          <ul class="tx-store-perks">
+            <li>79.6% LLM token OpEx reduction architecture patterns</li>
+            <li>POSIX <code>/dev/shm</code> lockless ring buffer reference code</li>
+            <li>Constructal Sine-Meander 0% HTTP 429 router formulas</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA KAI3CDX</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="kai3_codex" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=kai3_codex" target="_blank" rel="noopener">💳 Buy Now (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="19">€19</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('kai3_codex', 'KAI³ Tri-Vector Engineering Codex', 19, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. SKU-TX-03: Asura Asymmetric Strategy Matrix (€19) -->
+      <div class="tx-store-card" data-store-cat="impulse">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#34d399;border-color:rgba(52,211,153,0.4)">⚡ SKU-TX-03 · STRATEGY DOCTRINE · STMT: RASAXMACHINA ASURAMTX</span>
+          <h3 class="tx-store-name">Asura Asymmetric Strategy Matrix</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="19" data-eur="19" data-usd="21" data-sol="0.14">€19</span>
+            <span class="tx-store-price-sub">/ perpetual codex</span>
+          </div>
+          <p class="tx-store-desc">
+            Asymmetric market positioning, active cyber-deception doctrine, and sovereign syndicate capital allocation handbook for technical founders.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Quantitative multi-domain opportunity scoring &amp; capital model</li>
+            <li>Faery Fortress active reconnaissance cost-shifting playbook</li>
+            <li>Autonomous treasury &amp; multi-rail capital allocation rules</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA ASURAMTX</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="asura_matrix" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=asura_matrix" target="_blank" rel="noopener">💳 Buy Now (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="19">€19</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('asura_matrix', 'Asura Asymmetric Strategy Matrix', 19, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. SKU-TX-04: JobMatch Honest CV Rewriter (€19) -->
+      <div class="tx-store-card" data-store-cat="impulse">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#34d399;border-color:rgba(52,211,153,0.4)">⚡ SKU-TX-04 · CAREER AI SUITE · STMT: RASAXMACHINA JOBMATCH</span>
+          <h3 class="tx-store-name">JobMatch Honest CV Rewriter</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="19" data-eur="19" data-usd="21" data-sol="0.14">€19</span>
+            <span class="tx-store-price-sub">/ instant rewrite pass</span>
+          </div>
+          <p class="tx-store-desc">
+            Cryptographically grounded executive resume &amp; technical dossier optimizer with a strict 50% semantic match firewall and zero hallucinated claims.
+          </p>
+          <ul class="tx-store-perks">
+            <li>ATS keyword alignment without fabricating experience</li>
+            <li>Quantified impact bullet synthesis for Staff/Principal roles</li>
+            <li>Tailored executive cover letter &amp; interview talking points</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA JOBMATCH</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="cv_rewrite" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=cv_rewrite" target="_blank" rel="noopener">💳 Buy Now (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="19">€19</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('cv_rewrite', 'JobMatch Honest CV Rewriter', 19, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. SKU-TX-05: Tianxia Operator's Manual & 41 RGUs Codex (€29) -->
+      <div class="tx-store-card highlight" data-store-cat="impulse">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#34d399;border-color:rgba(52,211,153,0.4)">⚡ SKU-TX-05 · MASTER ARCHITECTURE · STMT: RASAXMACHINA OPMANUAL</span>
+          <h3 class="tx-store-name">Tianxia Operator's Manual (41 RGUs)</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="29" data-eur="29" data-usd="31" data-sol="0.21">€29</span>
+            <span class="tx-store-price-sub">/ perpetual codex</span>
+          </div>
+          <p class="tx-store-desc">
+            The master technical blueprint covering all 41 Revenue Generating Units, DSS-14.2 14 Mahāvidyā domains, and 6-rail autonomous settlement.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Complete 41-RGU architecture &amp; monetization catalog</li>
+            <li>DSS-14.2 &amp; Polyglot FFP-First implementation law</li>
+            <li>Full Stripe, Solana, Base L2, Gumroad, Paddle &amp; x402 schemas</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA OPMANUAL</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="manual" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=manual" target="_blank" rel="noopener">💳 Buy Now (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('manual', 'Tianxia Operator Manual & 41 RGUs Codex', 29, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. SKU-TX-06: Tianxia Sovereign Cockpit Suite (€29/mo) -->
+      <div class="tx-store-card highlight" data-store-cat="software">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#38bdf8;border-color:rgba(56,189,248,0.4)">🛰️ SKU-TX-06 · SAAS CONTROL PLANE · STMT: RASAXMACHINA COCKPIT</span>
+          <h3 class="tx-store-name">Tianxia Sovereign Cockpit (Starter)</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="29" data-eur="29" data-usd="31" data-sol="0.21">€29</span>
+            <span class="tx-store-price-sub">/ month (or €290/year)</span>
+          </div>
+          <p class="tx-store-desc">
+            Self-hosted multi-node operator control plane linking NixOS Workhorse Hub, Hetzner PQ Relay, and Mobile Enclaves with sub-millisecond telemetry.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Multi-node cursor &amp; workspace bus bridge (:8792/:8793)</li>
+            <li>Real-time SSE telemetry &amp; System-1 MANAS triage (&lt;1ms)</li>
+            <li>Dual WayVNC display matrix &amp; mobile PWA companion</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA COCKPIT</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="starter" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=starter" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('starter', 'Tianxia Sovereign Cockpit Suite', 29, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. SKU-TX-07: RasaXM Alpha Arbitrage Stream (€29/mo) -->
+      <div class="tx-store-card highlight" data-store-cat="software">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#38bdf8;border-color:rgba(56,189,248,0.4)">🛰️ SKU-TX-07 · YIELD INTELLIGENCE · STMT: RASAXMACHINA ALPHASIG</span>
+          <h3 class="tx-store-name">RasaXM Alpha Arbitrage Stream</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="29" data-eur="29" data-usd="31" data-sol="0.21">€29</span>
+            <span class="tx-store-price-sub">/ month</span>
+          </div>
+          <p class="tx-store-desc">
+            Cross-venue stablecoin yield and funding rate arbitrage signals (9.84%–15%+ APY, &gt;<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5" data-suffix="M">€5M</span> TVL) backed by append-only Veritas-Rex proofs.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Real-time webhook, REST API &amp; Telegram alert feed</li>
+            <li>Solana (Kamino/MarginFi) &amp; Base L2 cross-DEX spreads</li>
+            <li>Veritas-Rex cryptographically signed track record</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA ALPHASIG</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="alpha" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=alpha" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('alpha', 'RasaXM Alpha Arbitrage Stream', 29, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. SKU-TX-08: Veritas-Rex Reality Audit Stream (€49/mo) -->
+      <div class="tx-store-card" data-store-cat="software">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#38bdf8;border-color:rgba(56,189,248,0.4)">🛰️ SKU-TX-08 · SOLVENCY TELEMETRY · STMT: RASAXMACHINA VERITAS</span>
+          <h3 class="tx-store-name">Veritas-Rex Reality Audit Feed</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="49" data-eur="49" data-usd="53" data-sol="0.35">€49</span>
+            <span class="tx-store-price-sub">/ month</span>
+          </div>
+          <p class="tx-store-desc">
+            Continuous 4-way cryptographic solvency reconciliation (Stripe ⇄ Gumroad ⇄ Solana/Base ⇄ SQLite) with real-time Merkle root webhooks.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Deterministic <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0" data-decimals="2">€0.00</span> balance discrepancy verification</li>
+            <li>Automated investor &amp; auditor proof-of-reserves endpoints</li>
+            <li>Append-only SHA-256 Merkle DAG attestation logs</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA VERITAS</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="ledger" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=ledger" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="49">€49</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('ledger', 'Veritas-Rex Reality Audit Stream', 49, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. SKU-TX-09: Tianxia Pro Enclave Mesh (€99/mo) -->
+      <div class="tx-store-card" data-store-cat="software">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#38bdf8;border-color:rgba(56,189,248,0.4)">🛰️ SKU-TX-09 · PRO ENCLAVE MESH · STMT: RASAXMACHINA PROMESH</span>
+          <h3 class="tx-store-name">Tianxia Pro Enclave Mesh (5 Nodes)</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="99" data-eur="99" data-usd="107" data-sol="0.70">€99</span>
+            <span class="tx-store-price-sub">/ month</span>
+          </div>
+          <p class="tx-store-desc">
+            Multi-node post-quantum Rosenpass + Tailscale enclave cluster for teams running up to 5 autonomous compute/relay nodes with VirtWL isolation.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Up to 5 sovereign nodes with Rosenpass PQ WireGuard PSK</li>
+            <li>OCaml VirtWL Wayland capability proxy &amp; clipboard firewall</li>
+            <li>Constructal Sine-Meander multi-provider LLM router</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA PROMESH</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="pro" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=pro" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="99">€99</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('pro', 'Tianxia Pro Enclave Mesh (5 Nodes)', 99, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. SKU-TX-10: Faery Fortress Hardening Suite (€149) -->
+      <div class="tx-store-card highlight" data-store-cat="security">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#c084fc;border-color:rgba(192,132,252,0.4)">🛡️ SKU-TX-10 · DEFENSE &amp; VAULT · STMT: RASAXMACHINA FORTRESS</span>
+          <h3 class="tx-store-name">Faery Fortress &amp; Secret Vault Suite</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="149" data-eur="149" data-usd="160" data-sol="1.08">€149</span>
+            <span class="tx-store-price-sub">/ one-time license</span>
+          </div>
+          <p class="tx-store-desc">
+            Complete cryptographic secret isolation and active cyber-deception toolkit shifting attacker reconnaissance cost from <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="25.46" data-decimals="2">€23.55</span> to &gt;<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="1400">€1,295</span>.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Aethervault hardware-isolated secret &amp; key manager</li>
+            <li>CISA KEV &amp; Feodo botnet C2 real-time DNS sinkholing</li>
+            <li>GDPR Article 17 irreversible cryptoshredding engine</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA FORTRESS</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="vault_toolkit" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=vault_toolkit" target="_blank" rel="noopener">💳 Buy License (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="149">€149</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('vault_toolkit', 'Faery Fortress Hardening Suite', 149, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. SKU-TX-11: Murua Universal Tracer & Dispute Shield (€149/mo) -->
+      <div class="tx-store-card highlight" data-store-cat="software">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#5eead4;border-color:rgba(20,184,166,0.4)">🛰️ SKU-TX-11 · LOGISTICS PRO API · STMT: RASAXMACHINA TRACER</span>
+          <h3 class="tx-store-name">Murua Universal Tracer Pro API</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="149" data-eur="149" data-usd="159" data-sol="1.1">€149</span>
+            <span class="tx-store-price-sub">/ month (Pro API)</span>
+          </div>
+          <p class="tx-store-desc">
+            Synthetic Bayesian state-space telemetry for cross-border untracked mail. Reduces false INR disputes by 62.4% and automates UPU Form CN08 filings.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Sub-4-hour arrival window estimation across 192 UPU members</li>
+            <li><span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="34.98" data-decimals="2">€34.98</span> shipping freight arbitrage per consignment</li>
+            <li>Automated UPU Article 15 dispute evidence dossier</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA TRACER</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="tracer" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=tracer" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="149">€149</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('tracer', 'Murua Universal Tracer Pro API', 149, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. SKU-TX-12: NomenAgora Handle Secondary Escrow (€277) -->
+      <div class="tx-store-card" data-store-cat="security">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#c084fc;border-color:rgba(192,132,252,0.4)">🛡️ SKU-TX-12 · SYNDICATE ESCROW · STMT: RASAXMACHINA ESCROW</span>
+          <h3 class="tx-store-name">NomenAgora Handle Escrow</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="299" data-eur="277" data-usd="299" data-sol="2.0">€277</span>
+            <span class="tx-store-price-sub">/ asset settlement</span>
+          </div>
+          <p class="tx-store-desc">
+            Cryptographically verified secondary acquisition and escrow for high-value Telegram handles, TON DNS, and sovereign namespace assets.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Fragment blockchain &amp; multi-sig escrow coordination</li>
+            <li>Automated custody verification &amp; anti-frontrunning</li>
+            <li>Merkle-signed ownership provenance certificate</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA ESCROW</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="escrow" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=escrow" target="_blank" rel="noopener">💳 Escrow (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="299">€277</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('escrow', 'NomenAgora Handle Secondary Escrow', 299, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. SKU-TX-13: Tianxia Enterprise Sovereign Validator & Mesh (€499/mo) -->
+      <div class="tx-store-card" data-store-cat="security">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#c084fc;border-color:rgba(192,132,252,0.4)">🛡️ SKU-TX-13 · ENTERPRISE MESH · STMT: RASAXMACHINA ENTRPRS</span>
+          <h3 class="tx-store-name">Enterprise Sovereign Validator &amp; Mesh</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="EUR" data-base-amt="499" data-eur="499" data-usd="539" data-sol="3.5">€499</span>
+            <span class="tx-store-price-sub">/ month</span>
+          </div>
+          <p class="tx-store-desc">
+            Full enterprise license for the 2,816-node omni-lattice scheduler, ETAMANGA PoA validator node, and dedicated AF_XDP zero-copy telemetry bus.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Dedicated ETAMANGA Substrate SS58 authority validator slot</li>
+            <li>11.40 Mpps AF_XDP kernel-bypass packet inspection suite</li>
+            <li>24/7 automated failover watchdog &amp; priority SLA</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA ENTRPRS</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="enterprise" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=enterprise" target="_blank" rel="noopener">💳 Subscribe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="499">€499</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('enterprise', 'Tianxia Enterprise Sovereign Validator & Mesh', 499, 'EUR')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. SKU-TX-14: NomenAgora Syndicate Broker Retainer (€1,388/mo) -->
+      <div class="tx-store-card" data-store-cat="security">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#c084fc;border-color:rgba(192,132,252,0.4)">🛡️ SKU-TX-14 · SYNDICATE RETAINER · STMT: RASAXMACHINA SYNDRET</span>
+          <h3 class="tx-store-name">NomenAgora Syndicate Broker Retainer</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="1500" data-eur="1388" data-usd="1500" data-sol="10.1">€1,388</span>
+            <span class="tx-store-price-sub">/ month</span>
+          </div>
+          <p class="tx-store-desc">
+            Dedicated institutional namespace acquisition, secondary Fragment portfolio management, and sovereign Telegram Mini-App syndicate brokerage.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Priority bidding &amp; OTC sourcing across 60+ retained handles</li>
+            <li>Custom Telegram Mini-App &amp; Bot webhook orchestration</li>
+            <li>Zero-counterparty-risk multi-sig settlement management</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA SYNDRET</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="syndicate_retainer" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=syndicate_retainer" target="_blank" rel="noopener">💳 Retain (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="1500">€1,388</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('syndicate_retainer', 'NomenAgora Syndicate Broker Retainer', 1500, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. SKU-TX-15: VRTTI 2-Day Architecture Audit Sprint (€2,313) -->
+      <div class="tx-store-card" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-15 · 48-HOUR DIAGNOSTIC · STMT: RASAXMACHINA VRTTIAUD</span>
+          <h3 class="tx-store-name">VRTTI 2-Day Architecture Audit</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="2500" data-eur="2313" data-usd="2500" data-sol="16.8">€2,313</span>
+            <span class="tx-store-price-sub">/ 2-day executive sprint</span>
+          </div>
+          <p class="tx-store-desc">
+            Rapid 48-hour principal architecture diagnostic, LLM token OpEx audit, and security boundary teardown delivered directly by Collins Takem.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Full codebase AST &amp; dependency vulnerability sweep</li>
+            <li>Token OpEx reduction roadmap (targeting 65%–79% savings)</li>
+            <li>100% creditable toward a 5-Day or 10K VRTTI Sprint</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA VRTTIAUD</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="vrtti_audit" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=vrtti_audit" target="_blank" rel="noopener">💳 Book Audit (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="2500">€2,313</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('vrtti_audit', 'VRTTI 2-Day Architecture Audit Sprint', 2500, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. SKU-TX-16: Zero-Trust Infrastructure Security Assessment (€3,238) -->
+      <div class="tx-store-card" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-16 · SECURITY ASSESSMENT · STMT: RASAXMACHINA ZTAUDIT</span>
+          <h3 class="tx-store-name">Zero-Trust Infrastructure Assessment</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="3500" data-eur="3238" data-usd="3500" data-sol="23.5">€3,238</span>
+            <span class="tx-store-price-sub">/ comprehensive audit</span>
+          </div>
+          <p class="tx-store-desc">
+            Comprehensive penetration test, delimiter smuggling scan, and SSRF probe audit across your LLM pipelines, MCP servers, and cloud enclaves.
+          </p>
+          <ul class="tx-store-perks">
+            <li>System-1 MANAS vector injection &amp; prompt-smuggling fuzzing</li>
+            <li>WireGuard/Tailscale loopback &amp; cgroup boundary proofing</li>
+            <li>Formal Merkle-signed attestation report for investors</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA ZTAUDIT</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="audit" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=audit" target="_blank" rel="noopener">💳 Commission (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="3500">€3,238</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('audit', 'Zero-Trust Infrastructure Assessment', 3500, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. SKU-TX-17: Autonomous Liquidity Engine & Custom MEV Bot (€4,440) -->
+      <div class="tx-store-card" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-17 · ON-CHAIN ENGINE · STMT: RASAXMACHINA LIQENGN</span>
+          <h3 class="tx-store-name">Autonomous Liquidity Engine</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="4800" data-eur="4440" data-usd="4800" data-sol="32">€4,440</span>
+            <span class="tx-store-price-sub">/ perpetual license</span>
+          </div>
+          <p class="tx-store-desc">
+            Self-hosted liquidity rebalancing daemon with Jito-Solana and Flashbots MEV protection, auto-rebalancing across Solana and Base DEX pools.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Sub-millisecond route optimization across Raydium, Jupiter &amp; Aerodrome</li>
+            <li>Zero-sandwich private mempool transaction bundling</li>
+            <li>Integrated Veritas-Rex double-entry audit logging</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA LIQENGN</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="liquidity" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=liquidity" target="_blank" rel="noopener">💳 Acquire (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="4800">€4,440</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('liquidity', 'Autonomous Liquidity Engine', 4800, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18. SKU-TX-18: VRTTI 5-Day Production Delivery Sprint (€4,625) -->
+      <div class="tx-store-card highlight" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-18 · 5-DAY DELIVERY SPRINT · STMT: RASAXMACHINA VRTTI5K</span>
+          <h3 class="tx-store-name">VRTTI 5-Day Architecture Sprint</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="5000" data-eur="4625" data-usd="5000" data-sol="33.5">€4,625</span>
+            <span class="tx-store-price-sub">/ 5-day delivery sprint</span>
+          </div>
+          <p class="tx-store-desc">
+            Direct high-velocity systems implementation, threat model, and production agentic swarm deployment led personally by founder Collins Takem.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Production polyglot microservice &amp; MCP tool integration</li>
+            <li>Post-quantum Tailscale/WireGuard sovereign mesh topology</li>
+            <li>Constructal LLM router cutting token OpEx by up to 79.6%</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA VRTTI5K</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="vrtti_5k" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=vrtti_5k" target="_blank" rel="noopener">💳 Retain Sprint (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="5000">€4,625</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('vrtti_5k', 'VRTTI Architecture Sprint', 5000, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. SKU-TX-19: Executive Principal Systems Retainer (€4,625/mo) -->
+      <div class="tx-store-card" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-19 · PRINCIPAL ADVISORY · STMT: RASAXMACHINA EXECRET</span>
+          <h3 class="tx-store-name">Executive Principal Systems Retainer</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="5000" data-eur="4625" data-usd="5000" data-sol="33.5">€4,625</span>
+            <span class="tx-store-price-sub">/ month (principal advisory)</span>
+          </div>
+          <p class="tx-store-desc">
+            Direct principal advisory, board-level systems architecture review, and sovereign AI strategy with founder Collins Takem.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Bi-weekly executive architecture &amp; threat-model sessions</li>
+            <li>Priority design review for agentic &amp; zero-trust infrastructure</li>
+            <li>Direct encrypted communication channel with Collins Takem</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA EXECRET</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="founder_retainer" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=founder_retainer" target="_blank" rel="noopener">💳 Retain (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="5000">€4,625</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('founder_retainer', 'Executive Principal Systems Retainer', 5000, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20. SKU-TX-20: Fractional CTO & Systems Retainer (€5,550/mo) -->
+      <div class="tx-store-card" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-20 · DEDICATED CTO · STMT: RASAXMACHINA CTORET</span>
+          <h3 class="tx-store-name">Fractional CTO &amp; Systems Retainer</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="6000" data-eur="5550" data-usd="6000" data-sol="40">€5,550</span>
+            <span class="tx-store-price-sub">/ month (dedicated)</span>
+          </div>
+          <p class="tx-store-desc">
+            Ongoing principal systems stewardship by Collins Takem. Autonomous agent supervision, DSS-14.2 gate compliance, and architecture leadership.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Weekly architecture review, code audit &amp; telemetry verification</li>
+            <li>24/7 priority incident triage &amp; failover handling</li>
+            <li>Guaranteed &lt; 4-hour executive SLA response</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA CTORET</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="retainer" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=retainer" target="_blank" rel="noopener">💳 Retain (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="6000">€5,550</span>/mo) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('retainer', 'Fractional CTO & Systems Retainer', 6000, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21. SKU-TX-21: VRTTI Sovereign Substrate Turnkey Delivery (€9,250) -->
+      <div class="tx-store-card highlight" data-store-cat="executive">
+        <div class="tx-store-inner">
+          <span class="tx-store-badge" style="color:#fbbf24;border-color:rgba(251,191,36,0.4)">🏛️ SKU-TX-21 · TURNKEY SUBSTRATE · STMT: RASAXMACHINA VRTTI10K</span>
+          <h3 class="tx-store-name">Sovereign Substrate Turnkey (10K)</h3>
+          <div class="tx-store-price-row">
+            <span class="tx-store-price" data-base-curr="USD" data-base-amt="10000" data-eur="9250" data-usd="10000" data-sol="67">€9,250</span>
+            <span class="tx-store-price-sub">/ turnkey delivery block</span>
+          </div>
+          <p class="tx-store-desc">
+            End-to-end deployment of closed-loop local LLM inference, encrypted memory lattices, Faery Fortress defense, and automated monetization rails.
+          </p>
+          <ul class="tx-store-perks">
+            <li>Custom Revenue Generating Unit (RGU) cluster deployment</li>
+            <li>Hardware-isolated secret management via Aethervault</li>
+            <li>TetraLedger 4-way settlement &amp; Merkle audit integration</li>
+            <li>Card Statement Descriptor: <code>RASAXMACHINA VRTTI10K</code></li>
+          </ul>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-btn-buy tx-express-stripe" data-plan="vrtti_10k" style="flex:1;text-decoration:none" href="/api/v1/stripe-express?plan=vrtti_10k" target="_blank" rel="noopener">💳 Engage Turnkey (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="10000">€9,250</span>) ↗</a>
+            <button class="tx-btn-outline" style="padding:0.5rem 0.85rem;font-size:0.78rem" onclick="openCheckout('vrtti_10k', 'Sovereign Substrate Turnkey Delivery', 10000, 'USD')">◎ Multi-Rail / -10%</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PROPOSAL & RETAINER CALCULATOR -->
+  <section id="calculator" class="tx-calc-section">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">03 · Transparent Scope &amp; Proposal Engine</span>
+      <h2 class="tx-sec-title">Interactive Retainer &amp; Scope Calculator</h2>
+      <p class="tx-sec-sub">
+        Configure your engagement parameters in real time. Generate transparent price estimates and submit
+        for an instant, cryptographically signed Merkle proposal receipt directly from founder Collins Takem.
+      </p>
+    </div>
+
+    <div class="tx-calc-panel">
+      <div class="tx-calc-inner">
+        <div class="tx-calc-grid">
+          <!-- Left Column: Parameters -->
+          <div>
+            <div class="tx-calc-block">
+              <span class="tx-calc-block-title">Select Engagement Track</span>
+              <div class="tx-calc-options-grid">
+                <div class="tx-calc-option selected" id="track-opt-sprint" data-track="sprint" role="button" tabindex="0" onclick="setCalcTrack('sprint', 5000)">
+                  <div class="tx-calc-option-title">Architecture Sprint</div>
+                  <div class="tx-calc-option-sub">5-day delivery, threat model, AST sweep (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="5000">€4,625</span>)</div>
+                </div>
+                <div class="tx-calc-option" id="track-opt-substrate" data-track="substrate" role="button" tabindex="0" onclick="setCalcTrack('substrate', 10000)">
+                  <div class="tx-calc-option-title">Turnkey Substrate</div>
+                  <div class="tx-calc-option-sub">Full multi-agent deployment &amp; RGUs (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="10000">€9,250</span>)</div>
+                </div>
+                <div class="tx-calc-option" id="track-opt-audit" data-track="audit" role="button" tabindex="0" onclick="setCalcTrack('audit', 3500)">
+                  <div class="tx-calc-option-title">Zero-Trust Audit</div>
+                  <div class="tx-calc-option-sub">SSRF, AI vector defense, enclave hardening (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="3500">€3,238</span>)</div>
+                </div>
+                <div class="tx-calc-option" id="track-opt-retainer" data-track="retainer" role="button" tabindex="0" onclick="setCalcTrack('retainer', 6000)">
+                  <div class="tx-calc-option-title">Fractional CTO Retainer</div>
+                  <div class="tx-calc-option-sub">Dedicated monthly architecture leadership (<span class="tx-btn-price" data-base-curr="USD" data-base-amt="6000">€5,550</span>/mo)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tx-calc-block">
+              <span class="tx-calc-block-title">Infrastructure Deployment Topology</span>
+              <div class="tx-calc-options-grid">
+                <div class="tx-calc-option selected" id="scale-opt-1" data-scale="1.0" role="button" tabindex="0" onclick="setCalcScale(1.0, '1–3 Nodes (Enclave Edge)')">
+                  <div class="tx-calc-option-title">1–3 Nodes</div>
+                  <div class="tx-calc-option-sub">Local enclave, edge gateway, single relay (1.0x)</div>
+                </div>
+                <div class="tx-calc-option" id="scale-opt-15" data-scale="1.5" role="button" tabindex="0" onclick="setCalcScale(1.5, '4–10 Nodes (Distributed Swarm)')">
+                  <div class="tx-calc-option-title">4–10 Nodes</div>
+                  <div class="tx-calc-option-sub">Distributed multi-device swarm mesh (1.5x)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tx-calc-block">
+              <span class="tx-calc-block-title">Security &amp; Hardening Standard</span>
+              <div class="tx-calc-options-grid">
+                <div class="tx-calc-option selected" id="sla-opt-std" data-sla="standard" role="button" tabindex="0" onclick="setCalcSLA(0, 'Standard 99.9% SLA')">
+                  <div class="tx-calc-option-title">Standard 99.9% SLA</div>
+                  <div class="tx-calc-option-sub">Standard WireGuard + Tailscale baseline (Included)</div>
+                </div>
+                <div class="tx-calc-option" id="sla-opt-dss14" data-sla="dss14" role="button" tabindex="0" onclick="setCalcSLA(1500, 'DSS-14 ClosedQuorum Enclave')">
+                  <div class="tx-calc-option-title">DSS-14 Zero-Leak</div>
+                  <div class="tx-calc-option-sub">Zero bare exceptions, hardware HSM vault (+ <span class="tx-btn-price" data-base-curr="USD" data-base-amt="1500">€1,388</span>)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live Estimate & Proposal Trigger -->
+          <div class="tx-calc-price-card">
+            <div>
+              <span class="tx-calc-total-lbl">Estimated Project Allocation</span>
+              <div class="tx-calc-total-val" id="tx-calc-display-val" aria-live="polite">€4,625</div>
+              <div style="font-family:var(--tx-font-mono);font-size:0.8rem;color:var(--tx-purple-4)" id="tx-calc-display-sub">
+                Single 5-Day Delivery Block
+              </div>
+              <ul class="tx-calc-spec-list">
+                <li id="calc-spec-track">Track: VRTTI Architecture Sprint</li>
+                <li id="calc-spec-nodes">Topology: 1–3 Nodes (Enclave Edge)</li>
+                <li id="calc-spec-sla">Standard: Standard 99.9% SLA</li>
+                <li>Attestation: Veritas-Rex Merkle Solvency Guarantee</li>
+                <li>Direct Principal Delivery: Collins Takem</li>
+              </ul>
+            </div>
+            <div>
+              <button class="tx-btn-primary" style="width:100%;justify-content:center;margin-bottom:0.75rem" onclick="openInquiryModal()">
+                Request Merkle-Signed Proposal ↗
+              </button>
+              <div style="font-size:0.72rem;color:var(--tx-ink-dim);text-align:center">
+                Signed receipts logged to Substrate. Guaranteed &lt; 4-hour executive response.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE SUBDOMAIN ECOSYSTEM GUIDE -->
+  <section id="subdomains" style="margin-bottom: 5rem;">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">04 · Sovereign Architecture Directory</span>
+      <h2 class="tx-sec-title">The 28-Subdomain System</h2>
+      <p class="tx-sec-sub">
+        Every subdomain of <strong>rasaxmachina.com</strong> represents a hardened, independently routed capability cluster
+        bridging edge workers, WireGuard relays, and persistent agentic daemons.
+      </p>
+    </div>
+
+    <!-- Cluster Filter Pills -->
+    <div class="tx-sub-filter-bar">
+      <button class="tx-filter-btn active" data-filter="all">All Subdomains <span class="tx-filter-count">(28)</span></button>
+      <button class="tx-filter-btn" data-filter="executive">Executive &amp; Sprints <span class="tx-filter-count">(3)</span></button>
+      <button class="tx-filter-btn" data-filter="trading">Revenue &amp; Yield <span class="tx-filter-count">(2)</span></button>
+      <button class="tx-filter-btn" data-filter="logistics">Logistics &amp; Telemetry <span class="tx-filter-count">(1)</span></button>
+      <button class="tx-filter-btn" data-filter="defense">Defense &amp; Radar <span class="tx-filter-count">(3)</span></button>
+      <button class="tx-filter-btn" data-filter="syndicate">Namespace Syndicate <span class="tx-filter-count">(3)</span></button>
+      <button class="tx-filter-btn" data-filter="system">Sovereign OS &amp; Substrate <span class="tx-filter-count">(4)</span></button>
+      <button class="tx-filter-btn" data-filter="products">Products &amp; Blueprints <span class="tx-filter-count">(3)</span></button>
+      <button class="tx-filter-btn" data-filter="infra">Infra, Billing &amp; Gateways <span class="tx-filter-count">(9)</span></button>
+    </div>
+
+    <!-- Live Search Input -->
+    <div class="tx-search-container">
+      <span class="tx-search-icon">🔍</span>
+      <input type="text" id="tx-sub-search" class="tx-sub-search-input" placeholder="Search subdomains by handle, service, ICP, or capability (e.g., 'yield', 'names', 'fortress', 'collins')..."/>
+    </div>
+
+    <!-- Dynamic Subdomains Grid -->
+    <div class="tx-sub-grid" id="tx-subdomains-container">
+      <!-- Populated dynamically by JS from /api/subdomains -->
+    </div>
+  </section>
+
+  <!-- CONSTITUENT UNITS & ARCHITECTURE MATRIX -->
+  <section id="constituent-units" class="tx-units-section">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">05 · Constituent Units of RASA-X-MACHINA</span>
+      <h2 class="tx-sec-title">Architectural Fabric & Operating Units</h2>
+      <p class="tx-sec-sub">
+        Tianxia is powered by specialized constituent units designed under strict separation of concerns,
+        governed by founder Collins Takem under DSS-14 Build Law.
+      </p>
+    </div>
+
+    <div class="tx-units-grid">
+      <!-- Unit 1: Ndimmôrwyn -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Ndimmôrwyn</h3>
+            <span class="tx-sub-routing-pill" style="color:#34d399">REVENUE ENGINE</span>
+          </div>
+          <div class="tx-unit-role">Autonomous Multi-Agent Economic Engine</div>
+          <p class="tx-unit-desc">
+            Autonomous multi-tier scour engine harvesting trading opportunities, DEX arbitrage spreads,
+            and software demand across 5 continuous cadences.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/yield" target="_blank" rel="noopener">Yield Portal ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('yield')">Telemetry</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 2: Faery Fortress -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Faery Fortress</h3>
+            <span class="tx-sub-routing-pill" style="color:#f43f5e">CRYPTOGRAPHIC DEFENSE</span>
+          </div>
+          <div class="tx-unit-role">Zero-Trust Enclave Hardening & Sinkholes</div>
+          <p class="tx-unit-desc">
+            Hardware-isolated secret boundaries, CISA KEV real-time vulnerability tracking, automated Feodo C2 botnet sinkholing,
+            and GDPR irreversible cryptoshredding.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/radar" target="_blank" rel="noopener">Radar Portal ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('radar')">Threat Intel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 3: Veritas-Rex -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Veritas-Rex</h3>
+            <span class="tx-sub-routing-pill" style="color:#38bdf8">PROOF OF SOLVENCY</span>
+          </div>
+          <div class="tx-unit-role">TetraLedger 4-Way Reconciliation</div>
+          <p class="tx-unit-desc">
+            Immutable append-only mathematical ledger reconciling Stripe, Gumroad, Solana, and internal treasury balances
+            to a deterministic <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0" data-decimals="2">€0.00</span> balance discrepancy.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/ledger" target="_blank" rel="noopener">Audit Ledger ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('ledger')">Merkle Proof</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 4: NomenAgora -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">NomenAgora</h3>
+            <span class="tx-sub-routing-pill" style="color:#c084fc">DIGITAL ASSET SYNDICATE</span>
+          </div>
+          <div class="tx-unit-role">Namespace Escrow &amp; Telegram Bot Mini-Apps</div>
+          <p class="tx-unit-desc">
+            High-value namespace management, secondary Fragment handle auctions, and multi-bot webhooks
+            governed without counterparty risk.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/names" target="_blank" rel="noopener">Syndicate Hub ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('names')">Handles</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 5: MANAS & PRATYAKSA -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">MANAS / PRATYAKSA</h3>
+            <span class="tx-sub-routing-pill" style="color:#fbbf24">SYSTEM-1 AI DEFENSE</span>
+          </div>
+          <div class="tx-unit-role">Sub-10ms Gating &amp; Epistemic Attribution</div>
+          <p class="tx-unit-desc">
+            Ultra-fast System-1 pre-filter running in &lt;1ms evaluating AHIMSA non-destruction laws, blocking prompt injection
+            and SSRF probes, and gating execution certainty.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/cockpit">Cockpit HUD ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('cockpit')">Inspect Core</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 6: Murua Universal Tracer -->
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div class="tx-unit-head">
+            <h3 class="tx-unit-name">Murua Universal Tracer</h3>
+            <span class="tx-sub-routing-pill" style="color:#5eead4">LOGISTICS TELEMETRY</span>
+          </div>
+          <div class="tx-unit-role">Bayesian State-Space Consignment Telemetry</div>
+          <p class="tx-unit-desc">
+            Deconstructs postal transit latency, models latent Bayesian milestones for untracked mail,
+            and generates UPU Form CN08 evidentiary dossiers cutting false INR dispute claims by 62.4%.
+          </p>
+          <div style="display:flex;gap:0.5rem;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/tracer">Tracer Portal ↗</a>
+            <button class="tx-sub-inspect-btn" onclick="openInspect('tracer')">Telemetry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER & EXECUTIVE ADVISORY SECTION -->
+  <!-- SELF-CONTAINED CRYPTOGRAPHICALLY SIGNED EXECUTABLES (7 UNIVERSAL FORMATS: .deb, .rpm, AppImage, Flake, Tarball, .exe, .apk) -->
+  <section id="executables" class="tx-units-section" style="margin-bottom: 4.5rem;">
+    <div class="tx-sec-head">
+      <span class="tx-sec-tag">05 · v8.7.0 · 7 Universal Package Formats · Ed25519 Signed · CycloneDX 1.5 SBOM · Evergreen Sentinel</span>
+      <h2 class="tx-sec-title">Download Signed Sovereign Executables</h2>
+      <p class="tx-sec-sub">
+        Every release package (<code>.deb</code>, <code>.rpm</code>, <code>.AppImage</code>, <code>flake.nix</code>, <code>.tar.gz</code>, Windows <code>.exe</code>, and Android <code>.apk</code>) is deterministically built under the <strong>FFP-First Polyglot Build Law</strong>, cryptographically signed with detached <strong>OpenSSL Ed25519</strong> signatures (<code>.sig</code>), audited every 6 hours by the <strong>Package Evergreen Sentinel</strong>, and accompanied by a verifiable <strong>CycloneDX 1.5 SBOM</strong> (<code>SBOM.cdx.json</code>).
+      </p>
+    </div>
+
+    <div class="tx-units-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div style="font-family:var(--tx-font-mono);font-size:0.72rem;color:var(--tx-aurora-3);margin-bottom:0.4rem">LINUX PACKAGES · .DEB · .RPM · APPIMAGE · TAR.GZ</div>
+          <h3 style="margin:0 0 0.5rem;font-size:1.15rem;color:#fff">🐧 Debian, RedHat &amp; Portable AppImage</h3>
+          <p class="tx-unit-desc">
+            Native system packages and zero-FUSE portable AppImages for Ubuntu/Debian (<code>amd64</code>/<code>arm64</code>), RHEL/Fedora (<code>x86_64</code>/<code>aarch64</code>), and any Linux distro, bundling the 9-tab Rust TUI, Build Law Sentinel, Secret Shield, and Desktop <code>.desktop</code> launcher.
+          </p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/releases/tianxiaos_8.7.0_amd64.deb" download>.deb (amd64) ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxiaos-8.7.0-1.x86_64.rpm" download>.rpm ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/TianxiaOS-8.7.0-x86_64.AppImage" download>AppImage ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxiaos-v8.7.0-linux-x86_64.tar.gz" download>.tar.gz ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxiaos_8.7.0_arm64.deb" download>arm64 .deb ↓</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div style="font-family:var(--tx-font-mono);font-size:0.72rem;color:#38bdf8;margin-bottom:0.4rem">DECLARATIVE NIXOS FLAKE · x86_64 &amp; aarch64</div>
+          <h3 style="margin:0 0 0.5rem;font-size:1.15rem;color:#fff">❄️ Hermetic Nix Flake &amp; Raw ELF</h3>
+          <p class="tx-unit-desc">
+            Run reproducibly with zero global mutation via <code>nix run github:Tianxia-Core/tianxiaos-releases</code>, import <code>nixosModules.tianxiaos</code>, or download static zero-libc Linux ELF binaries directly.
+          </p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/releases/flake.nix" download>flake.nix ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxia-v8.7.0-linux-x86_64" download>ELF x86_64 ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxia-v8.7.0-linux-aarch64" download>ELF aarch64 ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="https://github.com/Tianxia-Core/tianxiaos-releases" target="_blank" rel="noopener">Flake Repo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div style="font-family:var(--tx-font-mono);font-size:0.72rem;color:var(--tx-aurora-2);margin-bottom:0.4rem">WINDOWS PE32+ (.EXE) &amp; ANDROID (.APK)</div>
+          <h3 style="margin:0 0 0.5rem;font-size:1.15rem;color:#fff">🪟 Windows .exe &amp; 🤖 Android .apk</h3>
+          <p class="tx-unit-desc">
+            Zero-dependency Windows 11/Server executable (<code>.exe</code> + <code>.tar.gz</code>) with VT100 TUI cockpit, plus RSA-4096 <code>apksigner</code> v2/v3 verified Android Enclave APK and native ARM64 CLI binary.
+          </p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="/releases/tianxia-v8.7.0-windows-x86_64.exe" download>Windows .exe ↓</a>
+            <a class="tx-sub-launch-btn" style="background:linear-gradient(135deg,#059669,#10b981)" href="/releases/TianxiaOS-Sovereign-v8.7.0-android.apk" download>Android .apk ↓</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/tianxia-v8.7.0-android-aarch64" download>ARM64 CLI ↓</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tx-unit-card">
+        <div class="tx-unit-inner">
+          <div style="font-family:var(--tx-font-mono);font-size:0.72rem;color:#fbbf24;margin-bottom:0.4rem">CRYPTOGRAPHIC PROVENANCE &amp; PUBLIC RELEASES</div>
+          <h3 style="margin:0 0 0.5rem;font-size:1.15rem;color:#fff">🔐 Ed25519 Keys, Checksums &amp; SBOM</h3>
+          <p class="tx-unit-desc">
+            Verify any package offline with <code>openssl pkeyutl -verify -pubin -inkey RELEASE_SIGNING_KEY.pub.pem -rawin</code> and inspect public multi-repo releases under <strong>Rasa-X-Machina</strong>.
+          </p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:auto">
+            <a class="tx-sub-launch-btn" href="https://github.com/Tianxia-Core/tianxiaos-releases/releases/tag/v8.7.0" target="_blank" rel="noopener">GitHub v8.7.0 ↗</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/SHA256SUMS" download>SHA256SUMS</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/SBOM.cdx.json" download>SBOM</a>
+            <a class="tx-sub-inspect-btn" style="text-decoration:none" href="/releases/RELEASE_SIGNING_KEY.pub.pem" download>PubKey</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advisory" class="tx-founder-panel">
+    <div class="tx-founder-inner">
+      <div class="tx-founder-info">
+        <span class="tx-sec-tag">EXECUTIVE LEADERSHIP</span>
+        <h2>Collins Takem</h2>
+        <p>
+          Founder of <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> and Chief Architect of <strong class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</strong>. Collins engineers
+          autonomous, self-governing substrates that eliminate human maintenance debt through post-quantum edge meshes,
+          append-only reality verification, and automated monetization pipelines.
+        </p>
+        <p>
+          Retained by technical founders and enterprise leaders for high-velocity architecture sprints, threat modeling,
+          and autonomous agentic deployments.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a class="tx-btn-primary" href="/collins">Visit Collins Takem Advisory ↗</a>
+          <a class="tx-btn-outline" href="/collins#encrypted-dispatch">Direct Executive Inquiry ↗</a>
+        </div>
+      </div>
+      <div class="tx-founder-card-side">
+        <div class="tx-founder-stat">
+          <div class="tx-founder-stat-lbl">Primary Corporate Brand</div>
+          <div class="tx-founder-stat-val">RASA-X-MACHINA</div>
+        </div>
+        <div class="tx-founder-stat">
+          <div class="tx-founder-stat-lbl">Governed Subdomains</div>
+          <div class="tx-founder-stat-val" style="color:var(--tx-purple-4)">28 Dedicated Nodes</div>
+        </div>
+        <div class="tx-founder-stat">
+          <div class="tx-founder-stat-lbl">Revenue Generating Units</div>
+          <div class="tx-founder-stat-val" style="color:var(--tx-aurora-3)">41 Covered RGUs</div>
+        </div>
+        <div class="tx-founder-stat">
+          <div class="tx-founder-stat-lbl">Direct Contact</div>
+          <div class="tx-founder-stat-val"><button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified Email</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tx-footer">
+    <div class="tx-footer-grid">
+      <div class="tx-footer-col">
+        <h4 class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</h4>
+        <p style="color:var(--tx-ink-dim);font-size:0.86rem;line-height:1.6;margin:0 0 1rem;max-width:32ch">
+          Autonomous systems, sovereign AI infrastructure, and cryptographic reality ledgers. Founded by Collins Takem.
+        </p>
+        <div style="font-family:var(--tx-font-mono);font-size:0.75rem;color:var(--tx-purple-4);margin-bottom:0.55rem">
+          rasaxmachina.com · Tallinn / Sovereign Edge
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;font-family:var(--tx-font-mono);font-size:0.72rem" data-tx-no-i18n="1">
+          <a href="https://x.com/rasaxmachina" target="_blank" rel="noopener" style="color:var(--tx-aurora-2);text-decoration:none">𝕏 @rasaxmachina</a>
+          <a href="https://x.com/tianxiaos" target="_blank" rel="noopener" style="color:var(--tx-aurora-3);text-decoration:none">𝕏 @tianxiaos</a>
+          <a href="https://x.com/coltakrasax" target="_blank" rel="noopener" style="color:var(--tx-purple-4);text-decoration:none">𝕏 @coltakrasax</a>
+        </div>
+      </div>
+      <div class="tx-footer-col">
+        <h4>Core Systems</h4>
+        <ul>
+          <li><a href="https://tianxia.rasaxmachina.com"><span class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</span> Mesh &amp; OS</a></li>
+          <li><a href="/cockpit">Cockpit Management</a></li>
+          <li><a href="https://substrate.rasaxmachina.com">Persistent Substrate</a></li>
+          <li><a href="/ledger">Veritas-Rex Ledger</a></li>
+          <li><a href="/tracer">Murua Universal Tracer</a></li>
+          <li><a href="/fortress">Faery Fortress</a></li>
+        </ul>
+      </div>
+      <div class="tx-footer-col">
+        <h4>Monetization &amp; Web3</h4>
+        <ul>
+          <li><a href="/yield">Autotreasury Yield</a></li>
+          <li><a href="/alpha">RasaXM Alpha (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo)</a></li>
+          <li><a href="/names">NomenAgora Syndicate</a></li>
+          <li><a href="/etamanga">ETAMANGA Chain</a></li>
+          <li><a href="/shop">The Fortress Market</a></li>
+        </ul>
+      </div>
+      <div class="tx-footer-col">
+        <h4>Governance &amp; Legal</h4>
+        <ul>
+          <li><a href="/about">About <span class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</span></a></li>
+          <li><a href="/collins">Collins Takem</a></li>
+          <li><a href="/press">Press &amp; Brand Kit</a></li>
+          <li><a href="/privacy">Privacy Policy (GDPR++)</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/stripe-approval">Payment Rails &amp; Compliance</a></li>
+          <li><a href="/trust">Trust &amp; Security Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tx-footer-bottom">
+      <div>© 2026 RASA-X-MACHINA. All sovereign rights reserved. Founded by Collins Takem.</div>
+      <div style="font-family:var(--tx-font-mono)">DSS-14.2 SEALED · WCAG 2.2 AA · GDPR COMPLIANT</div>
+    </div>
+  </footer>
+</main>
+
+<!-- CHECKOUT / ORDER MODAL -->
+<div class="tx-modal-overlay" id="tx-checkout-overlay" role="dialog" aria-modal="true" aria-labelledby="tx-checkout-title">
+  <div class="tx-checkout-modal" style="max-width:620px">
+    <div class="tx-checkout-inner">
+      <div class="tx-modal-head">
+        <h3 id="tx-checkout-title">Acquire Capability</h3>
+        <button class="tx-btn-close" aria-label="Close Checkout Modal" onclick="closeCheckout()">✕</button>
+      </div>
+      <div class="tx-order-summary-box">
+        <div class="tx-order-row">
+          <span style="color:var(--tx-ink-dim)" id="tx-order-item-name">Tianxia Sovereign Cockpit Suite</span>
+          <span id="tx-order-item-price">€29</span>
+        </div>
+        <div class="tx-order-row">
+          <span style="color:var(--tx-ink-dim)">Attestation Protocol</span>
+          <span style="color:var(--tx-aurora-3)">TetraLedger Merkle Bound · 6 Live Rails</span>
+        </div>
+        <div class="tx-order-row">
+          <span>Total Due</span>
+          <span id="tx-order-item-total" style="color:var(--tx-purple-4)">€29</span>
+        </div>
+      </div>
+
+      <!-- Instant Express Direct Links (Before or After Receipt) -->
+      <div id="tx-express-rails-bar" style="margin-bottom:1.1rem;padding:0.85rem;background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.28);border-radius:0.85rem">
+        <div style="font-family:var(--tx-font-mono);font-size:0.7rem;color:var(--tx-purple-4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.55rem">
+          ⚡ Instant Direct Settlement Rails (Live Credentials Active)
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem" id="tx-express-rails-btns">
+          <a id="tx-direct-stripe-btn" href="https://buy.stripe.com/aFa00i8aRdeV3xpfvF9AA0b" target="_blank" rel="noopener" class="tx-btn-buy" style="text-decoration:none;font-size:0.8rem;padding:0.55rem 0.75rem;display:flex;align-items:center;justify-content:center;gap:0.35rem">
+            💳 Pay with Stripe ↗
+          </a>
+          <a id="tx-direct-sol-btn" href="/pay" class="tx-btn-outline" style="text-decoration:none;font-size:0.8rem;padding:0.55rem 0.75rem;display:flex;align-items:center;justify-content:center;gap:0.35rem;border-color:rgba(52,211,153,0.4);color:#34d399">
+            ◎ Solana / $ETMA (-10%) ↗
+          </a>
+          <button type="button" onclick="payWithEvmWallet()" class="tx-btn-outline" style="font-size:0.8rem;padding:0.55rem 0.75rem;display:flex;align-items:center;justify-content:center;gap:0.35rem;border-color:rgba(96,165,250,0.4);color:#60a5fa;cursor:pointer">
+            🔵 Base L2 / ETH / USDC ↗
+          </button>
+          <a id="tx-direct-hub-btn" href="/pay" class="tx-btn-outline" style="text-decoration:none;font-size:0.8rem;padding:0.55rem 0.75rem;display:flex;align-items:center;justify-content:center;gap:0.35rem">
+            🌐 All 6 Payment Rails ↗
+          </a>
+        </div>
+      </div>
+
+      <form id="tx-checkout-form" onsubmit="submitCheckout(event)">
+        <div class="tx-checkout-field">
+          <label for="tx-client-email">Billing Email Address</label>
+          <input type="email" id="tx-client-email" autocomplete="email" class="tx-checkout-input" placeholder="operator@sovereign-node.org" required/>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+          <div class="tx-checkout-field">
+            <label for="tx-payment-rail">Settlement Rail</label>
+            <select id="tx-payment-rail" class="tx-checkout-input" style="background:rgba(15,15,26,0.95);color:#fff">
+              <option value="stripe">💳 Stripe (Card / Apple Pay / SEPA)</option>
+              <option value="solana">◎ Solana Pay (SOL / USDC / $ETMA)</option>
+              <option value="base">🔵 Base L2 / Ethereum (USDC / ETH / $EFM)</option>
+              <option value="gumroad">📦 Gumroad Digital Instant</option>
+              <option value="paddle">🌍 Paddle MoR (Global Tax)</option>
+              <option value="x402">🤖 Agentic x402 / Crossmint</option>
+            </select>
+          </div>
+          <div class="tx-checkout-field">
+            <label for="tx-promo-code">Promo / Token Code (-10%)</label>
+            <input type="text" id="tx-promo-code" autocomplete="off" class="tx-checkout-input" placeholder="ETMA10 or EFM10"/>
+          </div>
+        </div>
+        <button type="submit" class="tx-btn-buy" id="tx-btn-submit-order" style="width:100%;margin-top:0.4rem">
+          Generate Live Checkout Session &amp; Seal Receipt ↗
+        </button>
+      </form>
+      <div id="tx-checkout-result" aria-live="polite" style="display:none;margin-top:1.15rem;padding:1rem;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.35);border-radius:0.85rem;font-size:0.84rem">
+        <div style="font-weight:700;color:var(--tx-aurora-3);margin-bottom:0.45rem">✓ TETRALEDGER RECEIPT SEALED — COMPLETE SETTLEMENT BELOW</div>
+        <div id="tx-receipt-details" style="font-family:var(--tx-font-mono);font-size:0.75rem;color:#fff;line-height:1.55"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBDOMAIN INSPECTION MODAL -->
+<div class="tx-modal-overlay" id="tx-inspect-overlay" role="dialog" aria-modal="true" aria-labelledby="tx-inspect-title">
+  <div class="tx-inspect-modal">
+    <div class="tx-inspect-inner">
+      <div class="tx-modal-head">
+        <h3 id="tx-inspect-title">Subdomain Specification</h3>
+        <button class="tx-btn-close" aria-label="Close Subdomain Inspector" onclick="closeInspect()">✕</button>
+      </div>
+      <div id="tx-inspect-content" style="font-size:0.88rem;line-height:1.6;color:var(--tx-ink-dim)">
+        <!-- Injected dynamically -->
+      </div>
+      <div style="margin-top:1.5rem;display:flex;justify-content:flex-end">
+        <a id="tx-inspect-external-btn" class="tx-btn-primary" href="#" target="_blank" rel="noopener">Launch Subdomain ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL & RETAINER INQUIRY MODAL -->
+<div class="tx-modal-overlay" id="tx-inquiry-overlay" role="dialog" aria-modal="true" aria-labelledby="tx-inquiry-title">
+  <div class="tx-checkout-modal" style="max-width:580px">
+    <div class="tx-checkout-inner">
+      <div class="tx-modal-head">
+        <h3 id="tx-inquiry-title">Request Merkle-Signed Proposal</h3>
+        <button class="tx-btn-close" aria-label="Close Proposal Modal" onclick="closeInquiry()">✕</button>
+      </div>
+      <form id="tx-inquiry-form" onsubmit="submitInquiry(event)">
+        <div class="tx-checkout-field">
+          <label for="tx-inq-name">Your Name &amp; Title</label>
+          <input type="text" id="tx-inq-name" autocomplete="name" class="tx-checkout-input" placeholder="e.g. Alex Thorne, VP Engineering" required/>
+        </div>
+        <div class="tx-checkout-field">
+          <label for="tx-inq-email">Work Email Address</label>
+          <input type="email" id="tx-inq-email" autocomplete="email" class="tx-checkout-input" placeholder="e.g. alex@enterprise.com" required/>
+        </div>
+        <div class="tx-checkout-field">
+          <label for="tx-inq-org">Organization / Entity</label>
+          <input type="text" id="tx-inq-org" autocomplete="organization" class="tx-checkout-input" placeholder="e.g. Sovereign Labs Inc." required/>
+        </div>
+        <div class="tx-checkout-field">
+          <label for="tx-inq-brief">Brief Scope &amp; Objectives</label>
+          <textarea id="tx-inq-brief" class="tx-checkout-input" rows="3" placeholder="Outline your current systems challenge, threat surface, or target deployment..." required style="resize:vertical"></textarea>
+        </div>
+        <div class="tx-checkout-field" style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.76rem;color:var(--tx-ink-dim)">
+          <input type="checkbox" id="tx-inq-gdpr" required style="margin-top:0.2rem"/>
+          <label for="tx-inq-gdpr" style="margin:0;text-transform:none;letter-spacing:0">I consent to Rasa-X-Machina (proposed Estonian entity upon Committee approval: RASA-X-MACHINA OÜ) processing this inquiry to generate a Merkle-signed proposal under our <a href="/privacy" style="color:var(--tx-purple-4)">GDPR++ Sovereign Privacy Policy</a> (zero third-party data sharing; &lt;50ms cryptoshredding).</label>
+        </div>
+        <div class="tx-order-summary-box">
+          <div class="tx-order-row">
+            <span>Selected Track:</span>
+            <span id="tx-inq-track-display" style="color:var(--tx-purple-4);font-weight:600">Executive Architecture Sprint</span>
+          </div>
+          <div class="tx-order-row">
+            <span>Estimated Allocation:</span>
+            <span id="tx-inq-budget-display" style="color:var(--tx-aurora-3);font-weight:700">€4,625</span>
+          </div>
+          <div class="tx-order-row">
+            <span>SLA Response Commitment:</span>
+            <span style="color:#fff">&lt; 4 Hours (Direct from Founder)</span>
+          </div>
+        </div>
+        <button type="submit" id="tx-btn-submit-inquiry" class="tx-btn-buy" style="width:100%;margin-top:0.5rem">
+          Submit &amp; Generate Signed Merkle Receipt ↗
+        </button>
+      </form>
+      <div id="tx-inquiry-result" aria-live="polite" style="display:none;margin-top:1.25rem;padding:1rem;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);border-radius:0.75rem;font-size:0.85rem">
+        <div style="font-weight:700;color:var(--tx-aurora-3);margin-bottom:0.35rem">✓ PROPOSAL RECEIPT SEALED &amp; LOGGED</div>
+        <div id="tx-inquiry-receipt-details" style="font-family:var(--tx-font-mono);font-size:0.75rem;color:#fff;line-height:1.6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dynamic Interactive Starfield (Chrome Modern Web Guidance 1.0: respects prefers-reduced-motion & document.hidden)
+(()=>{
+  const c = document.getElementById('tx-stars');
+  if (!c) return;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+  const ctx = c.getContext('2d');
+  let w, h, p = [];
+  let mouse = { x: -1000, y: -1000 };
+
+  const resize = () => {
+    w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+    p = Array.from({ length: Math.min(180, (w * h) / 9000) }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      z: Math.random() * 0.7 + 0.3,
+      size: Math.random() * 1.5 + 0.5,
+      color: Math.random() > 0.8 ? '#c084fc' : (Math.random() > 0.6 ? '#22d3ee' : '#ffffff')
+    }));
+  };
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+  resize();
+
+  (function loop() {
+    if (!document.hidden) {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of p) {
+        const dx = mouse.x - s.x;
+        const dy = mouse.y - s.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        let glow = 0;
+        if (dist < 120) {
+          glow = (120 - dist) / 120;
+        }
+        ctx.globalAlpha = Math.min(1, 0.2 + s.z * 0.5 + glow * 0.4);
+        ctx.fillStyle = s.color;
+        ctx.fillRect(s.x, s.y, s.size * (1 + glow * 0.5), s.size * (1 + glow * 0.5));
+        s.y += s.z * 0.08;
+        if (s.y > h) s.y = 0;
+      }
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// Subdomains Data & Interactive Directory
+let subdomainsCatalog = {};
+let currentCurrency = 'EUR';
+let currentFilter = 'all';
+
+async function loadSubdomains() {
+  const container = document.getElementById('tx-subdomains-container');
+  try {
+    const res = await fetch('/api/subdomains');
+    const data = await res.json();
+    subdomainsCatalog = data.subdomains || {};
+    renderSubdomains();
+  } catch (err) {
+    container.innerHTML = `<div style="grid-column:1/-1;color:var(--tx-aurora-4);padding:2rem">Failed to load subdomains: ${err.message}</div>`;
+  }
+}
+
+function renderSubdomains() {
+  const container = document.getElementById('tx-subdomains-container');
+  const searchVal = document.getElementById('tx-sub-search').value.toLowerCase().trim();
+  container.innerHTML = '';
+
+  const entries = Object.entries(subdomainsCatalog);
+  let count = 0;
+
+  for (const [key, sub] of entries) {
+    const cluster = (sub.cluster || 'infra').toLowerCase();
+    const fqdn = (sub.fqdn || `${key}.rasaxmachina.com`).toLowerCase();
+    const name = (sub.name || key).toLowerCase();
+    const desc = (sub.description || '').toLowerCase();
+    const icps = (sub.icp || []).map(i => i.toLowerCase());
+
+    if (currentFilter !== 'all' && cluster !== currentFilter) continue;
+
+    if (searchVal) {
+      const match = key.includes(searchVal) || fqdn.includes(searchVal) || name.includes(searchVal) || desc.includes(searchVal) || icps.some(i => i.includes(searchVal));
+      if (!match) continue;
+    }
+
+    count++;
+    const card = document.createElement('div');
+    card.className = 'tx-sub-card';
+    const routingMode = (sub.routing || 'cf_worker').replace('_', ' ').toUpperCase();
+    const icpTags = (sub.icp || ['ICP-SOVEREIGN-OP']).map(i => `<span class="tx-icp-chip">${i}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="tx-sub-card-inner">
+        <div class="tx-sub-card-top">
+          <span class="tx-sub-fqdn">
+            <span class="tx-live-pulse-dot" style="margin-right:2px"></span>
+            ${sub.fqdn}
+          </span>
+          <span class="tx-sub-routing-pill">${routingMode}</span>
+        </div>
+        <h4 class="tx-sub-name">${sub.name}</h4>
+        <p class="tx-sub-desc">${sub.description}</p>
+        <div class="tx-sub-icp-row">${icpTags}</div>
+        <div class="tx-sub-actions">
+          <a class="tx-sub-launch-btn" href="${(key === '@' || key === 'apex') ? '/' : `/${key}`}" target="_blank" rel="noopener">Launch ↗</a>
+          <button class="tx-sub-inspect-btn" onclick="openInspect('${key}')">Inspect</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  }
+
+  if (count === 0) {
+    container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tx-ink-dim)">No subdomains match the filter criteria.</div>`;
+  }
+}
+
+document.getElementById('tx-sub-search').addEventListener('input', renderSubdomains);
+
+document.querySelectorAll('.tx-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tx-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderSubdomains();
+  });
+});
+
+// 29-Currency, 42-Market & 25-Language Full-Copy Localization Engine
+let currentCountry = 'EE';
+let currentLang = 'en';
+
+const EXTENDED_CURRENCIES = {
+  EUR: { symbol: '€', rate_from_eur: 1.0, rate_from_usd: 0.925, zero_decimal: false },
+  USD: { symbol: '$', rate_from_eur: 1.08, rate_from_usd: 1.0, zero_decimal: false },
+  GBP: { symbol: '£', rate_from_eur: 0.85, rate_from_usd: 0.79, zero_decimal: false },
+  CHF: { symbol: 'CHF ', rate_from_eur: 0.96, rate_from_usd: 0.89, zero_decimal: false },
+  SEK: { symbol: 'kr ', rate_from_eur: 11.40, rate_from_usd: 10.55, zero_decimal: false },
+  NOK: { symbol: 'kr ', rate_from_eur: 11.65, rate_from_usd: 10.78, zero_decimal: false },
+  CAD: { symbol: 'CA$', rate_from_eur: 1.48, rate_from_usd: 1.37, zero_decimal: false },
+  AUD: { symbol: 'A$', rate_from_eur: 1.65, rate_from_usd: 1.53, zero_decimal: false },
+  NZD: { symbol: 'NZ$', rate_from_eur: 1.80, rate_from_usd: 1.67, zero_decimal: false },
+  SGD: { symbol: 'S$', rate_from_eur: 1.45, rate_from_usd: 1.34, zero_decimal: false },
+  HKD: { symbol: 'HK$', rate_from_eur: 8.42, rate_from_usd: 7.80, zero_decimal: false },
+  JPY: { symbol: '¥', rate_from_eur: 163.0, rate_from_usd: 151.0, zero_decimal: true },
+  KRW: { symbol: '₩', rate_from_eur: 1485.0, rate_from_usd: 1375.0, zero_decimal: true },
+  VND: { symbol: '₫', rate_from_eur: 27400.0, rate_from_usd: 25370.0, zero_decimal: true },
+  INR: { symbol: '₹', rate_from_eur: 91.5, rate_from_usd: 84.7, zero_decimal: false },
+  PKR: { symbol: 'Rs ', rate_from_eur: 301.0, rate_from_usd: 278.7, zero_decimal: true },
+  PLN: { symbol: 'zł ', rate_from_eur: 4.30, rate_from_usd: 3.98, zero_decimal: false },
+  BGN: { symbol: 'лв ', rate_from_eur: 1.9558, rate_from_usd: 1.81, zero_decimal: false },
+  TRY: { symbol: '₺', rate_from_eur: 37.2, rate_from_usd: 34.4, zero_decimal: false },
+  AED: { symbol: 'AED ', rate_from_eur: 3.97, rate_from_usd: 3.6725, zero_decimal: false },
+  SAR: { symbol: 'SAR ', rate_from_eur: 4.05, rate_from_usd: 3.75, zero_decimal: false },
+  NGN: { symbol: '₦', rate_from_eur: 1750.0, rate_from_usd: 1620.0, zero_decimal: true },
+  KES: { symbol: 'KSh ', rate_from_eur: 140.0, rate_from_usd: 129.6, zero_decimal: true },
+  ZAR: { symbol: 'R ', rate_from_eur: 19.6, rate_from_usd: 18.15, zero_decimal: false },
+  BRL: { symbol: 'R$', rate_from_eur: 6.15, rate_from_usd: 5.69, zero_decimal: false },
+  MXN: { symbol: 'MX$', rate_from_eur: 21.8, rate_from_usd: 20.18, zero_decimal: false },
+  CLP: { symbol: 'CLP$', rate_from_eur: 1050.0, rate_from_usd: 972.0, zero_decimal: true },
+  ARS: { symbol: 'ARS ', rate_from_eur: 1120.0, rate_from_usd: 1037.0, zero_decimal: true },
+  COP: { symbol: 'COP ', rate_from_eur: 4650.0, rate_from_usd: 4305.0, zero_decimal: true },
+  SOL: { symbol: '◎', rate_from_eur: 0.0072, rate_from_usd: 0.0067, zero_decimal: false }
+};
+
+const COUNTRY_DEFAULT_CURRENCY = {
+  EE: 'EUR', DE: 'EUR', FR: 'EUR', IT: 'EUR', ES: 'EUR', NL: 'EUR', BE: 'EUR', FI: 'EUR', LT: 'EUR', CY: 'EUR', GR: 'EUR', MT: 'EUR', EU: 'EUR',
+  PL: 'PLN', BG: 'BGN', GB: 'GBP', CH: 'CHF', SE: 'SEK', NO: 'NOK', TR: 'TRY',
+  US: 'USD', CA: 'CAD', MX: 'MXN', BR: 'BRL', CL: 'CLP', AR: 'ARS', CO: 'COP', GLOBAL: 'USD',
+  SG: 'SGD', HK: 'HKD', JP: 'JPY', KR: 'KRW', VN: 'VND', IN: 'INR', PK: 'PKR', AU: 'AUD', NZ: 'NZD',
+  AE: 'AED', SA: 'SAR', NG: 'NGN', KE: 'KES', ZA: 'ZAR'
+};
+
+function getCurrencyMeta(curr) {
+  if (window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.CURRENCIES && window.TX_CURRENCY_ENGINE.CURRENCIES[curr]) {
+    return window.TX_CURRENCY_ENGINE.CURRENCIES[curr];
+  }
+  return EXTENDED_CURRENCIES[curr] || EXTENDED_CURRENCIES.EUR;
+}
+
+function getCountryCurrency(cc) {
+  if (window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.MARKET_PROFILES && window.TX_CURRENCY_ENGINE.MARKET_PROFILES[cc]) {
+    return window.TX_CURRENCY_ENGINE.MARKET_PROFILES[cc].currency;
+  }
+  return COUNTRY_DEFAULT_CURRENCY[cc] || 'EUR';
+}
+
+function convertAmount(baseAmt, baseCurr, targetCurr, decimalsOverride) {
+  const info = getCurrencyMeta(targetCurr);
+  const num = parseFloat(baseAmt);
+  if (isNaN(num)) return 0;
+  const rate = (baseCurr === 'USD') ? info.rate_from_usd : info.rate_from_eur;
+  const raw = (targetCurr === baseCurr) ? num : (num * rate);
+  if (targetCurr === 'SOL') return +(raw.toFixed(decimalsOverride !== undefined ? decimalsOverride : 2));
+  if (info.zero_decimal) return Math.round(raw);
+  if (decimalsOverride !== undefined && decimalsOverride !== null && decimalsOverride !== '') {
+    const d = parseInt(decimalsOverride, 10);
+    return +(raw.toFixed(d));
+  }
+  return Math.round(raw);
+}
+
+function formatCurrencyValue(amt, curr, decimalsOverride, suffix) {
+  const info = getCurrencyMeta(curr);
+  const sfx = suffix || '';
+  if (curr === 'SOL') return `◎${amt}${sfx}`;
+  if (decimalsOverride !== undefined && decimalsOverride !== null && decimalsOverride !== '' && !info.zero_decimal) {
+    const d = parseInt(decimalsOverride, 10);
+    return `${info.symbol}${Number(amt).toLocaleString(undefined, { minimumFractionDigits: d, maximumFractionDigits: d })}${sfx}`;
+  }
+  return `${info.symbol}${Number(amt).toLocaleString()}${sfx}`;
+}
+
+let _inLocaleSync = false;
+
+function getComboVal(cc, lg) {
+  if (window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.getLocaleComboValue) {
+    return window.TX_CURRENCY_ENGINE.getLocaleComboValue(cc, lg);
+  }
+  return `${cc}:${lg}`;
+}
+
+function applyLocalization(announceChange) {
+  const cSel = document.getElementById('tx-currency-toggle');
+  if (cSel && cSel.value !== currentCurrency) {
+    if ([].some.call(cSel.options, o => o.value === currentCurrency)) {
+      cSel.value = currentCurrency;
+    }
+  }
+  const locSel = document.getElementById('tx-locale-toggle');
+  const targetCombo = getComboVal(currentCountry, currentLang);
+  if (locSel && locSel.value !== targetCombo) {
+    if ([].some.call(locSel.options, o => o.value === targetCombo)) {
+      locSel.value = targetCombo;
+    }
+  }
+  document.documentElement.setAttribute('lang', currentLang);
+
+  // Update prices across all storefront cards
+  document.querySelectorAll('.tx-store-price').forEach(el => {
+    const baseCurr = el.dataset.baseCurr || (el.dataset.eur ? 'EUR' : 'USD');
+    const baseAmt = el.dataset.baseAmt || el.dataset.eur || el.dataset.usd || 29;
+    const converted = convertAmount(baseAmt, baseCurr, currentCurrency);
+    el.textContent = formatCurrencyValue(converted, currentCurrency);
+  });
+
+  // Update button & calculator inline price badges
+  document.querySelectorAll('.tx-btn-price').forEach(el => {
+    const baseCurr = el.dataset.baseCurr || 'EUR';
+    const baseAmt = el.dataset.baseAmt || 29;
+    const converted = convertAmount(baseAmt, baseCurr, currentCurrency);
+    el.textContent = formatCurrencyValue(converted, currentCurrency);
+  });
+
+  // Update all dynamic technical/telemetry money elements
+  document.querySelectorAll('.tx-dyn-money').forEach(el => {
+    const baseCurr = el.dataset.baseCurr || 'USD';
+    const baseAmt = el.dataset.baseAmt !== undefined ? el.dataset.baseAmt : 0;
+    const dec = el.dataset.decimals;
+    const sfx = el.dataset.suffix || '';
+    const converted = convertAmount(baseAmt, baseCurr, currentCurrency, dec);
+    el.textContent = formatCurrencyValue(converted, currentCurrency, dec, sfx);
+  });
+
+  // Update 1-Click Stripe Express links so Stripe charges in the exact selected fiat currency
+  const stripeChargeCurr = (currentCurrency === 'SOL') ? 'EUR' : currentCurrency;
+  document.querySelectorAll('.tx-express-stripe').forEach(link => {
+    const plan = link.dataset.plan;
+    if (plan) {
+      link.href = `/api/v1/stripe-express?plan=${encodeURIComponent(plan)}&currency=${encodeURIComponent(stripeChargeCurr)}&lang=${encodeURIComponent(currentLang)}&country=${encodeURIComponent(currentCountry)}`;
+    }
+  });
+
+  if (typeof updateCalcDisplay === 'function') {
+    updateCalcDisplay();
+  }
+
+  if (!_inLocaleSync && window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.applyMaterialLocalization) {
+    _inLocaleSync = true;
+    try {
+      window.TX_CURRENCY_ENGINE.applyMaterialLocalization(currentCountry, currentLang, currentCurrency, !!announceChange);
+    } finally {
+      _inLocaleSync = false;
+    }
+  }
+}
+
+window.onTxGlobalLocaleChange = function (country, lang, curr) {
+  if (_inLocaleSync) return;
+  _inLocaleSync = true;
+  try {
+    currentCountry = country || currentCountry;
+    currentLang = lang || currentLang;
+    currentCurrency = curr || currentCurrency;
+    applyLocalization(false);
+  } finally {
+    _inLocaleSync = false;
+  }
+};
+
+document.getElementById('tx-currency-toggle').addEventListener('change', (e) => {
+  currentCurrency = e.target.value;
+  try {
+    localStorage.setItem('tx_pref_currency', currentCurrency);
+    localStorage.setItem('tx_currency', currentCurrency);
+  } catch (_e) {}
+  applyLocalization(true);
+});
+
+const localeSelectEl = document.getElementById('tx-locale-toggle');
+if (localeSelectEl) {
+  localeSelectEl.addEventListener('change', (e) => {
+    const parts = (e.target.value || 'EE:en').split(':');
+    currentCountry = parts[0] || 'EE';
+    currentLang = parts[1] || 'en';
+    currentCurrency = getCountryCurrency(currentCountry);
+    try {
+      localStorage.setItem('tx_pref_country', currentCountry);
+      localStorage.setItem('tx_pref_currency', currentCurrency);
+      localStorage.setItem('tx_currency', currentCurrency);
+      localStorage.setItem('tx_pref_lang', currentLang);
+    } catch (_e) {}
+    applyLocalization(true);
+  });
+}
+
+async function initGeoCurrency() {
+  try {
+    const savedCurr = localStorage.getItem('tx_pref_currency') || localStorage.getItem('tx_currency');
+    const savedCountry = localStorage.getItem('tx_pref_country');
+    const savedLang = localStorage.getItem('tx_pref_lang');
+    const res = await fetch('/api/v1/geo-currency');
+    if (res.ok) {
+      const geo = await res.json();
+      currentCountry = savedCountry || geo.detected_country || 'EE';
+      currentCurrency = savedCurr || geo.detected_currency || getCountryCurrency(currentCountry);
+      currentLang = savedLang || geo.detected_language || 'en';
+    }
+  } catch (_e) {}
+  applyLocalization();
+}
+initGeoCurrency();
+
+// Checkout Modal Logic & Live Multi-Rail Map
+let activeCheckoutPlan = { id: 'starter', name: 'Tianxia Sovereign Cockpit', price: 29, currency: 'EUR', basePrice: 29, baseCurrency: 'EUR' };
+
+const TX_STRIPE_LINKS = {
+  vrtti_5k: 'https://buy.stripe.com/cNicN4bn36Qx3xpfvF9AA02',
+  sprint: 'https://buy.stripe.com/cNicN4bn36Qx3xpfvF9AA02',
+  vrtti_10k: 'https://buy.stripe.com/4gMbJ02Qx7UB4Btbfp9AA03',
+  substrate: 'https://buy.stripe.com/4gMbJ02Qx7UB4Btbfp9AA03',
+  vrtti_audit: 'https://buy.stripe.com/3cIeVcgHngr7c3Vabl9AA04',
+  retainer: 'https://buy.stripe.com/9B6eVcdvb7UBd7Z97h9AA05',
+  founder_retainer: 'https://buy.stripe.com/3cIfZgdvbfn3ec383d9AA06',
+  audit: 'https://buy.stripe.com/dRm8wObn33El4Bt0AL9AA07',
+  vault_toolkit: 'https://buy.stripe.com/8x2eVc2Qx7UB6JBfvF9AA08',
+  fortress: 'https://buy.stripe.com/8x2eVc2Qx7UB6JBfvF9AA08',
+  vault: 'https://buy.stripe.com/8x2eVc2Qx7UB6JBfvF9AA08',
+  alpha: 'https://buy.stripe.com/9B66oG62Ja2J9VN83d9AA09',
+  liquidity: 'https://buy.stripe.com/3cIeVc8aRfn3aZRdnx9AA0a',
+  starter: 'https://buy.stripe.com/aFa00i8aRdeV3xpfvF9AA0b',
+  cockpit: 'https://buy.stripe.com/aFa00i8aRdeV3xpfvF9AA0b',
+  pro: 'https://buy.stripe.com/28E28qgHna2Jd7ZerB9AA0c',
+  enterprise: 'https://buy.stripe.com/bJe9ASgHnb6Nfg70AL9AA0d',
+  manual: 'https://buy.stripe.com/cNi6oG1Mt2Ah1pherB9AA0e',
+  escrow: 'https://buy.stripe.com/00wbJ0ezfcaR8RJ6Z99AA0f',
+  names: 'https://buy.stripe.com/00wbJ0ezfcaR8RJ6Z99AA0f',
+  syndicate: 'https://buy.stripe.com/00wbJ0ezfcaR8RJ6Z99AA0f',
+  syndicate_retainer: 'https://buy.stripe.com/4gM28qbn3fn39VN5V59AA0g',
+  tracer: 'https://buy.stripe.com/eVqbJ03UB5Mt6JB0AL9AA0h',
+  murua_tracer: 'https://buy.stripe.com/eVqbJ03UB5Mt6JB0AL9AA0h',
+  ledger: 'https://buy.stripe.com/cNi14m1Mt3El8RJ5V59AA0i',
+  cv_rewrite: 'https://buy.stripe.com/cNi3cubn3b6N4BterB9AA0j',
+  jobs: 'https://buy.stripe.com/cNi3cubn3b6N4BterB9AA0j',
+  blueprint_5k: 'https://buy.stripe.com/00w7sK76NdeV4Bt1EP9AA0k',
+  kai3_codex: 'https://buy.stripe.com/9B66oGfDjgr73xp1EP9AA0l',
+  asura_matrix: 'https://buy.stripe.com/8x28wO1Mtgr71phdnx9AA0m'
+};
+
+const TX_GUMROAD_LINKS = {
+  manual: 'https://coltak.gumroad.com/l/wbevjc',
+  starter: 'https://coltak.gumroad.com/l/twylx',
+  pro: 'https://coltak.gumroad.com/l/cbwfy',
+  enterprise: 'https://coltak.gumroad.com/l/daahft',
+  cv_rewrite: 'https://coltak.gumroad.com/l/ekpnaz',
+  blueprint_5k: 'https://coltak.gumroad.com/l/fgvhn',
+  kai3_codex: 'https://coltak.gumroad.com/l/rqgnq',
+  asura_matrix: 'https://coltak.gumroad.com/l/dsxuo'
+};
+
+function openCheckout(planId, planName, basePrice, baseCurrency) {
+  const targetCurr = (currentCurrency === 'SOL') ? baseCurrency : currentCurrency;
+  const convertedPrice = convertAmount(basePrice, baseCurrency, targetCurr);
+  activeCheckoutPlan = {
+    id: planId,
+    name: planName,
+    price: convertedPrice,
+    currency: targetCurr,
+    basePrice: basePrice,
+    baseCurrency: baseCurrency
+  };
+  document.getElementById('tx-checkout-title').textContent = `Acquire: ${planName}`;
+  document.getElementById('tx-order-item-name').textContent = planName;
+  const formatted = formatCurrencyValue(convertedPrice, targetCurr);
+  document.getElementById('tx-order-item-price').textContent = `${formatted} (${targetCurr})`;
+  document.getElementById('tx-order-item-total').textContent = `${formatted} (${targetCurr})`;
+  document.getElementById('tx-checkout-result').style.display = 'none';
+  document.getElementById('tx-btn-submit-order').disabled = false;
+  document.getElementById('tx-btn-submit-order').textContent = `Generate Live ${targetCurr} Checkout Session & Seal Receipt ↗`;
+
+  const sLink = `/api/v1/stripe-express?plan=${encodeURIComponent(planId)}&currency=${encodeURIComponent(targetCurr)}&lang=${encodeURIComponent(currentLang)}&country=${encodeURIComponent(currentCountry)}`;
+  const stripeBtn = document.getElementById('tx-direct-stripe-btn');
+  if (stripeBtn) stripeBtn.href = sLink;
+
+  const usdEquiv = convertAmount(basePrice, baseCurrency, 'USD');
+  const solAmount = Math.max(0.05, +(usdEquiv / 145).toFixed(4));
+  const solBtn = document.getElementById('tx-direct-sol-btn');
+  if (solBtn) solBtn.href = `solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq?amount=${solAmount}&label=RASA-X-MACHINA&message=${encodeURIComponent(planName)}`;
+
+  const hubBtn = document.getElementById('tx-direct-hub-btn');
+  if (hubBtn) hubBtn.href = `/pay?plan=${encodeURIComponent(planId)}&currency=${encodeURIComponent(targetCurr)}`;
+
+  document.getElementById('tx-checkout-overlay').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('tx-checkout-overlay').classList.remove('open');
+}
+
+function copyWalletAddr(addr, label) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(addr);
+  }
+  alert(`Copied ${label}: ${addr}`);
+}
+
+async function payWithEvmWallet(customAmount) {
+  const treasury = '0xe7Eef656416eC617Ccb4409a9928b6a3D1557769';
+  const usdVal = customAmount || activeCheckoutPlan.price || 29;
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x2105' }] // Base Mainnet (8453)
+        });
+      } catch (_switchErr) {}
+      const ethAmount = Math.max(0.001, +(usdVal / 2600).toFixed(6));
+      const weiHex = '0x' + Math.floor(ethAmount * 1e18).toString(16);
+      const txHash = await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          from: accounts[0],
+          to: treasury,
+          value: weiHex
+        }]
+      });
+      alert(`Base L2 / Ethereum Transaction Broadcast! TxHash: ${txHash}`);
+      return;
+    } catch (err) {
+      console.warn('Web3 wallet fallback:', err);
+    }
+  }
+  window.open(`/pay?plan=${encodeURIComponent(activeCheckoutPlan.id)}&rail=base`, '_blank');
+}
+
+async function submitCheckout(e) {
+  e.preventDefault();
+  const btn = document.getElementById('tx-btn-submit-order');
+  btn.disabled = true;
+  btn.textContent = 'Creating Live Multi-Rail Session...';
+
+  const email = document.getElementById('tx-client-email').value.trim();
+  const promo = document.getElementById('tx-promo-code').value.trim();
+  const railEl = document.getElementById('tx-payment-rail');
+  const selectedRail = railEl ? railEl.value : 'stripe';
+
+  try {
+    const res = await fetch('/api/v1/checkout', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        plan: activeCheckoutPlan.id,
+        currency: activeCheckoutPlan.currency,
+        lang: currentLang,
+        country: currentCountry,
+        email: email,
+        promo: promo,
+        rail: selectedRail
+      })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      const resBox = document.getElementById('tx-checkout-result');
+      resBox.style.display = 'block';
+      const stripeUrl = data.stripe_checkout_url || data.stripe_payment_link || TX_STRIPE_LINKS[activeCheckoutPlan.id];
+      const stripePerm = data.stripe_payment_link || TX_STRIPE_LINKS[activeCheckoutPlan.id];
+      const gumroadUrl = data.gumroad_url || TX_GUMROAD_LINKS[activeCheckoutPlan.id];
+      const crypto = data.crypto || {};
+      const solUri = crypto.solana_pay_uri || `solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq?amount=0.2`;
+      const solAddr = crypto.solana_treasury || '88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq';
+      const evmAddr = crypto.evm_base_treasury || '0xe7Eef656416eC617Ccb4409a9928b6a3D1557769';
+      const cbUsdcAddr = crypto.coinbase_usdc_direct || '0xE662327Db0EcD7a3a13CcD4E4d4c502F842DcFB5';
+      const etmaPump = crypto.etma_pump_fun || 'https://pump.fun/coin/6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2';
+      const efmScan = crypto.efm_basescan || 'https://basescan.org/token/0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D';
+
+      document.getElementById('tx-receipt-details').innerHTML = `
+        <div style="margin-bottom:0.65rem">
+          Receipt: <strong>${data.receipt_token}</strong> · SKU: <strong>${data.sku || 'SKU-TX'}</strong> · Plan: <strong>${data.plan_name || data.plan}</strong> (${data.currency_symbol || ''}${data.amount} ${data.currency})<br/>
+          Card Statement Descriptor: <code>${data.statement_descriptor || 'RASAXMACHINA'}</code> · Merkle: <code>${data.merkle_attestation.substring(0, 20)}...</code>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.45rem;margin-bottom:0.75rem">
+          <a href="${stripeUrl}" target="_blank" rel="noopener" class="tx-btn-buy" style="text-decoration:none;padding:0.55rem;font-size:0.78rem;text-align:center">
+            💳 Complete on Stripe Checkout ↗
+          </a>
+          <a href="${stripePerm}" target="_blank" rel="noopener" class="tx-btn-outline" style="text-decoration:none;padding:0.55rem;font-size:0.78rem;text-align:center;color:#fff">
+            🔗 Stripe Direct Link ↗
+          </a>
+          <a href="${solUri}" class="tx-btn-outline" style="text-decoration:none;padding:0.55rem;font-size:0.78rem;text-align:center;border-color:#34d399;color:#34d399">
+            ◎ Open Solana Wallet (${crypto.amount_sol || ''} SOL) ↗
+          </a>
+          <button type="button" onclick="payWithEvmWallet(${data.amount})" class="tx-btn-outline" style="padding:0.55rem;font-size:0.78rem;text-align:center;border-color:#60a5fa;color:#60a5fa;cursor:pointer;background:transparent">
+            🔵 Send via Base / MetaMask ↗
+          </button>
+          ${gumroadUrl ? `<a href="${gumroadUrl}" target="_blank" rel="noopener" class="tx-btn-outline" style="text-decoration:none;padding:0.55rem;font-size:0.78rem;text-align:center;border-color:#f472b6;color:#f472b6">📦 Buy on Gumroad ↗</a>` : ''}
+          <a href="/pay?plan=${encodeURIComponent(data.plan)}&receipt=${encodeURIComponent(data.receipt_token)}" class="tx-btn-outline" style="text-decoration:none;padding:0.55rem;font-size:0.78rem;text-align:center;color:#c084fc">
+            🌐 Open Full Payment Portal ↗
+          </a>
+        </div>
+        <div style="padding:0.65rem;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.08);border-radius:0.5rem;font-size:0.7rem;line-height:1.6">
+          <div><strong style="color:#34d399">Solana (SOL / USDC / $ETMA):</strong> <code style="cursor:pointer;text-decoration:underline" onclick="copyWalletAddr('${solAddr}','Solana Treasury')">${solAddr}</code> <a href="${etmaPump}" target="_blank" style="color:#34d399">[Buy $ETMA ↗]</a></div>
+          <div><strong style="color:#60a5fa">Base L2 / EVM (USDC / ETH / $EFM):</strong> <code style="cursor:pointer;text-decoration:underline" onclick="copyWalletAddr('${evmAddr}','Base/EVM Treasury')">${evmAddr}</code> <a href="${efmScan}" target="_blank" style="color:#60a5fa">[$EFM Token ↗]</a></div>
+          <div><strong style="color:#93c5fd">Coinbase Direct USDC (Base/ETH):</strong> <code style="cursor:pointer;text-decoration:underline" onclick="copyWalletAddr('${cbUsdcAddr}','Coinbase Direct USDC')">${cbUsdcAddr}</code></div>
+        </div>
+      `;
+      btn.textContent = 'Checkout Session Ready ✓';
+      if (selectedRail === 'stripe' && stripeUrl) {
+        window.open(stripeUrl, '_blank', 'noopener');
+      } else if (selectedRail === 'gumroad' && gumroadUrl) {
+        window.open(gumroadUrl, '_blank', 'noopener');
+      } else if (selectedRail === 'solana' && solUri) {
+        window.location.href = solUri;
+      } else if (selectedRail === 'base') {
+        payWithEvmWallet(data.amount);
+      }
+    } else {
+      alert(`Checkout failed: ${data.error || 'Server error'}`);
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+    }
+  } catch (err) {
+    alert(`Checkout error: ${err.message}`);
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+  }
+}
+
+// Subdomain Inspector Modal Logic
+function openInspect(key) {
+  const sub = subdomainsCatalog[key];
+  if (!sub) return;
+
+  document.getElementById('tx-inspect-title').textContent = `${sub.name} · Specification`;
+  document.getElementById('tx-inspect-external-btn').href = (key === '@' || key === 'apex') ? '/' : `/${key}`;
+  document.getElementById('tx-inspect-content').innerHTML = `
+    <div style="margin-bottom:1rem">
+      <div style="font-family:var(--tx-font-mono);font-size:1.05rem;color:var(--tx-purple-4);font-weight:700">${sub.fqdn}</div>
+      <div style="font-size:0.8rem;color:var(--tx-ink-dim);margin-top:0.25rem">CLUSTER: ${sub.cluster.toUpperCase()} · ROUTING: ${sub.routing.toUpperCase()}</div>
+    </div>
+    <p style="color:#e2e8f0;font-size:0.95rem;margin-bottom:1.25rem">${sub.description}</p>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid var(--tx-hairline-2);border-radius:0.75rem;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:0.75rem;color:var(--tx-ink-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem">Target ICP Segments</div>
+      <div style="display:flex;gap:0.4rem;flex-wrap:wrap">
+        ${(sub.icp || []).map(i => `<span class="tx-icp-chip">${i}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.85rem">
+      <div style="background:rgba(255,255,255,0.02);border:1px solid var(--tx-hairline-2);border-radius:0.6rem;padding:0.75rem">
+        <div style="font-size:0.72rem;color:var(--tx-ink-dim)">UPTIME SLA</div>
+        <div style="font-family:var(--tx-font-mono);font-size:0.95rem;color:var(--tx-aurora-3);font-weight:700">99.98% Cryptographically Audited</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:1px solid var(--tx-hairline-2);border-radius:0.6rem;padding:0.75rem">
+        <div style="font-size:0.72rem;color:var(--tx-ink-dim)">SECURITY GATE</div>
+        <div style="font-family:var(--tx-font-mono);font-size:0.95rem;color:var(--tx-aurora-2);font-weight:700">DSS-14 / Zero-Leak ClosedQuorum</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('tx-inspect-overlay').classList.add('open');
+}
+
+function closeInspect() {
+  document.getElementById('tx-inspect-overlay').classList.remove('open');
+}
+
+function copyMerkleHash() {
+  const hash = "11a713d76af83e96a04d538651a8c47ac8df9e04b087ee782c97639ea3962dcd";
+  navigator.clipboard.writeText(hash).then(() => {
+    alert("TetraLedger Merkle root hash copied to clipboard.");
+  }).catch(() => {});
+}
+
+// Close modals on Escape key
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeCheckout();
+    closeInspect();
+    closeInquiry();
+  }
+});
+
+// Close modals when clicking outside
+document.querySelectorAll('.tx-modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeCheckout();
+      closeInspect();
+      closeInquiry();
+    }
+  });
+});
+
+// Live Public Telemetry Loader
+async function loadPublicTelemetry() {
+  try {
+    const res = await fetch('/api/v1/telemetry/public');
+    const data = await res.json();
+    if (data.ok) {
+      if (data.threat_radar) {
+        const cisaEl = document.getElementById('radar-cisa-count');
+        if (cisaEl) cisaEl.textContent = `${data.threat_radar.cisa_kev_active_count.toLocaleString()} Exploited CVEs`;
+        const sinkEl = document.getElementById('radar-sinkhole-count');
+        if (sinkEl) sinkEl.textContent = `${data.threat_radar.feodo_c2_botnets_sinkholed} C2 Nodes Sinkholed`;
+        const cisaDescEl = document.getElementById('radar-cisa-desc');
+        if (cisaDescEl && data.threat_radar.recent_cves && data.threat_radar.recent_cves.length > 0) {
+          const cveNames = data.threat_radar.recent_cves.map(c => c.cve).join(', ');
+          cisaDescEl.textContent = `Active exploited CVEs: ${cveNames}. Production enclaves targeted.`;
+        }
+      }
+      if (data.alpha_opportunity) {
+        const yEl = document.getElementById('radar-yield-val');
+        if (yEl) yEl.textContent = `${data.alpha_opportunity.kamino_solana_usdc_apy}% – ${data.alpha_opportunity.marginfi_solana_usdt_apy}% APY`;
+        const yDescEl = document.getElementById('radar-yield-desc');
+        if (yDescEl) yDescEl.textContent = `Kamino USDC & MarginFi USDT. Live cross-DEX spread: ${data.alpha_opportunity.dex_cex_arbitrage_bps} bps (MEV Shielded).`;
+      }
+      if (data.solvency_attestation) {
+        const solEl = document.getElementById('radar-solvency-val');
+        if (solEl) {
+          const discAmt = data.solvency_attestation.discrepancy_usd || 0;
+          const conv = convertAmount(discAmt, 'USD', currentCurrency, 2);
+          solEl.innerHTML = `<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="${discAmt}" data-decimals="2">${formatCurrencyValue(conv, currentCurrency, 2)}</span> Discrepancy`;
+        }
+        const merkleEl = document.getElementById('tx-home-merkle');
+        if (merkleEl && data.solvency_attestation.merkle_root) {
+          merkleEl.textContent = `Merkle: ${data.solvency_attestation.merkle_root}`;
+        }
+      }
+    }
+  } catch (err) {
+    console.debug('public telemetry polling error:', err);
+  }
+}
+
+// Storefront Category Filter Logic
+function filterStorefrontCategory(cat) {
+  document.querySelectorAll('.tx-store-cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === cat);
+  });
+  document.querySelectorAll('.tx-store-card').forEach(card => {
+    if (cat === 'all' || card.dataset.storeCat === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+document.querySelectorAll('.tx-store-cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterStorefrontCategory(btn.dataset.cat);
+  });
+});
+
+// Interactive Scope & Retainer Calculator State
+const calcState = {
+  track: 'sprint',
+  basePrice: 5000,
+  scale: 1.0,
+  slaAdd: 0,
+  scaleName: '1–3 Nodes (Enclave Edge)',
+  slaName: 'Standard 99.9% SLA',
+  trackName: 'VRTTI Architecture Sprint'
+};
+
+const trackNames = {
+  sprint: 'VRTTI Architecture Sprint',
+  substrate: 'Sovereign Substrate Delivery',
+  audit: 'Zero-Trust Infrastructure Assessment',
+  retainer: 'Fractional CTO Retainer',
+  liquidity: 'Autonomous Liquidity Engine',
+  escrow: 'NomenAgora Handle Escrow'
+};
+
+function updateCalcDisplay() {
+  const totalUSD = Math.round((calcState.basePrice * calcState.scale) + calcState.slaAdd);
+  const displayVal = document.getElementById('tx-calc-display-val');
+  if (displayVal) {
+    const conv = convertAmount(totalUSD, 'USD', currentCurrency);
+    displayVal.textContent = formatCurrencyValue(conv, currentCurrency);
+  }
+  const specTrack = document.getElementById('calc-spec-track');
+  if (specTrack) specTrack.textContent = `Track: ${calcState.trackName}`;
+  const specNodes = document.getElementById('calc-spec-nodes');
+  if (specNodes) specNodes.textContent = `Topology: ${calcState.scaleName}`;
+  const specSLA = document.getElementById('calc-spec-sla');
+  if (specSLA) specSLA.textContent = `Standard: ${calcState.slaName}`;
+
+  const inqTrackDisplay = document.getElementById('tx-inq-track-display');
+  if (inqTrackDisplay) inqTrackDisplay.textContent = calcState.trackName;
+  const inqBudgetDisplay = document.getElementById('tx-inq-budget-display');
+  if (inqBudgetDisplay) inqBudgetDisplay.textContent = displayVal ? displayVal.textContent : formatCurrencyValue(convertAmount(totalUSD, 'USD', currentCurrency), currentCurrency);
+}
+
+function setCalcTrack(trackId, basePrice) {
+  calcState.track = trackId;
+  calcState.basePrice = basePrice;
+  calcState.trackName = trackNames[trackId] || 'Custom Engagement';
+  document.querySelectorAll('.tx-calc-option[data-track]').forEach(el => {
+    el.classList.toggle('selected', el.dataset.track === trackId);
+  });
+  updateCalcDisplay();
+}
+
+function setCalcScale(multiplier, scaleName) {
+  calcState.scale = multiplier;
+  calcState.scaleName = scaleName;
+  document.querySelectorAll('.tx-calc-option[data-scale]').forEach(el => {
+    el.classList.toggle('selected', parseFloat(el.dataset.scale) === multiplier);
+  });
+  updateCalcDisplay();
+}
+
+function setCalcSLA(addAmount, slaName) {
+  calcState.slaAdd = addAmount;
+  calcState.slaName = slaName;
+  document.querySelectorAll('.tx-calc-option[data-sla]').forEach(el => {
+    const isDss = addAmount > 0;
+    el.classList.toggle('selected', (isDss && el.dataset.sla === 'dss14') || (!isDss && el.dataset.sla === 'standard'));
+  });
+  updateCalcDisplay();
+}
+
+function selectCalcTrack(trackId) {
+  const prices = { sprint: 5000, substrate: 10000, audit: 3500, retainer: 6000, liquidity: 4800, escrow: 1500 };
+  setCalcTrack(trackId, prices[trackId] || 5000);
+  const calcEl = document.getElementById('calculator');
+  if (calcEl) calcEl.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Proposal Inquiry Modal Logic
+function openInquiryModal() {
+  updateCalcDisplay();
+  const resBox = document.getElementById('tx-inquiry-result');
+  if (resBox) resBox.style.display = 'none';
+  const btn = document.getElementById('tx-btn-submit-inquiry');
+  if (btn) {
+    btn.disabled = false;
+    btn.textContent = 'Submit & Generate Signed Merkle Receipt ↗';
+  }
+  document.getElementById('tx-inquiry-overlay').classList.add('open');
+}
+
+function closeInquiry() {
+  document.getElementById('tx-inquiry-overlay').classList.remove('open');
+}
+
+async function submitInquiry(e) {
+  e.preventDefault();
+  const btn = document.getElementById('tx-btn-submit-inquiry');
+  btn.disabled = true;
+  btn.textContent = 'Validating via MANAS System-1 Shield...';
+
+  const name = document.getElementById('tx-inq-name').value.trim();
+  const email = document.getElementById('tx-inq-email').value.trim();
+  const org = document.getElementById('tx-inq-org').value.trim();
+  const brief = document.getElementById('tx-inq-brief').value.trim();
+  const totalUSD = Math.round((calcState.basePrice * calcState.scale) + calcState.slaAdd);
+
+  try {
+    const res = await fetch('/api/v1/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client_name: name,
+        email: email,
+        organization: org,
+        category: calcState.track,
+        scope_tier: calcState.scaleName,
+        estimated_budget: totalUSD,
+        currency: currentCurrency,
+        sla: calcState.slaName,
+        brief: brief
+      })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      const resBox = document.getElementById('tx-inquiry-result');
+      resBox.style.display = 'block';
+      document.getElementById('tx-inquiry-receipt-details').innerHTML = `
+        Inquiry Token: <strong>${data.inquiry_id}</strong><br/>
+        Merkle Signature: ${data.merkle_sig.substring(0, 28)}...<br/>
+        Attested Scope: ${data.category} (${data.estimated_budget} ${data.currency})<br/>
+        SLA Response: ${data.sla_response_time} guaranteed from Collins Takem.<br/>
+        Status: QUEUED IN SUBSTRATE
+      `;
+      btn.textContent = 'Proposal Registered ✓';
+    } else {
+      alert(`Inquiry rejected: ${data.error || data.reason || 'Server error'}`);
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+    }
+  } catch (err) {
+    alert(`Inquiry network error: ${err.message}`);
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+  }
+}
+
+// Initial Bootstrap
+loadSubdomains();
+loadPublicTelemetry();
+setInterval(loadPublicTelemetry, 15000);
+updateCalcDisplay();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# ffp: FFP-SYS-EDGE-FWD tx-edge-forwarder declarative
+[Unit]
+Description=TianxiaOS Cloudflare Tunnel Edge Ingress Forwarder (rasaxmachina.com + 26 Subdomains)
+After=network.target tianxia-gui-bridge.service
+Wants=tianxia-gui-bridge.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/lib/tianxia
+Environment="PATH=/run/current-system/sw/bin:/usr/bin:/bin"
+ExecStart=/run/current-system/sw/bin/python3 /var/lib/tianxia/bin/tx_edge_forwarder.py
+Restart=always
+RestartSec=3s
+MemoryMax=128M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

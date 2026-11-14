@@ -1,0 +1,159 @@
+{
+  "sentinel": "tx_release_package_sentinel",
+  "version": "8.7.0",
+  "timestamp_utc": "2026-11-13T05:05:48Z",
+  "status": "100% GREEN",
+  "passed": true,
+  "summary": {
+    "release_directories_checked": 1,
+    "release_directories_passed": 1,
+    "repositories_checked": 6,
+    "repositories_passed": 6
+  },
+  "release_directories": [
+    {
+      "path": "${TX_WORKSPACE:-/var/lib/tianxia}/TianxiaOS/dist/releases",
+      "present": true,
+      "passed": true,
+      "formats_7_of_7": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_present": true,
+      "openssl_sums_sig_valid": true,
+      "verified_artifact_sigs": 15,
+      "verified_sha256_entries": 32,
+      "cyclonedx_sbom_valid": true,
+      "sbom_components": 15,
+      "checksum_mismatches": [],
+      "signature_failures": [],
+      "header_errors": []
+    }
+  ],
+  "repositories": [
+    {
+      "repo": "Tianxia-Core/TianxiaOS",
+      "tag": "v8.7.0",
+      "expected_tag": "v8.7.0",
+      "mode": "staged_dist_plus_public_mirror",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "public_mirror_verified": true,
+      "local_dist_verified": true,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/tianxiaos-releases/releases/tag/v8.7.0"
+    },
+    {
+      "repo": "Tianxia-Core/tianxiaos-releases",
+      "tag": "v8.7.0",
+      "expected_tag": "v8.7.0",
+      "source": "https_github_api",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_verified": true,
+      "attestation_metadata_present": true,
+      "sig_files_count": 16,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/tianxiaos-releases/releases/tag/v8.7.0"
+    },
+    {
+      "repo": "Tianxia-Core/nimbus2",
+      "tag": "v2.5.0",
+      "expected_tag": "v2.5.0",
+      "source": "gh_cli",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_verified": true,
+      "attestation_metadata_present": true,
+      "sig_files_count": 15,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/nimbus2/releases/tag/v2.5.0"
+    },
+    {
+      "repo": "Tianxia-Core/AegisScan",
+      "tag": "v2.1.0",
+      "expected_tag": "v2.1.0",
+      "source": "gh_cli",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_verified": true,
+      "attestation_metadata_present": true,
+      "sig_files_count": 15,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/AegisScan/releases/tag/v2.1.0"
+    },
+    {
+      "repo": "Tianxia-Core/AetherVault",
+      "tag": "v2.1.0",
+      "expected_tag": "v2.1.0",
+      "source": "gh_cli",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_verified": true,
+      "attestation_metadata_present": true,
+      "sig_files_count": 15,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/AetherVault/releases/tag/v2.1.0"
+    },
+    {
+      "repo": "Tianxia-Core/tianxia-mobile",
+      "tag": "v2.1.0",
+      "expected_tag": "v2.1.0",
+      "source": "gh_cli",
+      "formats": {
+        "deb": true,
+        "rpm": true,
+        "AppImage": true,
+        "flake.nix": true,
+        "tar.gz": true,
+        "exe": true,
+        "android": true
+      },
+      "apk_verified": true,
+      "attestation_metadata_present": true,
+      "sig_files_count": 17,
+      "passed": true,
+      "url": "https://github.com/Tianxia-Core/tianxia-mobile/releases/tag/v2.1.0"
+    }
+  ]
+}

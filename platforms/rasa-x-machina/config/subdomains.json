@@ -1,0 +1,275 @@
+{
+  "domain": "rasaxmachina.com",
+  "founder": "Collins Takem",
+  "brand": "RASA-X-MACHINA",
+  "revision": "2026.10.26-SUBDOMAINS-V2",
+  "routing_modes": {
+    "cf_worker": "Cloudflare edge worker handling lightweight dynamic rendering and PWA shell",
+    "cf_tunnel": "cloudflared tunnel forwarding to local hub/edge services",
+    "vps_relay": "Direct Hetzner relay public IP (Cloudflare Anycast) for WireGuard and high-bandwidth ingress",
+    "static_cdn": "Cloudflare Pages / edge CDN hosting compiled artifacts"
+  },
+  "subdomains": {
+    "@": {
+      "fqdn": "rasaxmachina.com",
+      "cluster": "core",
+      "name": "RASA-X-MACHINA Flagship",
+      "routing": "cf_worker",
+      "description": "Primary brand portal, autonomous systems overview, and ecosystem directory",
+      "icp": ["ICP-INSTITUTION", "ICP-BUILDER", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "collins": {
+      "fqdn": "collins.rasaxmachina.com",
+      "cluster": "executive",
+      "name": "Collins Takem Executive Advisory",
+      "routing": "cf_worker",
+      "description": "Founder personal brand, architectural advisory, VRTTI rate cards (€2.3k - €9.25k), and client booking",
+      "icp": ["ICP-INSTITUTION", "ICP-BUILDER"],
+      "status": "active"
+    },
+    "vrtti": {
+      "fqdn": "vrtti.rasaxmachina.com",
+      "cluster": "executive",
+      "name": "VRTTI Rapid Sprint Portal",
+      "routing": "cf_worker",
+      "description": "Productized high-velocity engineering sprints, architecture reviews, and delivery contracts",
+      "icp": ["ICP-BUILDER", "ICP-INSTITUTION"],
+      "status": "active"
+    },
+    "names": {
+      "fqdn": "names.rasaxmachina.com",
+      "cluster": "syndicate",
+      "name": "NomenAgora Digital Namespace Syndicate",
+      "routing": "cf_worker",
+      "description": "60-handle Telegram digital asset network, escrow verification, and bot/channel directory",
+      "icp": ["ICP-COLLECTOR", "ICP-MERCHANT", "ICP-TRADER"],
+      "status": "active"
+    },
+    "alpha": {
+      "fqdn": "alpha.rasaxmachina.com",
+      "cluster": "trading",
+      "name": "RasaXM Alpha Arbitrage Signals",
+      "routing": "cf_worker",
+      "description": "Cross-venue and funding-rate arbitrage signals with hash-logged ledger proof (€29/mo)",
+      "icp": ["ICP-TRADER"],
+      "status": "active"
+    },
+    "tracer": {
+      "fqdn": "tracer.rasaxmachina.com",
+      "cluster": "logistics",
+      "name": "Murua Universal Tracer & TTH Reduction",
+      "routing": "cf_worker",
+      "description": "Cross-border Bayesian state-space consignment telemetry, TTH carrier matrix, and e-commerce false INR dispute mitigation",
+      "icp": ["ICP-MERCHANT", "ICP-BUILDER", "ICP-INSTITUTION", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "yield": {
+      "fqdn": "yield.rasaxmachina.com",
+      "cluster": "trading",
+      "name": "Autotreasury Yield Bridge",
+      "routing": "cf_worker",
+      "description": "DeFiLlama scoured high-yield stablecoin sleeve (TVL > €5M) and autonomous treasury rebalancing proposals",
+      "icp": ["ICP-TRADER", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "ledger": {
+      "fqdn": "ledger.rasaxmachina.com",
+      "cluster": "transparency",
+      "name": "Veritas-Rex Public Track Record",
+      "routing": "cf_worker",
+      "description": "Append-only reality ledger proving realized inflows, paper trades, and audit scores",
+      "icp": ["ICP-INSTITUTION", "ICP-TRADER"],
+      "status": "active"
+    },
+    "radar": {
+      "fqdn": "radar.rasaxmachina.com",
+      "cluster": "defense",
+      "name": "Faery Fortress Threat Radar",
+      "routing": "cf_worker",
+      "description": "Live CISA KEV exploited vulnerabilities, NVD 2.0 CVEs, and Feodo Tracker C2 botnet monitor",
+      "icp": ["ICP-DEFENDER", "ICP-INSTITUTION"],
+      "status": "active"
+    },
+    "fortress": {
+      "fqdn": "fortress.rasaxmachina.com",
+      "cluster": "defense",
+      "name": "Faery Fortress Hardening Specs",
+      "routing": "cf_worker",
+      "description": "Deception, Aegis-9 shield specifications, DNS threat filtering, and ClosedQuorum telemetry",
+      "icp": ["ICP-DEFENDER"],
+      "status": "active"
+    },
+    "vault": {
+      "fqdn": "vault.rasaxmachina.com",
+      "cluster": "defense",
+      "name": "Sovereign Secret Vault",
+      "routing": "cf_worker",
+      "description": "Aethervault cryptographic secret isolation, HSM key management, and GDPR++ cryptoshredding toolkit (€139)",
+      "icp": ["ICP-DEFENDER", "ICP-INSTITUTION"],
+      "status": "active"
+    },
+    "shop": {
+      "fqdn": "shop.rasaxmachina.com",
+      "cluster": "products",
+      "name": "The Fortress Market",
+      "routing": "cf_worker",
+      "description": "Autonomous blueprints, codices, and the Operator's Manual with ETMA 10% discount",
+      "icp": ["ICP-BUILDER", "ICP-COLLECTOR"],
+      "status": "active"
+    },
+    "jobs": {
+      "fqdn": "jobs.rasaxmachina.com",
+      "cluster": "products",
+      "name": "JobMatch Honest CV Rewriter",
+      "routing": "cf_worker",
+      "description": "AI resume rewriting with 50% strict coverage firewall (never fabricates experience)",
+      "icp": ["ICP-BUILDER"],
+      "status": "active"
+    },
+    "manual": {
+      "fqdn": "manual.rasaxmachina.com",
+      "cluster": "products",
+      "name": "tianxiaOS Operator's Manual",
+      "routing": "cf_worker",
+      "description": "41 RGUs, 6 payment rails, and architecture blueprint for autonomous revenue substrates (€29)",
+      "icp": ["ICP-BUILDER", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "etamanga": {
+      "fqdn": "etamanga.rasaxmachina.com",
+      "cluster": "web3",
+      "name": "ETAMANGA Governance & Sovereign Chain",
+      "routing": "cf_worker",
+      "description": "ETMA token on Solana (pump.fun), Substrate mainnet specifications, and genesis parameters",
+      "icp": ["ICP-TRADER", "ICP-COLLECTOR"],
+      "status": "active"
+    },
+    "rpc-etamanga": {
+      "fqdn": "rpc-etamanga.rasaxmachina.com",
+      "cluster": "web3",
+      "name": "ETAMANGA Substrate RPC Node",
+      "routing": "vps_relay",
+      "description": "Public JSON-RPC / WebSocket endpoint for the ETAMANGA Substrate blockchain",
+      "icp": ["ICP-BUILDER", "ICP-TRADER"],
+      "status": "active"
+    },
+    "tianxia": {
+      "fqdn": "tianxia.rasaxmachina.com",
+      "cluster": "system",
+      "name": "tianxiaOS Sovereign Agentic Mesh",
+      "routing": "cf_worker",
+      "description": "Post-quantum WireGuard mesh, local uncensored models, and mobile AVF substrate",
+      "icp": ["ICP-SOVEREIGN-OP", "ICP-BUILDER"],
+      "status": "active"
+    },
+    "ndimmorwyn": {
+      "fqdn": "ndimmorwyn.rasaxmachina.com",
+      "cluster": "system",
+      "name": "Ndimmôrwyn Autonomous Engine",
+      "routing": "cf_worker",
+      "description": "Fleet manager, 200-project dispatch, and micro-revenue pipeline",
+      "icp": ["ICP-SOVEREIGN-OP", "ICP-BUILDER"],
+      "status": "active"
+    },
+    "substrate": {
+      "fqdn": "substrate.rasaxmachina.com",
+      "cluster": "system",
+      "name": "tianxiaOS Persistent Memory Substrate",
+      "routing": "cf_worker",
+      "description": "273k-node knowledge graph, semantic recall, and softem acceleration",
+      "icp": ["ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "cockpit": {
+      "fqdn": "cockpit.rasaxmachina.com",
+      "cluster": "ops",
+      "name": "tianxiaOS Cockpit Management",
+      "routing": "cf_tunnel",
+      "description": "Operator control plane, live status API (:8081), and TV appliance mirror",
+      "icp": ["ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "relay": {
+      "fqdn": "relay.rasaxmachina.com",
+      "cluster": "infra",
+      "name": "tianxiaOS Public Mesh Relay",
+      "routing": "vps_relay",
+      "description": "WireGuard endpoint (Cloudflare Anycast:47822) and multi-exit gateway",
+      "icp": ["ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "api": {
+      "fqdn": "api.rasaxmachina.com",
+      "cluster": "api",
+      "name": "RASA-X-MACHINA API Gateway",
+      "routing": "cf_worker",
+      "description": "Public API for catalog queries, webhook delivery, and x402 payment handshakes",
+      "icp": ["ICP-BUILDER", "ICP-MERCHANT"],
+      "status": "active"
+    },
+    "pay": {
+      "fqdn": "pay.rasaxmachina.com",
+      "cluster": "billing",
+      "name": "RASA-X-MACHINA Payment & Billing",
+      "routing": "cf_worker",
+      "description": "Unified Stripe checkout, subscription lifecycle, invoice receipts, and refund requests",
+      "icp": ["ICP-MERCHANT", "ICP-INSTITUTION"],
+      "status": "active"
+    },
+    "docs": {
+      "fqdn": "docs.rasaxmachina.com",
+      "cluster": "content",
+      "name": "RASA-X-MACHINA Documentation",
+      "routing": "cf_worker",
+      "description": "Architecture specifications, API schemas, and operator runbooks",
+      "icp": ["ICP-BUILDER", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "trust": {
+      "fqdn": "trust.rasaxmachina.com",
+      "cluster": "compliance",
+      "name": "Trust & Security Center",
+      "routing": "cf_worker",
+      "description": "Zero-leak telemetry proof, GDPR compliance, SOC2-readiness, and security advisories",
+      "icp": ["ICP-INSTITUTION", "ICP-DEFENDER"],
+      "status": "active"
+    },
+    "status": {
+      "fqdn": "status.rasaxmachina.com",
+      "cluster": "observability",
+      "name": "Public System Status",
+      "routing": "cf_worker",
+      "description": "Live status of all cluster nodes, RPC endpoints, and mesh connectivity",
+      "icp": ["ICP-INSTITUTION", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "blog": {
+      "fqdn": "blog.rasaxmachina.com",
+      "cluster": "content",
+      "name": "Founder & Research Blog",
+      "routing": "cf_worker",
+      "description": "Dispatches by Collins Takem on autonomous architectures, local LLM orchestration, and cryptography",
+      "icp": ["ICP-BUILDER", "ICP-INSTITUTION", "ICP-SOVEREIGN-OP"],
+      "status": "active"
+    },
+    "estonia": {
+      "fqdn": "estonia.rasaxmachina.com",
+      "cluster": "executive",
+      "name": "Estonian Startup Committee Evaluation Companion",
+      "routing": "cf_worker",
+      "description": "Technical & commercial due-diligence companion prepared for the Estonian Startup Committee while actively evaluating Dealum Application #179423 (§ 100¹ Aliens Act; proposed Tallinn entity upon approval: RASA-X-MACHINA OÜ).",
+      "icp": ["ICP-INSTITUTION"],
+      "status": "active"
+    },
+    "press": {
+      "fqdn": "press.rasaxmachina.com",
+      "cluster": "executive",
+      "name": "Official Press, Media & Brand Kit",
+      "routing": "cf_worker",
+      "description": "Official SVG/PNG logos, copy-ready press boilerplates, broadcast founder pitch videos, house style, brand story, customer journey, and media inquiry desk for RASA-X-MACHINA & tianxiaOS.",
+      "icp": ["ICP-INSTITUTION", "ICP-BUILDER"],
+      "status": "active"
+    }
+  }
+}

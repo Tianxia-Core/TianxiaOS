@@ -1,0 +1,233 @@
+# ffp: FFP-RELAY-CADDY declarative caddyfile
+# Tianxia public European edge — x402.rasaxmachina.com, relay.rasaxmachina.com & :8080 (Hetzner tianxia-relay 10.0.99.254 / <TX_RELAY_IPV4>)
+
+x402.rasaxmachina.com {
+	encode gzip
+	route {
+		@options method OPTIONS
+		respond @options 204
+		header {
+			Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+			X-Content-Type-Options "nosniff"
+			X-Frame-Options "DENY"
+			Referrer-Policy "strict-origin-when-cross-origin"
+			Permissions-Policy "geolocation=(), camera=(), microphone=(), interest-cohort=()"
+			Cross-Origin-Opener-Policy "same-origin-allow-popups"
+			Content-Security-Policy "default-src 'self' https: data: blob:; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com https://buy.stripe.com https://coltak.gumroad.com"
+			Access-Control-Allow-Origin *
+			Access-Control-Allow-Headers Content-Type, X-TX-HASH, X-TX-INVOICE, X-Tianxia-Auth
+			Access-Control-Allow-Methods POST, GET, OPTIONS
+			X-Tianxia-Edge tianxia-relay-hetzner-eu
+		}
+		handle /health {
+			header Content-Type application/json
+			respond "{\"ok\":true,\"node\":\"tianxia-relay\",\"provider\":\"hetzner-eu\",\"tailscale_ip\":\"10.0.99.254\",\"public_ip\":\"<TX_RELAY_IPV4>\",\"wg_ip\":\"10.0.99.254\",\"rosenpass_pq\":\"active\",\"mesh_nodes_online\":4,\"mesh_nodes_total\":5}" 200
+		}
+		handle /.well-known/security.txt {
+			header Content-Type "text/plain; charset=utf-8"
+			respond "Contact: https://rasaxmachina.com/collins#encrypted-dispatch\nContact: https://trust.rasaxmachina.com\nExpires: 2027-12-31T23:59:59.000Z\nPreferred-Languages: en, et, de, fr\nCanonical: https://rasaxmachina.com/.well-known/security.txt\nPolicy: https://trust.rasaxmachina.com\n" 200
+		}
+		@press_portal path /press /media /pr /press-kit /media-kit /brand /brand-kit
+		handle @press_portal {
+			root * /var/www/tianxia
+			rewrite * /subdomain_press.html
+			file_server
+		}
+		handle /whatsapp* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /about {
+			root * /var/www/tianxia
+			rewrite * /about.html
+			file_server
+		}
+		handle /collins {
+			root * /var/www/tianxia
+			rewrite * /subdomain_collins.html
+			file_server
+		}
+		handle /privacy {
+			root * /var/www/tianxia
+			rewrite * /privacy.html
+			file_server
+		}
+		handle /terms {
+			root * /var/www/tianxia
+			rewrite * /terms.html
+			file_server
+		}
+		handle /api/* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /pricing.json {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /pay* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /catalog* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /services* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /v1/* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9196 ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle {
+			root * /var/www/tianxia
+			file_server
+		}
+	}
+}
+
+relay.rasaxmachina.com {
+	encode gzip
+	route {
+		@options method OPTIONS
+		respond @options 204
+		header {
+			Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+			X-Content-Type-Options "nosniff"
+			X-Frame-Options "DENY"
+			Referrer-Policy "strict-origin-when-cross-origin"
+			Permissions-Policy "geolocation=(), camera=(), microphone=(), interest-cohort=()"
+			Cross-Origin-Opener-Policy "same-origin-allow-popups"
+			Content-Security-Policy "default-src 'self' https: data: blob:; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com https://buy.stripe.com https://coltak.gumroad.com"
+			X-Tianxia-Edge tianxia-relay-hetzner-eu
+		}
+		handle /health {
+			header Content-Type application/json
+			respond "{\"ok\":true,\"node\":\"tianxia-relay\",\"provider\":\"hetzner-eu\",\"tailscale_ip\":\"10.0.99.254\",\"public_ip\":\"<TX_RELAY_IPV4>\",\"wg_ip\":\"10.0.99.254\",\"rosenpass_pq\":\"active\",\"mesh_nodes_online\":4,\"mesh_nodes_total\":5}" 200
+		}
+		handle /.well-known/security.txt {
+			header Content-Type "text/plain; charset=utf-8"
+			respond "Contact: https://rasaxmachina.com/collins#encrypted-dispatch\nContact: https://trust.rasaxmachina.com\nExpires: 2027-12-31T23:59:59.000Z\nPreferred-Languages: en, et, de, fr\nCanonical: https://rasaxmachina.com/.well-known/security.txt\nPolicy: https://trust.rasaxmachina.com\n" 200
+		}
+		@press_portal path /press /media /pr /press-kit /media-kit /brand /brand-kit
+		handle @press_portal {
+			root * /var/www/tianxia
+			rewrite * /subdomain_press.html
+			file_server
+		}
+		handle /whatsapp* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /about {
+			root * /var/www/tianxia
+			rewrite * /about.html
+			file_server
+		}
+		handle /collins {
+			root * /var/www/tianxia
+			rewrite * /subdomain_collins.html
+			file_server
+		}
+		handle /privacy {
+			root * /var/www/tianxia
+			rewrite * /privacy.html
+			file_server
+		}
+		handle /terms {
+			root * /var/www/tianxia
+			rewrite * /terms.html
+			file_server
+		}
+		handle /api/* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199 {
+				header_up Host relay.rasaxmachina.com
+			}
+		}
+		@root path / /index.html
+		handle @root {
+			root * /var/www/tianxia
+			rewrite * /subdomain_relay.html
+			file_server
+		}
+		handle {
+			root * /var/www/tianxia
+			try_files {path} {path}.html /subdomain_relay.html
+			file_server
+		}
+	}
+}
+
+:8080 {
+	encode gzip
+	route {
+		@options method OPTIONS
+		respond @options 204
+		header {
+			Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+			X-Content-Type-Options "nosniff"
+			X-Frame-Options "DENY"
+			Referrer-Policy "strict-origin-when-cross-origin"
+			Permissions-Policy "geolocation=(), camera=(), microphone=(), interest-cohort=()"
+			Cross-Origin-Opener-Policy "same-origin-allow-popups"
+			Content-Security-Policy "default-src 'self' https: data: blob:; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com https://buy.stripe.com https://coltak.gumroad.com"
+			Access-Control-Allow-Origin *
+			Access-Control-Allow-Headers Content-Type, X-TX-HASH, X-TX-INVOICE, X-Tianxia-Auth
+			Access-Control-Allow-Methods POST, GET, OPTIONS
+			X-Tianxia-Edge tianxia-relay-hetzner-eu
+		}
+		handle /health {
+			header Content-Type application/json
+			respond "{\"ok\":true,\"node\":\"tianxia-relay\",\"provider\":\"hetzner-eu\",\"tailscale_ip\":\"10.0.99.254\",\"public_ip\":\"<TX_RELAY_IPV4>\",\"wg_ip\":\"10.0.99.254\",\"rosenpass_pq\":\"active\",\"mesh_nodes_online\":4,\"mesh_nodes_total\":5}" 200
+		}
+		handle /.well-known/security.txt {
+			header Content-Type "text/plain; charset=utf-8"
+			respond "Contact: https://rasaxmachina.com/collins#encrypted-dispatch\nContact: https://trust.rasaxmachina.com\nExpires: 2027-12-31T23:59:59.000Z\nPreferred-Languages: en, et, de, fr\nCanonical: https://rasaxmachina.com/.well-known/security.txt\nPolicy: https://trust.rasaxmachina.com\n" 200
+		}
+		@press_portal path /press /media /pr /press-kit /media-kit /brand /brand-kit
+		handle @press_portal {
+			root * /var/www/tianxia
+			rewrite * /subdomain_press.html
+			file_server
+		}
+		handle /whatsapp* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /about {
+			root * /var/www/tianxia
+			rewrite * /about.html
+			file_server
+		}
+		handle /collins {
+			root * /var/www/tianxia
+			rewrite * /subdomain_collins.html
+			file_server
+		}
+		handle /privacy {
+			root * /var/www/tianxia
+			rewrite * /privacy.html
+			file_server
+		}
+		handle /terms {
+			root * /var/www/tianxia
+			rewrite * /terms.html
+			file_server
+		}
+		handle /api/* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /pricing.json {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /pay* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /catalog* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /services* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle /v1/* {
+			reverse_proxy ${TX_HUB_HOST:-127.0.0.1}:9196 ${TX_HUB_HOST:-127.0.0.1}:9199
+		}
+		handle {
+			root * /var/www/tianxia
+			file_server
+		}
+	}
+}

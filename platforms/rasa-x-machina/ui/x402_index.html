@@ -1,0 +1,195 @@
+<!doctype html>
+<!-- ffp: FFP-PORTAL-X402 frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tianxia — Machine Services (x402 · Base L2)</title>
+<meta name="description" content="Pay-per-call HTTP 402 APIs for autonomous agents and humans on Base L2 and Solana. Zero accounts, cryptographic verification, and GDPR++ Privacy by Design.">
+<link rel="canonical" href="https://x402.rasaxmachina.com/">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root { --bg:#080808; --panel:#12161b; --ink:#f8fafc; --dim:#94a3b8; --accent:#34d399; --line:rgba(255,255,255,0.1); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  .tx-skip-link { position:fixed; top:-100px; left:16px; z-index:100000; background:#7c5cff; color:#fff; padding:10px 18px; border-radius:8px; font-weight:700; text-decoration:none; }
+  .tx-skip-link:focus { top:16px; outline:2px solid #22d3ee; }
+  header.tx-top-nav { max-width:860px; margin:0 auto; padding:20px 20px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  main { max-width:860px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:2rem; margin:0 0 6px; letter-spacing:-0.02em; }
+  .sub { color:var(--dim); margin:0 0 36px; }
+  .badge { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:2px 10px; font-size:.8rem; color:var(--accent); margin-left:8px; vertical-align:middle; }
+  h2 { font-size:1.05rem; text-transform:uppercase; letter-spacing:.08em; color:var(--dim); margin:40px 0 14px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin:12px 0; }
+  .card h3 { margin:0 0 4px; font-size:1.05rem; }
+  .price { color:var(--accent); font-weight:700; }
+  p { margin:.4em 0; }
+  code, pre { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85rem; }
+  pre { background:#0e1216; border:1px solid var(--line); border-radius:10px; padding:14px; overflow-x:auto; }
+  code { color:#c9e3ff; }
+  a { color:#8fc7ff; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .dim { color:var(--dim); }
+  .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  footer { margin-top:48px; color:var(--dim); font-size:.85rem; border-top:1px solid var(--line); padding-top:18px; }
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<header class="tx-top-nav" role="banner">
+  <a href="https://rasaxmachina.com" style="text-decoration:none" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#34d399;font-weight:700">x402 Edge</span></a>
+  <nav aria-label="Edge Navigation" style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; font-size:0.85rem;">
+    <a href="https://relay.rasaxmachina.com">Hetzner Relay</a>
+    <a href="https://rasaxmachina.com/api">API Gateway</a>
+    <a href="https://pay.rasaxmachina.com">Payment Hub</a>
+    <a href="/privacy">GDPR &amp; Privacy</a>
+  </nav>
+</header>
+<main id="main-content">
+  <h1>Tianxia — Machine Services <span class="badge">x402 · Base L2</span></h1>
+  <p class="sub">Pay-per-call APIs for autonomous agents and humans. No accounts, no API keys, no signup.
+  Pay in <strong>USDC or EFM on Base</strong> (or fiat equivalent in your selected currency), replay with the tx hash, receive the service.</p>
+
+  <h2>How payment works</h2>
+  <div class="card">
+    <p>1. Call an endpoint without payment → you receive a <code>402</code> invoice (price, address, memo).</p>
+    <p>2. Send the exact USDC or EFM amount on Base with the invoice memo, or to the invoice address.</p>
+    <p>3. Replay the same request with headers <code>X-TX-HASH</code> and <code>X-TX-INVOICE</code> → service delivered.</p>
+    <p class="dim">Invoices expire after 15 minutes. Settlements are verified on-chain before serving. The gateway fails closed.</p>
+  </div>
+
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Signal <span class="price"><span class="tx-dyn-money" data-base-amt="0.01" data-base-curr="USD" data-decimals="3">€0.009</span> · 0.01 USDC</span></h3>
+      <p class="dim">Market signal for a symbol (direction + confidence + provenance).<br>Accepted: <strong>0.01 USDC</strong> or 0.01 EFM.</p>
+      <pre>curl -X POST https://x402.rasaxmachina.com/v1/signal \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"ETH-USD"}'</pre>
+    </div>
+    <div class="card">
+      <h3>ACAR <span class="price"><span class="tx-dyn-money" data-base-amt="0.05" data-base-curr="USD" data-decimals="3">€0.046</span> · 0.05 USDC</span></h3>
+      <p class="dim">Adversarial counterparty attestation: risk grades + flags for any Base address.<br>Accepted: <strong>0.05 USDC</strong> or 0.05 EFM.</p>
+      <pre>curl -X POST https://x402.rasaxmachina.com/v1/acar \
+  -H 'Content-Type: application/json' \
+  -d '{"address":"0x…"}'</pre>
+    </div>
+    <div class="card">
+      <h3>Infer <span class="price"><span class="tx-dyn-money" data-base-amt="0.001" data-base-curr="USD" data-decimals="4">€0.0009</span> · 0.001 USDC</span></h3>
+      <p class="dim">Tianxia inference router — sovereign model forest, privacy-preserving.<br>Accepted: <strong>0.001 USDC</strong> or 0.001 EFM.</p>
+      <pre>curl -X POST https://x402.rasaxmachina.com/v1/infer \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"…"}'</pre>
+    </div>
+  </div>
+
+  <h2>Payment details</h2>
+  <div class="card">
+    <p>Network: <code>base</code></p><p>USDC: <code>0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913</code> · EFM: <code>0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D</code></p><p class="dim">Either token settles the same invoice — pay whichever you hold.</p>
+    <p>Pay to: <code>0xe7Eef656416eC617Ccb4409a9928b6a3D1557769</code></p>
+    <p class="dim">Each 402 response includes a unique invoice id and memo — always quote it.</p>
+  </div>
+
+  <h2>Notes for agents</h2>
+  <div class="card">
+    <p>POST only · JSON bodies · CORS open · rate-limited (30/min/IP) · fail-closed verification.</p>
+    <p class="dim">Operated by a sovereign mesh (autonomous engines, on-chain settlement, verifiable ledgers).</p>
+  </div>
+
+  <h2>Interactive x402 Workbench</h2>
+  <div class="card" id="x402-workbench">
+    <p class="dim">Test live HTTP 402 invoice generation, Base L2 settlement verification, and European Rosenpass PQ relay telemetry directly from your browser.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0;">
+      <label style="flex:1;min-width:160px;font-size:.85rem;color:var(--dim);">Endpoint
+        <select id="x402-ep" style="width:100%;margin-top:4px;padding:8px 10px;border-radius:8px;background:#0e1216;color:var(--ink);border:1px solid var(--line);">
+          <option value="/v1/signal">POST /v1/signal (0.01 USDC)</option>
+          <option value="/v1/acar">POST /v1/acar (0.05 USDC)</option>
+          <option value="/v1/infer">POST /v1/infer (0.001 USDC)</option>
+        </select>
+      </label>
+      <label style="flex:1;min-width:180px;font-size:.85rem;color:var(--dim);">Payload / Tx Hash
+        <input id="x402-input" type="text" value="ETH-USD" placeholder="ETH-USD or 0x..." style="width:100%;margin-top:4px;padding:8px 10px;border-radius:8px;background:#0e1216;color:var(--ink);border:1px solid var(--line);">
+      </label>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+      <button type="button" id="x402-btn-probe" style="padding:8px 14px;border-radius:8px;border:1px solid var(--accent);background:rgba(52,211,153,0.14);color:var(--ink);font-weight:600;cursor:pointer;">Request 402 Invoice</button>
+      <button type="button" id="x402-btn-verify" style="padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:#0e1216;color:var(--ink);font-weight:600;cursor:pointer;">Verify Receipt</button>
+      <button type="button" id="x402-btn-health" style="padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:#0e1216;color:var(--ink);font-weight:600;cursor:pointer;">Edge Health</button>
+    </div>
+    <pre id="x402-out" aria-live="polite" style="min-height:84px;margin:0;">Ready — click "Request 402 Invoice" to inspect live x402 challenge headers and JSON payload.</pre>
+  </div>
+
+  <footer>
+    <p>RASA-X-MACHINA (<em>Proposed Estonian Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ, Tallinn</em>) · Tianxia machine-to-machine services · settled on Base · <a href="https://rasaxmachina.com">Flagship Portal</a> · <a href="/privacy">GDPR++ &amp; Privacy</a> · <a href="/terms">Terms</a> · <a href="https://github.com/Tianxia-Core">GitHub (Rasa-X-Machina)</a></p>
+  </footer>
+</main>
+<script>
+(function(){
+  var out = document.getElementById('x402-out');
+  var epSel = document.getElementById('x402-ep');
+  var inp = document.getElementById('x402-input');
+  function show(status, data) {
+    out.textContent = 'HTTP ' + status + '\n' + (typeof data === 'string' ? data : JSON.stringify(data, null, 2));
+  }
+  document.getElementById('x402-btn-probe').addEventListener('click', async function(){
+    var ep = epSel.value;
+    var val = (inp.value || '').trim() || 'ETH-USD';
+    var body = ep === '/v1/acar' ? { address: val } : (ep === '/v1/infer' ? { prompt: val } : { symbol: val });
+    out.textContent = 'Probing ' + ep + ' ...';
+    try {
+      var r = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      var txt = await r.text();
+      try { show(r.status, JSON.parse(txt)); } catch (_) { show(r.status, txt); }
+    } catch (e) { show('ERR', String(e)); }
+  });
+  document.getElementById('x402-btn-verify').addEventListener('click', async function(){
+    var tx = encodeURIComponent((inp.value || '').trim() || '0x0000000000000000000000000000000000000402');
+    out.textContent = 'Verifying receipt ...';
+    try {
+      var r = await fetch('/api/v1/x402/verify?tx=' + tx);
+      show(r.status, await r.json());
+    } catch (e) { show('ERR', String(e)); }
+  });
+  document.getElementById('x402-btn-health').addEventListener('click', async function(){
+    out.textContent = 'Checking relay edge ...';
+    try {
+      var r = await fetch('/health');
+      show(r.status, await r.json());
+    } catch (e) { show('ERR', String(e)); }
+  });
+})();
+</script>
+</body>
+</html>

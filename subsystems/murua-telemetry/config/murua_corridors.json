@@ -1,0 +1,61 @@
+{
+  "corridors": [
+    {
+      "corridor_id": "NL-AMS_EE-TLL_12618",
+      "origin_impc": "NLAMSA",
+      "dest_impc": "EERUKB",
+      "dest_depot": "MUSTAMAE_KANDEKESKUS",
+      "daily_hub_volume": 85000.0,
+      "daily_flats_volume": 12000.0,
+      "p_locker": 0.88,
+      "cfc_efficiency": 0.95,
+      "rho_parcel_load": 0.82,
+      "tau0_hours": 36.0,
+      "linehaul_mu_log": 4.05,
+      "linehaul_sigma_log": 0.28,
+      "gamma_xray": 1.2,
+      "gamma_door": 0.8,
+      "cost_eur": 4.50,
+      "omega_weekend": 0.40,
+      "omega_otsepost": 0.15
+    },
+    {
+      "corridor_id": "BE-BRU_EE-TLL",
+      "origin_impc": "BEBRUA",
+      "dest_impc": "EESMAA",
+      "dest_depot": "BALTI_JAAM_SMARTPOST",
+      "daily_hub_volume": 45000.0,
+      "daily_flats_volume": 3000.0,
+      "p_locker": 0.98,
+      "cfc_efficiency": 0.99,
+      "rho_parcel_load": 0.45,
+      "tau0_hours": 12.0,
+      "linehaul_mu_log": 3.80,
+      "linehaul_sigma_log": 0.22,
+      "gamma_xray": 1.0,
+      "gamma_door": 0.2,
+      "cost_eur": 6.80,
+      "omega_weekend": 0.10,
+      "omega_otsepost": 0.05
+    },
+    {
+      "corridor_id": "DE-FRA_EE-TLL",
+      "origin_impc": "DEFRAB",
+      "dest_impc": "EERUKB",
+      "dest_depot": "MUSTAMAE_KANDEKESKUS",
+      "daily_hub_volume": 120000.0,
+      "daily_flats_volume": 25000.0,
+      "p_locker": 0.80,
+      "cfc_efficiency": 0.60,
+      "rho_parcel_load": 0.89,
+      "tau0_hours": 48.0,
+      "linehaul_mu_log": 4.20,
+      "linehaul_sigma_log": 0.35,
+      "gamma_xray": 1.5,
+      "gamma_door": 0.9,
+      "cost_eur": 4.20,
+      "omega_weekend": 0.45,
+      "omega_otsepost": 0.20
+    }
+  ]
+}

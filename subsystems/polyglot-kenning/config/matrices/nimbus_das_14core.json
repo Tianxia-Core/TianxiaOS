@@ -1,0 +1,118 @@
+{
+  "system": "NIMBUS² DAS v3.0.0",
+  "total_cores": 14,
+  "cores": [
+    {
+      "core_id": 1,
+      "name": "Nimbus-Metal",
+      "language": "Rust",
+      "mahavidya_gate": "1. KALI (Baseline Lock)",
+      "execution_boundary": "tx_nimue, TetraLedger, tx_srm_apex_daemon, ISO 8583 socket",
+      "ffp_class": "concurrent-daemon"
+    },
+    {
+      "core_id": 2,
+      "name": "Nimbus-ZeroAlloc",
+      "language": "Zig",
+      "mahavidya_gate": "2. BHAIRAVI (Fault Safety)",
+      "execution_boundary": "Explicit-allocator ring buffers, C ABI bridges, unikernel shims",
+      "ffp_class": "wire-codec"
+    },
+    {
+      "core_id": 3,
+      "name": "Nimbus-SIMD",
+      "language": "C++ (AVX2/FMA)",
+      "mahavidya_gate": "3. PRATYANGIRA (Ingress Filter)",
+      "execution_boundary": "BitNet b1.58 ternary matrix kernels, VUDA/SOFTEM page tables",
+      "ffp_class": "compute-kernel"
+    },
+    {
+      "core_id": 4,
+      "name": "Nimbus-Proof",
+      "language": "OCaml",
+      "mahavidya_gate": "4. BAGALAMUKHI (Invariant Freeze)",
+      "execution_boundary": "Jivascriptocle AST transpiler, ARSI formal proof checker",
+      "ffp_class": "capability-proxy"
+    },
+    {
+      "core_id": 5,
+      "name": "Nimbus-Mesh",
+      "language": "Go",
+      "mahavidya_gate": "5. TARA (Telemetry & RPC)",
+      "execution_boundary": "WireGuard wg0 control plane, gRPC/REST connector proxies",
+      "ffp_class": "concurrent-daemon"
+    },
+    {
+      "core_id": 6,
+      "name": "Nimbus-Quant",
+      "language": "Julia",
+      "mahavidya_gate": "6. TRIPURA (Mathematical Law)",
+      "execution_boundary": "Filippov differential solvers, Murua S10 Kalman filter",
+      "ffp_class": "data-science"
+    },
+    {
+      "core_id": 7,
+      "name": "Nimbus-Stealth",
+      "language": "Nim",
+      "mahavidya_gate": "7. BHUVANESVARI (Idempotency)",
+      "execution_boundary": "Zero-overhead CLI utilities, Loki's Smile honey-inodes, AST macros",
+      "ffp_class": "edge-agent"
+    },
+    {
+      "core_id": 8,
+      "name": "Nimbus-Tensor",
+      "language": "Mojo",
+      "mahavidya_gate": "8. CHHINNAMASTA (State Lock)",
+      "execution_boundary": "MLIR heterogeneous tensor kernels, Jivaslokan Huber probes",
+      "ffp_class": "compute-kernel"
+    },
+    {
+      "core_id": 9,
+      "name": "Nimbus-Swarm",
+      "language": "Python",
+      "mahavidya_gate": "9. DHUMAVATI (Abscission Prune)",
+      "execution_boundary": "Ndimmôrwyn orchestrator, Career Spear, DSS-14 gate",
+      "ffp_class": "glue"
+    },
+    {
+      "core_id": 10,
+      "name": "Nimbus-EdgeUI",
+      "language": "TypeScript",
+      "mahavidya_gate": "10. MATANGI (Schema & Protocol)",
+      "execution_boundary": "OpenCode / Pi Effect plugins, B2C Agent Wallet PWA, OSC 7501",
+      "ffp_class": "frontend"
+    },
+    {
+      "core_id": 11,
+      "name": "Nimbus-Flake",
+      "language": "Nix",
+      "mahavidya_gate": "11. KAMALA (Resource/MIF Cap)",
+      "execution_boundary": "Declarative Nixyr OS derivations, microvm specs, Freemium Shandoffs",
+      "ffp_class": "declarative"
+    },
+    {
+      "core_id": 12,
+      "name": "Nimbus-Ledger",
+      "language": "SQL (SQLite WAL)",
+      "mahavidya_gate": "12. ANNAPURNA (Custody Integrity)",
+      "execution_boundary": "TetraLedger double-entry journals, anti-DROP TABLE triggers",
+      "ffp_class": "declarative"
+    },
+    {
+      "core_id": 13,
+      "name": "Nimbus-Sandbox",
+      "language": "WASM / WASI",
+      "mahavidya_gate": "13. MAHASARASVATI (AST Hygiene)",
+      "execution_boundary": "Capability-restricted plugin sandboxes for third-party tools",
+      "ffp_class": "capability-proxy"
+    },
+    {
+      "core_id": 14,
+      "name": "Nimbus-Kernel",
+      "language": "eBPF C / POSIX",
+      "mahavidya_gate": "14. PARAMASIVA (Convergence)",
+      "execution_boundary": "Linux kernel AF_XDP packet filters, VFS openat2 hooks, systemd",
+      "ffp_class": "kernel-interceptor"
+    }
+  ]
+}

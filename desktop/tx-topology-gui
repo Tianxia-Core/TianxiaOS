@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# ffp: FFP-WRAP-TOPOLOGY-GUI frontend bash
+set +e
+set +u
+exec /var/lib/tianxia/bin/tx-gjs-run.sh "/var/lib/tianxia/bin/tx-topology-gui.js" "$@"

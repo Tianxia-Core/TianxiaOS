@@ -1,0 +1,371 @@
+<!-- ffp: FFP-UI-TIANXIA-GO frontend html -->
+<!doctype html>
+<!-- ffp: TX-TIANXIA-GO mobile frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#050505"/>
+<title>tianxiaOS Go — Mobile Companion</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="stylesheet" href="brandkit.css"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 12px);
+    --safe-bottom: env(safe-area-inset-bottom, 24px);
+  }
+  body {
+    padding-top: var(--safe-top);
+    padding-bottom: calc(75px + var(--safe-bottom));
+    background: #050505;
+    color: var(--tx-ink);
+    font-family: var(--tx-font-body);
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tx-go-wrap {
+    padding: 1rem 1rem 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .tx-go-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--tx-hairline-2);
+    margin-bottom: 1rem;
+  }
+  .tx-go-title {
+    font-family: var(--tx-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: var(--tx-grad-purple);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tx-badge-node {
+    font-size: 0.65rem;
+    font-family: var(--tx-font-mono);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(124, 92, 255, 0.15);
+    border: 1px solid var(--tx-purple-1);
+    color: var(--tx-purple-4);
+  }
+  .tx-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .tx-stat-card {
+    background: rgba(15, 15, 25, 0.6);
+    border: 1px solid var(--tx-hairline);
+    border-radius: 1rem;
+    padding: 0.85rem;
+    backdrop-filter: blur(16px);
+  }
+  .tx-stat-val {
+    font-family: var(--tx-font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+  }
+  .tx-stat-sub {
+    font-size: 0.65rem;
+    color: var(--tx-ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tx-intent-box {
+    background: rgba(20, 20, 32, 0.7);
+    border: 1px solid var(--tx-hairline);
+    border-radius: 1.25rem;
+    padding: 1rem;
+    box-shadow: var(--tx-glow-purple);
+    margin-bottom: 1rem;
+  }
+  .tx-input-go {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-family: var(--tx-font-body);
+    outline: none;
+    margin-bottom: 0.75rem;
+  }
+  .tx-input-go::placeholder {
+    color: var(--tx-ink-dim);
+  }
+  .tx-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tx-btn-dispatch {
+    background: var(--tx-grad-royal);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.4);
+  }
+  .tx-chips-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    margin-bottom: 1rem;
+  }
+  .tx-chips-scroll::-webkit-scrollbar { display: none; }
+  .tx-chip {
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tx-hairline);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--tx-ink-dim);
+    cursor: pointer;
+  }
+  .tx-chip:active {
+    background: var(--tx-glass-strong);
+    color: #fff;
+  }
+  .tx-output-card {
+    background: rgba(10, 10, 16, 0.85);
+    border: 1px solid var(--tx-hairline-2);
+    border-radius: 1rem;
+    padding: 0.85rem;
+    font-family: var(--tx-font-mono);
+    font-size: 0.75rem;
+    max-height: 250px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: #a78bfa;
+  }
+  .tx-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(65px + var(--safe-bottom));
+    padding-bottom: var(--safe-bottom);
+    background: rgba(10, 10, 18, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--tx-hairline);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+  }
+  .tx-tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.65rem;
+    color: var(--tx-ink-dim);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .tx-tab-item.active {
+    color: var(--tx-purple-4);
+  }
+  .tx-tab-icon {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+  }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<div class="tx-space"></div>
+<div class="tx-orb"></div>
+<div class="tx-grain"></div>
+
+<main id="main-content" class="tx-go-wrap">
+  <header class="tx-go-header">
+    <div>
+      <a href="/" class="tx-logo-rxm" data-tx-no-i18n="1" style="font-size:0.74rem;display:block;margin-bottom:0.12rem">RASA-X-MACHINA</a><div class="tx-go-title"><span class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</span> Go</div>
+      <span class="tx-badge-node">PIXEL 8 PRO · HUSKY</span>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:0.65rem;color:var(--tx-aurora-3);">● TAILNET LIVE</div>
+      <div id="go-time" style="font-size:0.75rem;font-family:var(--tx-font-mono);color:var(--tx-ink-dim);">--:--:--</div>
+    </div>
+  </header>
+
+  <!-- 2x2 Metric Grid -->
+  <section class="tx-grid-2x2">
+    <div class="tx-stat-card">
+      <div class="tx-stat-sub">Swarm Mesh</div>
+      <div class="tx-stat-val" style="color:var(--tx-purple-4);">3 Nodes</div>
+      <div style="font-size:0.6rem;color:var(--tx-ink-dim);margin-top:2px;">XPS · Latitude · Husky</div>
+    </div>
+    <div class="tx-stat-card">
+      <div class="tx-stat-sub">MANAS Latency</div>
+      <div class="tx-stat-val" id="go-manas-lat" style="color:var(--tx-aurora-3);">< 1 ms</div>
+      <div style="font-size:0.6rem;color:var(--tx-ink-dim);margin-top:2px;">System-1 AHIMSA Gated</div>
+    </div>
+    <div class="tx-stat-card">
+      <div class="tx-stat-sub">RGU Saturation</div>
+      <div class="tx-stat-val" style="color:var(--tx-aurora-2);">41 / 41</div>
+      <div style="font-size:0.6rem;color:var(--tx-ink-dim);margin-top:2px;">100% MIP/MIF Covered</div>
+    </div>
+    <div class="tx-stat-card">
+      <div class="tx-stat-sub">TetraLedger</div>
+      <div class="tx-stat-val" style="color:#fbbf24;">4-Way Match</div>
+      <div style="font-size:0.6rem;color:var(--tx-ink-dim);margin-top:2px;">SHA-256 Merkle Proven</div>
+    </div>
+  </section>
+
+  <!-- Quick Action Chips -->
+  <div class="tx-chips-scroll">
+    <div class="tx-chip" onclick="quickRun('/status')">⚡ System Status</div>
+    <div class="tx-chip" onclick="quickRun('/tx-scour')">📡 Pulse Scour</div>
+    <div class="tx-chip" onclick="quickRun('/tx-ledger')">⚖️ TetraLedger</div>
+    <div class="tx-chip" onclick="quickRun('/tx-market')">💎 Yield Arbitrage</div>
+    <div class="tx-chip" onclick="quickRun('/tx-hussar')">🦅 Hussar Campaign</div>
+  </div>
+
+  <!-- Intent Input Box -->
+  <section class="tx-intent-box">
+    <input id="go-intent" class="tx-input-go" placeholder="State intent to Swarm..." autocomplete="off"/>
+    <div class="tx-action-bar">
+      <span id="go-triage-pill" style="font-size:0.65rem;font-family:var(--tx-font-mono);color:var(--tx-aurora-3);">Ready</span>
+      <button class="tx-btn-dispatch" id="go-run-btn" onclick="dispatchGoIntent()">Dispatch ↗</button>
+    </div>
+  </section>
+
+  <!-- Output Console -->
+  <div class="tx-stat-sub" style="margin-bottom:0.4rem;">Swarm Telemetry & Log</div>
+  <pre id="go-output" class="tx-output-card">tianxiaOS Go Substrate Ready.
+Connected to latitude-tianxia & xps13-tianxia via Tailscale mesh.
+Awaiting operator directive.</pre>
+</main>
+
+<nav class="tx-bottom-nav">
+  <a class="tx-tab-item active" href="#">
+    <span class="tx-tab-icon">⚡</span>
+    <span>Console</span>
+  </a>
+  <a class="tx-tab-item" href="/cockpit#mesh">
+    <span class="tx-tab-icon">🌐</span>
+    <span>Mesh</span>
+  </a>
+  <a class="tx-tab-item" href="/cockpit#rgus">
+    <span class="tx-tab-icon">💰</span>
+    <span>RGUs</span>
+  </a>
+  <a class="tx-tab-item" href="/cockpit#ledger">
+    <span class="tx-tab-icon">⚖️</span>
+    <span>Ledger</span>
+  </a>
+</nav>
+
+<script>
+  function updateClock() {
+    const d = new Date();
+    document.getElementById('go-time').textContent = d.toTimeString().split(' ')[0];
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  const outEl = document.getElementById('go-output');
+  const triageEl = document.getElementById('go-triage-pill');
+
+  async function dispatchGoIntent() {
+    const q = document.getElementById('go-intent').value.trim();
+    if (!q) return;
+    outEl.textContent = '» Dispatching to Swarm: ' + q + '\n';
+    triageEl.textContent = 'Triaging via MANAS...';
+
+    // 1. Fast MANAS Pre-Filter Triage
+    try {
+      const triageRes = await fetch('/api/cockpit/triage', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({prompt: q})
+      });
+      if (triageRes.ok) {
+        const tr = await triageRes.json();
+        triageEl.textContent = tr.verdict + ' (' + tr.latency_ms + 'ms)';
+        if (!tr.ahimsa_pass) {
+          outEl.textContent += '[AHIMSA HALT] ' + tr.reason + '\n';
+          return;
+        }
+      }
+    } catch (e) {
+      triageEl.textContent = 'Local Relay';
+    }
+
+    // 2. Dispatch to Swarm via Intent API
+    try {
+      const resp = await fetch('/api/intent', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer local'},
+        body: JSON.stringify({intent: q})
+      });
+      const data = await resp.json();
+      outEl.textContent += JSON.stringify(data, null, 2);
+    } catch (err) {
+      outEl.textContent += '[Error] ' + err.message;
+    }
+  }
+
+  function quickRun(cmd) {
+    document.getElementById('go-intent').value = cmd;
+    dispatchGoIntent();
+  }
+
+  document.getElementById('go-intent').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') dispatchGoIntent();
+  });
+</script>
+</body>
+</html>

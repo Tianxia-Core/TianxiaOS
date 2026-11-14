@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0.0",
+  "revision": "TX-HUSSAR-LEGIONS-7.0.0",
+  "ffp": "FFP-HUSSAR-LEGIONS",
+  "timestamp_utc": "2026-11-13T04:54:34Z",
+  "host": "latitude-tianxia",
+  "duration_s": 6.041,
+  "legions_total": 7,
+  "legions_passed": 7,
+  "all_passed": true,
+  "overall_status": "ALL_7_LEGIONS_GREEN",
+  "legions": [
+    {
+      "legion_id": "LEGION-I",
+      "codename": "BHAIRAVI-AEGIS",
+      "domain": "05-Bhairavi / 08-Bagalamukhi (Security & Boundary Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "secret_files_verified": 50,
+        "loose_secret_permissions": [],
+        "tx_net_guard_ssrf_shield": true,
+        "manas_system1_arrestor": true,
+        "edge_tls13_and_6_headers": true,
+        "missing_security_headers": [],
+        "dotfiles_env_git_blocked": true,
+        "edge_network_reachable": true
+      },
+      "latency_ms": 890.06
+    },
+    {
+      "legion_id": "LEGION-II",
+      "codename": "PARAMASIVA-SYNERGY",
+      "domain": "14-Paramasiva / Pillar 4 (Cross-Module Synergy Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "tools_verified": {
+          "tianxia_mcp": true,
+          "tx_scour": true,
+          "tx_opportunities_miner": true,
+          "tx_tetraledger": true,
+          "tx_manas": true
+        },
+        "missing_tools": [],
+        "merged_signals_rows": 1498,
+        "sfi_matrix_rgu_count": 41
+      },
+      "latency_ms": 1.58
+    },
+    {
+      "legion_id": "LEGION-III",
+      "codename": "BHUVANESVARI-SYNC",
+      "domain": "02-Tara / 04-Bhuvanesvari (4-Surface & Mesh Synchronicity Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "mesh_online_nodes": [
+          "latitude-tianxia",
+          "pixel8pro",
+          "poco-x5-pro-5g",
+          "tianxia-relay"
+        ],
+        "peer_exponential_backoff_until": {
+          "xps13-tianxia": 1794545909.77
+        },
+        "subdomains_declared": 28,
+        "subdomains_compiled_html_parity": 28,
+        "subdomains_live_https_200": 20,
+        "tui_surface_ready": true,
+        "gtk4_gui_bridge_ready": true,
+        "gtk4_desktop_binaries_present": 4
+      },
+      "latency_ms": 12.1
+    },
+    {
+      "legion_id": "LEGION-IV",
+      "codename": "TRIPURA-HARMONY",
+      "domain": "03-Tripura-Sundari / 09-Matangi (UI/UX, Brand-Kit, Localization & Build Law Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "languages_verified": 25,
+        "markets_verified": 42,
+        "currencies_verified": 29,
+        "missing_i18n_packs": [],
+        "leaked_internal_strategy_packs": [],
+        "floating_pill_and_a11y_css": true,
+        "build_law_seal_valid": true,
+        "build_law_local_mirrors_hashed": 0
+      },
+      "latency_ms": 1177.68
+    },
+    {
+      "legion_id": "LEGION-V",
+      "codename": "KALACHAKRA-EVERGREEN",
+      "domain": "01-Kali / 12-Annapurna (Research, Dependencies & Package Evergreening Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "evergreen_index_active": true,
+        "repurposed_research_integrations": 7,
+        "scour_horizon_signals_indexed": 1482,
+        "release_package_sentinel_status": "on_demand_ready"
+      },
+      "latency_ms": 0.22
+    },
+    {
+      "legion_id": "LEGION-VI",
+      "codename": "CHHINNAMASTA-ENHAN3",
+      "domain": "06-Chhinnamasta / 11-Pratyangira (System & Unit Tri-Vector Enhancement Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "resilience_failed_systemd_units": 0,
+        "resilience_zombie_processes": 0,
+        "performance_load_1m": 2.48,
+        "performance_load_5m": 2.65,
+        "performance_cpu_cores": 12,
+        "performance_mem_available_mb": 21142.2,
+        "security_patrol_memory_max_bytes": "536870912",
+        "security_cgroup_sandbox_enforced": true
+      },
+      "latency_ms": 31.79
+    },
+    {
+      "legion_id": "LEGION-VII",
+      "codename": "MAHASARASVATI-NEXUS",
+      "domain": "13-Mahasarasvati (Database Maintenance & Relational Interconnectivity Sentinel)",
+      "status": "PASS",
+      "passed": true,
+      "metrics": {
+        "ok": true,
+        "mode": "quick-verify",
+        "timestamp_utc": "2026-11-13T04:54:34Z",
+        "host": "latitude-tianxia",
+        "db_dir": "/var/lib/tianxia/db",
+        "databases_verified": 28,
+        "failed_databases": [],
+        "counts": {
+          "ffp_units": 1023,
+          "icp_segments": 119,
+          "rgu_matrix": 41,
+          "market_locales": 42,
+          "db_catalog": 28,
+          "nexus_nodes": 1409,
+          "nexus_edges": 3390
+        },
+        "duration_s": 3.926
+      },
+      "latency_ms": 3926.16
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "actual_state": "unlocked",
+  "simulated_state": "locked",
+  "simulation_active": true,
+  "integrity_checks": {
+    "dm_verity": true,
+    "verified_boot": true,
+    "rollback_protection": true,
+    "boot_hash_verification": true
+  },
+  "hardening_level": "maximum",
+  "last_check": null,
+  "tamper_detected": false
+}

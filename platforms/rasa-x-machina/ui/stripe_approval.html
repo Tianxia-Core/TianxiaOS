@@ -1,0 +1,267 @@
+<!-- ffp: FFP-UI-STRIPE-APPROVAL frontend html -->
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RASA-X-MACHINA — Stripe Account Approval</title><style>:root{--bg:#0a0a0a;--fg:#f5f5f7;--muted:#a1a1aa;--accent:#a855f7;--border:#27272a;--card:#131316;--max:880px}*{box-sizing:border-box;margin:0;padding-0}html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.55;max-width:var(--max);margin:0 auto;padding:40px 24px}h1{font-size:28px;color:var(--accent);margin-bottom:16px}h2{font-size:20px;color:var(--fg);margin:24px 0 8px}h3{font-size:16px;color:var(--accent);margin:16px 0 4px}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:14px}th{color:var(--muted);font-size:12px}code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px}pre{background:var(--card);padding:16px;border-radius:8px;overflow-x:auto;font-size:13px}em{color:var(--accent)}</style><script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head><body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a><h1><span class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</span> — Stripe Account Approval One-Pager</h1>
+
+<strong>Prepared for:</strong> Stripe Underwriting &amp; Risk Teams
+<strong>Date:</strong> August 2026
+<strong>Business Entity:</strong> RASA-X-MACHINA (Sovereign AI Education &amp; Infrastructure)
+<strong>Website:</strong> https://rasaxmachina.com
+<strong>Primary Processor:</strong> Stripe (Stripe Connect platform)
+<strong>Requested Account Type:</strong> Stripe Connect — Platform with Express/sub-accounts
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>1. Business Overview</h2>
+
+RASA-X-MACHINA is an agentic AI education, certification, and sovereignty infrastructure company operating on Base L2. We provide:
+
+<ul><li><strong>AI Education Subscriptions</strong> — Monthly/annual SaaS plans for AI certification, interview practice, and operator training</li></ul>
+<ul><li><strong>Sovereign Training Platform</strong> — Self-sovereign AI training orchestration (RGU swarm: 54 templates, 207 open allocations)</li></ul>
+<ul><li><strong>Certification &amp; Credentialing</strong> — Verified agentic AI certifications with onchain credential issuance</li></ul>
+<ul><li><strong>Usage-Based API Credits</strong> — Pay-per-inference credits for sovereign AI models</li></ul>
+<ul><li><strong>Seat Licenses</strong> — Enterprise seat-based licenses for our orchestration platform</li></ul>
+
+We sell hosted subscriptions, usage-based API credits, and seat licenses — paid via <strong>Stripe Checkout</strong> with a <strong>Stripe Connect subscription engine</strong> underneath.
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>2. Business Model</h2>
+
+| Revenue Stream | Model | Frequency |
+|---|---|---|
+| AI Education Subscriptions | Recurring SaaS | Monthly / Annual |
+| Usage-Based API Credits | Pay-per-consumption | Per inference |
+| Seat Licenses | Recurring per-seat | Monthly / Annual |
+| Enterprise Training Contracts | Project-based | One-time / milestone |
+
+<strong>Estimated Monthly Processing:</strong>
+<ul><li>Low estimate: <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5000">€4,625</span>/month</li></ul>
+<ul><li>Medium estimate: <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="25000">€23,125</span>/month</li></ul>
+<ul><li>High estimate (12 months out): <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="100000">€92,500</span>/month</li></ul>
+
+<strong>Average Transaction Size:</strong> <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="19">€18</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="99">€92</span> (subscriptions); <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="0.01" data-decimals="2">€0.01</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5" data-decimals="2">€4.62</span> (usage credits); <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="299">€277</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="499">€462</span> (enterprise seats)
+
+<strong>Plan Structure (Stripe Prices):</strong>
+| Plan | Amount | Interval |
+|---|---|---|
+| Starter | €29/mo | monthly |
+| Professional | €99/mo | monthly |
+| Enterprise | €499/mo | monthly |
+| Trial / Onboarding | €0.01 (one-time) | one-time |
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>3. Products &amp; Services</h2>
+
+<h3>Core Products</h3>
+1. <strong>RASA-X-MACHINA Platform</strong> — Agentic AI education and certification SaaS
+2. <strong>Sovereign Training Engine</strong> — RGU swarm orchestration for self-sovereign AI training
+3. <strong>Certification Dashboard</strong> — Verified credential issuance and tracking
+4. <strong>API Credit Marketplace</strong> — Usage-based inference credits
+
+<h3>Deliverables</h3>
+<ul><li>Educational subscriptions (video courses, labs, certifications)</li></ul>
+<ul><li>Training orchestration runs (sovereign AI model training)</li></ul>
+<ul><li>Credential certificates (onchain + PDF)</li></ul>
+<ul><li>API access tokens (usage-metered)</li></ul>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>4. Target Market &amp; Customers</h2>
+
+<h3>Customer Profile</h3>
+<ul><li><strong>Educators</strong> — AI instructors, university faculty, bootcamp trainers</li></ul>
+<ul><li><strong>Operators</strong> — Enterprise operators integrating agentic AI into workflows</li></ul>
+<ul><li><strong>Builders</strong> — Developers building sovereign AI applications</li></ul>
+<ul><li><strong>Enterprises</strong> — Companies adopting agentic AI at scale</li></ul>
+
+<h3>Geographic Distribution</h3>
+<ul><li>Primary: United States, European Union, United Kingdom</li></ul>
+<ul><li>Secondary: Asia-Pacific, Latin America</li></ul>
+<ul><li>All transactions processed in USD/EUR via Stripe</li></ul>
+
+<h3>Customer Count</h3>
+<ul><li>Current: Beta/trial users (€0.01 onboarding)</li></ul>
+<ul><li>Projected Month 1: 50–200 subscribers</li></ul>
+<ul><li>Projected Year 1: 1,000–5,000 subscribers</li></ul>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>5. Compliance &amp; Risk Posture</h2>
+
+<h3>KYC/AML</h3>
+<ul><li>All customers subject to Stripe's built-in KYC/AML verification</li></ul>
+<ul><li>Enterprise customers: additional identity verification via Stripe Identity</li></ul>
+<ul><li>No high-risk jurisdictions accepted (OFAC compliance enforced)</li></ul>
+
+<h3>Data Privacy</h3>
+<ul><li>GDPR-compliant data handling (EU customers)</li></ul>
+<ul><li>CCPA-compliant (California customers)</li></ul>
+<ul><li>Data encrypted at rest and in transit (AES-256, TLS 1.3)</li></ul>
+<ul><li>No PII stored onchain — only anonymized allocation records</li></ul>
+
+<h3>Content Policy</h3>
+<ul><li>Educational content only — no harmful, illegal, or deceptive material</li></ul>
+<ul><li>AI-generated content clearly labeled</li></ul>
+<ul><li>Copyright-compliant course materials</li></ul>
+
+<h3>Chargeback Risk</h3>
+<ul><li>Low-risk category (education/SaaS)</li></ul>
+<ul><li>Digital delivery — immediate fulfillment reduces dispute window</li></ul>
+<ul><li>Subscription model — recurring billing with clear descriptors</li></ul>
+<ul><li>Expected chargeback rate: &lt;0.5% (industry average for education SaaS)</li></ul>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>6. Flow of Funds</h2>
+
+<pre><code>
+Customer → Stripe Checkout → Stripe Connect Platform Account
+                                    ├── Platform fee (Stripe Connect)
+                                    ├── Sub-account payout (RASA-X-MACHINA)
+                                    └── Tax withholding (automated by Stripe Tax)
+</code></pre>
+
+<strong>Payout Schedule:</strong> Daily (2-day rolling) to connected bank account
+<strong>Payout Destination:</strong> Corporate bank account (USD)
+<strong>Currency:</strong> USD (primary), EUR (secondary via Stripe Currency Conversion)
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>7. Entity &amp; Ownership</h2>
+
+| Field | Value |
+|---|---|
+| Business Name | RASA-X-MACHINA |
+| Business Type | SaaS / EdTech / AI Infrastructure |
+| Website | https://rasaxmachina.com |
+| Domain Registrar | Squarespace |
+| Hosting | Latitude (self-hosted, Base L2) |
+| Payment Processor | Stripe (this application) |
+| Additional Processors | Paddle (MoR), Skyfire (x402), EFEMERA/Base (sovereign rail) |
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>8. Technology Stack</h2>
+
+| Layer | Technology |
+|---|---|
+| Frontend | React + Next.js + Tailwind CSS |
+| Backend | Python (FastAPI) + Node.js |
+| Database | PostgreSQL + SQLite |
+| Blockchain | Base L2 (Ethereum-compatible) |
+| Smart Contracts | Solidity (ERC-20, ERC-721 for credentials) |
+| Rate Limiting | CCR-Rust tier-cascade (opencode zen integration) |
+| LLM Providers | OpenRouter, DeepSeek, Groq, Perplexity, Poolside, Google |
+| Infrastructure | WireGuard mesh, Cloudflare Tunnel, Caddy auto-TLS |
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>9. Why Stripe Connect</h2>
+
+We require Stripe Connect (not Stripe Payments alone) because:
+
+1. <strong>Platform Economics</strong> — We collect platform fees on sub-transactions
+2. <strong>Sub-Account Model</strong> — Each training run / certification cohort can have its own sub-account
+3. <strong>Automatic Payouts</strong> — Stripe handles tax withholding and payout routing
+4. <strong>Connect-Compliant</strong> — Our business model is a platform connecting educators, operators, and builders
+5. <strong>Stripe Tax</strong> — Automatic sales tax calculation and remittance for SaaS
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>10. Expected Dispute &amp; Risk Metrics</h2>
+
+| Metric | Estimate |
+|---|---|
+| Monthly Processing Volume | <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5000">€4,625</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="100000">€92,500</span> (scaling) |
+| Average Transaction | <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="19">€18</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="499">€462</span> |
+| Expected Chargeback Rate | &lt;0.5% |
+| Refund Rate | &lt;2% |
+| High-Risk Transactions | None (education SaaS) |
+| Cross-Border % | ~30% (US/EU/UK primarily) |
+| MCC Code Requested | 5732 (Computer Software Stores) or 5816 (Educational Services) |
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>11. Supporting Documentation</h2>
+
+<ul><li>✅ Website live at https://rasaxmachina.com (landing page deployed)</li></ul>
+<ul><li>✅ Product catalog: 6 products (education subscriptions, sovereign training, certification, API credits, seat licenses, enterprise contracts)</li></ul>
+<ul><li>✅ Compliance framework: GDPR, CCPA, PCI-DSS (via Stripe)</li></ul>
+<ul><li>✅ Terms of Service &amp; Privacy Policy (on website)</li></ul>
+<ul><li>✅ Business bank account (connected for payouts)</li></ul>
+<ul><li>✅ Stripe Tax enabled for automated compliance</li></ul>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>12. Contact</h2>
+
+<strong>Technical Contact:</strong> [Available via rasaxmachina.com/contact]
+<strong>Business Contact:</strong> [Available via rasaxmachina.com/contact]
+<strong>Support:</strong> <button type="button" class="tx-contact-shield" data-tx-c="support" data-tx-no-i18n="1">🔒 Reveal Verified Support Contact</button>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<em>This one-pager is prepared for Stripe account approval underwriting review. All figures are estimates based on current beta/trial operations and projected growth. Actual processing volumes will be updated monthly.</em>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+<h2>13. Checkout (wired to tx_stripe_checkout.py)</h2>
+<div id="tx-checkout" data-pricing="pricing.json" data-endpoint="/api/v1/checkout"></div>
+<script>
+(function(){
+  var root=document.getElementById("tx-checkout"); if(!root) return;
+  var ep=root.getAttribute("data-endpoint")||"/api/v1/checkout";
+  fetch(root.getAttribute("data-pricing")||"pricing.json",{cache:"no-store"})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(p){
+      if(!p||!p.plans) return;                 /* graceful: no pricing -> nothing */
+      Object.keys(p.plans).forEach(function(k){
+        var pl=p.plans[k];
+        var btn=document.createElement("button");
+        btn.type="button"; btn.setAttribute("data-plan",k);
+        btn.textContent=pl.name+" — "+(pl.unit_amount/100).toFixed(2)+" "+pl.currency.toUpperCase();
+        btn.style.cssText="margin:4px;padding:10px 14px;border:1px solid var(--accent);background:transparent;color:var(--fg);border-radius:8px;cursor:pointer";
+        btn.addEventListener("click",function(){
+          fetch(ep,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({plan:k})})
+            .then(function(r){return r.json();})
+            .then(function(s){ if(s&&s.url){window.location.href=s.url;} else {btn.textContent="unavailable";} })
+            .catch(function(){btn.textContent="unavailable";});
+        });
+        root.appendChild(btn);
+      });
+    })
+    .catch(function(){/* no pricing.json -> no checkout buttons */});
+})();
+</script>
+</body></html>

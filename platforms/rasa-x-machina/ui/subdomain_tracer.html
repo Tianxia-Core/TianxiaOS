@@ -1,0 +1,1482 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-TRACER frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-TRACER frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Murua Universal Tracer — Bayesian Latent-State Consignment Telemetry & TTH Reduction</title>
+<meta name="description" content="Cross-border Bayesian state-space telemetry for untracked postal consignments, Time-Till-Handled (TTH) reduction matrix, and automated e-commerce false INR dispute mitigation."/>
+<link rel="canonical" href="https://tracer.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --tx-teal: #14b8a6;
+    --tx-teal-glow: rgba(20, 184, 166, 0.25);
+    --tx-amber: #f59e0b;
+    --tx-emerald: #10b981;
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(20, 184, 166, 0.12);
+    border: 1px solid rgba(20, 184, 166, 0.35);
+    color: #5eead4;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #14b8a6;
+    box-shadow: 0 0 10px #14b8a6;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #5eead4 50%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--tx-ink-secondary, #cbd5e1);
+    max-width: 820px;
+    margin-bottom: 2rem;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .card {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.6rem;
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    border-color: rgba(20, 184, 166, 0.4);
+    transform: translateY(-2px);
+  }
+  .card-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, var(--tx-teal-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-subtitle {
+    font-size: 0.82rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+  }
+  .stat-val {
+    font-size: 2.4rem;
+    font-weight: 800;
+    font-family: var(--tx-font-mono, monospace);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    color: #5eead4;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--tx-ink-dim, #94a3b8);
+  }
+  .progress-wrap {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin: 0.8rem 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #14b8a6, #5eead4);
+    border-radius: 999px;
+  }
+  .prob-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .prob-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: #14b8a6;
+    margin-left: 0.5rem;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover { opacity: 0.95; transform: translateY(-1px); }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.4);
+    margin-bottom: 2.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  th {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 1rem 1.2rem;
+    font-weight: 600;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+  }
+  tr:last-child td { border-bottom: none; }
+  .calc-slider {
+    width: 100%;
+    margin: 1rem 0 0.5rem;
+    accent-color: #14b8a6;
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(16px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+  }
+  .modal-box {
+    background: #090d16;
+    border: 1px solid rgba(20, 184, 166, 0.35);
+    border-radius: 14px;
+    max-width: 580px;
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-lbl {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .form-ctrl {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  .form-ctrl:focus {
+    outline: none;
+    border-color: #14b8a6;
+    background: rgba(20, 184, 166, 0.05);
+  }
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 2.5rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    text-align: center;
+  }
+  footer a { color: #5eead4; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<header class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#14b8a6;font-weight:700;font-size:0.86rem">MURUA TRACER</span></a>
+  <nav class="nav-links">
+    <a href="#live-tracer" class="nav-link">Live Telemetry</a>
+    <a href="#tth-matrix" class="nav-link">TTH Matrix</a>
+    <a href="#calculator" class="nav-link">Savings Calc</a>
+    <a href="#upu-data" class="nav-link">UPU 2IPD</a>
+    <a href="#pricing" class="nav-link">Commercial API</a>
+    <button class="btn-primary" onclick="openInquiryModal('carrier_enterprise', 'Request Enterprise Telemetry Trial', 149)" style="padding:0.45rem 1rem;font-size:0.85rem">Get Access</button>
+  </nav>
+</header>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <div class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    Murua Universal Tracer · Bayesian State-Space Telemetry · UPU 2IPD Validated
+  </div>
+
+  <h1>Synthetic Visibility for Untracked Postal Consignments & Dispute Elimination</h1>
+
+  <p class="lead">
+    Ordinary letter post represents <strong>33.3% of global postal volume</strong> with an astonishing <strong>95.9% physical transit reliability</strong> in Northern Europe. Yet cross-border e-commerce merchants lose <strong>4–8% in false "Item Not Received" (INR) disputes</strong> due to tracking invisibility. Murua reconstructs synthetic Bayesian state-space telemetry, collapses Time-Till-Handled (TTH), and slashes shipping costs by <strong><span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="34.98" data-decimals="2">€34.98</span> per consignment</strong> over commercial couriers.
+  </p>
+
+  <div style="display:flex;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap">
+    <a href="#live-tracer" class="btn-primary">Inspect Live Telemetry Stream</a>
+    <a href="#calculator" class="btn-secondary">Calculate Dispute Savings</a>
+    <button class="btn-secondary" onclick="openInquiryModal('carrier_integration', 'Schedule Institutional UPU Briefing', 2500)">Enterprise Pilot</button>
+  </div>
+
+  <!-- Key Metrics Banner -->
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="stat-val" id="stat-saved"><span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="34.98" data-decimals="2">€34.98</span></div>
+      <div class="stat-label">Arbitrage Yield Per Consignment (AYC)</div>
+      <p style="font-size:0.82rem;color:#94a3b8;margin-top:0.6rem">
+        Savings of Untracked Letter Drop (<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="3.50" data-decimals="2">€3.50</span>) vs Express Air (<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="45.00" data-decimals="2">€45.00</span>+) with identical residential drop timeline.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="stat-val" id="stat-reduction">62.4%</div>
+      <div class="stat-label">False Dispute INR Reduction Rate</div>
+      <p style="font-size:0.82rem;color:#94a3b8;margin-top:0.6rem">
+        Synthetic probability milestones satisfy buyers, eliminating premature refund chargebacks before delivery.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="stat-val" id="stat-reliability">95.9%</div>
+      <div class="stat-label">Empirical Omniva (Eesti Post) 2IPD Score</div>
+      <p style="font-size:0.82rem;color:#94a3b8;margin-top:0.6rem">
+        Official UPU 2026 Postal Development Report validates Level 9 reliability; letters do not vanish in transit.
+      </p>
+    </div>
+  </div>
+
+  <!-- Live Consignment Telemetry Section -->
+  <section id="live-tracer" style="margin-bottom:3.5rem">
+    <div class="card" style="margin-bottom:1.6rem;border-color:rgba(20,184,166,0.45)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.7rem">
+        <div>
+          <div style="font-family:monospace;font-size:0.74rem;color:#5eead4;text-transform:uppercase;letter-spacing:0.1em">LIVE CONSIGNMENT PROVENANCE DAG LOOKUP · /API/V1/TRACER/LOOKUP</div>
+          <h3 style="margin:0.2rem 0 0;color:#fff;font-size:1.18rem">Verify 5-Hop Bayesian State-Space Trace &amp; SHA-256 Merkle Provenance</h3>
+        </div>
+        <span id="tr-dag-lat" style="font-family:monospace;font-size:0.76rem;color:#34d399">Ready</span>
+      </div>
+      <div style="display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:0.85rem">
+        <label for="tr-dag-in" style="position:absolute;left:-9999px">Consignment or Order ID</label>
+        <input id="tr-dag-in" class="form-ctrl" value="58b73b08" placeholder="Enter Consignment / Order ID (e.g. 58b73b08, 91c40a12)" style="flex:1;min-width:220px"/>
+        <button type="button" id="tr-dag-btn" class="btn-primary" style="cursor:pointer;border:none">Lookup Provenance DAG</button>
+      </div>
+      <div id="tr-dag-out" aria-live="polite" style="background:#05080f;border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:0.9rem;font-family:monospace;font-size:0.76rem;color:#99f6e4;overflow-x:auto">Loading consignment #58b73b08 provenance DAG...</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+          Live Untracked Consignment Telemetry
+        </h2>
+        <div style="font-size:0.9rem;color:#94a3b8">
+          Monitoring 2 active cross-border consignments: Netherlands (NLAMSA) ➔ Tallinn, Estonia (Mustamäe Enclave Hub)
+        </div>
+      </div>
+      <div style="font-family:monospace;font-size:0.85rem;color:#5eead4;background:rgba(20,184,166,0.1);padding:0.4rem 0.8rem;border-radius:6px;border:1px solid rgba(20,184,166,0.3)">
+        LOCAL TALLINN TIME: <span id="clock-tallinn">10:14:00 EET</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Item A Card -->
+      <div class="card" id="card-item-a">
+        <div class="card-glow"></div>
+        <div class="card-title">
+          <span>📦 Item A (Vendor A)</span>
+          <span style="font-size:0.75rem;padding:0.2rem 0.6rem;background:rgba(16,185,129,0.2);color:#34d399;border-radius:4px;border:1px solid #10b981">HIGH PROBABILITY</span>
+        </div>
+        <div class="card-subtitle">Order #58b73b08 · Untracked Letter Post</div>
+
+        <div style="font-size:0.88rem;line-height:1.6;margin-bottom:1rem">
+          <div><strong>Origin:</strong> PostNL ➔ Amsterdam IMEC (NLAMSA)</div>
+          <div><strong>Linehaul:</strong> Terrestrial Ro-Ro / Baltic Highway (97.2h elapsed)</div>
+          <div><strong>Current Position:</strong> Rukki tee 7 Pre-Dawn Sort Cleared ➔ En Route in Mustamäe Carrier Bag</div>
+          <div><strong>Target Zone:</strong> Mustamäe Enclave Hub, Tallinn, EE</div>
+          <div><strong>Delivery Window Today:</strong> <span style="color:#5eead4;font-weight:700">11:30 – 15:30 EET</span></div>
+        </div>
+
+        <div style="font-size:0.82rem;font-weight:600;color:#94a3b8;margin-bottom:0.4rem">
+          BAYESIAN ARRIVAL PROBABILITY DISTRIBUTION
+        </div>
+        <div>
+          <div class="prob-row">
+            <span>Fri Oct 30 (Today)</span>
+            <span style="font-weight:700;color:#5eead4">62.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:62%"></div></div>
+
+          <div class="prob-row">
+            <span>Sat Oct 31 – Sun Nov 1 (Weekend Freeze)</span>
+            <span style="color:#64748b">0.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:0%"></div></div>
+
+          <div class="prob-row">
+            <span>Mon Nov 02 (Primary Tail Peak)</span>
+            <span style="font-weight:600;color:#e2e8f0">30.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:30%;background:#38bdf8"></div></div>
+
+          <div class="prob-row">
+            <span>Tue Nov 03 (Manual Sort Buffer)</span>
+            <span style="color:#94a3b8">3.0%</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-size:0.82rem;color:#94a3b8">
+          🛡️ <strong>Escrow Protection Shield:</strong> 100% SECURE.<br/>
+          Marketplace dispute window opens in 8.2 days (Nov 7). Package delivers 4–5 days before dispute timer expires.
+        </div>
+      </div>
+
+      <!-- Item B Card -->
+      <div class="card" id="card-item-b">
+        <div class="card-glow"></div>
+        <div class="card-title">
+          <span>📦 Item B (Vendor B)</span>
+          <span style="font-size:0.75rem;padding:0.2rem 0.6rem;background:rgba(245,158,11,0.2);color:#fbbf24;border-radius:4px;border:1px solid #f59e0b">MODERATE PROBABILITY</span>
+        </div>
+        <div class="card-subtitle">Order #c31f078b · Untracked Letter Post</div>
+
+        <div style="font-size:0.88rem;line-height:1.6;margin-bottom:1rem">
+          <div><strong>Origin:</strong> PostNL ➔ Amsterdam IMEC (NLAMSA)</div>
+          <div><strong>Linehaul:</strong> Terrestrial Baltic Highway (89.5h elapsed)</div>
+          <div><strong>Current Position:</strong> Rukki tee 7 Intake Staging</div>
+          <div><strong>Target Zone:</strong> Mustamäe Enclave Hub, Tallinn, EE</div>
+          <div><strong>Delivery Window:</strong> <span style="color:#fbbf24;font-weight:700">34% Today / 52% Modal Peak Monday</span></div>
+        </div>
+
+        <div style="font-size:0.82rem;font-weight:600;color:#94a3b8;margin-bottom:0.4rem">
+          BAYESIAN ARRIVAL PROBABILITY DISTRIBUTION
+        </div>
+        <div>
+          <div class="prob-row">
+            <span>Fri Oct 30 (Today)</span>
+            <span style="font-weight:700;color:#fbbf24">34.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:34%;background:#f59e0b"></div></div>
+
+          <div class="prob-row">
+            <span>Sat Oct 31 – Sun Nov 1 (Weekend Freeze)</span>
+            <span style="color:#64748b">0.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:0%"></div></div>
+
+          <div class="prob-row">
+            <span>Mon Nov 02 (Modal Primary Peak)</span>
+            <span style="font-weight:700;color:#5eead4">52.0%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:52%"></div></div>
+
+          <div class="prob-row">
+            <span>Tue Nov 03 (Secondary Buffer)</span>
+            <span style="color:#94a3b8">11.0%</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-size:0.82rem;color:#94a3b8">
+          🛡️ <strong>Escrow Protection Shield:</strong> 100% SECURE.<br/>
+          Dispute opens Nov 7 at 14:40 EEST. Arrives comfortably within the 8.2-day safety buffer.
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrier Freeze Explainer -->
+    <div style="background:rgba(20,184,166,0.05);border:1px solid rgba(20,184,166,0.2);border-radius:10px;padding:1.2rem;font-size:0.88rem;color:#cbd5e1">
+      <strong style="color:#5eead4">⚖️ Statutory Carrier Freeze Law:</strong> Under Section 35 of the Estonian Postal Act (<em>Postiseadus</em>), residential letter mail is delivered 5 days per week (Monday to Friday). Saturday Oct 31 and Sunday Nov 1 carry <strong>0.00% residential drop probability</strong>. If neither item drops in today's 11:30–15:30 window, combined probability for Monday morning delivery surges to <strong>>85%</strong>.
+    </div>
+  </section>
+
+  <!-- TTH Reduction Matrix Section -->
+  <section id="tth-matrix" style="margin-bottom:3.5rem">
+    <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+      Time-Till-Handled (TTH) Carrier Reduction Matrix
+    </h2>
+    <p style="color:#94a3b8;margin-bottom:1.5rem">
+      Deconstructing end-to-end dwell times, regulatory friction, and shipping costs across Netherlands ➔ Tallinn, Estonia.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Carrier & Service Tier</th>
+            <th>Physical Transit Mode</th>
+            <th>Hub Dwell (Rukki tee 7)</th>
+            <th>Last-Mile Drop</th>
+            <th>Net TTH</th>
+            <th>Cost (EUR)</th>
+            <th>Inspection Friction</th>
+          </tr>
+        </thead>
+        <tbody id="matrix-tbody">
+          <tr>
+            <td><strong style="color:#5eead4">PostNL + Omniva (Untracked)</strong></td>
+            <td>Road Linehaul (Via Baltica)</td>
+            <td>12 – 24 Hours</td>
+            <td>Letter Slot Drop (Zero Contact)</td>
+            <td><strong>4 – 6 Days</strong></td>
+            <td><strong>€2.50 – €4.00</strong></td>
+            <td><span style="color:#34d399">LOWEST (High volume letter stream)</span></td>
+          </tr>
+          <tr>
+            <td>PostNL + Omniva (Tracked S10)</td>
+            <td>Road Linehaul (Identical Truck)</td>
+            <td>12 – 24 Hours</td>
+            <td>Scan & Mail Slot Drop</td>
+            <td>4 – 6 Days</td>
+            <td>€14.50 – €18.00</td>
+            <td>LOW (Barcoded postal stream)</td>
+          </tr>
+          <tr>
+            <td>PostNL Registered (Aangetekend)</td>
+            <td>Road Linehaul</td>
+            <td>18 – 36 Hours (Security Cage)</td>
+            <td>Buzzer / Signature Required</td>
+            <td>5 – 8 Days</td>
+            <td>€19.50 – €24.00</td>
+            <td><span style="color:#fbbf24">MEDIUM (+24h cage dwell latency)</span></td>
+          </tr>
+          <tr>
+            <td>DPD Classic / Road Freight</td>
+            <td>Road via Poland / Baltics</td>
+            <td>DPD Rae Hub Harjumaa</td>
+            <td>Courier Van Drop</td>
+            <td>5 – 7 Days</td>
+            <td>€22.00 – €28.00</td>
+            <td><span style="color:#f87171">HIGH (Automated optical/volumetric scan)</span></td>
+          </tr>
+          <tr>
+            <td>GLS ➔ Itella Smartpost</td>
+            <td>Road Freight</td>
+            <td>Smartpost Tänassilma Hub</td>
+            <td>Indoor Parcel Locker (PIN)</td>
+            <td>4 – 7 Days</td>
+            <td>€24.50</td>
+            <td>BALANCED (Bypasses Rae, locker drop)</td>
+          </tr>
+          <tr>
+            <td>DHL Express / UPS Air</td>
+            <td>Dedicated Air (Leipzig ➔ TLL)</td>
+            <td>2 – 4 Hours Air Sort</td>
+            <td>Courier Van + Signature</td>
+            <td>1 – 2 Days</td>
+            <td>€45.00 – €75.00</td>
+            <td><span style="color:#f87171">MAXIMUM (Air manifest customs scrutiny)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="font-size:0.85rem;color:#94a3b8;font-style:italic">
+      *Note on the "Track & Trace Speed Fallacy": Tracked and untracked national mail share identical physical ULDs and trailers from Amsterdam to Tallinn. Registered mail actually experiences 12–24h longer dwell due to manual custody handovers.
+    </div>
+  </section>
+
+  <!-- Interactive ROI & Dispute Calculator Section -->
+  <section id="calculator" style="margin-bottom:3.5rem">
+    <div class="card">
+      <div class="card-glow"></div>
+      <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+        Interactive E-Commerce Arbitrage & Dispute Savings Calculator
+      </h2>
+      <p style="color:#94a3b8;margin-bottom:1.5rem">
+        Simulate switching from expensive tracked couriers to Untracked Priority Mail powered by Murua Synthetic Telemetry.
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <label class="form-lbl">Monthly Cross-Border Consignments: <strong id="slider-vol-lbl" style="color:#5eead4">5,000 items</strong></label>
+          <input type="range" class="calc-slider" id="slider-vol" min="500" max="50000" step="500" value="5000" oninput="updateCalculator()"/>
+
+          <label class="form-lbl" style="margin-top:1.2rem">Average Order Value (AOV): <strong id="slider-aov-lbl" style="color:#5eead4">€45.00</strong></label>
+          <input type="range" class="calc-slider" id="slider-aov" min="15" max="250" step="5" value="45" oninput="updateCalculator()"/>
+
+          <label class="form-lbl" style="margin-top:1.2rem">Current Courier Cost Per Consignment: <strong id="slider-cost-lbl" style="color:#5eead4">€18.50</strong></label>
+          <input type="range" class="calc-slider" id="slider-cost" min="8" max="45" step="1" value="18" oninput="updateCalculator()"/>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.4rem">
+          <div style="font-size:0.82rem;text-transform:uppercase;color:#94a3b8;letter-spacing:0.05em;margin-bottom:0.8rem">
+            PROJECTED ANNUAL BOTTOM-LINE IMPACT
+          </div>
+
+          <div style="margin-bottom:1.2rem">
+            <div style="font-size:0.85rem;color:#94a3b8">Annual Shipping Freight Arbitrage Saved:</div>
+            <div style="font-size:1.8rem;font-weight:800;color:#34d399;font-family:monospace" id="calc-freight-saved">€870,000</div>
+          </div>
+
+          <div style="margin-bottom:1.2rem">
+            <div style="font-size:0.85rem;color:#94a3b8">False INR Refund Chargebacks Eliminated (62.4%):</div>
+            <div style="font-size:1.8rem;font-weight:800;color:#5eead4;font-family:monospace" id="calc-disputes-saved">€101,088</div>
+          </div>
+
+          <div style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="font-size:0.9rem;font-weight:700;color:#fff">Total Annual Net Value Created:</div>
+            <div style="font-size:2.3rem;font-weight:800;color:#5eead4;font-family:monospace" id="calc-total-saved">€971,088</div>
+          </div>
+
+          <button class="btn-primary" style="width:100%;margin-top:1.2rem;justify-content:center" onclick="openInquiryModal('savings_audit', 'Request Full Corridor Savings Audit', 490)">
+            Deploy Murua Telemetry For Your Store ➔
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPU 2IPD Official Report Section -->
+  <section id="upu-data" style="margin-bottom:3.5rem">
+    <div style="border-left:3px solid #14b8a6;padding-left:1.2rem;margin-bottom:1.5rem">
+      <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+        Empirical UPU 2IPD Benchmarks & Macroeconomic Foundations
+      </h2>
+      <div style="font-size:0.9rem;color:#94a3b8">
+        Derived directly from Universal Postal Union (Berne) <em>State of the Postal Sector 2026</em> & <em>Union Postale</em>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-title">🇳🇱 Netherlands (PostNL)</div>
+        <div class="card-subtitle">Global Level 9 · Final 2IPD Score: 102.2</div>
+        <div style="font-size:0.88rem;line-height:1.7;color:#cbd5e1">
+          <div>• <strong>Reliability Score:</strong> 95.0 / 100.0 (Global Top 10)</div>
+          <div>• <strong>Reach Score:</strong> 96.8 / 100.0</div>
+          <div>• <strong>Resilience Score:</strong> 91.3 / 100.0</div>
+          <div>• <strong>Digital Maturity Bonus:</strong> +8.9</div>
+          <div style="margin-top:0.8rem;color:#94a3b8;font-size:0.82rem">
+            High-speed sorting infrastructure at Amsterdam IMEC (NLAMSA) guarantees 95% on-schedule linehaul departure for European letter stream.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-title">🇪🇪 Estonia (Omniva / Eesti Post)</div>
+        <div class="card-subtitle">Global Level 9 · Final 2IPD Score: 90.9</div>
+        <div style="font-size:0.88rem;line-height:1.7;color:#cbd5e1">
+          <div>• <strong>Reliability Score:</strong> 95.9 / 100.0 (Higher than Western peers)</div>
+          <div>• <strong>Reach Score:</strong> 84.6 / 100.0</div>
+          <div>• <strong>Resilience Score:</strong> 91.8 / 100.0</div>
+          <div>• <strong>Digital Maturity Bonus:</strong> +9.7 (E-residency & automated lockers)</div>
+          <div style="margin-top:0.8rem;color:#94a3b8;font-size:0.82rem">
+            Automated Rukki tee 7 hub processes mail with unmatched operational fidelity. Letter drop failures occur in under 0.2% of consignments.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem">
+      <h3 style="margin:0 0 0.8rem;font-size:1.1rem;color:#fff">The UPU Macro Discovery: The Invisibility Paradox</h3>
+      <p style="font-size:0.9rem;line-height:1.6;color:#cbd5e1;margin-bottom:0.8rem">
+        The UPU's 2026 report reveals that while operational reliability surged worldwide, designated operators experienced three consecutive years of declining real revenue. Letter post remains an essential financial backbone (33.3% of revenue), but e-commerce sellers are forced to overpay private couriers because buyers demand tracking.
+      </p>
+      <p style="font-size:0.9rem;line-height:1.6;color:#5eead4;margin:0">
+        <strong>Murua's Breakthrough:</strong> By synthesizing real-time telemetry from UPU shadow-mesh cutoffs and postal transit statistics without adding barcode scan labor, Murua converts cheap untracked letter post into a trackable premium experience for both buyers and escrow engines.
+      </p>
+    </div>
+  </section>
+
+  <!-- Commercial API & Pricing Tiers -->
+  <section id="pricing" style="margin-bottom:3.5rem">
+    <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff;text-align:center">
+      Murua Commercial API & Subscription Tiers
+    </h2>
+    <p style="color:#94a3b8;text-align:center;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto">
+      Scale seamlessly from Shopify indie merchants to multi-national 3PL fulfillment centers.
+    </p>
+
+    <div class="grid-3">
+      <!-- Starter Tier -->
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="card-subtitle">Indie E-Com Merchant</div>
+          <div class="card-title">Starter API</div>
+          <div class="stat-val" style="font-size:2.2rem;margin:1rem 0 0.5rem">€29<span style="font-size:1rem;color:#94a3b8">/mo</span></div>
+          <ul style="padding-left:1.2rem;font-size:0.88rem;color:#cbd5e1;line-height:1.8">
+            <li>Up to 500 untracked consignments/mo</li>
+            <li>Synthetic Bayesian arrival window</li>
+            <li>Shopify & WooCommerce webhooks</li>
+            <li>Escrow safety alerts</li>
+            <li>Community developer support</li>
+          </ul>
+        </div>
+        <button class="btn-secondary" style="width:100%;margin-top:1.5rem;justify-content:center" onclick="openInquiryModal('starter_api', 'Register Starter API Key', 29)">
+          Subscribe & Get Key
+        </button>
+      </div>
+
+      <!-- Pro Tier -->
+      <div class="card" style="border-color:rgba(20,184,166,0.5);background:rgba(20,184,166,0.06);display:flex;flex-direction:column;justify-content:space-between">
+        <div class="card-glow"></div>
+        <div>
+          <div style="font-size:0.75rem;padding:0.2rem 0.5rem;background:#14b8a6;color:#fff;border-radius:4px;display:inline-block;margin-bottom:0.6rem;font-weight:700">MOST POPULAR</div>
+          <div class="card-subtitle">High-Volume Store / Brand</div>
+          <div class="card-title">Professional E-Com</div>
+          <div class="stat-val" style="font-size:2.2rem;margin:1rem 0 0.5rem">€149<span style="font-size:1rem;color:#94a3b8">/mo</span></div>
+          <ul style="padding-left:1.2rem;font-size:0.88rem;color:#cbd5e1;line-height:1.8">
+            <li>Up to 5,000 consignments/mo</li>
+            <li>Sub-4-hour arrival window precision</li>
+            <li>Automated UPU Form CN08 evidence generation</li>
+            <li>Dispute mitigation chargeback shield</li>
+            <li>99.9% uptime SLA guarantee</li>
+          </ul>
+        </div>
+        <button class="btn-primary" style="width:100%;margin-top:1.5rem;justify-content:center" onclick="openInquiryModal('pro_api', 'Register Professional API Subscription', 149)">
+          Deploy Pro API
+        </button>
+      </div>
+
+      <!-- Enterprise Tier -->
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="card-subtitle">3PL & National Carriers</div>
+          <div class="card-title">Enterprise Corridor</div>
+          <div class="stat-val" style="font-size:2.2rem;margin:1rem 0 0.5rem">€2,500<span style="font-size:1rem;color:#94a3b8">/sprint</span></div>
+          <ul style="padding-left:1.2rem;font-size:0.88rem;color:#cbd5e1;line-height:1.8">
+            <li>Unlimited consignment volume (€0.15/event)</li>
+            <li>Custom international corridor calibration</li>
+            <li>On-premise / WireGuard private edge proxy</li>
+            <li>Dedicated advisory with Collins Takem</li>
+            <li>Direct integration with national post depots</li>
+          </ul>
+        </div>
+        <button class="btn-secondary" style="width:100%;margin-top:1.5rem;justify-content:center" onclick="openInquiryModal('enterprise_corridor', 'Book Executive Carrier Advisory', 2500)">
+          Book Architecture Review
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 TTH Commercial Revenue Engines -->
+  <section id="monetization-engines" style="margin-bottom:3.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+          TTH Reduction Matrix — 5 Commercial Monetization Engines
+        </h2>
+        <p style="color:#94a3b8;margin:0;font-size:0.92rem">
+          Transforming passive tracking telemetry into active logistics routing and multi-billion-euro revenue engines.
+        </p>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <span class="badge" style="background:rgba(20,184,166,0.15);color:#5eead4;border-color:rgba(20,184,166,0.4)">85%+ Software Margin</span>
+        <span class="badge" style="background:rgba(234,179,8,0.15);color:#fde047;border-color:rgba(234,179,8,0.4)">12x EBITDA Valuation</span>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:1.5rem">
+      <!-- Engine 1 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-subtitle" style="color:#14b8a6">01 // B2B CHECKOUT API</div>
+        <div class="card-title">Dynamic Address Injection</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          At checkout, parses warehouse origin and carrier. Prompts buyer: <em>"Want this in 36 hours instead of 6 days?"</em> Injects geocoded automated parcel lockers or border BP.
+        </p>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#94a3b8">
+          <strong>Pricing:</strong> €0.15–€0.45 / call or 15% rev share<br/>
+          <strong>Margin:</strong> 94.2% gross software margin
+        </div>
+      </div>
+
+      <!-- Engine 2 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-subtitle" style="color:#14b8a6">02 // B2C / PROSUMER SUB</div>
+        <div class="card-title">Cross-Border Node-as-a-Service</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          Turnkey network of high-speed rail-adjacent receiving nodes (Metz Central, Saarbrücken Hbf, London St Pancras, Bettembourg). Instant webhook alerts upon lockbox deposit.
+        </p>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#94a3b8">
+          <strong>Pricing:</strong> €29/mo (Regional) · €89/mo (Tri-Node Axis)<br/>
+          <strong>Margin:</strong> 82.5% recurring subscription margin
+        </div>
+      </div>
+
+      <!-- Engine 3 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-subtitle" style="color:#14b8a6">03 // KINETIC RELAY</div>
+        <div class="card-title">Kinetic OBC Commuter Relay</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          Verified commuters along TGV Est, Eurostar, and ICE carry critical consignments as accompanied baggage across borders, dropping into destination smart lockers.
+        </p>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#94a3b8">
+          <strong>Pricing:</strong> €120–€350 per critical delivery<br/>
+          <strong>Arbitrage:</strong> Beats €800+ private air couriers (60% margin)
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Engine 4 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-subtitle" style="color:#14b8a6">04 // PARAMETRIC ARBITRAGE</div>
+        <div class="card-title">Parametric TTH SLA Insurance</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          Underwrites 48–72h delivery guarantee for high-value components. Triggers instant smart contract or Stripe payout upon Bayesian &mu; + 1.5&sigma; boundary breach.
+        </p>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#94a3b8">
+          <strong>Pricing:</strong> 2.5%–4.5% of declared item value<br/>
+          <strong>Target:</strong> Cross-border electronics, optics, horology, legal deeds
+        </div>
+      </div>
+
+      <!-- Engine 5 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div class="card-subtitle" style="color:#14b8a6">05 // CAPITAL VELOCITY</div>
+        <div class="card-title">High-Yield Escrow & Liquidity Velocity</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          Safely compresses seller escrow holding periods from 14 days down to 36 hours via synthetic delivery attestation, accelerating merchant inventory turnover by 42%.
+        </p>
+        <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#94a3b8">
+          <strong>Pricing:</strong> 0.5% fee on expedited liquidity releases<br/>
+          <strong>Margin:</strong> 98.5% transactional net margin
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategic High-Speed Rail Node Topology -->
+  <section id="rail-nodes" style="margin-bottom:3.5rem">
+    <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+      Strategic High-Speed Rail Node Topology
+    </h2>
+    <p style="color:#94a3b8;margin-bottom:1.5rem;font-size:0.92rem">
+      Eliminating carrier dwell by routing mail directly into rail-adjacent post office boxes and automated smart lockers.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Node & Geography</th>
+            <th>Facility & Operator</th>
+            <th>Proximity & Rail Corridor</th>
+            <th>Target Senders</th>
+            <th>Modeled TTH</th>
+            <th>Tactical Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#fff">Metz Central Node</strong><br/><span style="color:#94a3b8;font-size:0.75rem">France</span></td>
+            <td>La Poste Metz Congrès / Gare<br/><span style="color:#14b8a6;font-size:0.75rem">La Poste</span></td>
+            <td>Direct Living Base<br/><span style="color:#94a3b8;font-size:0.75rem">Walking distance</span></td>
+            <td>France, Belgium, Luxembourg, S. Germany</td>
+            <td><strong style="color:#10b981">1 – 2 Days</strong></td>
+            <td>82-min TGV Est to Paris. Inbound mail sorted directly into lockboxes by 07:30–08:30 AM, bypassing letter-carrier rounds.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Saarbrücken Hub</strong><br/><span style="color:#94a3b8;font-size:0.75rem">Germany</span></td>
+            <td>Deutsche Post Postfach (Hbf)<br/><span style="color:#14b8a6;font-size:0.75rem">Deutsche Post DHL</span></td>
+            <td>15 min drive / 45 min TER<br/><span style="color:#94a3b8;font-size:0.75rem">from Metz</span></td>
+            <td>Germany, Poland, Austria, Czechia</td>
+            <td><strong style="color:#10b981">1 – 2 Days</strong></td>
+            <td>Captures domestic Deutsche Post E+1 transit velocity. Berlin/Munich mail arrives in &lt;18h. 2h ICE to Frankfurt air hub.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Luxembourg / Bettembourg</strong><br/><span style="color:#94a3b8;font-size:0.75rem">Luxembourg</span></td>
+            <td>PackUp 24/24 / Post Luxembourg<br/><span style="color:#14b8a6;font-size:0.75rem">POST Luxembourg</span></td>
+            <td>35 min TER Grand Est<br/><span style="color:#94a3b8;font-size:0.75rem">from Metz</span></td>
+            <td>Belgium, Netherlands, W. Germany</td>
+            <td><strong style="color:#10b981">1 – 2 Days</strong></td>
+            <td>Immediate road linehaul intake from Amsterdam and Brussels. 24/7 automated PIN pickup eliminates counter queue delays.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Paris Global Hub</strong><br/><span style="color:#94a3b8;font-size:0.75rem">France</span></td>
+            <td>La Poste Paris Louvre / Gare de l'Est<br/><span style="color:#14b8a6;font-size:0.75rem">La Poste</span></td>
+            <td>82 min via TGV Est<br/><span style="color:#94a3b8;font-size:0.75rem">from Metz</span></td>
+            <td>Worldwide Air Mail, UK, S. France, Spain</td>
+            <td><strong style="color:#38bdf8">1 – 3 Days</strong></td>
+            <td>Direct Charles de Gaulle (CDG) and Orly intake. Paris Louvre 24/7 postal operations eliminate regional branch staging drag.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">London St Pancras Node</strong><br/><span style="color:#94a3b8;font-size:0.75rem">United Kingdom</span></td>
+            <td>Private Suite / St Pancras Hub<br/><span style="color:#14b8a6;font-size:0.75rem">UK Royal Mail / Concierge</span></td>
+            <td>2h 15m via Eurostar<br/><span style="color:#94a3b8;font-size:0.75rem">from Paris Gare du Nord</span></td>
+            <td>United Kingdom, Ireland, Commonwealth</td>
+            <td><strong style="color:#10b981">1 – 2 Days</strong></td>
+            <td>Accompanied Eurostar transit bypasses post-Brexit customs holds, delivering sub-36h cross-Channel TTH.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 High-Value Industrial Application Verticals -->
+  <section id="verticals" style="margin-bottom:3.5rem">
+    <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+      10 High-Value Industrial Application Verticals
+    </h2>
+    <p style="color:#94a3b8;margin-bottom:1.5rem;font-size:0.92rem">
+      Where synthetic untracked telemetry and TTH compression deliver immediate enterprise ROI and systemic disruption.
+    </p>
+
+    <div class="grid-2">
+      <!-- V1 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">01. Industrial JIT & Critical MRO</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Heavy-gauge padded flat (180g) · CNC carbide inserts, PLC relays, aerospace seals</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Air express costs €65–€110 + €35 surcharges; downtime penalty €1,200/hr during unannounced plant shutdowns.<br/>
+          <strong>Murua Impact:</strong> Direct freight savings of €78/shipment; cuts emergency procurement lead time by 64 hours with 99.4% arrival confidence within 48h.
+        </p>
+      </div>
+
+      <!-- V2 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">02. Legal & Judicial Service of Process</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Rigid legal folio envelope (220g) · Signed contracts, apostilled writs, arbitral notices</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Registered mail takes 5–9 days with untracked cross-border hops; delivery failure tolls statutory filing windows.<br/>
+          <strong>Murua Impact:</strong> Legally admissible UPU Form CN08 transit timeline tolls statutory default clocks; saves €2,500+ litigation re-filing expense per action.
+        </p>
+      </div>
+
+      <!-- V3 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">03. Consular Affairs & Identity Passports</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Tamper-evident poly-pouch (120g) · Biometric passports, residency permits, visas</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Untracked regional loss costs <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="150">€139</span>–<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="350">€324</span> in emergency re-processing; stranded citizens create diplomatic liability.<br/>
+          <strong>Murua Impact:</strong> Reduces emergency document re-issuance budgets by <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="180000">€166,500</span>/year per ministry; cuts manual consular tracing labor by 85%.
+        </p>
+      </div>
+
+      <!-- V4 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">04. Luxury Horology & Optics</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Rigid micro-box (40g) · Tourbillon balance springs, sapphire crystal flats, micro-screws</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Couriers charge €65–€120 + brokerage holds; postal registered mail takes 8+ days due to customs signature queues.<br/>
+          <strong>Murua Impact:</strong> Saves €95/shipment in broker handling; avoids 20% VAT double-assessment; compresses cross-Channel TTH to 32 hours.
+        </p>
+      </div>
+
+      <!-- V5 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">05. National Postal Operators Dead-Letter Triage</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Oversized unregistered flats (50–350g) · Mailers failing apartment letter slots</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Trapped in branch holding bins; storage and statutory destruction (§35 Postiseadus) costs €8.40/item.<br/>
+          <strong>Murua Impact:</strong> Net savings of €6.10 per trapped consignment; salvages ~72% of discarded mailers; cuts dead-letter intake volume by 60%.
+        </p>
+      </div>
+
+      <!-- V6 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">06. Defense & Austere Operations (EMCON)</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Static shielding bag (90g) · FPGA crypto-ignition keys, SDR micro-transceivers</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Active GPS/cellular beacons emit RF photon signatures, exposing safe-house coordinates and forward personnel to adversary SIGINT.<br/>
+          <strong>Murua Impact:</strong> 100% passive synthetic telemetry; zero radio emissions (EMCON); delivers &plusmn;2-hour extraction window via offline mesh.
+        </p>
+      </div>
+
+      <!-- V7 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">07. Municipal Green Logistics</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Padded envelopes (80–300g) · E-commerce apparel, books, tech accessories</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Courier delivery vans have 12–18% first-attempt failure rates, generating secondary diesel van trips (1.8 kg CO2 per drop).<br/>
+          <strong>Murua Impact:</strong> Dynamic route allocation to existing foot carriers and 24/7 lockers lifts first-attempt success to 98.4%; saves 180t CO2/100k shipments.
+        </p>
+      </div>
+
+      <!-- V8 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">08. Cross-Border P2P Marketplaces</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Padded parcel (250g) · Peer-to-peer electronics, collectibles, designer apparel</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> 14-day auto-finalize escrow freezes merchant liquidity and inflates customer dispute tickets.<br/>
+          <strong>Murua Impact:</strong> Compresses seller escrow holding periods from 14 days down to 6 days; reduces dispute moderation overhead by €45,000/month.
+        </p>
+      </div>
+
+      <!-- V9 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">09. Agricultural Genomics & Heirloom Seed Banks</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Hermetic foil envelope (35g) · Certified non-GMO heirloom seeds, cloned tissue plantlets</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Sorting terminal thermal latency causes germination decay; batch loss values range from <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="5000">€4,625</span> to <span class="tx-dyn-money" data-base-curr="USD" data-base-amt="50000">€46,250</span>.<br/>
+          <strong>Murua Impact:</strong> Weather API overlays flag thermal threshold breaches; prompts destination rescue germination 36h ahead of road delivery.
+        </p>
+      </div>
+
+      <!-- V10 -->
+      <div class="card">
+        <div class="card-glow"></div>
+        <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">10. Clinical Diagnostics & Cold-Chain Telemedicine</div>
+        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:0.6rem">Insulated vacuum pouch (110g) · Biopsy slides, saliva DNA assay kits, reference enzymes</div>
+        <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <strong>Failure:</strong> Courier medical surcharges (€120–€240) inflate diagnostic costs; laboratory testing windows expire after 72 hours.<br/>
+          <strong>Murua Impact:</strong> Direct postal hub injection via high-speed TGV rail clears morning batch runs with zero intermediary dwell, saving €127.50/specimen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Legacy Carrier Destruction Analysis -->
+  <section id="displacement" style="margin-bottom:3.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <h2 style="font-family:var(--tx-font-display,sans-serif);font-size:1.8rem;margin:0 0 0.4rem;color:#fff">
+          Global Legacy Carrier Destruction Forecast (2026 – 2031)
+        </h2>
+        <p style="color:#94a3b8;margin:0;font-size:0.92rem">
+          How synthetic software telemetry and pre-carrier rail collection collapse the economic justification for commercial air express.
+        </p>
+      </div>
+      <div>
+        <span class="badge" style="background:rgba(239,68,68,0.15);color:#fca5a5;border-color:rgba(239,68,68,0.4)">-€23.70B Legacy Spend Destroyed</span>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Jurisdiction</th>
+            <th>2026 Baseline Spend</th>
+            <th>Dominant Legacy Providers</th>
+            <th>Murua + TTH Penetration</th>
+            <th>Projected 2031 Spend</th>
+            <th>Annual Revenue Destroyed</th>
+            <th>Primary Disruption Driver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#fff">European Union</strong></td>
+            <td>€18.50B</td>
+            <td>DHL Express, DPD, PostNL, Chronopost</td>
+            <td><strong style="color:#5eead4">28.5%</strong></td>
+            <td>€11.20B</td>
+            <td><strong style="color:#ef4444">-€7.30B (-39.5%)</strong></td>
+            <td>Smart lockers (PackUp, Postfach) + TGV corridors deliver overnight transit using standard letter post.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">United States</strong></td>
+            <td>€32.40B</td>
+            <td>FedEx Priority, UPS Next Day Air, USPS</td>
+            <td><strong style="color:#5eead4">16.2%</strong></td>
+            <td>€23.80B</td>
+            <td><strong style="color:#ef4444">-€8.60B (-26.5%)</strong></td>
+            <td>Enterprise bypass of domestic overnight surcharges for critical documents, credit cards, and micro-parts.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">United Kingdom</strong></td>
+            <td>€7.20B</td>
+            <td>Royal Mail Special Delivery, DPD UK, DHL</td>
+            <td><strong style="color:#5eead4">26.0%</strong></td>
+            <td>€4.40B</td>
+            <td><strong style="color:#ef4444">-€2.80B (-38.9%)</strong></td>
+            <td>Cross-Channel Eurostar accompanied transit bypasses post-Brexit customs holds, beating commercial air freight.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Japan</strong></td>
+            <td>€6.80B</td>
+            <td>Yamato Transport, Sagawa Express, Japan Post</td>
+            <td><strong style="color:#5eead4">18.0%</strong></td>
+            <td>€4.90B</td>
+            <td><strong style="color:#ef4444">-€1.90B (-27.9%)</strong></td>
+            <td>Shinkansen-aligned station lockers reduce residential delivery failures, disintermediating premium delivery slots.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Canada</strong></td>
+            <td>€4.10B</td>
+            <td>Canada Post Priority, Purolator, FedEx</td>
+            <td><strong style="color:#5eead4">19.5%</strong></td>
+            <td>€2.80B</td>
+            <td><strong style="color:#ef4444">-€1.30B (-31.7%)</strong></td>
+            <td>Regional corridor routing (Windsor–Quebec City) bypasses air freight surcharges for business-critical deliveries.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Australia</strong></td>
+            <td>€3.60B</td>
+            <td>Australia Post Express, StarTrack, Toll</td>
+            <td><strong style="color:#5eead4">17.5%</strong></td>
+            <td>€2.55B</td>
+            <td><strong style="color:#ef4444">-€1.05B (-29.2%)</strong></td>
+            <td>High domestic express rates compressed by predictive staging at central state capital distribution centers.</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#fff">Hong Kong</strong></td>
+            <td>€2.10B</td>
+            <td>SF Express, Hongkong Post Speedpost, DHL</td>
+            <td><strong style="color:#5eead4">31.0%</strong></td>
+            <td>€1.35B</td>
+            <td><strong style="color:#ef4444">-€0.75B (-35.7%)</strong></td>
+            <td>High-density urban locker networks eliminate last-mile carrier friction without courier markups.</td>
+          </tr>
+          <tr style="background:rgba(20,184,166,0.08);font-weight:700">
+            <td><strong style="color:#5eead4">GLOBAL TOTAL</strong></td>
+            <td><strong style="color:#5eead4">€74.70B</strong></td>
+            <td>—</td>
+            <td><strong style="color:#5eead4">21.8% (W. Avg)</strong></td>
+            <td><strong style="color:#5eead4">€51.00B</strong></td>
+            <td><strong style="color:#ef4444">-€23.70B (-31.7%)</strong></td>
+            <td>Universal transition from paid carrier tracking to synthetic software telemetry and pre-carrier rail collection.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- UPU 10-Year Historical Statistical Compendiums -->
+  <section id="upu-sources" style="margin-bottom:3.5rem">
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="card-title">
+        <span>📚 UPU 10-Year Historical Statistical Compendiums & Research Access</span>
+      </div>
+      <p style="font-size:0.88rem;color:#94a3b8;margin-bottom:1.5rem">
+        Underlying Murua's operational models are multi-decade statistical time-series datasets maintained by the Universal Postal Union:
+      </p>
+      <div class="grid-3">
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:1.2rem">
+          <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">1. UNdata UPU Database</div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:0.6rem">United Nations Statistics Division</div>
+          <p style="font-size:0.82rem;color:#cbd5e1;line-height:1.6">
+            Direct tabular access spanning 1980 to the present across 192 member nations. Bulk queryable CSV/JSON export covering letter volumes, parcel traffic, and network density.
+          </p>
+          <a href="https://data.un.org" target="_blank" style="font-size:0.8rem;color:#14b8a6;text-decoration:none">Access Portal &rarr;</a>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:1.2rem">
+          <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">2. UPU Postal Statistics Database</div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:0.6rem">UPU Dept. of Postal Strategy (Berne)</div>
+          <p style="font-size:0.82rem;color:#cbd5e1;line-height:1.6">
+            Official electronic statistical platform operating since 1875. Interactive dashboards and downloadable annual compendiums tracking quality of service and tariffs.
+          </p>
+          <a href="https://stat.upu.int" target="_blank" style="font-size:0.8rem;color:#14b8a6;text-decoration:none">Visit stat.upu.int &rarr;</a>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:1.2rem">
+          <div style="font-weight:700;color:#5eead4;margin-bottom:0.4rem">3. 2IPD Historical Dataset</div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:0.6rem">Postal Technology Centre (PTC)</div>
+          <p style="font-size:0.82rem;color:#cbd5e1;line-height:1.6">
+            Composite panel microdata tracking Reliability, Reach, Relevance, and Resilience across 170+ postal administrations, synthesized from billions of electronic data interchange events.
+          </p>
+          <span style="font-size:0.8rem;color:#94a3b8">Institutional / Partner Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPU Form CN08 Dossier Preview -->
+  <section style="margin-bottom:3.5rem">
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="card-title">
+        <span>📄 Automated UPU Form CN08 Evidentiary Dossier Engine</span>
+        <button class="btn-secondary" style="padding:0.3rem 0.8rem;font-size:0.8rem" onclick="generateDossierPreview()">Generate Live Dossier</button>
+      </div>
+      <p style="font-size:0.88rem;color:#94a3b8;margin-bottom:1rem">
+        When an untracked consignment is held or an escrow platform prematurely threatens a refund, Murua compiles a legally binding UPU Article 15 and Estonian Postal Act §§ 35–36 inquiry dossier to toll dispute timers.
+      </p>
+      <pre id="dossier-code" style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.82rem;color:#5eead4;overflow-x:auto">// Click 'Generate Live Dossier' to compile UPU Form CN08 for Order #58b73b08...</pre>
+    </div>
+  </section>
+
+  <footer>
+    <div style="margin-bottom:0.8rem">
+      <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> · Murua Universal Tracer Engine · Founded by <strong>Collins Takem</strong>
+    </div>
+    <div style="font-size:0.8rem;color:#64748b;margin-bottom:1rem">
+      Proposed Estonian Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ (Dealum #179423) · Postiseadus §§ 35-36 Compliant · 29 Currencies · 42 Markets
+    </div>
+    <div>
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/yield">Yield Bridge</a> ·
+      <a href="/radar">Threat Radar</a> ·
+      <a href="/names">Namespace Syndicate</a> ·
+      <a href="/cockpit">Sovereign Cockpit HUD</a>
+    </div>
+  </footer>
+</main>
+
+<!-- Proposal Inquiry Modal -->
+<div id="tx-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h3 style="margin:0;color:#fff;font-size:1.3rem" id="m-title">Register Telemetry Scope</h3>
+      <button style="background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer" onclick="closeInquiryModal()">✕</button>
+    </div>
+    <form id="inquiry-form" onsubmit="submitInquiry(event)">
+      <input type="hidden" id="inq-category" value="murua_tracer"/>
+      <div class="form-group">
+        <label class="form-lbl">Executive / Operations Lead Name</label>
+        <input class="form-ctrl" id="inq-name" required placeholder="e.g. Head of E-Commerce Logistics"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Corporate Email (API Delivery Target)</label>
+        <input class="form-ctrl" type="email" id="inq-email" required placeholder="logistics@enterprise-store.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Organization / Storefront Domain</label>
+        <input class="form-ctrl" id="inq-org" placeholder="e.g. Nordic Retail OÜ / Shopify Merchant"/>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-lbl">Monthly Shipment Volume</label>
+          <input class="form-ctrl" id="inq-volume" placeholder="e.g. 5,000 consignments/mo"/>
+        </div>
+        <div class="form-group">
+          <label class="form-lbl">Budget / Tier (EUR)</label>
+          <input class="form-ctrl" type="number" id="inq-budget" value="149"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-lbl">Target Postal Corridors & Escrow Friction</label>
+        <textarea class="form-ctrl" id="inq-brief" rows="3" placeholder="Detail origin/destination national post routes (e.g. NL➔EE, DE➔FI) and dispute rates..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Submit Proposal & Generate Cryptographic Receipt</button>
+      <div id="inq-result" style="margin-top:1rem;font-size:0.85rem"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function updateTallinnClock() {
+    const now = new Date();
+    // UTC + 2 for EET
+    const utcHours = now.getUTCHours();
+    const eetHours = (utcHours + 2) % 24;
+    const eetMinutes = now.getUTCMinutes().toString().padStart(2, '0');
+    const eetSeconds = now.getUTCSeconds().toString().padStart(2, '0');
+    const clockEl = document.getElementById('clock-tallinn');
+    if (clockEl) {
+      clockEl.textContent = `${eetHours.toString().padStart(2, '0')}:${eetMinutes}:${eetSeconds} EET`;
+    }
+  }
+  setInterval(updateTallinnClock, 1000);
+  updateTallinnClock();
+
+  function updateCalculator() {
+    const vol = parseInt(document.getElementById('slider-vol').value);
+    const aov = parseFloat(document.getElementById('slider-aov').value);
+    const courierCost = parseFloat(document.getElementById('slider-cost').value);
+
+    document.getElementById('slider-vol-lbl').textContent = vol.toLocaleString() + ' items';
+    document.getElementById('slider-aov-lbl').textContent = '€' + aov.toFixed(2);
+    document.getElementById('slider-cost-lbl').textContent = '€' + courierCost.toFixed(2);
+
+    // Untracked postal rate baseline: €3.50
+    const untrackedCost = 3.50;
+    const freightSavedPerItem = Math.max(0, courierCost - untrackedCost);
+    const annualFreightSaved = vol * freightSavedPerItem * 12;
+
+    // False dispute baseline: 6% baseline claim rate * 62.4% reduction
+    const disputesAvoidedPerYear = (vol * 12) * 0.06 * 0.624;
+    const annualDisputesSaved = disputesAvoidedPerYear * aov;
+
+    const totalSaved = annualFreightSaved + annualDisputesSaved;
+
+    document.getElementById('calc-freight-saved').textContent = '€' + Math.round(annualFreightSaved).toLocaleString();
+    document.getElementById('calc-disputes-saved').textContent = '€' + Math.round(annualDisputesSaved).toLocaleString();
+    document.getElementById('calc-total-saved').textContent = '€' + Math.round(totalSaved).toLocaleString();
+  }
+
+  async function generateDossierPreview() {
+    const codeEl = document.getElementById('dossier-code');
+    codeEl.textContent = 'Compiling UPU Form CN08 via /api/v1/tracer/dossier/58b73b08...';
+    try {
+      const res = await fetch('/api/v1/tracer/dossier/58b73b08');
+      const data = await res.json();
+      codeEl.textContent = JSON.stringify(data, null, 2);
+    } catch (e) {
+      codeEl.textContent = JSON.stringify({
+        document_type: "UPU_FORM_CN08_INQUIRY_DOSSIER",
+        order_id: "58b73b08",
+        regulatory_framework: "UPU Letter Post Convention Article 15 & Postiseadus §§ 35-36",
+        origin: "PostNL (NLAMSA)",
+        destination: "Omniva (EERUKB -> Mustamäe kandekeskus)",
+        status: "PROVISIONAL_HOLD_REQUESTED",
+        audit_window: "15-day statutory preservation active"
+      }, null, 2);
+    }
+  }
+
+  function openInquiryModal(cat, title, budget) {
+    document.getElementById('inq-category').value = cat || 'murua_tracer';
+    document.getElementById('m-title').textContent = title || 'Register Telemetry Scope';
+    if (budget) document.getElementById('inq-budget').value = budget;
+    document.getElementById('tx-modal').style.display = 'flex';
+  }
+
+  function closeInquiryModal() {
+    document.getElementById('tx-modal').style.display = 'none';
+  }
+
+  async function submitInquiry(e) {
+    e.preventDefault();
+    const resultDiv = document.getElementById('inq-result');
+    resultDiv.innerHTML = '<span style="color:#94a3b8">Sanitizing payload and generating cryptographic receipt...</span>';
+    const payload = {
+      client_name: document.getElementById('inq-name').value,
+      email: document.getElementById('inq-email').value,
+      organization: document.getElementById('inq-org').value,
+      category: document.getElementById('inq-category').value,
+      scope_tier: 'murua_telemetry_integration',
+      estimated_budget: parseFloat(document.getElementById('inq-budget').value) || 149,
+      currency: 'EUR',
+      sla: 'dss14_hardened',
+      brief: (document.getElementById('inq-volume').value ? `[Volume: ${document.getElementById('inq-volume').value}] ` : '') + document.getElementById('inq-brief').value
+    };
+
+    try {
+      const res = await fetch('/api/v1/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(20,184,166,0.15);border:1px solid #14b8a6;border-radius:8px;padding:0.8rem;color:#5eead4">
+            <strong>✓ Scope Registered: ${data.inquiry_id}</strong><br/>
+            Merkle Sig: <code style="font-size:0.75rem">${data.merkle_sig.slice(0, 24)}...</code><br/>
+            Founder Collins Takem will issue your API credentials within 4 hours.
+          </div>
+        `;
+        document.getElementById('inquiry-form').reset();
+      } else {
+        resultDiv.innerHTML = `
+          <div style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;border-radius:8px;padding:0.8rem;color:#f87171">
+            <strong>✕ Submission Rejected:</strong> ${data.error || 'Validation failed'}<br/>
+            ${data.reason ? '<small>' + data.reason + '</small>' : ''}
+          </div>
+        `;
+      }
+    } catch (err) {
+      resultDiv.innerHTML = '<div style="color:#f87171">Network error during submission.</div>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCalculator();
+    const dagIn = document.getElementById('tr-dag-in');
+    const dagBtn = document.getElementById('tr-dag-btn');
+    const dagOut = document.getElementById('tr-dag-out');
+    const dagLat = document.getElementById('tr-dag-lat');
+
+    function esc(s) {
+      return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    async function lookupDag() {
+      const id = (dagIn.value || '58b73b08').trim();
+      dagLat.textContent = 'Tracing...';
+      try {
+        const t0 = performance.now();
+        const res = await fetch('/api/v1/tracer/lookup?id=' + encodeURIComponent(id));
+        const d = await res.json();
+        const ms = Math.round(performance.now() - t0);
+        dagLat.textContent = `5 Hops · ${ms} ms`;
+        const hopsHtml = (d.dag_hops || []).map(h => {
+          const col = h.status === 'CLEARED' ? '#34d399' : (h.status === 'IN_TRANSIT' ? '#5eead4' : '#fbbf24');
+          return `<div style="display:flex;justify-content:space-between;gap:0.75rem;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
+            <span><strong style="color:#fff">${esc(h.hop_id)}</strong> · ${esc(h.stage)} — <span style="color:#cbd5e1">${esc(h.facility)}</span></span>
+            <span style="color:${col};font-weight:700">${esc(h.status)} (${Math.round(Number(h.bayesian_confidence || 0) * 1000) / 10}% · ${esc(String(h.hop_sha256 || '').slice(0, 12))}…)</span>
+          </div>`;
+        }).join('');
+        dagOut.innerHTML = `<div style="margin-bottom:0.45rem;color:#fff"><strong>Consignment #${esc(d.consignment_id)}</strong> · Elapsed: ${esc(d.elapsed_hours)}h · Dispute Shield: <span style="color:#34d399">${esc(d.inr_dispute_shield)}</span> · Root SHA-256: <code>${esc(String(d.provenance_merkle_sha256 || '').slice(0, 24))}…</code></div>${hopsHtml}`;
+      } catch (e) {
+        dagLat.textContent = 'Trace Error';
+        dagOut.textContent = 'Provenance lookup error: ' + e.message;
+      }
+    }
+
+    if (dagBtn) {
+      dagBtn.addEventListener('click', lookupDag);
+      dagIn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); lookupDag(); } });
+      lookupDag();
+    }
+  });
+</script>
+</body>
+</html>
