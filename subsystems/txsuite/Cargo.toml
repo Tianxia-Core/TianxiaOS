@@ -9,7 +9,7 @@ sha2 = "0.10"
 blake2 = "0.10"
 rusqlite = { version = "0.31", features = ["bundled"] }
 serde_json = { version = "1", features = ["preserve_order"] }
-ureq = { version = "2", features = ["json"] }
+ureq = { version = "3", features = ["json"] }
 tungstenite = { version = "0.26", features = ["rustls-tls-webpki-roots"] }
 
 [profile.release]
