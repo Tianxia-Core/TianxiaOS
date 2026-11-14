@@ -1,0 +1,291 @@
+<!-- ffp: FFP-UI-PRIVACY frontend html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>GDPR++ Sovereign Privacy Policy &amp; Data Protection — Rasa-X-Machina</title>
+<meta name="description" content="GDPR++ v2030.4 Privacy by Design (PbD) and Security by Design (SbD) policy for Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ), outclassing EU GDPR, Estonian AKI, CPRA, LGPD, and PDPA."/>
+<link rel="canonical" href="https://rasaxmachina.com/privacy"/>
+<link rel="icon" type="image/svg+xml" href="/icon.svg"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --bg: #080808;
+    --panel: rgba(14, 15, 24, 0.84);
+    --border: rgba(124, 92, 255, 0.30);
+    --accent: #c084fc;
+    --mint: #00f59b;
+    --cyan: #22d3ee;
+    --fg: #f8fafc;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 15% 6%, rgba(0, 245, 155, 0.09), transparent 38%),
+                radial-gradient(circle at 85% 12%, rgba(124, 92, 255, 0.12), transparent 40%),
+                var(--bg);
+    color: var(--fg);
+    line-height: 1.68;
+    min-height: 100dvh;
+  }
+  .tx-home-nav {
+    position: fixed;
+    top: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99980;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.42rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(10, 10, 18, 0.86);
+    border: 1px solid rgba(124, 92, 255, 0.38);
+    box-shadow: 0 0 60px -12px rgba(124, 92, 255, 0.55);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    max-width: calc(100vw - 1.25rem);
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tx-home-nav::-webkit-scrollbar { display: none; }
+  .tx-nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.92rem;
+    padding: 0.32rem 0.78rem;
+    letter-spacing: 0;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .tx-home-nav a.tx-nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.76rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .tx-home-nav a.tx-nav-link:hover, .tx-home-nav a.tx-nav-link.active {
+    color: #fff;
+    background: rgba(255,255,255,0.09);
+  }
+  .tx-nav-right-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.25rem;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 0.45rem;
+    flex-wrap: nowrap;
+  }
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: calc(5.6rem + var(--safe-top)) 1.5rem 3.5rem;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.34rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.73rem;
+    font-weight: 600;
+    background: rgba(0, 245, 155, 0.12);
+    border: 1px solid rgba(0, 245, 155, 0.32);
+    color: var(--mint);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.65rem;
+  }
+  h2 {
+    font-size: 1.18rem;
+    color: var(--mint);
+    margin: 2.1rem 0 0.65rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  p, li {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1.1rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    backdrop-filter: blur(20px);
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  .btn-gdpr {
+    background: linear-gradient(135deg, #7c5cff, #00f59b);
+    color: #040406;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.35rem;
+    cursor: pointer;
+    font-size: 0.84rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-gdpr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 35px -8px rgba(0, 245, 155, 0.55);
+  }
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.09);
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem calc(3.5rem + var(--safe-bottom));
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<nav class="tx-home-nav" aria-label="Legal &amp; Primary Navigation">
+  <a href="/" class="tx-nav-brand tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</a>
+  <a href="/" class="tx-nav-link">⚡ Storefront</a>
+  <a href="/about" class="tx-nav-link">About</a>
+  <a href="/collins" class="tx-nav-link">Founder</a>
+  <a href="/estonia" class="tx-nav-link" style="color:#38bdf8;font-weight:600">🇪🇪 Estonia ↗</a>
+  <a href="/privacy" class="tx-nav-link active" aria-current="page">Privacy</a>
+  <a href="/terms" class="tx-nav-link">Terms</a>
+  <div class="tx-nav-right-cluster"></div>
+</nav>
+
+<main id="main-content" tabindex="-1">
+  <div class="eyebrow">🛡️ GDPR++ v2030.4 · BUILD LAW v5.0-SOVEREIGN-FOUNDER-CANON</div>
+  <h1>GDPR++ Sovereign Horizon Privacy, PbD &amp; SbD Policy</h1>
+  <p><strong>Effective Date:</strong> November 2026 · <strong>Jurisdictional Horizon:</strong> Engineered 3–5 years ahead of EU Regulation 2016/679 (GDPR), Estonian Personal Data Protection Act (<em>Isikuandmete kaitse seadus</em> / AKI), EU AI Act 2024/1689, NIS2, DORA, Swiss revFADP/nDSG, California CPRA, Brazil LGPD, Singapore PDPA, and Japan APPI across all <strong>42 supported global markets and 25 languages</strong>.</p>
+
+  <div class="card">
+    <strong style="color:var(--mint);font-family:'JetBrains Mono',monospace">⚡ PRIVACY BY DESIGN (PbD) · SECURITY BY DESIGN (SbD) · &lt;50ms PQ CRYPTOSHREDDING</strong>
+    <p style="margin-top:0.5rem;margin-bottom:0.95rem">
+      <strong>Rasa-X-Machina</strong> (Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong> · Dealum <code>#179423</code>) enforces mathematical <strong>Privacy by Design (PbD)</strong> and <strong>Security by Design (SbD)</strong> across all 28 portals and 4 sovereign mesh nodes. We deploy <strong>zero third-party advertising trackers, behavioral profiling pixels, or cross-site surveillance cookies</strong>, honor <code>Sec-GPC: 1</code> (Global Privacy Control) automatically at <code>0ms</code> edge latency, and encapsulate subject records under per-subject ephemeral <code>XChaCha20-Poly1305 + ML-KEM-1024</code> envelope keys—enabling provable cryptographic erasure in <strong>&lt;50ms</strong> with a verifiable <strong>Veritas-Rex SHA-256 Merkle Receipt</strong>.
+    </p>
+    <button type="button" class="btn-gdpr" onclick="window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.openGdprRightsModal()">
+      🛡️ Open Interactive GDPR++ Cryptoshred &amp; Merkle Receipt Portal ↗
+    </button>
+  </div>
+
+  <h2>1. Data Controller &amp; Data Protection Contact (GDPR Art. 13)</h2>
+  <p>
+    <strong>Data Controller:</strong> Rasa-X-Machina (Principal Systems Architect &amp; Founder: <a href="/collins">Collins Takem</a> · Proposed Tallinn Entity upon Estonian Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong>).<br/>
+    <strong>Data Protection &amp; Privacy Contact:</strong> <button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified DPO Contact</button> · Direct Security Disclosures: <a href="/.well-known/security.txt">/.well-known/security.txt</a>.<br/>
+    <strong>Lead EU Supervisory Authority:</strong> Estonian Data Protection Inspectorate (<em>Andmekaitse Inspektsioon</em> — AKI), Tatari 39, 10134 Tallinn, Estonia (<a href="https://www.aki.ee" target="_blank" rel="noopener">www.aki.ee</a>).
+  </p>
+
+  <h2>2. Categories of Personal Data &amp; Lawful Basis (GDPR Art. 6)</h2>
+  <ul>
+    <li><strong>Contractual Performance (Art. 6(1)(b)):</strong> Billing email, client or executive name, organization, and selected SKU/tier when acquiring a blueprint, recurring SaaS telemetry stream, or VRTTI Architecture Sprint.</li>
+    <li><strong>Explicit Consent (Art. 6(1)(a)):</strong> Voluntary scope inquiry submissions via our Merkle-Signed Proposal Calculator on <code>rasaxmachina.com</code>, <code>/collins</code>, or specialized portals.</li>
+    <li><strong>Statutory Obligation (Art. 6(1)(c)):</strong> Mandatory accounting and tax invoice totals retained strictly as required by the Estonian Accounting Act (<em>Raamatupidamise seadus</em> — 7-year ledger retention).</li>
+    <li><strong>Enclave Defense &amp; Legitimate Interest (Art. 6(1)(f)):</strong> Ephemeral in-memory MANAS System-1 inspection (blocking SSRF, Unicode Tag smuggling, prompt injection, and DDoS vectors) with zero persistent behavioral profiling.</li>
+  </ul>
+
+  <h2>3. Zero-Cookie Local Preferences &amp; Strict Single-Currency Processing</h2>
+  <p>
+    Your chosen market, interface language (across 25 languages including RTL <code>ar</code>/<code>ur</code>), and single billing currency (across 29 currencies, <code>EUR</code> default) are stored exclusively in browser <code>localStorage</code> on your own device—never transmitted to third-party ad networks or data brokers.
+  </p>
+
+  <h2>4. Payment Security &amp; Zero-PII Cryptographic Ledger</h2>
+  <p>
+    Fiat card, Apple Pay, Google Pay, and SEPA settlements are processed directly by <strong>Stripe</strong> (PCI-DSS Level 1 certified), <strong>Paddle</strong>, or <strong>Gumroad</strong>. Rasa-X-Machina never receives, touches, or stores raw payment card numbers (PAN) or CVV codes. <strong>Veritas-Rex TetraLedger</strong> records only deterministic SHA-256 Merkle commitments and anonymized receipt hashes—never plaintext personal data—on public chains (Solana / Base L2 / ETAMANGA).
+  </p>
+
+  <h2>5. Data Subject Rights &amp; Instantaneous Cryptoshredding (GDPR Art. 15–22)</h2>
+  <p>You may exercise your statutory and sovereign data rights at any time via <code>POST /api/v1/gdpr/request</code> (using the interactive button above) or via our anti-scraper shielded DPO contact (<button type="button" class="tx-contact-shield" data-tx-c="executive" data-tx-no-i18n="1">🔒 Reveal Verified DPO Contact</button>):</p>
+  <ul>
+    <li><strong>Right of Access &amp; Portability (Art. 15 &amp; 20):</strong> Export all records associated with your email address in structured, machine-readable JSON format.</li>
+    <li><strong>Right to Rectification (Art. 16):</strong> Update or correct inaccurate contact or organization details.</li>
+    <li><strong>Right to Erasure via Post-Quantum Cryptoshredding (Art. 17):</strong> Immediate destruction of your per-subject encryption key and off-chain PII in <code>&lt;50ms</code>, returning a signed SHA-256 Merkle erasure receipt while preserving non-PII financial audit totals.</li>
+    <li><strong>Right to Object &amp; Zero Automated Profiling Guarantee (Art. 21 &amp; 22):</strong> Rasa-X-Machina performs zero automated credit, employment, or behavioral profiling on site visitors.</li>
+  </ul>
+
+  <h2>6. European Sovereign Enclave Infrastructure &amp; International Transfers</h2>
+  <p>
+    Primary edge relay and encrypted database storage operate inside the European Union (Hetzner Finland/Germany EU enclave <code>Cloudflare Anycast</code> and NixOS sovereign hub) over post-quantum Rosenpass WireGuard tunnels and TLS 1.3. Where regulated payment processors execute cross-border settlement, EU Standard Contractual Clauses (SCCs) and adequacy safeguards govern transit.
+  </p>
+
+  <h2>7. Web Accessibility &amp; Inclusive Design (WCAG 2.2 AA &amp; EN 301 549)</h2>
+  <p>
+    Every Rasa-X-Machina web app is engineered to W3C WCAG 2.2 Level AA and the European Accessibility Act (Directive (EU) 2019/882), featuring keyboard skip-links, unified screen-reader-friendly locale controls, high-contrast tokens, and <code>prefers-reduced-motion</code> adherence.
+  </p>
+</main>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div>© 2026 <strong>Rasa-X-Machina</strong> (Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong>). Founded by <a href="/collins">Collins Takem</a>.</div>
+    <div>
+      <a href="/">Storefront</a> ·
+      <a href="/about">About</a> ·
+      <a href="/collins">Founder</a> ·
+      <a href="/terms">Terms of Service</a> ·
+      <a href="/trust">Trust Center</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

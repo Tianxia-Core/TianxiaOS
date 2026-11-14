@@ -1,0 +1,489 @@
+<!-- ffp: FFP-UI-ABOUT frontend html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>About Rasa-X-Machina &amp; tianxiaOS — Sovereign AI Infrastructure &amp; Cyber Defense</title>
+<meta name="description" content="About Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ) and tianxiaOS v8.7.0: polyglot sovereign AI operating system, active cyber defense, and cryptographic settlement."/>
+<link rel="canonical" href="https://rasaxmachina.com/about"/>
+<link rel="icon" type="image/svg+xml" href="/icon.svg"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Rasa-X-Machina & tianxiaOS",
+  "url": "https://rasaxmachina.com/about",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Rasa-X-Machina",
+    "url": "https://rasaxmachina.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "executive & enterprise inquiries",
+      "url": "https://rasaxmachina.com/collins#encrypted-dispatch"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Collins Takem",
+      "url": "https://rasaxmachina.com/collins"
+    },
+    "sameAs": [
+      "https://github.com/Tianxia-Core",
+      "https://x.com/rasaxmachina",
+      "https://x.com/tianxiaos",
+      "https://x.com/coltakrasax",
+      "https://www.linkedin.com/in/coltak2",
+      "https://www.facebook.com/rasaxmachina",
+      "https://t.me/rasaxmachina",
+      "https://www.instagram.com/rasaxmachina"
+    ]
+  }
+}
+</script>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --bg: #080808;
+    --panel: rgba(14, 14, 24, 0.78);
+    --panel-strong: rgba(18, 18, 32, 0.92);
+    --border: rgba(124, 92, 255, 0.30);
+    --border-soft: rgba(255, 255, 255, 0.09);
+    --purple: #7c5cff;
+    --violet: #c084fc;
+    --mint: #00f59b;
+    --cyan: #22d3ee;
+    --ink: #f8fafc;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: radial-gradient(circle at 18% 8%, rgba(124, 92, 255, 0.14), transparent 42%),
+                radial-gradient(circle at 84% 16%, rgba(34, 211, 238, 0.10), transparent 38%),
+                var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    line-height: 1.65;
+  }
+  .tx-home-nav {
+    position: fixed;
+    top: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99980;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.42rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(10, 10, 18, 0.86);
+    border: 1px solid rgba(124, 92, 255, 0.38);
+    box-shadow: 0 0 60px -12px rgba(124, 92, 255, 0.55);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    max-width: calc(100vw - 1.25rem);
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tx-home-nav::-webkit-scrollbar { display: none; }
+  .tx-nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.92rem;
+    padding: 0.32rem 0.78rem;
+    letter-spacing: 0;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .tx-home-nav a.tx-nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.76rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .tx-home-nav a.tx-nav-link:hover, .tx-home-nav a.tx-nav-link.active {
+    color: #fff;
+    background: rgba(255,255,255,0.09);
+  }
+  .tx-nav-right-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.25rem;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 0.45rem;
+    flex-wrap: nowrap;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: calc(5.6rem + var(--safe-top)) 1.5rem calc(4.5rem + var(--safe-bottom));
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.36rem 0.88rem;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(124, 92, 255, 0.14);
+    border: 1px solid rgba(124, 92, 255, 0.35);
+    color: var(--violet);
+    margin-bottom: 1.1rem;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 10px var(--mint);
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.12;
+    margin: 0 0 1.1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 48%, #c084fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.12rem;
+    color: #cbd5e1;
+    max-width: 860px;
+    margin: 0 0 2rem;
+  }
+  .disclosure-banner {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.11), rgba(0, 245, 155, 0.07));
+    border: 1px solid rgba(0, 245, 155, 0.30);
+    border-radius: 1.1rem;
+    padding: 1.25rem 1.45rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.92rem;
+    color: #e2e8f0;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.75rem;
+  }
+  @media (max-width: 860px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+  .kpi-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    backdrop-filter: blur(20px);
+  }
+  .kpi-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--mint);
+  }
+  .kpi-lbl {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+  .section {
+    margin-bottom: 2.75rem;
+  }
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.65rem;
+    color: #fff;
+    margin: 0 0 0.75rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    margin: 0 0 1.4rem;
+    max-width: 820px;
+    font-size: 0.96rem;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  @media (max-width: 780px) { .pillars-grid { grid-template-columns: 1fr; } }
+  .glass-card {
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 1.15rem;
+    padding: 1.5rem;
+    transition: border-color 0.22s ease, transform 0.22s ease;
+  }
+  .glass-card:hover {
+    border-color: rgba(124, 92, 255, 0.48);
+    transform: translateY(-2px);
+  }
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cyan);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+    display: block;
+  }
+  .glass-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .glass-card p {
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    margin: 0;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.82rem 1.45rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #7c5cff, #a855f7);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px -8px rgba(124, 92, 255, 0.65);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.82rem 1.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #f8fafc;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(34, 211, 238, 0.45);
+  }
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
+  .footer a {
+    color: #c084fc;
+    text-decoration: none;
+  }
+  .footer a:hover { color: #fff; }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+
+<nav class="tx-home-nav" aria-label="Primary Navigation">
+  <a href="/" class="tx-nav-brand tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</a>
+  <a href="/" class="tx-nav-link">⚡ Storefront</a>
+  <a href="/about" class="tx-nav-link active" aria-current="page">About</a>
+  <a href="/collins" class="tx-nav-link">Founder</a>
+  <a href="/estonia" class="tx-nav-link" style="color:#38bdf8;font-weight:600">🇪🇪 Estonia ↗</a>
+  <a href="/privacy" class="tx-nav-link">Privacy</a>
+  <a href="/terms" class="tx-nav-link">Terms</a>
+  <div class="tx-nav-right-cluster"></div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <div class="eyebrow">
+    <span class="dot"></span>
+    <span>ABOUT <span class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</span> · <span class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</span> v8.7.0 · BUILD LAW v5.0</span>
+  </div>
+
+  <h1>Engineering the Sovereign Operating Substrate for Autonomous AI &amp; Active Cyber Defense</h1>
+  <p class="lead">
+    <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> is a deep-tech systems engineering studio founded by Principal Systems Architect <strong>Collins Takem</strong>. We build <strong class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</strong>—a polyglot, cryptographically verifiable operating substrate replacing fragile Python/container agent wrappers with sub-millisecond hardware-accelerated inference routing, zero-copy packet defense, and deterministic multi-rail accounting.
+  </p>
+
+  <div class="disclosure-banner">
+    <strong style="color:var(--mint);font-family:'JetBrains Mono',monospace">🏛️ INSTITUTIONAL &amp; REGULATORY DISCLOSURE:</strong>
+    Rasa-X-Machina is actively under evaluation by the <strong>Estonian Startup Committee</strong> (Dealum Application <code>#179423</code> under § 100¹ of the Estonian Aliens Act, <em>Välismaalaste seadus</em>). Upon Startup Committee approval, our sovereign European holding and R&amp;D entity will be incorporated in Tallinn, Republic of Estonia as <strong>RASA-X-MACHINA OÜ</strong>.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-val">70.6%–79.6%</div>
+      <div class="kpi-lbl">Verified LLM Token OpEx Reduction</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" style="color:var(--cyan)">11.40 Mpps</div>
+      <div class="kpi-lbl">AF_XDP Wire Arrest (&lt;3.8 μs P99)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val" style="color:var(--violet)">7 Formats</div>
+      <div class="kpi-lbl">Signed .deb · .rpm · .AppImage · .nix · .exe · .apk</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">42 Markets</div>
+      <div class="kpi-lbl">25 Languages · 29 Single-Currency Rails</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Why Rasa-X-Machina Exists</h2>
+    <p class="section-sub">
+      Modern enterprises face an unsustainable triad: runaway frontier LLM API spend, cascading HTTP 429 rate-limit outages, and shared-kernel credential exposure. Rasa-X-Machina solves all three at the operating-system and wire-protocol layer rather than adding another SaaS wrapper.
+    </p>
+    <div class="pillars-grid">
+      <div class="glass-card">
+        <span class="card-tag">PILLAR 01 · POLYGLOT RESONANCE</span>
+        <h3>Function-Feature Pair (FFP) Architecture</h3>
+        <p>Every capability is implemented in the language mathematically suited to its workload—<strong>Rust</strong> for concurrent daemons and wire codecs, <strong>C (AVX2/NEON)</strong> for sub-millisecond scoring kernels, <strong>OCaml</strong> for capability firewalls, <strong>Nix</strong> for reproducible OS state, and <strong>Zig</strong> for portable static toolchains across <code>1,023</code> verified FFPs.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">PILLAR 02 · CONSTRUCTAL EFFICIENCY</span>
+        <h3>4-Tier Local-First Inference Waterfall</h3>
+        <p>Our C/AVX2 System-1 pre-filter (<code>7.2–14.0ms</code>), BitNet 1.58-bit ternary local CPU inference, and Constructal Sine-Meander multi-provider router cut cloud LLM token OpEx by <strong>70.6%–79.6%</strong> while reducing HTTP 429 burst failures from <code>41.93%</code> to <strong>0.00%</strong> across <code>n = 2,722</code> production events.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">PILLAR 03 · FAERY FORTRESS &amp; MANAS</span>
+        <h3>Active Cyber-Deception &amp; Wire-Speed Containment</h3>
+        <p>Combining Rust <code>AF_XDP</code> zero-copy packet filtration, OCaml <code>VirtWL</code> clipboard isolation, MANAS prompt-smuggling arrest, and Vogel aeroelastic deception, tianxiaOS shifts adversary reconnaissance costs from <span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="23.55" data-decimals="2">€23.55</span> to over <span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="1295">€1,295</span>.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">PILLAR 04 · GDPR++ v2030.4 &amp; TETRALEDGER</span>
+        <h3>&lt;50ms Post-Quantum Cryptoshredding &amp; Solvency Proof</h3>
+        <p>Engineered 3–5 years ahead of statutory privacy mandates: zero third-party ad trackers, automatic <code>Sec-GPC: 1</code> honor at <code>0ms</code>, per-subject <code>XChaCha20-Poly1305 + ML-KEM-1024</code> key destruction in <code>&lt;50ms</code>, and 4-way <strong>Veritas-Rex TetraLedger</strong> reconciliation with <span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="0" data-decimals="2">€0.00</span> discrepancy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Flagship Platforms &amp; Open-Verifiable Releases</h2>
+    <p class="section-sub">
+      All flagship executables are continuously audited every 6 hours by our <strong>Hussar 7 Winged Sentinel Legions</strong> (<code>7/7 GREEN</code>) and signed offline with OpenSSL <code>Ed25519</code> + CycloneDX 1.5 SBOMs.
+    </p>
+    <div class="pillars-grid">
+      <div class="glass-card">
+        <span class="card-tag">OPERATING SUBSTRATE</span>
+        <h3>tianxiaOS v8.7.0 &amp; Sovereign Cockpit</h3>
+        <p>Declarative NixOS 25.05 + seL4/Nanos architecture with native GTK4/Libadwaita desktop GUI, 9-tab Rust TUI, and 7 signed package formats (<code>.deb</code>, <code>.rpm</code>, <code>.AppImage</code>, <code>flake.nix</code>, <code>.tar.gz</code>, <code>.exe</code>, <code>.apk</code>).</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">SECURITY &amp; MESH SUITE</span>
+        <h3>nimbus² · AegisScan · AetherVault</h3>
+        <p>Post-quantum Rosenpass WireGuard mesh routing (<code>nimbus² v2.5.0</code>), 8-domain static supply-chain &amp; Unicode-smuggling security scanner (<code>AegisScan v2.1.0</code>), and Argon2id/XChaCha20 credential vaulting (<code>AetherVault v2.1.0</code>).</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">COMMERCE &amp; LOGISTICS</span>
+        <h3>Murua Universal Tracer &amp; x402 Relay</h3>
+        <p>Bayesian cross-border postal telemetry and automated UPU CN08 dispute dossiers cutting false INR chargebacks by <code>62.4%</code>, paired with HTTP <code>402</code> machine-to-machine micropayment settlement.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-tag">INSTITUTIONAL ADVISORY</span>
+        <h3>VRTTI 5-Day Architecture Sprints</h3>
+        <p>Founder-led AST codebase teardowns, multi-agent cost optimization, security hardening, and turnkey sovereign enclave deployments starting at <span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="2500">€2,500</span>–<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="5000">€5,000</span>.</p>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn-primary" href="/collins">Meet Founder Collins Takem ↗</a>
+      <a class="btn-outline" href="/estonia">🇪🇪 Estonia Committee Dossier (#179423) ↗</a>
+      <a class="btn-outline" href="https://github.com/Tianxia-Core/tianxiaos-releases/releases/tag/v8.7.0" target="_blank" rel="noopener">Signed v8.7.0 Releases (GitHub) ↗</a>
+      <a class="btn-outline" href="/#storefront">Explore Commercial Storefront ↗</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      © 2026 <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> (Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong> · Dealum #179423). Founded by <a href="/collins">Collins Takem</a>.
+    </div>
+    <div>
+      <a href="/">Storefront</a> ·
+      <a href="/about">About</a> ·
+      <a href="/collins">Founder</a> ·
+      <a href="/press">Press &amp; Brand Kit</a> ·
+      <a href="/privacy">Privacy Policy (GDPR++)</a> ·
+      <a href="/terms">Terms of Service</a> ·
+      <a href="/trust">Trust Center</a>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

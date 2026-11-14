@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Sovereign Suite (9-App TUI)
+Comment=Full 9-Tab Raw-Terminal Sovereign TUI (Overview, Scour, Miner, Ledger, DSS-14, Models, Tracer)
+Exec=foot -T "tianxiaOS Sovereign Suite (9-App TUI)" /usr/local/bin/tianxia tui --app overview
+Icon=utilities-terminal
+Terminal=false
+Categories=System;Monitor;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

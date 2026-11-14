@@ -1,0 +1,41 @@
+{
+  "semiotic_system": "RASOOM-NKG-NSIBIDI",
+  "version": "1.0.0",
+  "glyphs": [
+    {
+      "code": "0x0101",
+      "symbol": "⟦NSB:COVENANT_SEAL⟧",
+      "action": "TETRALEDGER_COMMIT_I1_ZERO",
+      "enforcement": "NONE",
+      "mahavidya_gate": "Annapurna"
+    },
+    {
+      "code": "0x0102",
+      "symbol": "⟦NSB:IKPE_DISPUTE⟧",
+      "action": "MURUA_ESCROW_FREEZE_CN08",
+      "enforcement": "GATEWAY_HOLDBACK",
+      "mahavidya_gate": "Bagalamukhi"
+    },
+    {
+      "code": "0x0103",
+      "symbol": "⟦NSB:ABSCISSION⟧",
+      "action": "IREB_PRUNE_AND_CORK_SEAL",
+      "enforcement": "ZRAM_SCRUB",
+      "mahavidya_gate": "Dhumavati"
+    },
+    {
+      "code": "0x0104",
+      "symbol": "⟦NSB:KARUNA_MIRROR⟧",
+      "action": "AEON_HEALTHY_STATE_SUBSTITUTE",
+      "enforcement": "KARXT_PERIPHERAL_BLOCK",
+      "mahavidya_gate": "Kali"
+    },
+    {
+      "code": "0x0105",
+      "symbol": "⟦NSB:BROKEN_RING⟧",
+      "action": "NIMUE_DEFAULT_ENFORCEMENT",
+      "enforcement": "PROXY_KILL_AND_IPMI_OFF",
+      "mahavidya_gate": "Bhairavi"
+    }
+  ]
+}

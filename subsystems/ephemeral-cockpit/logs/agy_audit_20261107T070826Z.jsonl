@@ -1,0 +1,15 @@
+{"timestamp":"2026-11-07T07:08:27Z","level":"INFO","message":"Acquired Android Termux wake-lock."}
+{"timestamp":"2026-11-07T07:08:27Z","level":"INFO","message":"Starting TianxiaOS v5.0 Headless Permissive agy Runner..."}
+{"timestamp":"2026-11-07T07:08:27Z","level":"INFO","message":"Verified mission file: ${TX_WORKSPACE:-/var/lib/tianxia}/tianxiaos_arch_menu_system/missions/tianxia_kde_ui_super_harness.md (66114 bytes)."}
+{"timestamp":"2026-11-07T07:08:27Z","level":"INFO","message":"Updating global persistent command & edit allowlists..."}
+{"timestamp":"2026-11-07T07:08:28Z","level":"INFO","message":"Global persistent command allowlist seeded (94 rules)."}
+{"timestamp":"2026-11-07T07:08:28Z","level":"INFO","message":"Checking Tailscale mesh link to latitude-tianxia (${TX_HUB_HOST:-127.0.0.1})..."}
+{"timestamp":"2026-11-07T07:08:29Z","level":"INFO","message":"SSH ControlMaster active to latitude-tianxia (${TX_HUB_HOST:-127.0.0.1})."}
+{"timestamp":"2026-11-07T07:08:29Z","level":"INFO","message":"Workhorse Telemetry:  07:08:28 up 10:51,  3 users,  load average: 2.17, 2.78, 3.06"}
+{"timestamp":"2026-11-07T07:08:29Z","level":"INFO","message":"Built augmented mission prompt: ${TX_WORKSPACE:-/var/lib/tianxia}/tianxiaos_arch_menu_system/missions/.augmented_tianxia_kde_ui_super_harness.md"}
+{"timestamp":"2026-11-07T07:08:29Z","level":"INFO","message":"Found agy at ${TX_PREFIX:-/usr/local}/files/usr/bin/agy. Probing supported flags..."}
+{"timestamp":"2026-11-07T07:08:30Z","level":"INFO","message":"Running agy with args: --model gemini-3.8-flash"}
+{"timestamp":"2026-11-07T07:08:30Z","level":"INFO","message":"agy exited with status 2."}
+{"timestamp":"2026-11-07T07:08:31Z","level":"INFO","message":"Mission execution and global command persistence complete."}
+{"timestamp":"2026-11-07T07:08:31Z","level":"INFO","message":"Harvesting session commands into global persistent allowlist..."}
+{"timestamp":"2026-11-07T07:08:31Z","level":"INFO","message":"Headless agy session finished (exit=0). Log: ${TX_WORKSPACE:-/var/lib/tianxia}/tianxiaos_arch_menu_system/logs/agy_headless_20261107T070826Z.log"}

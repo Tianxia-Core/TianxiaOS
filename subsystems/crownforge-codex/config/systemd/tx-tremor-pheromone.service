@@ -1,0 +1,21 @@
+# ffp: FFP-SYS-002 tx-tremor-pheromone declarative
+[Unit]
+Description=TianxiaOS Tremor-Pheromone Environmental Stigmergic Bus
+After=network.target local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/var/lib/tianxia/bin/tx_tremor_pheromone
+Restart=on-failure
+RestartSec=5s
+
+MemoryMax=256M
+TasksMax=64
+NoNewPrivileges=yes
+ProtectSystem=full
+RuntimeDirectory=tianxia
+StateDirectory=tianxia
+
+[Install]
+WantedBy=multi-user.target

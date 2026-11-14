@@ -1,0 +1,26 @@
+# ffp: FFP-SYS-001 tx-crownforge-daemon declarative
+[Unit]
+Description=TianxiaOS Crownforge Codex Master Daemon (ORW-22 & Maha Madpie)
+After=network.target local-fs.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/var/lib/tianxia/bin/tx_crownforge_daemon
+Restart=always
+RestartSec=3s
+KillMode=mixed
+TimeoutStopSec=10s
+
+# Cgroup v2 & Sandboxing Security Directives
+MemoryMax=512M
+TasksMax=128
+CPUQuota=100%
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=read-only
+RuntimeDirectory=tianxia
+StateDirectory=tianxia
+
+[Install]
+WantedBy=multi-user.target

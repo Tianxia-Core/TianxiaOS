@@ -1,0 +1,21 @@
+# ffp: FFP-SYS-003 tx-hussar-mesh declarative
+[Unit]
+Description=TianxiaOS Heavenly Hussar Swarm Honeycomb Mesh Coordinator
+After=network.target local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/var/lib/tianxia/bin/tx_hussar_mesh
+Restart=on-failure
+RestartSec=5s
+
+MemoryMax=256M
+TasksMax=64
+NoNewPrivileges=yes
+ProtectSystem=full
+RuntimeDirectory=tianxia
+StateDirectory=tianxia
+
+[Install]
+WantedBy=multi-user.target

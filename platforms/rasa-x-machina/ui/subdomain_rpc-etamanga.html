@@ -1,0 +1,405 @@
+<!-- ffp: FFP-SUB-RPCETAMANGA frontend html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ETAMANGA Chain: Sovereign PoA JSON-RPC 2.0 & WebSocket Node — rpc-etamanga.rasaxmachina.com</title>
+<meta name="description" content="Low-latency JSON-RPC 2.0 and WebSocket gateway (Chain ID 0x45544d41) for sovereign smart contracts, Merkle state anchoring, and x402 agentic settlement."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --bg: #050509;
+    --panel: rgba(14, 15, 24, 0.86);
+    --border: rgba(124, 92, 255, 0.28);
+    --accent: #7c5cff;
+    --mint: #00f59b;
+    --cyan: #38bdf8;
+    --text: #f4f4f8;
+    --muted: #9ca3af;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 15% 10%, rgba(124,92,255,0.16), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0,245,155,0.10), transparent 45%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 9, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0.9rem 1.5rem;
+  }
+  .nav-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #fff; }
+  main.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--mint);
+    background: rgba(0, 245, 155, 0.1);
+    border: 1px solid rgba(0, 245, 155, 0.3);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+    color: #fff;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 78ch;
+    margin-bottom: 2rem;
+  }
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--mint));
+    color: #040406;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.35);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.82rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.35rem;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mint);
+    margin-bottom: 0.25rem;
+  }
+  .stat-lbl {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+  }
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 1.1rem;
+    padding: 1.6rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.55rem;
+  }
+  .feature-card p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+  .pricing-banner {
+    background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(0,245,155,0.08));
+    border: 1px solid rgba(0, 245, 155, 0.35);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .price-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mint);
+  }
+  footer.tx-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .tx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<header class="topbar">
+  <div class="nav-wrap">
+    <a href="/" class="brand" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#e2e8f0;font-weight:700;font-size:0.86rem;letter-spacing:0.04em">RPC-ETAMANGA</span></a>
+    <nav class="nav-links" aria-label="Subdomain Navigation">
+      <a href="/">← Main Storefront (21 SKUs)</a>
+      <a href="/shop">Fortress Market</a>
+      <a href="/pay">6-Rail Payment Hub</a>
+      <a href="/estonia">🇪🇪 Startup Estonia Guide</a>
+      <a href="/trust">Trust &amp; GDPR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="container" tabindex="-1">
+  <span class="eyebrow">SKU-TX-13 · ETAMANGA POA JSON-RPC 2.0 GATEWAY · STMT: RASAXMACHINA ENTRPRS</span>
+  <h1>ETAMANGA Chain: Sovereign PoA JSON-RPC 2.0 & WebSocket Node</h1>
+  <p class="lead">Low-latency JSON-RPC 2.0 and WebSocket gateway (Chain ID 0x45544d41) for sovereign smart contracts, Merkle state anchoring, and x402 agentic settlement.</p>
+
+  <div class="cta-bar">
+    <a class="btn-primary tx-express-stripe" data-plan="enterprise" href="/api/v1/stripe-express?plan=enterprise" target="_blank" rel="noopener">
+      💳 Provision Validator & RPC Node (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="499">€499</span> / month (Dedicated Validator)) ↗
+    </a>
+    <a class="btn-outline" href="/pay?plan=enterprise">◎ Pay via Solana / Base L2 / 6 Rails (-10%) ↗</a>
+    <a class="btn-outline" href="/#calculator">🏛️ Scope Custom VRTTI Sprint ↗</a>
+  </div>
+
+  <section class="stats-grid" aria-label="Key Operational Metrics">
+      <div class="stat-card">
+        <div class="stat-val">0x45544d41</div>
+        <div class="stat-lbl">ETAMANGA Sovereign Chain ID</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">JSON-RPC 2.0</div>
+        <div class="stat-lbl">POST / & WebSocket :9944 Active</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">< 400ms</div>
+        <div class="stat-lbl">PoA Deterministic Block Finality</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">$ETMA + $EFM</div>
+        <div class="stat-lbl">Dual-Chain Settlement Tokens</div>
+      </div>
+  </section>
+
+  <section class="features-grid" aria-label="Architectural Capabilities">
+      <article class="feature-card">
+        <h3>Dual-Mode Browser & JSON-RPC Endpoint</h3>
+        <p>Send standard Ethereum/Substrate JSON-RPC 2.0 POST requests directly to https://rpc-etamanga.rasaxmachina.com/ or inspect live chain telemetry in your browser.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Deterministic Proof-of-Authority</h3>
+        <p>Zero-MEV sovereign validator quorum anchored across latitude-tianxia and tianxia-relay with automatic state-root pinning to Solana and Base L2.</p>
+      </article>
+      <article class="feature-card">
+        <h3>x402 Machine-to-Machine Settlement</h3>
+        <p>Native HTTP 402 Payment Required header verification enabling autonomous AI agents to pay per RPC call or compute task in sub-second finality.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Enterprise Validator Licensing</h3>
+        <p>Deploy a dedicated private or consortium validator node with AF_XDP kernel bypass and hardware-isolated signing keys.</p>
+      </article>
+  </section>
+
+  <section class="workbench-panel" aria-labelledby="wb-rpc-heading" style="background:rgba(8,10,16,0.92);border:1px solid rgba(124,92,255,0.35);border-radius:1.25rem;padding:1.75rem;margin-bottom:3rem;box-shadow:0 20px 50px rgba(0,0,0,0.45)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem">LIVE JSON-RPC 2.0 GATEWAY · CHAIN ID 0x45544d41 (:9944)</div>
+        <h2 id="wb-rpc-heading" style="font-size:1.3rem;color:#fff;margin:0">Interactive ETAMANGA Read-Only JSON-RPC Inspector</h2>
+      </div>
+      <span id="rpc-lat-badge" style="font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:var(--cyan)">Ready</span>
+    </div>
+    <div style="display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;margin-bottom:0.9rem">
+      <label for="rpc-method-sel" style="font-size:0.82rem;color:#cbd5e1;font-weight:600">JSON-RPC Method:</label>
+      <select id="rpc-method-sel" style="background:#05070c;color:#f8fafc;border:1px solid rgba(255,255,255,0.18);border-radius:0.55rem;padding:0.5rem 0.8rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem">
+        <option value="system_health">system_health</option>
+        <option value="chain_getHeader">chain_getHeader</option>
+        <option value="system_chain">system_chain</option>
+        <option value="system_name">system_name</option>
+        <option value="system_version">system_version</option>
+        <option value="system_properties">system_properties</option>
+        <option value="chain_getBlockHash">chain_getBlockHash</option>
+        <option value="rpc_methods">rpc_methods</option>
+      </select>
+      <button type="button" id="rpc-exec-btn" class="btn-primary" style="cursor:pointer;border:none;font-size:0.82rem;padding:0.55rem 1.1rem">Execute RPC Call</button>
+      <button type="button" id="rpc-copy-curl" class="btn-outline" style="cursor:pointer;font-size:0.78rem;padding:0.5rem 0.9rem">Copy cURL</button>
+    </div>
+    <pre id="rpc-json-out" aria-live="polite" style="background:#05070c;border:1px solid rgba(255,255,255,0.1);border-radius:0.85rem;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:0.77rem;color:#a7f3d0;overflow-x:auto;margin:0">Querying system_health...</pre>
+  </section>
+
+  <section class="pricing-banner" aria-label="Direct Acquisition">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);text-transform:uppercase;margin-bottom:0.3rem">
+        rpc-etamanga.rasaxmachina.com · CLUSTER: WEB3 · ROUTING: VPS_RELAY
+      </div>
+      <h2 style="font-size:1.35rem;color:#fff;margin-bottom:0.35rem">Ready to deploy SKU-TX-13?</h2>
+      <p style="font-size:0.88rem;color:#cbd5e1">Billed in your chosen currency (29 currencies across 42 markets supported) with Veritas-Rex Merkle receipt attestation.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="price-big">
+        <span class="tx-store-price" data-base-curr="EUR" data-base-amt="499">€499</span>
+        <span style="font-size:0.85rem;color:var(--muted);font-weight:400">/ month (Dedicated Validator)</span>
+      </div>
+      <div style="margin-top:0.6rem">
+        <a class="btn-primary tx-express-stripe" data-plan="enterprise" href="/api/v1/stripe-express?plan=enterprise" target="_blank" rel="noopener">
+          Instant Stripe Checkout ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-bottom">
+    <div>© 2026 Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ). Founded by Collins Takem. <a href="/privacy" style="color:#a78bfa">Privacy Policy (GDPR)</a> · <a href="/terms" style="color:#a78bfa">Terms of Service</a> · <a href="/.well-known/security.txt" style="color:#a78bfa">security.txt</a></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint)">DSS-14.2 SEALED · WCAG 2.2 AA · GDPR ART. 25</div>
+  </div>
+</footer>
+<script>
+(function() {
+  const sel = document.getElementById('rpc-method-sel');
+  const out = document.getElementById('rpc-json-out');
+  const badge = document.getElementById('rpc-lat-badge');
+  let reqId = 1;
+
+  async function execRpc() {
+    const method = sel.value;
+    badge.textContent = 'Calling :9944...';
+    try {
+      const t0 = performance.now();
+      const res = await fetch('/api/v1/etamanga/rpc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: reqId++, method, params: [] })
+      });
+      const data = await res.json();
+      const ms = Math.round(performance.now() - t0);
+      badge.textContent = `HTTP ${res.status} · ${ms} ms`;
+      out.textContent = JSON.stringify(data, null, 2);
+    } catch (e) {
+      badge.textContent = 'RPC Error';
+      out.textContent = 'JSON-RPC proxy error: ' + e.message;
+    }
+  }
+
+  document.getElementById('rpc-exec-btn').addEventListener('click', execRpc);
+  sel.addEventListener('change', execRpc);
+  document.getElementById('rpc-copy-curl').addEventListener('click', function() {
+    const cmd = `curl -sX POST https://rpc-etamanga.rasaxmachina.com/api/v1/etamanga/rpc -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1,"method":"${sel.value}","params":[]}'`;
+    if (navigator.clipboard) navigator.clipboard.writeText(cmd).catch(() => {});
+    const prev = this.textContent;
+    this.textContent = 'Copied ✓';
+    setTimeout(() => { this.textContent = prev; }, 1400);
+  });
+  execRpc();
+})();
+</script>
+</body>
+</html>

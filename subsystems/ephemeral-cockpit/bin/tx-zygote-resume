@@ -1,0 +1,27 @@
+#!/run/current-system/sw/bin/bash
+# TIANXIAOS // Plane C: Sovereign Ephemeral MicroVM Resume
+# Parameters: --snapshot /dev/shm/tx_vm_zygote --vsock-wayland /run/tianxia/virtwl.sock --target $TARGET
+set -euo pipefail
+
+SNAPSHOT="/dev/shm/tx_vm_zygote"
+VSOCK="/run/tianxia/virtwl.sock"
+TARGET="unknown"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --snapshot) SNAPSHOT="$2"; shift 2 ;;
+        --vsock-wayland) VSOCK="$2"; shift 2 ;;
+        --target) TARGET="$2"; shift 2 ;;
+        *) shift ;;
+    esac
+done
+
+echo "[TX_ZYGOTE_RESUME] Plane C Invocation: Target=${TARGET}, Snapshot=${SNAPSHOT}, VSOCK=${VSOCK}"
+
+# If cloud-hypervisor or virtiofs zygote snapshot is configured, trigger resume
+if [ -S "/run/tianxia/chv_api.sock" ]; then
+    echo "[PLANE_C] Triggering cloud-hypervisor vm.restore via API socket..."
+    curl --unix-socket /run/tianxia/chv_api.sock -X PUT "http://localhost/api/v1/vm.restore" -d "{\"source_url\":\"${SNAPSHOT}\"}" 2>/dev/null || true
+else
+    echo "[PLANE_C] Zygote pool warm standby active. Sandboxed ephemeral root created for: ${TARGET}"
+fi

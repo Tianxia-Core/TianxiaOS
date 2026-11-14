@@ -1,0 +1,417 @@
+<!-- ffp: FFP-SUB-BLOG frontend html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RASA-X-MACHINA Research Blog & Systems Engineering Dispatches — blog.rasaxmachina.com</title>
+<meta name="description" content="Technical deep-dives by founder Collins Takem on formally verified microkernels, Constructal LLM routing, post-quantum mesh networking, and autonomous economic engines."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --bg: #050509;
+    --panel: rgba(14, 15, 24, 0.86);
+    --border: rgba(124, 92, 255, 0.28);
+    --accent: #7c5cff;
+    --mint: #00f59b;
+    --cyan: #38bdf8;
+    --text: #f4f4f8;
+    --muted: #9ca3af;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 15% 10%, rgba(124,92,255,0.16), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0,245,155,0.10), transparent 45%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 9, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0.9rem 1.5rem;
+  }
+  .nav-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #fff; }
+  main.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--mint);
+    background: rgba(0, 245, 155, 0.1);
+    border: 1px solid rgba(0, 245, 155, 0.3);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+    color: #fff;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 78ch;
+    margin-bottom: 2rem;
+  }
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--mint));
+    color: #040406;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.35);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.82rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.35rem;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mint);
+    margin-bottom: 0.25rem;
+  }
+  .stat-lbl {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+  }
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 1.1rem;
+    padding: 1.6rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.55rem;
+  }
+  .feature-card p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+  .pricing-banner {
+    background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(0,245,155,0.08));
+    border: 1px solid rgba(0, 245, 155, 0.35);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .price-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mint);
+  }
+  footer.tx-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .tx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<header class="topbar">
+  <div class="nav-wrap">
+    <a href="/" class="brand" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#e2e8f0;font-weight:700;font-size:0.86rem;letter-spacing:0.04em">BLOG</span></a>
+    <nav class="nav-links" aria-label="Subdomain Navigation">
+      <a href="/">← Main Storefront (21 SKUs)</a>
+      <a href="/shop">Fortress Market</a>
+      <a href="/pay">6-Rail Payment Hub</a>
+      <a href="/estonia">🇪🇪 Startup Estonia Guide</a>
+      <a href="/trust">Trust &amp; GDPR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="container" tabindex="-1">
+  <span class="eyebrow">SKU-TX-02 · ENGINEERING MONOGRAPHS & RESEARCH DISPATCHES · STMT: RASAXMACHINA KAI3CDX</span>
+  <h1>RASA-X-MACHINA Research Blog & Systems Engineering Dispatches</h1>
+  <p class="lead">Technical deep-dives by founder Collins Takem on formally verified microkernels, Constructal LLM routing, post-quantum mesh networking, and autonomous economic engines.</p>
+
+  <div class="cta-bar">
+    <a class="btn-primary tx-express-stripe" data-plan="kai3_codex" href="/api/v1/stripe-express?plan=kai3_codex" target="_blank" rel="noopener">
+      💳 Acquire KAI³ Engineering Codex (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="19">€19</span> perpetual codex) ↗
+    </a>
+    <a class="btn-outline" href="/pay?plan=kai3_codex">◎ Pay via Solana / Base L2 / 6 Rails (-10%) ↗</a>
+    <a class="btn-outline" href="/#calculator">🏛️ Scope Custom VRTTI Sprint ↗</a>
+  </div>
+
+  <section class="stats-grid" aria-label="Key Operational Metrics">
+      <div class="stat-card">
+        <div class="stat-val">79.6% OpEx Cut</div>
+        <div class="stat-lbl">Constructal & System-1 Paper</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">11.40 Mpps</div>
+        <div class="stat-lbl">AF_XDP & seL4 Isolation Benchmarks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">&gt;<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="1295">€1,295</span> Cost</div>
+        <div class="stat-lbl">Faery Fortress Moving-Target Defense</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">62.4% INR Cut</div>
+        <div class="stat-lbl">Murua Bayesian Postal Telemetry</div>
+      </div>
+  </section>
+
+  <section class="features-grid" aria-label="Architectural Capabilities">
+      <article class="feature-card">
+        <h3>Eliminating HTTP 429 Cascades via Bejan's Constructal Law</h3>
+        <p>How sine-meander phase modulation across n=2,722 multi-provider LLM dispatches reduced burst rate-limit failures from 41.93% to 0.00% while boosting throughput by +72.2%.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Why We Banned Python for System Daemons (The FFP-First Law)</h3>
+        <p>Decomposing autonomous agent infrastructure into ≤8 Function-Feature Pairs across Rust, OCaml, Nim, C AVX2, and Nix for deterministic sub-millisecond execution.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Shifting Adversary Reconnaissance Cost from <span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="23.55" data-decimals="2">€23.55</span> to &gt;<span class="tx-dyn-money" data-base-curr="EUR" data-base-amt="1295">€1,295</span></h3>
+        <p>Inside Faery Fortress: combining CISA KEV real-time sinkholing, moving-target IPv6/WireGuard topology mutation, and MANAS System-1 prompt firewalls.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Bayesian State-Space Tracking for Untracked Postal Consignments</h3>
+        <p>How Murua Universal Tracer models latent UPU transit milestones to cut false Item-Not-Received (INR) e-commerce disputes by 62.4%.</p>
+      </article>
+  </section>
+
+  <section class="workbench-panel" aria-labelledby="wb-blog-heading" style="background:rgba(8,10,16,0.92);border:1px solid rgba(0,210,255,0.3);border-radius:1.25rem;padding:1.75rem;margin-bottom:3rem;box-shadow:0 20px 50px rgba(0,0,0,0.45)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem">RESEARCH MONOGRAPH FILTER &amp; LIVE ARXIV / OSS FEED</div>
+        <h2 id="wb-blog-heading" style="font-size:1.3rem;color:#fff;margin:0">Filter Engineering Dispatches, Copy Benchmark CLI &amp; Stream Live Research Signals</h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+        <button type="button" class="blog-src-btn btn-outline" data-src="arxiv" style="cursor:pointer;font-size:0.76rem;padding:0.45rem 0.85rem">arXiv Signals</button>
+        <button type="button" class="blog-src-btn btn-outline" data-src="github" style="cursor:pointer;font-size:0.76rem;padding:0.45rem 0.85rem">GitHub Velocity</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;margin-bottom:0.9rem">
+      <div>
+        <label for="blog-filter-in" style="display:block;font-size:0.76rem;color:#94a3b8;margin-bottom:0.3rem">Instant Dispatch Search:</label>
+        <input id="blog-filter-in" type="search" placeholder="Filter monographs (Constructal, seL4, Rust, Bayesian, CISA)..." style="width:100%;background:#05070c;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);border-radius:0.6rem;padding:0.55rem 0.85rem;font-size:0.84rem">
+      </div>
+      <div>
+        <label for="blog-bench-sel" style="display:block;font-size:0.76rem;color:#94a3b8;margin-bottom:0.3rem">Reproducible Benchmark CLI:</label>
+        <div style="display:flex;gap:0.5rem">
+          <select id="blog-bench-sel" style="flex:1;background:#05070c;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);border-radius:0.6rem;padding:0.55rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem">
+            <option value="curl -s https://rasaxmachina.com/api/v1/scour/signals?source=arxiv">Fetch Live arXiv Research Telemetry</option>
+            <option value="curl -s https://rasaxmachina.com/api/v1/build-law/verify">VerifyDSS-14.2 Evergreen Governance Seal</option>
+            <option value="curl -s https://rasaxmachina.com/api/v1/ledger/verify">Verify Veritas-Rex 4-Way Merkle Root</option>
+          </select>
+          <button type="button" id="blog-copy-bench" class="btn-primary" style="cursor:pointer;border:none;font-size:0.76rem;padding:0.5rem 0.85rem">Copy</button>
+        </div>
+      </div>
+    </div>
+    <div id="blog-signals-list" aria-live="polite" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.75rem"></div>
+  </section>
+
+  <section class="pricing-banner" aria-label="Direct Acquisition">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);text-transform:uppercase;margin-bottom:0.3rem">
+        blog.rasaxmachina.com · CLUSTER: CONTENT · ROUTING: CF_WORKER
+      </div>
+      <h2 style="font-size:1.35rem;color:#fff;margin-bottom:0.35rem">Ready to deploy SKU-TX-02?</h2>
+      <p style="font-size:0.88rem;color:#cbd5e1">Billed in your chosen currency (29 currencies across 42 markets supported) with Veritas-Rex Merkle receipt attestation.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="price-big">
+        <span class="tx-store-price" data-base-curr="EUR" data-base-amt="19">€19</span>
+        <span style="font-size:0.85rem;color:var(--muted);font-weight:400">perpetual codex</span>
+      </div>
+      <div style="margin-top:0.6rem">
+        <a class="btn-primary tx-express-stripe" data-plan="kai3_codex" href="/api/v1/stripe-express?plan=kai3_codex" target="_blank" rel="noopener">
+          Instant Stripe Checkout ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-bottom">
+    <div>© 2026 Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ). Founded by Collins Takem. <a href="/privacy" style="color:#a78bfa">Privacy Policy (GDPR)</a> · <a href="/terms" style="color:#a78bfa">Terms of Service</a> · <a href="/.well-known/security.txt" style="color:#a78bfa">security.txt</a></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint)">DSS-14.2 SEALED · WCAG 2.2 AA · GDPR ART. 25</div>
+  </div>
+</footer>
+<script>
+(function() {
+  const filterIn = document.getElementById('blog-filter-in');
+  const benchSel = document.getElementById('blog-bench-sel');
+  const list = document.getElementById('blog-signals-list');
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  filterIn.addEventListener('input', () => {
+    const ql = (filterIn.value || '').trim().toLowerCase();
+    document.querySelectorAll('.features-grid .feature-card').forEach(c => {
+      c.style.display = (!ql || c.textContent.toLowerCase().includes(ql)) ? '' : 'none';
+    });
+  });
+
+  document.getElementById('blog-copy-bench').addEventListener('click', function() {
+    if (navigator.clipboard) navigator.clipboard.writeText(benchSel.value || '').catch(() => {});
+    const prev = this.textContent;
+    this.textContent = 'Copied ✓';
+    setTimeout(() => { this.textContent = prev; }, 1400);
+  });
+
+  async function loadResearch(src) {
+    list.innerHTML = '<div style="font-family:\'JetBrains Mono\',monospace;font-size:0.76rem;color:#94a3b8">Loading live ' + esc(src) + ' research signals...</div>';
+    try {
+      const res = await fetch('/api/v1/scour/signals?source=' + encodeURIComponent(src) + '&limit=4');
+      const data = await res.json();
+      const items = Array.isArray(data.signals) ? data.signals : [];
+      list.innerHTML = items.map(s => `<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:0.8rem;padding:0.85rem">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--mint);margin-bottom:0.25rem">${esc(String(s.source || src).toUpperCase())} · ${esc(s.kind || 'dispatch')}</div>
+        <div style="font-weight:700;color:#fff;font-size:0.86rem;line-height:1.4;margin-bottom:0.3rem">${esc(s.title || 'Sovereign Systems Dispatch')}</div>
+        <div style="font-size:0.75rem;color:#94a3b8;line-height:1.45">${esc((s.summary || '').slice(0, 140))}</div>
+      </div>`).join('') || '<div style="color:#94a3b8;font-size:0.82rem">No signals returned for selected feed.</div>';
+    } catch (e) {
+      list.innerHTML = '<div style="color:#fca5a5;font-size:0.8rem">Signal feed error: ' + esc(e.message) + '</div>';
+    }
+  }
+
+  document.querySelectorAll('.blog-src-btn').forEach(btn => {
+    btn.addEventListener('click', () => loadResearch(btn.getAttribute('data-src')));
+  });
+  loadResearch('arxiv');
+})();
+</script>
+</body>
+</html>

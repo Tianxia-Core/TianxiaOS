@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS TetraLedger 4-Way TUI
+Comment=4-Way Cryptographic Settlement (Payfac, Web3 Base L2, SQLite WAL, Open Banking)
+Exec=foot -T "tianxiaOS TetraLedger 4-Way TUI" /usr/local/bin/tianxia tui --app ledger
+Icon=utilities-terminal
+Terminal=false
+Categories=Finance;System;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

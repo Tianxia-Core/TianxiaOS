@@ -1,0 +1,862 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-PAY frontend html -->
+<!doctype html>
+<!-- ffp: FFP-PAY-PORTAL frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>RASA-X-MACHINA · Sovereign Multi-Rail Payment & Crypto Settlement Hub</title>
+<meta name="description" content="Unified fiat and cryptographic settlement portal for RASA-X-MACHINA and tianxiaOS. Instant checkout via Stripe, Solana Pay ($SOL / $USDC / $ETMA), Base L2 ($USDC / $ETH / $EFM), Gumroad, Paddle MoR, and Agentic x402."/>
+<link rel="canonical" href="https://pay.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050508);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5, 5, 10, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(124, 92, 255, 0.22);
+    padding: 0.9rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .nav-logo {
+    font-family: var(--tx-font-display, system-ui, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.15rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #34d399; }
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: calc(5.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(52, 211, 153, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.38);
+    color: #34d399;
+    margin-bottom: 1.2rem;
+  }
+  .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 10px #34d399;
+  }
+  h1 {
+    font-family: var(--tx-font-display, system-ui, sans-serif);
+    font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+    line-height: 1.12;
+    margin: 0 0 0.9rem;
+    background: linear-gradient(135deg, #ffffff 0%, #c084fc 55%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.08rem;
+    color: #94a3b8;
+    max-width: 860px;
+    line-height: 1.6;
+    margin-bottom: 2.2rem;
+  }
+  .rails-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.15rem;
+    margin-bottom: 2.75rem;
+  }
+  .rail-card {
+    background: rgba(14, 14, 24, 0.85);
+    border: 1px solid rgba(124, 92, 255, 0.25);
+    border-radius: 1.1rem;
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.9rem;
+  }
+  .rail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .rail-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+  .rail-status {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(52, 211, 153, 0.15);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    color: #34d399;
+    font-weight: 700;
+  }
+  .addr-box {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 0.65rem;
+    padding: 0.65rem 0.8rem;
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 0.74rem;
+    color: #e2e8f0;
+    word-break: break-all;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .copy-btn {
+    background: rgba(124, 92, 255, 0.22);
+    border: 1px solid rgba(124, 92, 255, 0.45);
+    color: #c084fc;
+    border-radius: 0.45rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: rgba(124, 92, 255, 0.4); color: #fff; }
+  .btn-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #7c5cff 0%, #a855f7 100%);
+    color: #fff;
+    border: none;
+    border-radius: 0.65rem;
+    padding: 0.62rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.55);
+  }
+  .btn-outline {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #e2e8f0;
+    border-radius: 0.65rem;
+    padding: 0.6rem 0.95rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .btn-outline:hover {
+    border-color: #34d399;
+    color: #34d399;
+  }
+  .catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .filter-bar {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .filter-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .filter-chip.active {
+    background: rgba(124, 92, 255, 0.25);
+    border-color: #c084fc;
+    color: #fff;
+  }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .plan-card {
+    background: rgba(12, 12, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 1rem;
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .plan-card.selected-plan {
+    border-color: #34d399;
+    box-shadow: 0 0 28px rgba(52, 211, 153, 0.22);
+  }
+  .plan-price {
+    font-family: var(--tx-font-display, system-ui, sans-serif);
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #34d399;
+  }
+  .footer-box {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 2rem;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  .footer-box a { color: #c084fc; text-decoration: none; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#c084fc;font-weight:700;font-size:0.86rem">PAYMENT HUB</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com">Flagship</a>
+    <a class="nav-link" href="https://rasaxmachina.com/#storefront">Storefront</a>
+    <a class="nav-link" href="/shop">Fortress Market</a>
+    <a class="nav-link" href="/vrtti">VRTTI Sprints</a>
+    <a class="nav-link" href="/etamanga">$ETMA & $EFM</a>
+    <a class="nav-link" href="/ledger">TetraLedger</a>
+  </div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <div id="pay-toast" aria-live="polite" style="display:none;position:fixed;bottom:1.25rem;right:1.25rem;z-index:1200;background:#0b1120;border:1px solid rgba(52,211,153,0.5);color:#a7f3d0;padding:0.8rem 1.15rem;border-radius:0.75rem;font-family:monospace;font-size:0.8rem;box-shadow:0 12px 35px rgba(0,0,0,0.65);max-width:420px"></div>
+  <span class="badge-pill">
+    <span class="pulse-dot"></span>
+    6 LIVE SETTLEMENT RAILS ACTIVE · TETRALEDGER MERKLE ATTESTED · 10% $ETMA / $EFM DISCOUNT
+  </span>
+  <h1>Sovereign Multi-Rail Payment & Crypto Hub</h1>
+  <p class="lead">
+    Every capability, advisory sprint, autonomous daemon license, and digital codex across <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> and <strong class="tx-logo-os" data-tx-no-i18n="1">tianxiaOS</strong> can be settled instantaneously via <strong>Stripe</strong> (Card, Apple Pay, SEPA), <strong>Solana Pay</strong> (<code>SOL</code>, <code>USDC</code>, <code>$ETMA</code>), <strong>Base L2 &amp; Ethereum</strong> (<code>USDC</code>, <code>ETH</code>, <code>$EFM</code>), <strong>Gumroad</strong>, <strong>Paddle MoR</strong>, or <strong>Crossmint / Skyfire x402</strong>. Use promo code <code>ETMA10</code> or <code>EFM10</code> on Stripe for an automatic 10% protocol discount.
+  </p>
+
+  <!-- 6 Live Settlement Rails Overview -->
+  <div class="rails-grid">
+    <!-- Rail 1: Stripe -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">💳 1. Stripe Live Checkout</h3>
+          <span class="rail-status">LIVE · 21 LINKS</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Instant global Visa, Mastercard, Amex, Apple Pay, Google Pay, Link, and EU SEPA settlement. Supports 10% protocol discount codes <code>ETMA10</code> and <code>EFM10</code>.
+        </p>
+        <div class="addr-box">
+          <span>Promo Codes: <strong>ETMA10</strong> / <strong>EFM10</strong> (-10% Off)</span>
+          <button class="copy-btn" onclick="copyText('ETMA10', 'Stripe Promo Code')">Copy Code</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn-primary" href="#plans-catalog">Browse All 21 Stripe Links ↓</a>
+        <a class="btn-outline tx-express-stripe" data-plan="starter" href="/api/v1/stripe-express?plan=starter" target="_blank" rel="noopener">Cockpit (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>/mo) ↗</a>
+      </div>
+    </div>
+
+    <!-- Rail 2: Solana & $ETMA -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">◎ 2. Solana Pay &amp; $ETMA</h3>
+          <span class="rail-status">MAINNET LIVE</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Direct sub-second settlement in <strong>SOL</strong>, <strong>USDC (SPL)</strong>, or <strong>$ETMA</strong> (10% protocol discount). Connect Phantom/Solflare or copy treasury address.
+        </p>
+        <div class="addr-box" style="margin-bottom:0.45rem">
+          <span>Treasury: 88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq</span>
+          <button class="copy-btn" onclick="copyText('88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq', 'Solana Treasury')">Copy</button>
+        </div>
+        <div class="addr-box">
+          <span>$ETMA Mint: 6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2</span>
+          <button class="copy-btn" onclick="copyText('6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2', '$ETMA Mint')">Copy</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn-primary" style="background:linear-gradient(135deg,#10b981,#059669)" href="solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq?amount=0.21&label=RASA-X-MACHINA">◎ Open Solana Wallet ↗</a>
+        <a class="btn-outline" href="https://pump.fun/coin/6RhoL3wN7VE3EYrLyis5VifHt8zxPULfF9tVPLy2aTE2" target="_blank" rel="noopener">Trade $ETMA on Pump.fun ↗</a>
+      </div>
+    </div>
+
+    <!-- Rail 3: Base L2 / Ethereum / $EFM -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">🔵 3. Base L2, Ethereum &amp; $EFM</h3>
+          <span class="rail-status">CHAIN 8453 / 1</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Settle in <strong>USDC</strong>, <strong>ETH</strong>, or <strong>$EFM</strong> on Base L2 or Ethereum Mainnet. Includes direct Coinbase USDC settlement address.
+        </p>
+        <div class="addr-box" style="margin-bottom:0.45rem">
+          <span>EVM Treasury: 0xe7Eef656416eC617Ccb4409a9928b6a3D1557769</span>
+          <button class="copy-btn" onclick="copyText('0xe7Eef656416eC617Ccb4409a9928b6a3D1557769', 'Base/EVM Treasury')">Copy</button>
+        </div>
+        <div class="addr-box" style="margin-bottom:0.45rem">
+          <span>Coinbase USDC: 0xE662327Db0EcD7a3a13CcD4E4d4c502F842DcFB5</span>
+          <button class="copy-btn" onclick="copyText('0xE662327Db0EcD7a3a13CcD4E4d4c502F842DcFB5', 'Coinbase Direct USDC')">Copy</button>
+        </div>
+        <div class="addr-box">
+          <span>$EFM Base Token: 0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D</span>
+          <button class="copy-btn" onclick="copyText('0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D', '$EFM Contract')">Copy</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)" onclick="triggerEvmSend(29)">🔵 Connect MetaMask / Base ↗</button>
+        <a class="btn-outline" href="https://basescan.org/token/0x87C1a58E452AAAb3F33fB1798b8bB80e5f30D17D" target="_blank" rel="noopener">$EFM on Basescan ↗</a>
+      </div>
+    </div>
+
+    <!-- Rail 4: Gumroad Digital Storefront -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">📦 4. Gumroad Digital Codices</h3>
+          <span class="rail-status">10 PUBLISHED</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Instant digital download and license key fulfillment for all tianxiaOS blueprints, KAI³ Codices, Asura Strategy Matrices, and Cockpit licenses.
+        </p>
+        <div class="addr-box">
+          <span>Storefront: coltak.gumroad.com (All 10 Live)</span>
+          <a class="copy-btn" style="text-decoration:none" href="https://coltak.gumroad.com/l/wbevjc" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn-primary" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)" href="https://coltak.gumroad.com/l/wbevjc" target="_blank" rel="noopener">📦 Operator Manual (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="29">€29</span>) ↗</a>
+        <a class="btn-outline" href="https://coltak.gumroad.com/l/fgvhn" target="_blank" rel="noopener">5K Blueprint (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="9">€9</span>) ↗</a>
+        <a class="btn-outline" href="https://coltak.gumroad.com/l/rqgnq" target="_blank" rel="noopener">KAI³ Codex (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="19">€19</span>) ↗</a>
+      </div>
+    </div>
+
+    <!-- Rail 5: ETAMANGA Substrate Native Chain -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">⬡ 5. ETAMANGA Substrate PoA</h3>
+          <span class="rail-status">SS58 NATIVE</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Zero-fee sovereign reality chain settlement and validator slot staking over WebSocket RPC (<code>wss://rpc-etamanga.rasaxmachina.com</code>).
+        </p>
+        <div class="addr-box">
+          <span>SS58: 5ETWKfzzvPptL4qBmhNcT5L4rT5NU4zt7oedkFDoACm2KrWj</span>
+          <button class="copy-btn" onclick="copyText('5ETWKfzzvPptL4qBmhNcT5L4rT5NU4zt7oedkFDoACm2KrWj', 'Substrate SS58 Treasury')">Copy</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn-outline" href="/etamanga">ETAMANGA Chain Portal ↗</a>
+        <a class="btn-outline" href="/ledger">TetraLedger Proof ↗</a>
+      </div>
+    </div>
+
+    <!-- Rail 6: Paddle MoR & Agentic x402 / Crossmint -->
+    <div class="rail-card">
+      <div>
+        <div class="rail-head">
+          <h3 class="rail-title">🤖 6. Paddle MoR &amp; Agentic x402</h3>
+          <span class="rail-status">21 PRICES LIVE</span>
+        </div>
+        <p style="font-size:0.84rem;color:#94a3b8;line-height:1.5;margin:0.6rem 0">
+          Global VAT/Sales-Tax Merchant-of-Record via <strong>Paddle Live</strong> (21 provisioned `pri_01m770...` prices) plus autonomous M2M settlement via <strong>Skyfire x402</strong> &amp; <strong>Crossmint</strong>.
+        </p>
+        <div class="addr-box">
+          <span>API: /api/v1/payment-rails · /pricing.json</span>
+          <a class="copy-btn" style="text-decoration:none" href="/api/v1/payment-rails" target="_blank">JSON ↗</a>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a class="btn-outline" href="/pricing.json" target="_blank">Inspect Master Pricing JSON ↗</a>
+        <a class="btn-outline" href="/api/v1/x402/verify" target="_blank">x402 Gate Status ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complete 21-Capability Multi-Rail Directory -->
+  <div id="plans-catalog" class="catalog-header">
+    <div>
+      <h2 id="pay-dir-title" style="margin:0 0 0.3rem;font-size:1.65rem">21-SKU Multi-Rail Settlement Directory</h2>
+      <div id="pay-dir-sub" style="font-size:0.86rem;color:#94a3b8">Every SKU includes a verified 22-character card statement descriptor (<code>RASAXMACHINA * [SKU]</code>) and supports 29 fiat currencies across 42 markets on Stripe plus Solana, Base L2, Gumroad, and Paddle.</div>
+    </div>
+    <div style="display:flex;gap:0.45rem;flex-wrap:wrap;align-items:center">
+      <select id="pay-locale-select" aria-label="Select Country and Interface Language" onchange="onPayLocaleChange(this.value)" style="background:rgba(15,15,26,0.95);color:#fff;border:1px solid rgba(124,92,255,0.4);border-radius:0.5rem;padding:0.4rem 0.65rem;font-size:0.78rem">
+        <option value="EE:en">🇪🇪 EE · English</option>
+        <option value="EE:et">🇪🇪 EE · Eesti</option>
+        <option value="US:en">🇺🇸 US · English</option>
+        <option value="GB:en">🇬🇧 GB · English</option>
+        <option value="DE:de">🇩🇪 DE · Deutsch</option>
+        <option value="DE:en">🇩🇪 DE · English</option>
+        <option value="CH:de">🇨🇭 CH · Deutsch</option>
+        <option value="CH:fr">🇨🇭 CH · Français</option>
+        <option value="FR:fr">🇫🇷 FR · Français</option>
+        <option value="SE:sv">🇸🇪 SE · Svenska</option>
+        <option value="NO:no">🇳🇴 NO · Norsk</option>
+        <option value="CA:en">🇨🇦 CA · English</option>
+        <option value="CA:fr">🇨🇦 CA · Français</option>
+        <option value="AU:en">🇦🇺 AU · English</option>
+        <option value="SG:en">🇸🇬 SG · English</option>
+        <option value="JP:ja">🇯🇵 JP · 日本語</option>
+        <option value="JP:en">🇯🇵 JP · English</option>
+      </select>
+      <select id="pay-curr-select" aria-label="Select Billing Currency" onchange="onPayCurrChange(this.value)" style="background:rgba(15,15,26,0.95);color:#34d399;border:1px solid rgba(52,211,153,0.45);border-radius:0.5rem;padding:0.4rem 0.65rem;font-size:0.78rem;font-weight:700">
+        <option value="EUR">€ EUR (Euro)</option>
+        <option value="USD">$ USD (US Dollar)</option>
+        <option value="GBP">£ GBP (British Pound)</option>
+        <option value="CHF">CHF (Swiss Franc)</option>
+        <option value="SEK">kr SEK (Swedish Krona)</option>
+        <option value="NOK">kr NOK (Norwegian Krone)</option>
+        <option value="DKK">kr DKK (Danish Krone)</option>
+        <option value="PLN">zł PLN (Polish Złoty)</option>
+        <option value="CZK">Kč CZK (Czech Koruna)</option>
+        <option value="HUF">Ft HUF (Hungarian Forint)</option>
+        <option value="RON">lei RON (Romanian Leu)</option>
+        <option value="BGN">лв BGN (Bulgarian Lev)</option>
+        <option value="ISK">kr ISK (Icelandic Króna)</option>
+        <option value="CAD">CA$ CAD (Canadian Dollar)</option>
+        <option value="AUD">A$ AUD (Australian Dollar)</option>
+        <option value="NZD">NZ$ NZD (New Zealand Dollar)</option>
+        <option value="SGD">S$ SGD (Singapore Dollar)</option>
+        <option value="JPY">¥ JPY (Japanese Yen)</option>
+        <option value="HKD">HK$ HKD (Hong Kong Dollar)</option>
+        <option value="KRW">₩ KRW (South Korean Won)</option>
+        <option value="TWD">NT$ TWD (New Taiwan Dollar)</option>
+        <option value="AED">AED (UAE Dirham)</option>
+        <option value="SAR">SAR (Saudi Riyal)</option>
+        <option value="ILS">₪ ILS (Israeli Shekel)</option>
+        <option value="INR">₹ INR (Indian Rupee)</option>
+        <option value="BRL">R$ BRL (Brazilian Real)</option>
+        <option value="MXN">MX$ MXN (Mexican Peso)</option>
+        <option value="ZAR">R ZAR (South African Rand)</option>
+        <option value="TRY">₺ TRY (Turkish Lira)</option>
+      </select>
+    </div>
+    <div class="filter-bar" style="width:100%">
+      <button class="filter-chip active" data-pay-cat="all" onclick="filterPlans('all', this)">All Capabilities (21 SKUs)</button>
+      <button class="filter-chip" data-pay-cat="codex" onclick="filterPlans('codex', this)">⚡ Digital Codices &amp; Tools (5)</button>
+      <button class="filter-chip" data-pay-cat="software" onclick="filterPlans('software', this)">🛰️ SaaS, Cockpit &amp; API (7)</button>
+      <button class="filter-chip" data-pay-cat="yield" onclick="filterPlans('yield', this)">🛡️ Yield &amp; Syndicate (3)</button>
+      <button class="filter-chip" data-pay-cat="executive" onclick="filterPlans('executive', this)">🏛️ Executive Sprints &amp; Retainers (6)</button>
+    </div>
+  </div>
+
+  <div class="plans-grid" id="plans-container"></div>
+
+  <div class="footer-box">
+    <strong>Rasa-X-Machina (Proposed Estonian Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ · Dealum #179423)</strong> · Sovereign Autonomous Systems &amp; Digital Asset Syndicate<br/>
+    Principal Systems Architect &amp; Founder: <strong>Collins Takem</strong> · Governed under DSS-14.2 Build Law · 29 Currencies · 42 Markets<br/>
+    <div style="margin-top:0.5rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/collins">Founder Dossier</a> ·
+      <a href="/vrtti">VRTTI Sprints</a> ·
+      <a href="/shop">Fortress Market</a> ·
+      <a href="/etamanga">$ETMA &amp; $EFM</a> ·
+      <a href="/terms">Terms</a> ·
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</main>
+
+<script>
+let payCurrency = 'EUR';
+let payCountry = 'EE';
+let payLang = 'en';
+let currentCat = 'all';
+
+const FX_CURRENCIES = {
+  EUR: { symbol: '€', rate_from_eur: 1.0, rate_from_usd: 0.925, zero_decimal: false },
+  USD: { symbol: '$', rate_from_eur: 1.08, rate_from_usd: 1.0, zero_decimal: false },
+  GBP: { symbol: '£', rate_from_eur: 0.85, rate_from_usd: 0.79, zero_decimal: false },
+  CHF: { symbol: 'CHF ', rate_from_eur: 0.96, rate_from_usd: 0.89, zero_decimal: false },
+  SEK: { symbol: 'kr ', rate_from_eur: 11.40, rate_from_usd: 10.55, zero_decimal: false },
+  NOK: { symbol: 'kr ', rate_from_eur: 11.65, rate_from_usd: 10.78, zero_decimal: false },
+  DKK: { symbol: 'kr ', rate_from_eur: 7.46, rate_from_usd: 6.91, zero_decimal: false },
+  PLN: { symbol: 'zł ', rate_from_eur: 4.30, rate_from_usd: 3.98, zero_decimal: false },
+  CZK: { symbol: 'Kč ', rate_from_eur: 25.20, rate_from_usd: 23.33, zero_decimal: false },
+  HUF: { symbol: 'Ft ', rate_from_eur: 398.0, rate_from_usd: 368.5, zero_decimal: true },
+  RON: { symbol: 'lei ', rate_from_eur: 4.98, rate_from_usd: 4.61, zero_decimal: false },
+  BGN: { symbol: 'лв ', rate_from_eur: 1.96, rate_from_usd: 1.81, zero_decimal: false },
+  ISK: { symbol: 'kr ', rate_from_eur: 149.0, rate_from_usd: 138.0, zero_decimal: true },
+  CAD: { symbol: 'CA$', rate_from_eur: 1.48, rate_from_usd: 1.37, zero_decimal: false },
+  AUD: { symbol: 'A$', rate_from_eur: 1.65, rate_from_usd: 1.53, zero_decimal: false },
+  NZD: { symbol: 'NZ$', rate_from_eur: 1.79, rate_from_usd: 1.66, zero_decimal: false },
+  SGD: { symbol: 'S$', rate_from_eur: 1.45, rate_from_usd: 1.34, zero_decimal: false },
+  JPY: { symbol: '¥', rate_from_eur: 163.0, rate_from_usd: 151.0, zero_decimal: true },
+  HKD: { symbol: 'HK$', rate_from_eur: 8.42, rate_from_usd: 7.80, zero_decimal: false },
+  KRW: { symbol: '₩', rate_from_eur: 1490.0, rate_from_usd: 1380.0, zero_decimal: true },
+  TWD: { symbol: 'NT$', rate_from_eur: 35.1, rate_from_usd: 32.5, zero_decimal: true },
+  AED: { symbol: 'AED ', rate_from_eur: 3.97, rate_from_usd: 3.67, zero_decimal: false },
+  SAR: { symbol: 'SAR ', rate_from_eur: 4.05, rate_from_usd: 3.75, zero_decimal: false },
+  ILS: { symbol: '₪', rate_from_eur: 3.98, rate_from_usd: 3.69, zero_decimal: false },
+  INR: { symbol: '₹', rate_from_eur: 90.8, rate_from_usd: 84.1, zero_decimal: false },
+  BRL: { symbol: 'R$', rate_from_eur: 6.15, rate_from_usd: 5.69, zero_decimal: false },
+  MXN: { symbol: 'MX$', rate_from_eur: 21.6, rate_from_usd: 20.0, zero_decimal: false },
+  ZAR: { symbol: 'R ', rate_from_eur: 19.4, rate_from_usd: 18.0, zero_decimal: false },
+  TRY: { symbol: '₺', rate_from_eur: 37.2, rate_from_usd: 34.4, zero_decimal: false }
+};
+
+const COUNTRY_DEFAULT_CURRENCY = {
+  EE: 'EUR', DE: 'EUR', FR: 'EUR', NL: 'EUR', FI: 'EUR', ES: 'EUR', IT: 'EUR', PT: 'EUR', IE: 'EUR', AT: 'EUR', BE: 'EUR', LU: 'EUR', LT: 'EUR', LV: 'EUR', SK: 'EUR', SI: 'EUR', GR: 'EUR', CY: 'EUR', MT: 'EUR', HR: 'EUR',
+  US: 'USD', GB: 'GBP', CH: 'CHF', SE: 'SEK', NO: 'NOK', DK: 'DKK', PL: 'PLN', CZ: 'CZK', HU: 'HUF', RO: 'RON', BG: 'BGN', IS: 'ISK',
+  CA: 'CAD', AU: 'AUD', NZ: 'NZD', SG: 'SGD', JP: 'JPY', HK: 'HKD', KR: 'KRW', TW: 'TWD', AE: 'AED', SA: 'SAR', IL: 'ILS', IN: 'INR', BR: 'BRL', MX: 'MXN', ZA: 'ZAR', TR: 'TRY'
+};
+
+const PLANS = [
+  { id: 'blueprint_5k', sku: 'SKU-TX-01', stmt: 'RASAXMACHINA 5KBLUEPR', cat: 'codex', badge: 'SKU-TX-01 · Digital Blueprint', name: 'Tianxia 5K Rapid Autonomous Blueprint', price: 9, curr: 'EUR', mode: 'perpetual', stripe: 'https://buy.stripe.com/00w7sK76NdeV4Bt1EP9AA0k', gumroad: 'https://coltak.gumroad.com/l/fgvhn', paddle: 'pri_01m77083b36976c47341578042' },
+  { id: 'kai3_codex', sku: 'SKU-TX-02', stmt: 'RASAXMACHINA KAI3CDX', cat: 'codex', badge: 'SKU-TX-02 · Engineering Codex', name: 'KAI³ Tri-Vector Engineering Codex', price: 19, curr: 'EUR', mode: 'perpetual', stripe: 'https://buy.stripe.com/9B66oGfDjgr73xp1EP9AA0l', gumroad: 'https://coltak.gumroad.com/l/rqgnq', paddle: 'pri_01m77084a45a6164ab06186843' },
+  { id: 'asura_matrix', sku: 'SKU-TX-03', stmt: 'RASAXMACHINA ASURAMTX', cat: 'codex', badge: 'SKU-TX-03 · Strategy Doctrine', name: 'Asura Asymmetric Strategy Matrix', price: 19, curr: 'EUR', mode: 'perpetual', stripe: 'https://buy.stripe.com/8x28wO1Mtgr71phdnx9AA0m', gumroad: 'https://coltak.gumroad.com/l/dsxuo', paddle: 'pri_01m77085a82441f79eb1ec2991' },
+  { id: 'cv_rewrite', sku: 'SKU-TX-04', stmt: 'RASAXMACHINA JOBMATCH', cat: 'codex', badge: 'SKU-TX-04 · Career AI Tool', name: 'JobMatch Honest CV Rewriter (Strict 50% Firewall)', price: 19, curr: 'EUR', mode: 'one-time', stripe: 'https://buy.stripe.com/cNi3cubn3b6N4BterB9AA0j', gumroad: 'https://coltak.gumroad.com/l/ekpnaz', paddle: 'pri_01m77082c7d7873f21b9ab23ea' },
+  { id: 'manual', sku: 'SKU-TX-05', stmt: 'RASAXMACHINA OPMANUAL', cat: 'codex', badge: 'SKU-TX-05 · Master Architecture', name: "Tianxia Operator's Manual & 41 RGUs Codex", price: 29, curr: 'EUR', mode: 'perpetual', stripe: 'https://buy.stripe.com/cNi6oG1Mt2Ah1pherB9AA0e', gumroad: 'https://coltak.gumroad.com/l/wbevjc', paddle: 'pri_01m7707e1f795860d55e127514' },
+  { id: 'starter', sku: 'SKU-TX-06', stmt: 'RASAXMACHINA COCKPIT', cat: 'software', badge: 'SKU-TX-06 · SaaS Control Plane', name: 'Tianxia Sovereign Cockpit Suite (Starter)', price: 29, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/aFa00i8aRdeV3xpfvF9AA0b', gumroad: 'https://coltak.gumroad.com/l/twylx', paddle: 'pri_01m7707b64b35791344df62bd8' },
+  { id: 'alpha', sku: 'SKU-TX-07', stmt: 'RASAXMACHINA ALPHASIG', cat: 'yield', badge: 'SKU-TX-07 · Yield Intelligence', name: 'RasaXM Alpha Arbitrage Stream', price: 29, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/9B66oG62Ja2J9VN83d9AA09', paddle: 'pri_01m77079803f7b72bfbb4f2b8b' },
+  { id: 'ledger', sku: 'SKU-TX-08', stmt: 'RASAXMACHINA VERITAS', cat: 'software', badge: 'SKU-TX-08 · Solvency Feed', name: 'Veritas-Rex Cryptographic Reality Audit Stream', price: 49, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/cNi14m1Mt3El8RJ5V59AA0i', paddle: 'pri_01m77081da5b1fd279f5a79578' },
+  { id: 'pro', sku: 'SKU-TX-09', stmt: 'RASAXMACHINA PROMESH', cat: 'software', badge: 'SKU-TX-09 · Pro Enclave Mesh', name: 'Tianxia Pro Enclave Mesh (Up to 5 Nodes)', price: 99, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/28E28qgHna2Jd7ZerB9AA0c', gumroad: 'https://coltak.gumroad.com/l/cbwfy', paddle: 'pri_01m7707c49405870a6bd9fa461' },
+  { id: 'vault_toolkit', sku: 'SKU-TX-10', stmt: 'RASAXMACHINA FORTRESS', cat: 'software', badge: 'SKU-TX-10 · Defense & Vault', name: 'Faery Fortress & Sovereign Secret Vault Suite', price: 149, curr: 'EUR', mode: 'one-time', stripe: 'https://buy.stripe.com/8x2eVc2Qx7UB6JBfvF9AA08', paddle: 'pri_01m77078a0a16b081b76f3cc2f' },
+  { id: 'tracer', sku: 'SKU-TX-11', stmt: 'RASAXMACHINA TRACER', cat: 'software', badge: 'SKU-TX-11 · Logistics Pro API', name: 'Murua Universal Tracer & Dispute Shield Pro API', price: 149, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/eVqbJ03UB5Mt6JB0AL9AA0h', paddle: 'pri_01m77080ef18d5b3e303a28114' },
+  { id: 'escrow', sku: 'SKU-TX-12', stmt: 'RASAXMACHINA ESCROW', cat: 'yield', badge: 'SKU-TX-12 · Syndicate Escrow', name: 'NomenAgora Handle Secondary Escrow', price: 299, curr: 'USD', mode: 'escrow', stripe: 'https://buy.stripe.com/00wbJ0ezfcaR8RJ6Z99AA0f', paddle: 'pri_01m7707f060cf252103bc46684' },
+  { id: 'enterprise', sku: 'SKU-TX-13', stmt: 'RASAXMACHINA ENTRPRS', cat: 'software', badge: 'SKU-TX-13 · Enterprise Validator', name: 'Tianxia Enterprise Sovereign Validator & Mesh', price: 499, curr: 'EUR', mode: '/ month', stripe: 'https://buy.stripe.com/bJe9ASgHnb6Nfg70AL9AA0d', gumroad: 'https://coltak.gumroad.com/l/daahft', paddle: 'pri_01m7707d2f0786712352c1a9f1' },
+  { id: 'syndicate_retainer', sku: 'SKU-TX-14', stmt: 'RASAXMACHINA SYNDRET', cat: 'yield', badge: 'SKU-TX-14 · Syndicate Broker', name: 'NomenAgora Syndicate Broker Retainer', price: 1500, curr: 'USD', mode: '/ month', stripe: 'https://buy.stripe.com/4gM28qbn3fn39VN5V59AA0g', paddle: 'pri_01m7707ff4250b9c9646d1e845' },
+  { id: 'vrtti_audit', sku: 'SKU-TX-15', stmt: 'RASAXMACHINA VRTTIAUD', cat: 'executive', badge: 'SKU-TX-15 · 48h Executive Audit', name: 'VRTTI 2-Day Architecture Audit Sprint', price: 2500, curr: 'USD', mode: 'one-time', stripe: 'https://buy.stripe.com/3cIeVcgHngr7c3Vabl9AA04', paddle: 'pri_01m77074e0b1644d2be6389098' },
+  { id: 'audit', sku: 'SKU-TX-16', stmt: 'RASAXMACHINA ZTAUDIT', cat: 'executive', badge: 'SKU-TX-16 · Zero-Trust Audit', name: 'Zero-Trust Infrastructure Security Assessment', price: 3500, curr: 'USD', mode: 'one-time', stripe: 'https://buy.stripe.com/dRm8wObn33El4Bt0AL9AA07', paddle: 'pri_01m770779c11303f14db6e4850' },
+  { id: 'liquidity', sku: 'SKU-TX-17', stmt: 'RASAXMACHINA LIQENGN', cat: 'software', badge: 'SKU-TX-17 · On-Chain Engine', name: 'Autonomous Liquidity Engine & Custom MEV Bot', price: 4800, curr: 'USD', mode: 'one-time', stripe: 'https://buy.stripe.com/3cIeVc8aRfn3aZRdnx9AA0a', paddle: 'pri_01m7707a6f3339e8c3386dc07f' },
+  { id: 'vrtti_5k', sku: 'SKU-TX-18', stmt: 'RASAXMACHINA VRTTI5K', cat: 'executive', badge: 'SKU-TX-18 · 5-Day Sprint', name: 'VRTTI 5-Day Production Delivery Sprint', price: 5000, curr: 'USD', mode: 'one-time', stripe: 'https://buy.stripe.com/cNicN4bn36Qx3xpfvF9AA02', paddle: 'pri_01m77072efbd6eb1daed1985f6' },
+  { id: 'founder_retainer', sku: 'SKU-TX-19', stmt: 'RASAXMACHINA EXECRET', cat: 'executive', badge: 'SKU-TX-19 · Principal Advisory', name: 'Executive Principal Systems Retainer (Collins Takem)', price: 5000, curr: 'USD', mode: '/ month', stripe: 'https://buy.stripe.com/3cIfZgdvbfn3ec383d9AA06', paddle: 'pri_01m77076bf88591c13438509ee' },
+  { id: 'retainer', sku: 'SKU-TX-20', stmt: 'RASAXMACHINA CTORET', cat: 'executive', badge: 'SKU-TX-20 · Dedicated CTO', name: 'Fractional CTO & Systems Retainer', price: 6000, curr: 'USD', mode: '/ month', stripe: 'https://buy.stripe.com/9B6eVcdvb7UBd7Z97h9AA05', paddle: 'pri_01m77075de47fbecfc53f8a4bc' },
+  { id: 'vrtti_10k', sku: 'SKU-TX-21', stmt: 'RASAXMACHINA VRTTI10K', cat: 'executive', badge: 'SKU-TX-21 · Turnkey Substrate', name: 'VRTTI Enterprise Sovereign Substrate (10K)', price: 10000, curr: 'USD', mode: 'one-time', stripe: 'https://buy.stripe.com/4gMbJ02Qx7UB4Btbfp9AA03', paddle: 'pri_01m77073e1ca36a2bd3f444de3' }
+];
+
+function convertPayAmt(baseAmt, baseCurr, targetCurr) {
+  const info = FX_CURRENCIES[targetCurr] || FX_CURRENCIES.EUR;
+  if (targetCurr === baseCurr) return info.zero_decimal ? Math.round(baseAmt) : baseAmt;
+  const rate = (baseCurr === 'USD') ? info.rate_from_usd : info.rate_from_eur;
+  return Math.max(1, Math.round(baseAmt * rate));
+}
+
+let _payToastTimer = null;
+function showPayToast(msg, isWarn) {
+  const el = document.getElementById('pay-toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.borderColor = isWarn ? 'rgba(251,191,36,0.55)' : 'rgba(52,211,153,0.55)';
+  el.style.color = isWarn ? '#fde68a' : '#a7f3d0';
+  el.style.display = 'block';
+  if (_payToastTimer) clearTimeout(_payToastTimer);
+  _payToastTimer = setTimeout(() => { el.style.display = 'none'; }, 4200);
+}
+
+function copyText(txt, label) {
+  if (navigator.clipboard) navigator.clipboard.writeText(txt).catch(() => {});
+  showPayToast(`✓ Copied ${label}: ${txt}`, false);
+}
+
+async function triggerEvmSend(amountUsd) {
+  const treasury = '0xe7Eef656416eC617Ccb4409a9928b6a3D1557769';
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x2105' }]
+        });
+      } catch (_e) {}
+      const ethVal = Math.max(0.001, +(amountUsd / 2600).toFixed(6));
+      const weiHex = '0x' + Math.floor(ethVal * 1e18).toString(16);
+      const tx = await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{ from: accounts[0], to: treasury, value: weiHex }]
+      });
+      showPayToast(`✓ Base L2 / Ethereum Tx Broadcast: ${tx}`, false);
+      return;
+    } catch (e) {
+      if (navigator.clipboard) navigator.clipboard.writeText(treasury).catch(() => {});
+      showPayToast(`Wallet notice (${(e && e.message) || 'cancelled'}) — Copied Base/EVM treasury: ${treasury}`, true);
+      return;
+    }
+  }
+  copyText(treasury, 'Base L2 / EVM Treasury Address');
+}
+
+const PAY_I18N = {
+  en: {
+    h1: "Sovereign Multi-Rail Payment & Crypto Hub",
+    dirTitle: "21-SKU Multi-Rail Settlement Directory",
+    payVerb: "Pay",
+    chips: ["All Capabilities (21 SKUs)", "⚡ Digital Codices & Tools (5)", "🛰️ SaaS, Cockpit & API (7)", "🛡️ Yield & Syndicate (3)", "🏛️ Executive Sprints & Retainers (6)"]
+  },
+  et: {
+    h1: "Suveräänne MitmeRööpaline Makse- ja Krüptokeskus",
+    dirTitle: "21 SKU MitmeRööpaline Arvelduskataloog",
+    payVerb: "Maksa",
+    chips: ["Kõik Lahendused (21 SKU-d)", "⚡ Digikoodeksid ja Tööriistad (5)", "🛰️ SaaS, Juhtpaneel ja API (7)", "🛡️ Tootlus ja Sündikaat (3)", "🏛️ Juhtivsprindid ja Püsilepingud (6)"]
+  },
+  de: {
+    h1: "Souveräner Multi-Rail Zahlungs- & Krypto-Hub",
+    dirTitle: "21-SKU Multi-Rail Abrechnungsverzeichnis",
+    payVerb: "Zahlen",
+    chips: ["Alle Lösungen (21 SKUs)", "⚡ Digitale Kodizes & Tools (5)", "🛰️ SaaS, Cockpit & API (7)", "🛡️ Yield & Syndikat (3)", "🏛️ Executive Sprints & Retainer (6)"]
+  },
+  fr: {
+    h1: "Hub Souverain de Paiement Multi-Rail & Crypto",
+    dirTitle: "Catalogue de Règlement Multi-Rail (21 SKUs)",
+    payVerb: "Payer",
+    chips: ["Toutes les Capacités (21 SKUs)", "⚡ Codex Numériques & Outils (5)", "🛰️ SaaS, Cockpit & API (7)", "🛡️ Rendement & Syndicat (3)", "🏛️ Sprints Exécutifs & Retainers (6)"]
+  },
+  sv: {
+    h1: "Suverän Multi-Rail Betalnings- & Kryptohubb",
+    dirTitle: "21-SKU Multi-Rail Betalningskatalog",
+    payVerb: "Betala",
+    chips: ["Alla Kapabiliteter (21 SKUs)", "⚡ Digitala Kodexar & Verktyg (5)", "🛰️ SaaS, Cockpit & API (7)", "🛡️ Avkastning & Syndikat (3)", "🏛️ Exekutiva Sprintar & Retainers (6)"]
+  },
+  no: {
+    h1: "Suveren Multi-Rail Betalings- & Kryptohub",
+    dirTitle: "21-SKU Multi-Rail Oppgjørskatalog",
+    payVerb: "Betal",
+    chips: ["Alle Kapabiliteter (21 SKUs)", "⚡ Digitale Kodekser & Verktøy (5)", "🛰️ SaaS, Cockpit & API (7)", "🛡️ Avkastning & Syndikat (3)", "🏛️ Eksekutive Sprinter & Retainers (6)"]
+  },
+  ja: {
+    h1: "ソブリン・マルチレール決済＆暗号資産ハブ",
+    dirTitle: "全21 SKU マルチレール決済ディレクトリ",
+    payVerb: "決済",
+    chips: ["全機能 (21 SKU)", "⚡ デジタル設計書＆ツール (5)", "🛰️ SaaS・コックピット＆API (7)", "🛡️ 利回り＆シンジケート (3)", "🏛️ エグゼクティブ・スプリント (6)"]
+  }
+};
+
+let _paySyncLock = false;
+
+function applyPayI18n() {
+  if (!Object.prototype.hasOwnProperty.call(PAY_I18N, payLang)) return;
+  const d = PAY_I18N[payLang];
+  const h1 = document.querySelector('#main-content h1');
+  if (h1) h1.textContent = d.h1;
+  const dt = document.getElementById('pay-dir-title');
+  if (dt) dt.textContent = d.dirTitle;
+  const chips = document.querySelectorAll('.filter-chip');
+  if (d.chips && chips.length === 5) {
+    chips.forEach((c, idx) => { c.textContent = d.chips[idx]; });
+  }
+}
+
+function renderPlans(filterCat = currentCat) {
+  currentCat = filterCat;
+  const params = new URLSearchParams(window.location.search);
+  const highlightPlan = params.get('plan') || '';
+  const container = document.getElementById('plans-container');
+  const list = filterCat === 'all' ? PLANS : PLANS.filter(p => p.cat === filterCat);
+  const cInfo = FX_CURRENCIES[payCurrency] || FX_CURRENCIES.EUR;
+  const d = PAY_I18N[payLang] || PAY_I18N.en;
+  container.innerHTML = list.map(p => {
+    const convPrice = convertPayAmt(p.price, p.curr, payCurrency);
+    const usdEquiv = convertPayAmt(p.price, p.curr, 'USD');
+    const solAmt = Math.max(0.05, +(usdEquiv / 145).toFixed(3));
+    const isSel = (p.id === highlightPlan);
+    const solUri = `solana:88EdQHHrLeUaCLtcypp6Tmnb3P36jXBrHJFMkJLKnvvq?amount=${solAmt}&label=RASA-X-MACHINA&message=${encodeURIComponent(p.name)}`;
+    const expressStripe = `/api/v1/stripe-express?plan=${encodeURIComponent(p.id)}&currency=${encodeURIComponent(payCurrency)}&lang=${encodeURIComponent(payLang)}&country=${encodeURIComponent(payCountry)}`;
+    return `
+      <div class="plan-card ${isSel ? 'selected-plan' : ''}" id="plan-card-${p.id}">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem">
+            <span style="font-family:var(--tx-font-mono,monospace);font-size:0.7rem;color:#34d399;font-weight:700;text-transform:uppercase">${p.badge}</span>
+            <span style="font-family:var(--tx-font-mono,monospace);font-size:0.66rem;color:#fde047">STMT: ${p.stmt}</span>
+          </div>
+          <h3 style="margin:0 0 0.45rem;font-size:1.08rem;color:#fff">${p.name}</h3>
+          <div class="plan-price">${cInfo.symbol}${convPrice.toLocaleString()} <span style="font-size:0.82rem;color:#94a3b8;font-weight:500">${p.mode} (${payCurrency})</span></div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem">≈ ${solAmt} SOL · Paddle: <code>${p.paddle}</code></div>
+        </div>
+        <div class="btn-row" style="margin-top:0.5rem">
+          <a class="btn-primary" style="flex:1" href="${expressStripe}" target="_blank" rel="noopener">💳 ${d.payVerb} ${cInfo.symbol}${convPrice.toLocaleString()} ↗</a>
+          <a class="btn-outline" style="border-color:rgba(52,211,153,0.45);color:#34d399" href="${solUri}">◎ Solana ↗</a>
+          <button class="btn-outline" style="border-color:rgba(96,165,250,0.45);color:#60a5fa" onclick="triggerEvmSend(${usdEquiv})">🔵 Base L2</button>
+          ${p.gumroad ? `<a class="btn-outline" style="border-color:rgba(244,114,182,0.45);color:#f472b6" href="${p.gumroad}" target="_blank" rel="noopener">📦 Gumroad ↗</a>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (highlightPlan) {
+    const el = document.getElementById(`plan-card-${highlightPlan}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function syncPayControls() {
+  const locSel = document.getElementById('pay-locale-select');
+  const combo = (window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.getLocaleComboValue)
+    ? window.TX_CURRENCY_ENGINE.getLocaleComboValue(payCountry, payLang)
+    : `${payCountry}:${payLang}`;
+  if (locSel && [].some.call(locSel.options, o => o.value === combo)) {
+    locSel.value = combo;
+  }
+  const cSel = document.getElementById('pay-curr-select');
+  if (cSel && FX_CURRENCIES[payCurrency]) cSel.value = payCurrency;
+}
+
+function onPayLocaleChange(comboVal) {
+  const parts = (comboVal || 'EE:en').split(':');
+  payCountry = parts[0] || 'EE';
+  payLang = parts[1] || 'en';
+  payCurrency = COUNTRY_DEFAULT_CURRENCY[payCountry] || 'EUR';
+  syncPayControls();
+  applyPayI18n();
+  renderPlans();
+  if (!_paySyncLock && window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.applyMaterialLocalization) {
+    _paySyncLock = true;
+    try { window.TX_CURRENCY_ENGINE.applyMaterialLocalization(payCountry, payLang, payCurrency, true); } finally { _paySyncLock = false; }
+  }
+}
+
+function onPayCurrChange(curr) {
+  payCurrency = FX_CURRENCIES[curr] ? curr : 'EUR';
+  syncPayControls();
+  renderPlans();
+  if (!_paySyncLock && window.TX_CURRENCY_ENGINE && window.TX_CURRENCY_ENGINE.applyMaterialLocalization) {
+    _paySyncLock = true;
+    try { window.TX_CURRENCY_ENGINE.applyMaterialLocalization(payCountry, payLang, payCurrency, true); } finally { _paySyncLock = false; }
+  }
+}
+
+window.onTxGlobalLocaleChange = function (country, lang, curr) {
+  if (_paySyncLock) return;
+  _paySyncLock = true;
+  try {
+    payCountry = country || payCountry;
+    payLang = lang || payLang;
+    if (curr && FX_CURRENCIES[curr]) payCurrency = curr;
+    syncPayControls();
+    applyPayI18n();
+    renderPlans();
+  } finally {
+    _paySyncLock = false;
+  }
+};
+
+function filterPlans(cat, btnEl) {
+  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  renderPlans(cat);
+}
+
+async function initPayGeo() {
+  const params = new URLSearchParams(window.location.search);
+  const qCurr = params.get('currency');
+  try {
+    const savedCurr = qCurr || localStorage.getItem('tx_pref_currency');
+    const savedCountry = localStorage.getItem('tx_pref_country');
+    const savedLang = localStorage.getItem('tx_pref_lang');
+    const res = await fetch('/api/v1/geo-currency');
+    if (res.ok) {
+      const geo = await res.json();
+      payCountry = savedCountry || geo.detected_country || 'EE';
+      payCurrency = (savedCurr && FX_CURRENCIES[savedCurr]) ? savedCurr : (geo.detected_currency || 'EUR');
+      payLang = savedLang || geo.detected_language || 'en';
+    }
+  } catch (_e) {}
+  syncPayControls();
+  applyPayI18n();
+  renderPlans('all');
+}
+
+document.addEventListener('DOMContentLoaded', initPayGeo);
+</script>
+</body>
+</html>

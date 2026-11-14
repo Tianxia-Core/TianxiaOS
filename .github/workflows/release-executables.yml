@@ -1,0 +1,45 @@
+# ffp: FFP-CI-RELEASE-EXEC content-pipeline yaml
+name: Multi-Platform Signed Executable Build & Verification Matrix
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: write
+
+jobs:
+  verify-and-build-linux:
+    name: Build & Verify Linux Static Executables
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-unknown-linux-musl
+      - name: Install musl-tools
+        run: sudo apt-get update && sudo apt-get install -y musl-tools
+      - name: Secret Shield Gate
+        run: python3 mcp/secret_shield.py
+      - name: Build Tianxia Suite (Linux x86_64 Static musl)
+        run: cargo build --release -p tianxia-suite --target x86_64-unknown-linux-musl
+      - name: Smoke Test Executable
+        run: ./target/x86_64-unknown-linux-musl/release/tianxia version
+
+  build-windows:
+    name: Build & Verify Windows x86_64 Executable
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Build Windows PE32+ Executable
+        run: cargo build --release -p tianxia-suite
+      - name: Smoke Test Windows Executable
+        run: .\target\release\tianxia.exe version

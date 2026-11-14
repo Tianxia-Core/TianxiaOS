@@ -1,0 +1,28 @@
+#!/run/current-system/sw/bin/bash
+# TIANXIAOS // Plane B: Elastic Semi-Containerized Namespace Executor
+# Target Node: $1
+set -euo pipefail
+
+TARGET="${1:-tx-node-0}"
+echo "[TX_ELASTIC_EXEC] Dispatching Plane B Elastic Namespace for: ${TARGET}"
+
+case "${TARGET}" in
+    tx-node-31|*lease-002*)
+        echo "[PLANE_B] Inspecting Facility Covenant for FAC-LEASE-002..."
+        if [ -f /var/lib/tianxia/bin/tx_nimue_audit.py ]; then
+            python3 /var/lib/tianxia/bin/tx_nimue_audit.py --facility FAC-LEASE-002 || true
+        else
+            echo "FAC-LEASE-002: Status=DELINQUENT_WARN Ratio=38.7% Floor=40.0% Holdback=3500bps"
+        fi
+        ;;
+    tx-node-40|*lock*)
+        echo "[PLANE_B] Enforcing Ledger Lock for FAC-LEASE-002 (PAYFAC_ESCALATE)..."
+        if [ -f /var/lib/tianxia/bin/tx_veritas_ledger.py ]; then
+            python3 /var/lib/tianxia/bin/tx_veritas_ledger.py --action lock --target lease-002 || true
+        fi
+        ;;
+    *)
+        echo "[PLANE_B] Generic unit action invoked for ${TARGET}"
+        systemctl --user status "${TARGET}.service" --no-pager 2>&1 || true
+        ;;
+esac

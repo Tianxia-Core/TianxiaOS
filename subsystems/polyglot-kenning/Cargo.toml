@@ -1,0 +1,42 @@
+# ffp: FFP-AK-000 cargo-manifest declarative
+[package]
+name = "tianxiaos_polyglot_kenning"
+version = "8.5.0"
+edition = "2021"
+authors = ["TianxiaOS Sovereign Architecture Team"]
+description = "TianxiaOS Polyglot Kenning, Oracular Engine, ARSI & RASOOM-NKG 14-Core DAS v3.0.0"
+
+[dependencies]
+blake3 = { version = "1.8", features = ["std", "serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.11"
+
+[lib]
+name = "tianxiaos_polyglot_kenning"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tx_kenning_daemon"
+path = "src/bin/tx_kenning_daemon.rs"
+
+[[bin]]
+name = "tx_oracular_arsi"
+path = "src/bin/tx_oracular_arsi.rs"
+
+[[bin]]
+name = "tx_jivaslokan_probe"
+path = "src/bin/tx_jivaslokan_probe.rs"
+
+[[bin]]
+name = "tx_rasoom_nkg"
+path = "src/bin/tx_rasoom_nkg.rs"
+
+[[bin]]
+name = "tx_tremor_ego_aegis"
+path = "src/bin/tx_tremor_ego_aegis.rs"
+
+[[bin]]
+name = "tx_nimbus_polyglot"
+path = "src/bin/tx_nimbus_polyglot.rs"

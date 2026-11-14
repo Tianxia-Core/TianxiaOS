@@ -1,0 +1,16 @@
+[Unit]
+Description=TianxiaOS SRM Apex Lamb-Wave & MagPrint Biometric Gate
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/var/lib/tianxia/bin/tx_srm_apex_daemon --daemon
+Restart=always
+RestartSec=100ms
+MemoryMax=64M
+TasksMax=16
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

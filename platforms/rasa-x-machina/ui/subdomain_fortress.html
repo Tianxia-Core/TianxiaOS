@@ -1,0 +1,484 @@
+<!-- ffp: FFP-UI-SUBDOMAIN-FORTRESS frontend html -->
+<!doctype html>
+<!-- ffp: TX-SUBDOMAIN-FORTRESS frontend html -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Faery Fortress — Autonomous Security & Deception Enclave</title>
+<meta name="description" content="Faery Fortress deception networks, Aegis-9 shield specifications, DNS threat filtering, and ClosedQuorum enclave telemetry under DSS-14 Build Law."/>
+<link rel="canonical" href="https://fortress.rasaxmachina.com/"/>
+<link rel="stylesheet" href="/brandkit.css?v=8.7.2"/>
+<style>
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    background: var(--tx-void, #050505);
+    color: var(--tx-ink, #ffffff);
+    font-family: var(--tx-font-body, system-ui, -apple-system, sans-serif);
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: calc(4.5rem + var(--safe-top)) 1.5rem calc(5rem + var(--safe-bottom));
+  }
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.8rem;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--tx-font-display, sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--tx-ink-dim, #94a3b8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover { color: #fff; }
+  .tx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    margin-bottom: 1.25rem;
+  }
+  .tx-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 10px #ef4444;
+    animation: txPulse 2s infinite ease-in-out;
+  }
+  @keyframes txPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  h1 {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fca5a5 40%, #ef4444 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: 1.18rem;
+    color: #e2e8f0;
+    line-height: 1.65;
+    max-width: 820px;
+    margin-bottom: 2.5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media(max-width: 750px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    backdrop-filter: blur(20px);
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: var(--tx-ink-dim, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-val {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fca5a5;
+    margin-top: 0.4rem;
+  }
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  @media(max-width: 800px) { .prod-grid { grid-template-columns: 1fr; } }
+  .prod-box {
+    background: rgba(25, 12, 16, 0.65);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+    border-radius: 1.4rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(30px);
+    transition: transform 0.2s ease;
+  }
+  .prod-box:hover { transform: translateY(-3px); }
+  .prod-title {
+    font-family: var(--tx-font-display, sans-serif);
+    font-size: 1.35rem;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+  .prod-price {
+    font-family: var(--tx-font-mono, monospace);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+  }
+  .prod-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .prod-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem;
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .prod-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .prod-features li::before {
+    content: "✓";
+    color: #ef4444;
+    font-weight: 700;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #dc2626, #ef4444);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px -10px rgba(239, 68, 68, 0.6);
+  }
+  .auth-box {
+    border-top: 1px solid var(--tx-hairline-2, rgba(255, 255, 255, 0.08));
+    padding-top: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--tx-ink-dim, #94a3b8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .auth-box a {
+    color: #fca5a5;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .auth-box a:hover { text-decoration: underline; }
+</style>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://rasaxmachina.com" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#ef4444;font-weight:700;font-size:0.86rem">FAERY FORTRESS</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="https://rasaxmachina.com">Flagship</a>
+    <a class="nav-link" href="/radar">Threat Radar</a>
+    <a class="nav-link" href="/tracer">Logistics</a>
+    <a class="nav-link" href="/collins">Founder</a>
+    <a class="nav-link" href="/shop">Storefront</a>
+  </div>
+</nav>
+
+<main id="main-content" class="wrap" tabindex="-1">
+  <span class="tx-badge">
+    <span class="tx-pulse-dot"></span>
+    ZERO-LEAK CLOSEDQUORUM ENCLAVE · DSS-14 SHIELD
+  </span>
+
+  <h1>Faery Fortress Hardening Suite</h1>
+  <p class="lead">
+    Military-grade system defense, honeytoken deception networks, CISA KEV active threat neutralization,
+    and bleeding-edge AI vector sanitization. Designed by Collins Takem to render sovereign substrates
+    impervious to both conventional and LLM-driven exploit chains.
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Active Exploited CVEs</div>
+      <div class="stat-val" id="cisa-count">1,312</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">C2 Botnets Sinkholed</div>
+      <div class="stat-val" style="color:#34d399" id="c2-count">5 Nodes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Defense Boundary</div>
+      <div class="stat-val" style="color:#22d3ee">DSS-14 Closed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Chief Security Architect</div>
+      <div class="stat-val" style="color:#c084fc">Collins Takem</div>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-box">
+      <div>
+        <h3 class="prod-title">Faery Fortress Hardening Suite</h3>
+        <div class="prod-price"><span class="tx-store-price" data-base-curr="EUR" data-base-amt="149">€149</span> <span style="font-size:1rem;color:#94a3b8">one-time</span></div>
+        <p class="prod-desc">
+          Complete production defense codex, honeypot sinkhole automation, DNS deception filters,
+          and Aethervault cryptographic secret isolation toolkit.
+        </p>
+        <ul class="prod-features">
+          <li>Automated CISA KEV & Feodo C2 Sinkhole Ingestion</li>
+          <li>MANAS System-1 Prompt Injection & Jailbreak Firewall</li>
+          <li>Aegis-9 Post-Quantum Shield Specifications</li>
+          <li>ClosedQuorum Zero-Leak Substrate Enforcement</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem">
+        <a class="btn-primary" href="https://buy.stripe.com/8x2eVc2Qx7UB6JBfvF9AA08" target="_blank" rel="noopener">
+          💳 Pay with Stripe (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="149">€149</span>) ↗
+        </a>
+        <a class="btn-primary" style="background:rgba(52,211,153,0.16);border:1px solid rgba(52,211,153,0.45);color:#34d399" href="/pay?plan=vault_toolkit">
+          ◎ Pay with Crypto (SOL / Base / $ETMA) ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="prod-box">
+      <div>
+        <h3 class="prod-title">Enclave Defense Retainer</h3>
+        <div class="prod-price"><span class="tx-dyn-money" data-base-curr="USD" data-base-amt="3500">€3,238</span> <span style="font-size:1rem;color:#94a3b8">/ sprint</span></div>
+        <p class="prod-desc">
+          Tailored zero-trust infrastructure assessment and air-gap hardening delivered directly
+          by Collins Takem for high-value node operators and institutions.
+        </p>
+        <ul class="prod-features">
+          <li>Complete Threat Surface & Attack Tree Mapping</li>
+          <li>Hardware Security Module (HSM) Key Isolation</li>
+          <li>Post-Quantum WireGuard Mesh Hardening</li>
+          <li>Direct CISO Incident Escalation SLA</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem">
+        <a class="btn-primary" href="https://buy.stripe.com/dRm8wObn33El4Bt0AL9AA07" target="_blank" rel="noopener">
+          💳 Commission Audit via Stripe (<span class="tx-dyn-money" data-base-curr="USD" data-base-amt="3500">€3,238</span>) ↗
+        </a>
+        <a class="btn-primary" style="background:rgba(52,211,153,0.16);border:1px solid rgba(52,211,153,0.45);color:#34d399" href="/pay?plan=audit">
+          ◎ Settle in Crypto (SOL / Base / $ETMA) ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section aria-labelledby="wb-fortress-heading" style="background:rgba(12,8,12,0.9);border:1px solid rgba(239,68,68,0.38);border-radius:1.4rem;padding:1.75rem;margin:2.5rem 0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <div style="font-family:monospace;font-size:0.75rem;color:#fca5a5;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem">LIVE 8-DOMAIN STATIC SECURITY SCANNER · /API/V1/FORTRESS/AUDIT</div>
+        <h2 id="wb-fortress-heading" style="font-size:1.3rem;color:#fff;margin:0">Paste Code to Audit Secrets, Injection, Eval, TLS, Supply-Chain, ACL, Crypto &amp; SSRF</h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+        <button type="button" class="ff-sample-btn" data-s="vuln" style="background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.45);color:#fca5a5;border-radius:999px;padding:0.45rem 0.9rem;font-size:0.76rem;cursor:pointer;font-weight:700">Load Vulnerable Snippet</button>
+        <button type="button" class="ff-sample-btn" data-s="clean" style="background:rgba(52,211,153,0.16);border:1px solid rgba(52,211,153,0.45);color:#34d399;border-radius:999px;padding:0.45rem 0.9rem;font-size:0.76rem;cursor:pointer;font-weight:700">Load Hardened Snippet</button>
+      </div>
+    </div>
+    <label for="ff-code-input" style="position:absolute;left:-9999px">Code snippet for 8-domain security audit</label>
+    <textarea id="ff-code-input" rows="7" style="width:100%;background:#060609;color:#e2e8f0;border:1px solid rgba(255,255,255,0.14);border-radius:0.9rem;padding:0.9rem;font-family:monospace;font-size:0.79rem;line-height:1.5;margin-bottom:0.85rem">import subprocess, hashlib, requests
+api_key = "demo_hardcoded_secret_9912"
+def run_job(user_cmd, target_url):
+    digest = hashlib.md5(user_cmd.encode()).hexdigest()
+    requests.get("http://169.254.169.254/latest/meta-data/", verify=False)
+    return subprocess.Popen(user_cmd, shell=True)</textarea>
+    <div style="display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem">
+      <button type="button" id="ff-scan-btn" class="btn-primary" style="padding:0.65rem 1.3rem;font-size:0.85rem">Run 8-Domain Security Scan</button>
+      <span id="ff-score-badge" style="font-family:monospace;font-size:0.85rem;font-weight:700;color:#fca5a5"></span>
+    </div>
+    <div id="ff-domains-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.6rem;margin-bottom:0.9rem"></div>
+    <div id="ff-findings-list" aria-live="polite" style="display:flex;flex-direction:column;gap:0.5rem"></div>
+  </section>
+
+  <div class="auth-box">
+    <strong class="tx-logo-rxm" data-tx-no-i18n="1">RASA-X-MACHINA</strong> · Autonomous Architecture & Digital Asset Syndicate (29 Currencies · 42 Markets)<br/>
+    Principal Systems Architect & Founder: <strong>Collins Takem</strong> · Proposed Tallinn Entity upon Startup Committee Approval: <strong>RASA-X-MACHINA OÜ</strong><br/>
+    <div style="margin-top:0.6rem">
+      <a href="https://rasaxmachina.com">Flagship Portal</a> ·
+      <a href="/radar">Threat Radar</a> ·
+      <a href="/collins">Founder Profile</a> ·
+      <a href="/vrtti">Architecture Sprints</a> ·
+      <a href="/shop">The Fortress Market</a>
+    </div>
+  </div>
+</main>
+
+<script>
+async function loadThreatTelemetry() {
+  try {
+    const res = await fetch('/api/v1/telemetry/radar');
+    const data = await res.json();
+    if (data.ok && data.threat_radar) {
+      if (data.threat_radar.cisa_kev_active_count) {
+        document.getElementById('cisa-count').textContent = data.threat_radar.cisa_kev_active_count.toLocaleString();
+      }
+      if (data.threat_radar.feodo_c2_botnets_sinkholed) {
+        document.getElementById('c2-count').textContent = `${data.threat_radar.feodo_c2_botnets_sinkholed} Nodes`;
+      }
+    }
+  } catch (err) {
+    console.debug("Threat telemetry polling suppressed:", err);
+  }
+}
+
+(function() {
+  const input = document.getElementById('ff-code-input');
+  const badge = document.getElementById('ff-score-badge');
+  const dGrid = document.getElementById('ff-domains-grid');
+  const fList = document.getElementById('ff-findings-list');
+
+  const SAMPLES = {
+    vuln: 'import subprocess, hashlib, requests\napi_key = "demo_hardcoded_secret_9912"\ndef run_job(user_cmd):\n    digest = hashlib.md5(user_cmd.encode()).hexdigest()\n    requests.get("http://169.254.169.254/latest/meta-data/", verify=False)\n    return subprocess.Popen(user_cmd, shell=True)',
+    clean: '// ffp: FFP-FORT-GATE capability-proxy rust\nuse std::process::Command;\npub fn verify_digest(payload: &[u8]) -> [u8; 32] {\n    blake3::hash(payload).into()\n}\npub fn check_version() -> std::io::Result<std::process::Output> {\n    Command::new("openssl").arg("version").output()\n}'
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  async function runScan() {
+    badge.textContent = 'Scanning 8 security domains...';
+    try {
+      const t0 = performance.now();
+      const res = await fetch('/api/v1/fortress/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: input.value })
+      });
+      const data = await res.json();
+      const ms = Math.round(performance.now() - t0);
+      const col = data.score >= 85 ? '#34d399' : (data.score >= 60 ? '#fbbf24' : '#ef4444');
+      badge.style.color = col;
+      badge.textContent = `Score: ${data.score}/100 (Grade ${data.grade}) · ${data.dss14_shield} · ${data.findings_count} findings (${ms} ms)`;
+
+      dGrid.innerHTML = Object.entries(data.domains || {}).map(([k, d]) => {
+        const dc = d.status === 'PASS' ? '#34d399' : (d.status === 'WARN' ? '#fbbf24' : '#ef4444');
+        return `<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:0.65rem 0.8rem">
+          <div style="display:flex;justify-content:space-between;font-family:monospace;font-size:0.72rem;margin-bottom:0.2rem">
+            <span style="color:#fff;font-weight:700">${esc(k.toUpperCase())}</span>
+            <span style="color:${dc};font-weight:700">${esc(d.status)} (${d.score}/${d.max_score})</span>
+          </div>
+          <div style="font-size:0.74rem;color:#94a3b8">${esc(d.label)}</div>
+        </div>`;
+      }).join('');
+
+      fList.innerHTML = (data.findings || []).length
+        ? data.findings.map(f => `<div style="background:#060609;border-left:3px solid ${f.severity === 'CRITICAL' ? '#ef4444' : '#fbbf24'};padding:0.65rem 0.85rem;border-radius:0.45rem;font-size:0.8rem;color:#e2e8f0">
+            <div style="font-family:monospace;font-size:0.73rem;color:#fca5a5;margin-bottom:0.2rem">[${esc(f.severity)}] ${esc(f.rule_id)} · Line ${f.line} (${esc(f.domain)})</div>
+            <div>${esc(f.message)}</div>
+          </div>`).join('')
+        : '<div style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.35);border-radius:0.65rem;padding:0.75rem;font-family:monospace;font-size:0.78rem;color:#34d399">Zero vulnerabilities detected across all 8 Faery Fortress domains.</div>';
+    } catch (e) {
+      badge.textContent = 'Scan error: ' + e.message;
+    }
+  }
+
+  document.querySelectorAll('.ff-sample-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      input.value = SAMPLES[b.getAttribute('data-s')] || '';
+      runScan();
+    });
+  });
+  document.getElementById('ff-scan-btn').addEventListener('click', runScan);
+  runScan();
+})();
+
+loadThreatTelemetry();
+setInterval(loadThreatTelemetry, 15000);
+</script>
+</body>
+</html>

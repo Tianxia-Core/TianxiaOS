@@ -1,0 +1,7 @@
+[
+  {"id": 1, "fund": "Crestone Venture Capital", "focus": "FinTech / Stablecoins", "portcos": ["Noah", "Ubyx", "Codex"], "contact": "Partner Team"},
+  {"id": 2, "fund": "Ballistic Ventures", "focus": "Cybersecurity / Defense", "portcos": ["Ultra Security", "Harbor"], "contact": "General Partner"},
+  {"id": 3, "fund": "Maniv Mobility", "focus": "Logistics & Global Trade", "portcos": ["Murua Logistics", "Freight AI"], "contact": "Investment Director"},
+  {"id": 4, "fund": "Angular Ventures", "focus": "Deep Tech Enterprise", "portcos": ["DevTools AI", "Cloud Native"], "contact": "Gil Dibner"},
+  {"id": 5, "fund": "Icebreaker.vc", "focus": "Nordic / Baltic Deep Tech", "portcos": ["TreasuryEscrow Ecosystem", "Estonia Tech"], "contact": "Riku Seppälä"}
+]

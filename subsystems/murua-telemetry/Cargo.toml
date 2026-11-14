@@ -1,0 +1,42 @@
+# ffp: FFP-MURUA-CARGO cargo-manifest declarative
+[package]
+name = "murua_architecture_enhancement"
+version = "8.4.0"
+edition = "2021"
+authors = ["TianxiaOS Sovereign Architecture Team"]
+description = "Murua Sovereign Telemetry & Actuation Suite v8.4-OMEGA: Counteracting Asymmetric Priority Buffering"
+
+[dependencies]
+blake3 = { version = "1.8", features = ["std", "serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.11"
+
+[lib]
+name = "murua_architecture_enhancement"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tx_murua_tracer_daemon"
+path = "src/bin/tx_murua_tracer_daemon.rs"
+
+[[bin]]
+name = "tx_murua_barabasi_engine"
+path = "src/bin/tx_murua_barabasi_engine.rs"
+
+[[bin]]
+name = "tx_murua_srm_gate"
+path = "src/bin/tx_murua_srm_gate.rs"
+
+[[bin]]
+name = "tx_murua_softem_probe"
+path = "src/bin/tx_murua_softem_probe.rs"
+
+[[bin]]
+name = "tx_murua_escrow_actuator"
+path = "src/bin/tx_murua_escrow_actuator.rs"
+
+[[bin]]
+name = "tx_murua_toon_codec"
+path = "src/bin/tx_murua_toon_codec.rs"

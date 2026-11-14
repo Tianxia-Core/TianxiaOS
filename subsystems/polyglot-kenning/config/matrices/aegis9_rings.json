@@ -1,0 +1,51 @@
+{
+  "defense_system": "AEGIS-9",
+  "total_rings": 9,
+  "rings": [
+    {
+      "ring": 0,
+      "name": "Silicon & Boot",
+      "mechanism": "HAP Intel ME Disabled + Coreboot TPM PCR[0..7] ST:TX-NODE-01"
+    },
+    {
+      "ring": 1,
+      "name": "Microkernel & Hypervisor",
+      "mechanism": "seL4 Capability Matrix + Nanos Unikernel (/bin/sh absent)"
+    },
+    {
+      "ring": 2,
+      "name": "Filesystem & Memory",
+      "mechanism": "Read-only Nixyr Root + Ephemeral tmpfs/ZRAM Overlays"
+    },
+    {
+      "ring": 3,
+      "name": "Network Perimeter",
+      "mechanism": "AF_XDP SIMD Filter + Vogel 110-deg Meander Tarpits"
+    },
+    {
+      "ring": 4,
+      "name": "Physical Attestation",
+      "mechanism": "SRM [3,2] Lamb-Wave Dispersion + MagPrint++ EM Coupling"
+    },
+    {
+      "ring": 5,
+      "name": "Compile-Time Gate",
+      "mechanism": "14 Mahavidya DSS-14 Pipeline + Zero-Stub Enforcer"
+    },
+    {
+      "ring": 6,
+      "name": "Neurosymbolic Runtime",
+      "mechanism": "Jivaslokan JOT + AK-Shield De-Kenning + ARSI Anti-Wash"
+    },
+    {
+      "ring": 7,
+      "name": "Temporal Safety",
+      "mechanism": "Karuna VR Mirror State Replacement + KarXT Peripheral Block"
+    },
+    {
+      "ring": 8,
+      "name": "Cryptographic Ledger",
+      "mechanism": "TetraLedger I_1=0 Double Entry + Veritas-Rex Lock"
+    }
+  ]
+}

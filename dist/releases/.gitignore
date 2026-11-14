@@ -1,0 +1,13 @@
+# ffp: FFP-RELEASE-GITIGNORE declarative gitignore
+# Ignore multi-MB compiled binaries in git; publish to GitHub Releases & /var/lib/tianxia/releases/
+tianxia-*
+TianxiaOS-*
+*.exe
+*.apk
+*.deb
+*.rpm
+*.AppImage
+*.tar.gz
+*.sig
+!SHA256SUMS.sig
+!RELEASE_SIGNING_KEY.pub.pem

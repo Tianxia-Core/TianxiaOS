@@ -1,0 +1,7 @@
+[
+  {"id": 1, "company": "Harbor", "funding": "$8M", "focus": "AI Memory & Guardrail Coordination", "vulnerability": "Shared memory race conditions & rule contradictions", "rgu_offer": "MemCube Contradiction Gate (E209)", "script_id": "SCRIPT-33-INFRA"},
+  {"id": 2, "company": "Ultra Security", "funding": "$7.5M", "focus": "Autonomous Cloud Defense", "vulnerability": "eBPF filter synthesis latency & sandbox escaping", "rgu_offer": "EVOLVE eBPF Lifelong Synthesizer", "script_id": "SCRIPT-33-INFRA"},
+  {"id": 3, "company": "Starcloud", "funding": "$10M", "focus": "Orbital Space Compute", "vulnerability": "Severe bandwidth constraints in DDIL corridors", "rgu_offer": "Telegraph English 160-byte Mesh Frame (E210)", "script_id": "SCRIPT-33-INFRA"},
+  {"id": 4, "company": "Klarent", "funding": "$5M", "focus": "Enterprise Agent Auditability", "vulnerability": "Unverifiable telemetry logs & tamper vulnerability", "rgu_offer": "DSS-14 Merkle DAG Ledger", "script_id": "SCRIPT-33-INFRA"},
+  {"id": 5, "company": "Compounding.ai", "funding": "$6.2M", "focus": "Autonomous Workflow Automation", "vulnerability": "Recursive execution loops burning API credits", "rgu_offer": "Pari/KAI3 Circuit Breaker (E234)", "script_id": "SCRIPT-33-INFRA"}
+]

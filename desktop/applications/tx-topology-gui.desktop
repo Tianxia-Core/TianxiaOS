@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Mesh & Murua Topology
+Comment=5-Node Sovereign Mesh, Rosenpass PQ Transit, Thermal Readout & Murua Tracer
+Exec=/usr/local/bin/tx-topology-gui
+Icon=network-workgroup
+Terminal=false
+Categories=Network;System;Monitor;
+StartupWMClass=com.rasaxmachina.TianxiaTopology
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

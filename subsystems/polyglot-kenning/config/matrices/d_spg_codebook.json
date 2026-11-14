@@ -1,0 +1,35 @@
+{
+  "codebook_version": "8.5.0-DSPG-AK",
+  "kennings": {
+    "WHALE-ROAD:ARGON": {
+      "literal": "Constructal Sine-Meander route via 09:18 EEST Google Antigravity (agy) OAuth bridge with GEMINI_API_KEY stripped",
+      "ffp": "FFP-ORC-216",
+      "mif_tier": "MIF50",
+      "mahavidya_domain": "Tara"
+    },
+    "CORK-SEAL:IREB": {
+      "literal": "Botanical Abscission Pi V3 JSONL compaction preserving STATE_LOCK_ZERO_LOSS chlorophyll and re-parenting parentId pointers",
+      "ffp": "FFP-SYS-222",
+      "mif_tier": "MIF40",
+      "mahavidya_domain": "Dhumavati"
+    },
+    "PENTAD-GLASS:TX-NODE-01": {
+      "literal": "SRM [3,2] Lamb-wave dispersion + MagPrint++ EM near-field unlock on Dell ST:TX-NODE-01 / Pixel 8 Pro 10.77.0.4",
+      "ffp": "FFP-SEC-224",
+      "mif_tier": "MIF20",
+      "mahavidya_domain": "Bhairavi"
+    },
+    "TROPIUM-CAGE:SEL4": {
+      "literal": "Karuna KarXT peripheral muscarinic blocker mapped to seL4 capability-isolated Nanos unikernel with /bin/sh absent",
+      "ffp": "FFP-SEC-208",
+      "mif_tier": "MIF20",
+      "mahavidya_domain": "Bagalamukhi"
+    },
+    "RIVER-LOCK:TX-ESCROW": {
+      "literal": "Veritas-Rex Vault 0A hard lock for primary escrow settlement tranche (€628.00 SLA reserve, deterministic Merkle lock)",
+      "ffp": "FFP-FIN-225",
+      "mif_tier": "MIF20",
+      "mahavidya_domain": "Chhinnamasta"
+    }
+  }
+}

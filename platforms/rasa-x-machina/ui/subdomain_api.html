@@ -1,0 +1,433 @@
+<!-- ffp: FFP-SUB-API frontend html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RASA-X-MACHINA API & Model Context Protocol (MCP) Gateway — api.rasaxmachina.com</title>
+<meta name="description" content="Unified REST, JSON-RPC 2.0, x402 Machine-to-Machine settlement, and tianxia_mcp tool surface exposing live telemetry, geo-currency localization, and Merkle solvency proofs."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="/tx_web_standards.js?v=8.7.2" defer></script>
+<style>
+  :root {
+    --bg: #050509;
+    --panel: rgba(14, 15, 24, 0.86);
+    --border: rgba(124, 92, 255, 0.28);
+    --accent: #7c5cff;
+    --mint: #00f59b;
+    --cyan: #38bdf8;
+    --text: #f4f4f8;
+    --muted: #9ca3af;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 15% 10%, rgba(124,92,255,0.16), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0,245,155,0.10), transparent 45%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 9, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0.9rem 1.5rem;
+  }
+  .nav-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #fff; }
+  main.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--mint);
+    background: rgba(0, 245, 155, 0.1);
+    border: 1px solid rgba(0, 245, 155, 0.3);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+    color: #fff;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 78ch;
+    margin-bottom: 2rem;
+  }
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--mint));
+    color: #040406;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.35);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.82rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.35rem;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mint);
+    margin-bottom: 0.25rem;
+  }
+  .stat-lbl {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+  }
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 1.1rem;
+    padding: 1.6rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.55rem;
+  }
+  .feature-card p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+  .pricing-banner {
+    background: linear-gradient(135deg, rgba(124,92,255,0.14), rgba(0,245,155,0.08));
+    border: 1px solid rgba(0, 245, 155, 0.35);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .price-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mint);
+  }
+  footer.tx-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .tx-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+<style id="tx-canonical-brand-logos">
+  .tx-logo-rxm, .tx-nav-brand {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 48%, #22d3ee 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-logo-os {
+    font-family: "Clash Display", "Geist", "Space Grotesk", system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    background: linear-gradient(120deg, #7c5cff 0%, #a855f7 45%, #c084fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-transform: none !important;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tx-brand-sep { color: rgba(148, 163, 184, 0.72); margin: 0 0.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="tx-skip-link">Skip to main content</a>
+<header class="topbar">
+  <div class="nav-wrap">
+    <a href="/" class="brand" data-tx-no-i18n="1"><span class="tx-logo-rxm">RASA-X-MACHINA</span><span class="tx-brand-sep">·</span><span style="color:#e2e8f0;font-weight:700;font-size:0.86rem;letter-spacing:0.04em">API</span></a>
+    <nav class="nav-links" aria-label="Subdomain Navigation">
+      <a href="/">← Main Storefront (21 SKUs)</a>
+      <a href="/shop">Fortress Market</a>
+      <a href="/pay">6-Rail Payment Hub</a>
+      <a href="/estonia">🇪🇪 Startup Estonia Guide</a>
+      <a href="/trust">Trust &amp; GDPR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="container" tabindex="-1">
+  <span class="eyebrow">SKU-TX-08 · SOVEREIGN OPENAPI & MCP GATEWAY · STMT: RASAXMACHINA VERITAS</span>
+  <h1>RASA-X-MACHINA API & Model Context Protocol (MCP) Gateway</h1>
+  <p class="lead">Unified REST, JSON-RPC 2.0, x402 Machine-to-Machine settlement, and tianxia_mcp tool surface exposing live telemetry, geo-currency localization, and Merkle solvency proofs.</p>
+
+  <div class="cta-bar">
+    <a class="btn-primary tx-express-stripe" data-plan="ledger" href="/api/v1/stripe-express?plan=ledger" target="_blank" rel="noopener">
+      💳 Subscribe to API & Audit Feed (<span class="tx-btn-price" data-base-curr="EUR" data-base-amt="49">€49</span> / month (API & Audit Stream)) ↗
+    </a>
+    <a class="btn-outline" href="/pay?plan=ledger">◎ Pay via Solana / Base L2 / 6 Rails (-10%) ↗</a>
+    <a class="btn-outline" href="/#calculator">🏛️ Scope Custom VRTTI Sprint ↗</a>
+  </div>
+
+  <section class="stats-grid" aria-label="Key Operational Metrics">
+      <div class="stat-card">
+        <div class="stat-val">/api/v1/*</div>
+        <div class="stat-lbl">REST & x402 JSON Endpoints</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">29 Currencies · 42 Markets</div>
+        <div class="stat-lbl">Live /api/v1/geo-currency Engine</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">MCP Native</div>
+        <div class="stat-lbl">tianxia_mcp Tool Surface</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">< 7.2ms</div>
+        <div class="stat-lbl">MANAS System-1 Input Gate</div>
+      </div>
+  </section>
+
+  <section class="features-grid" aria-label="Architectural Capabilities">
+      <article class="feature-card">
+        <h3>GET /api/v1/telemetry/public & /api/status</h3>
+        <p>Real-time JSON telemetry exposing CISA KEV counts, Feodo sinkholed C2 nodes, Kamino/MarginFi APY spreads, and Veritas-Rex Merkle roots.</p>
+      </article>
+      <article class="feature-card">
+        <h3>GET /api/v1/geo-currency & /api/v1/stripe-express</h3>
+        <p>Automatic IP/Accept-Language country detection and 1-click multi-currency Stripe Checkout session creation across 29 global currencies and 42 markets.</p>
+      </article>
+      <article class="feature-card">
+        <h3>POST /api/v1/checkout & /api/v1/inquiry</h3>
+        <p>MANAS System-1 shielded order and executive proposal endpoints generating cryptographically signed TetraLedger receipts.</p>
+      </article>
+      <article class="feature-card">
+        <h3>POST /api/v1/gdpr/request</h3>
+        <p>Automated GDPR Articles 15, 17, and 20 data subject rights endpoint with cryptographic audit logging.</p>
+      </article>
+  </section>
+
+  <section id="live-console" aria-label="Live MCP and REST Endpoint Explorer" style="background:#08080c;border:1px solid rgba(124,92,255,0.34);border-radius:1.25rem;padding:1.75rem;margin-bottom:3rem;box-shadow:0 20px 50px rgba(0,0,0,0.55)">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--mint);text-transform:uppercase;letter-spacing:0.08em">● LIVE CAPABILITY-GATED WORKBENCH</span>
+        <h2 style="font-size:1.35rem;color:#fff;margin-top:0.2rem">MCP &amp; REST Endpoint Explorer</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.6rem;font-family:'JetBrains Mono',monospace;font-size:0.76rem">
+        <span id="tx-api-status" style="padding:0.28rem 0.65rem;border-radius:999px;background:rgba(0,245,155,0.12);border:1px solid rgba(0,245,155,0.35);color:var(--mint)">READY</span>
+        <span id="tx-api-latency" style="color:var(--cyan)">0.0 ms</span>
+      </div>
+    </div>
+    <p style="font-size:0.88rem;color:#cbd5e1;margin-bottom:1.1rem">Select a read-only <code>tianxia_mcp</code> capability tool or sovereign REST v1 route and execute a live request against the active gateway.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.85rem;margin-bottom:0.9rem">
+      <div>
+        <label for="tx-api-select" style="display:block;font-size:0.76rem;color:var(--muted);margin-bottom:0.35rem">Endpoint / MCP Tool</label>
+        <select id="tx-api-select" style="width:100%;padding:0.7rem 0.85rem;border-radius:0.65rem;background:#0d101b;border:1px solid rgba(255,255,255,0.16);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.82rem">
+          <option value="mcp:system_health">MCP · system_health</option>
+          <option value="mcp:build_law_verify">MCP · build_law_verify</option>
+          <option value="mcp:rgu_summary">MCP · rgu_summary</option>
+          <option value="mcp:scour_digest">MCP · scour_digest</option>
+          <option value="mcp:secret_shield_scrub">MCP · secret_shield_scrub</option>
+          <option value="mcp:tetraledger_solvency">MCP · tetraledger_solvency</option>
+          <option value="mcp:murua_trace">MCP · murua_trace</option>
+          <option value="get:/api/v1/mcp/tools">GET · /api/v1/mcp/tools</option>
+          <option value="get:/api/v1/releases/latest">GET · /api/v1/releases/latest</option>
+          <option value="get:/api/v1/mesh/status">GET · /api/v1/mesh/status</option>
+          <option value="get:/api/v1/ledger/verify">GET · /api/v1/ledger/verify</option>
+        </select>
+      </div>
+      <div>
+        <label for="tx-api-arg" style="display:block;font-size:0.76rem;color:var(--muted);margin-bottom:0.35rem">Optional Parameter (Source / Consignment ID / Sample Text)</label>
+        <input id="tx-api-arg" type="text" value="defillama" placeholder="e.g. defillama, 58b73b08, or token text" style="width:100%;padding:0.7rem 0.85rem;border-radius:0.65rem;background:#0d101b;border:1px solid rgba(255,255,255,0.16);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.82rem"/>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:1rem">
+      <button type="button" id="tx-api-run" class="btn-primary" style="border:none;cursor:pointer;padding:0.7rem 1.3rem;font-size:0.84rem">⚡ Execute Request</button>
+      <button type="button" id="tx-api-copy" class="btn-outline" style="cursor:pointer;padding:0.7rem 1.15rem;font-size:0.82rem">Copy JSON</button>
+    </div>
+    <pre id="tx-api-output" aria-live="polite" style="background:#040508;border:1px solid rgba(255,255,255,0.1);border-radius:0.8rem;padding:1rem;color:#a7f3d0;font-family:'JetBrains Mono',monospace;font-size:0.78rem;overflow:auto;max-height:340px;white-space:pre-wrap">Click "Execute Request" to inspect live JSON telemetry...</pre>
+  </section>
+
+  <section class="pricing-banner" aria-label="Direct Acquisition">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--cyan);text-transform:uppercase;margin-bottom:0.3rem">
+        api.rasaxmachina.com · CLUSTER: API · ROUTING: CF_WORKER
+      </div>
+      <h2 style="font-size:1.35rem;color:#fff;margin-bottom:0.35rem">Ready to deploy SKU-TX-08?</h2>
+      <p style="font-size:0.88rem;color:#cbd5e1">Billed in your chosen currency (29 currencies across 42 markets supported) with Veritas-Rex Merkle receipt attestation.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="price-big">
+        <span class="tx-store-price" data-base-curr="EUR" data-base-amt="49">€49</span>
+        <span style="font-size:0.85rem;color:var(--muted);font-weight:400">/ month (API & Audit Stream)</span>
+      </div>
+      <div style="margin-top:0.6rem">
+        <a class="btn-primary tx-express-stripe" data-plan="ledger" href="/api/v1/stripe-express?plan=ledger" target="_blank" rel="noopener">
+          Instant Stripe Checkout ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-bottom">
+    <div>© 2026 Rasa-X-Machina (Proposed Tallinn Entity upon Startup Committee Approval: RASA-X-MACHINA OÜ). Founded by Collins Takem. <a href="/privacy" style="color:#a78bfa">Privacy Policy (GDPR)</a> · <a href="/terms" style="color:#a78bfa">Terms of Service</a> · <a href="/.well-known/security.txt" style="color:#a78bfa">security.txt</a></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--mint)">DSS-14.2 SEALED · WCAG 2.2 AA · GDPR ART. 25</div>
+  </div>
+</footer>
+<script>
+(function() {
+  const sel = document.getElementById('tx-api-select');
+  const arg = document.getElementById('tx-api-arg');
+  const btn = document.getElementById('tx-api-run');
+  const copyBtn = document.getElementById('tx-api-copy');
+  const out = document.getElementById('tx-api-output');
+  const st = document.getElementById('tx-api-status');
+  const lat = document.getElementById('tx-api-latency');
+
+  async function runExplorer() {
+    const val = sel.value;
+    const rawArg = (arg.value || '').trim();
+    st.textContent = 'RUNNING';
+    const t0 = performance.now();
+    try {
+      let res;
+      if (val.startsWith('mcp:')) {
+        const tool = val.slice(4);
+        const argsObj = {};
+        if (tool === 'scour_digest' && rawArg) argsObj.source = rawArg;
+        if (tool === 'murua_trace' && rawArg) argsObj.id = rawArg;
+        if (tool === 'secret_shield_scrub') argsObj.text = rawArg || 'OPENAI_API_KEY=sk-proj-demo1234567890abcdef';
+        res = await fetch('/api/v1/mcp/call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tool: tool, arguments: argsObj })
+        });
+      } else {
+        const url = val.slice(4);
+        res = await fetch(url);
+      }
+      const ms = (performance.now() - t0).toFixed(1);
+      const data = await res.json();
+      lat.textContent = ms + ' ms';
+      st.textContent = 'HTTP ' + res.status;
+      out.textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      st.textContent = 'ERROR';
+      out.textContent = JSON.stringify({ ok: false, error: String(err) }, null, 2);
+    }
+  }
+  btn.addEventListener('click', runExplorer);
+  copyBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(out.textContent || '').then(function() {
+      copyBtn.textContent = 'Copied ✓';
+      setTimeout(function() { copyBtn.textContent = 'Copy JSON'; }, 1500);
+    }).catch(function() {});
+  });
+  runExplorer();
+})();
+</script>
+</body>
+</html>

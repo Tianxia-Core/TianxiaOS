@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability Disclosure (RFC 9116)
+    url: https://rasaxmachina.com/.well-known/security.txt
+    about: Report security vulnerabilities privately per SECURITY.md (do not open public issues).
+  - name: TianxiaOS Documentation & 28-Subdomain Portal
+    url: https://docs.rasaxmachina.com
+    about: Browse architecture specifications, API docs, and live verification consoles.

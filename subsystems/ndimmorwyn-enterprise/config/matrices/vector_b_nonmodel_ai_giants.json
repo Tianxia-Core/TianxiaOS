@@ -1,0 +1,8 @@
+[
+  {"id": 1, "company": "Cursor", "valuation": "$60B", "focus": "AI Code Editor & Agentic IDE", "vulnerability": "Speculative decoding latency & AST corruption", "rgu_offer": "Void-Thread Shadow LSP (E206)", "script_id": "SCRIPT-AI-GIANT"},
+  {"id": 2, "company": "Cognition / Devin", "valuation": "$48B", "focus": "Autonomous Software Engineer", "vulnerability": "Context degradation & unhedged VM drift", "rgu_offer": "8-FFP Bounded RGU Compiler (E207)", "script_id": "SCRIPT-AI-GIANT"},
+  {"id": 3, "company": "Lovable", "valuation": "$13.3B", "focus": "Full-Stack Web App Generator", "vulnerability": "Frontend/backend impedance drift in generated code", "rgu_offer": "Pre-Audited RGU Modular Flakes", "script_id": "SCRIPT-AI-GIANT"},
+  {"id": 4, "company": "Harvey", "valuation": "$15.5B", "focus": "Legal AI Assistant", "vulnerability": "Parametric hallucinations in statutory citations", "rgu_offer": "Inverse Parametric Ontology Engine (E208)", "script_id": "SCRIPT-AI-GIANT"},
+  {"id": 5, "company": "OpenEvidence", "valuation": "$15B", "focus": "Medical/Clinical AI Decision Support", "vulnerability": "Strict clinical provenance & FDA attestation requirements", "rgu_offer": "Jivaslokan/Karuna Provenance Shield", "script_id": "SCRIPT-AI-GIANT"},
+  {"id": 6, "company": "Mercor", "valuation": "$10B", "focus": "AI Talent Sourcing & Automated Vetting", "vulnerability": "VAD cutoff penalizing neurodivergent applicants", "rgu_offer": "Virtual PipeWire VAD Bridge (E213)", "script_id": "SCRIPT-AI-GIANT"}
+]

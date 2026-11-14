@@ -1,0 +1,39 @@
+{
+  "name": "RASA-X-MACHINA · tianxiaOS Sovereign Polyglot PWA",
+  "short_name": "tianxiaOS",
+  "description": "Sovereign AI Operating System, 4-Tier Constructal Inference Waterfall, GDPR++ Post-Quantum Privacy & 4-Way Cryptographic Clearing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#7c5cff",
+  "categories": ["developer", "security", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Sovereign Cockpit HUD",
+      "short_name": "Cockpit",
+      "url": "/cockpit",
+      "icons": [{ "src": "/icon.svg", "sizes": "192x192", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Estonia Committee Companion (#179423)",
+      "short_name": "Estonia",
+      "url": "/estonia",
+      "icons": [{ "src": "/icon.svg", "sizes": "192x192", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Sovereign Pay Hub",
+      "short_name": "Pay Hub",
+      "url": "/pay",
+      "icons": [{ "src": "/icon.svg", "sizes": "192x192", "type": "image/svg+xml" }]
+    }
+  ]
+}

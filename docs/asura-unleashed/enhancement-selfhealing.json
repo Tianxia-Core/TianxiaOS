@@ -1,0 +1,12 @@
+{
+  "name": "Self-Healing Systems",
+  "multiplier": 10,
+  "sources": ["in DSCI", "jp Trend Micro", "za CSIRT"],
+  "description": "Automatic recovery from failures without human intervention",
+  "implementation": {
+    "health_checks": "continuous",
+    "recovery_strategies": ["restart", "rollback", "fallback", "isolate"],
+    "max_recovery_attempts": 5,
+    "escalation_threshold": 3
+  }
+}

@@ -1,0 +1,80 @@
+# ffp: FFP-CI-DSS14-GATE content-pipeline yaml
+name: TianxiaOS DSS-14.2 & Polyglot Integrity Gate
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: read
+
+jobs:
+  dss14-static-and-secret-gate:
+    name: DSS-14.2 FFP Header & Zero-Leak Secret Audit
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Zero Secret Leaks (Dhūmāvatī Gate)
+        run: |
+          python3 mcp/secret_shield.py
+
+      - name: Verify Enterprise Governance, Signing Key & Build Law v4.4
+        run: |
+          test -f AGENTS.md
+          test -f BUILD_LAW.md
+          test -f SECURITY.md
+          test -f CONTRIBUTING.md
+          test -f GOVERNANCE.md
+          test -f CODE_OF_CONDUCT.md
+          test -f SUPPORT.md
+          test -f CHANGELOG.md
+          test -f CITATION.cff
+          test -f LICENSE
+          test -f keys/RELEASE_SIGNING_KEY.pub.pem
+          test -f docs/DASAVIDYAYANA_NL.md
+          test -f docs/VALUATION_AND_TIER2_DOSSIER.md
+          test -f nixos/modules/tianxia-2048-lifecycle.nix
+          ! grep -rn "chr(" nixos/
+          grep -q "PILLAR 4" AGENTS.md
+          grep -q "Daśavidyāyāna NL" AGENTS.md
+          grep -q "42-Market Compositional Reuse Law" AGENTS.md
+          grep -q "tx_scour" AGENTS.md
+          grep -q "tx_opportunity_miner" AGENTS.md
+          grep -q "tianxia-relay" AGENTS.md
+
+      - name: Check C AVX2 Manas & Tremor VFS Kernel Compilation
+        run: |
+          gcc -O3 -mavx2 -mfma -shared -fPIC subsystems/ephemeral-cockpit/src/tx-cuda-manas/tx_manas_cpu.c -o /tmp/libtx_manas_cpu.so -lm
+          ls -la /tmp/libtx_manas_cpu.so
+          gcc -O3 subsystems/crownforge-codex/src/c/tx_tremor_vfs_modulator.c -o /tmp/tx_tremor_vfs_modulator
+          /tmp/tx_tremor_vfs_modulator
+
+      - name: Verify Platform & MCP Python Syntax
+        run: |
+          python3 -m py_compile platforms/rasa-x-machina/tx_gui_bridge.py platforms/rasa-x-machina/tx_edge_forwarder.py platforms/rasa-x-machina/tx_opportunity_miner.py platforms/rasa-x-machina/tx_build_law_sentinel.py platforms/rasa-x-machina/tx_cloudflare_subdomains_sync.py platforms/rasa-x-machina/tx_tui.py mcp/tianxia_mcp_server.py mcp/secret_shield.py
+
+      - name: Verify Pillar 4.5, 4.6, 4.7, 4.8 & Section 5 (Single-Currency, Candor, Confidentiality, GDPR++, PWA & Evergreen Sentinel)
+        run: |
+          test -f platforms/rasa-x-machina/ui/tx_web_standards.js
+          test -f platforms/rasa-x-machina/ui/icon.svg
+          python3 -c 'import json; m = json.load(open("platforms/rasa-x-machina/ui/manifest.json")); assert m["icons"][0]["src"] == "/icon.svg"'
+          grep -qi "Single-Currency Consistency Mandate" AGENTS.md
+          grep -qi "Pre-Approval Regulatory & Committee Candor Law" AGENTS.md
+          grep -qi "2-Control Unified Market-Locale" AGENTS.md
+          grep -qi "GDPR++" AGENTS.md
+          grep -qi "Privacy by Design (PbD" AGENTS.md
+          grep -qi "Security by Design (SbD" AGENTS.md
+          grep -qi "Polyglot Web Apps" AGENTS.md
+          python3 platforms/rasa-x-machina/tx_build_law_sentinel.py --verify
+          python3 platforms/rasa-x-machina/tx_tui.py --once
+          python3 -c 'import glob, json, re; subs = json.load(open("platforms/rasa-x-machina/subdomains.json"))["subdomains"]; assert len(subs) >= 28; conf = re.compile(r"(Impulse-to-Institutional|Impulse Bestseller|EST\.\s*CVR|\bSFI\b)", re.I); [(_ := open(p, encoding="utf-8").read(), assert_d := re.findall(r"\$[0-9]+", _), assert_c := conf.findall(_), (_ for _ in ()).throw(AssertionError(f"{p}: usd={assert_d} conf={assert_c}")) if assert_d or assert_c or "tx_web_standards.js" not in _ or "tx-skip-link" not in _ or "main-content" not in _ else None) for p in glob.glob("platforms/rasa-x-machina/ui/*.html")]; print(f"Verified {len(subs)} subdomains and all HTML surfaces pass Single-Currency, Confidentiality, WCAG 2.2 AA & GDPR++ gates.")'

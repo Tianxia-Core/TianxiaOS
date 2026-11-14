@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=tianxiaOS Etamanga & x402 TUI
+Comment=Base L2 Efemera (EFM) Contracts, x402 Micropayment Gateway & Multi-Fiat Compliance
+Exec=foot -T "tianxiaOS Etamanga & x402 TUI" /usr/local/bin/tianxia tui --app etamanga
+Icon=utilities-terminal
+Terminal=false
+Categories=Finance;Network;ConsoleOnly;
+StartupWMClass=foot
+Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

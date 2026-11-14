@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+import json, os, re, subprocess, sys, time
+from datetime import datetime, timezone
+from pathlib import Path
+
+REGISTRY_DIR = Path("/var/lib/tianxia/registry")
+MANIFEST_FILE = REGISTRY_DIR / "system-manifest.json"
+SEMANTIC_FILE = REGISTRY_DIR / "system-manifest.semantic.toon"
+LEGACY_MANIFEST_LINK = Path("/var/lib/tianxia/system-manifest.json")
+DYNAMIC_APP_DIR = Path("/var/lib/tianxia/share/applications")
+
+TIER_CATEGORY_MAP = {
+    1: "X-Tianxia-Tier-1", 2: "X-Tianxia-Tier-2", 3: "X-Tianxia-Tier-3",
+    4: "X-Tianxia-Tier-4", 5: "X-Tianxia-Tier-5",
+}
+
+DEFAULT_NODES = [
+    {"device_id": "latitude-tianxia", "hardware": "Dell Latitude 5591 (32GB RAM)", "role": "PRIMARY_COMPUTE_DESKTOP", "ip_address": "${TX_HUB_HOST:-127.0.0.1}", "vuda_acceleration": True, "status": "ONLINE"},
+    {"device_id": "pixel8pro-tianxia", "hardware": "Google Pixel 8 Pro (1TB)", "role": "PRIMARY_EDGE_ORCHESTRATOR_AGY", "ip_address": "tailscale-mesh", "vuda_acceleration": True, "status": "ONLINE"},
+    {"device_id": "pocox5pro-tianxia", "hardware": "Xiaomi Poco X5 Pro 5G (128GB)", "role": "SECONDARY_EDGE_WORKER_SENTINEL", "ip_address": "tailscale-mesh", "vuda_acceleration": False, "status": "ONLINE"},
+    {"device_id": "xps13-tianxia", "hardware": "Dell XPS 13 9310 (8GB RAM)", "role": "STANDBY_CLIENT_UNDER_REPAIR", "ip_address": "offline-maintenance", "vuda_acceleration": False, "status": "MAINTENANCE_STANDBY"},
+]
+
+def run_cmd(cmd):
+    try:
+        return subprocess.check_output(cmd, text=True, stderr=subprocess.DEVNULL, timeout=3).strip()
+    except Exception:
+        return ""
+
+def get_max_temp_c():
+    max_t = 0.0
+    for tz in Path("/sys/class/thermal").glob("thermal_zone*"):
+        try:
+            temp_file = tz / "temp"
+            if temp_file.exists():
+                t_val = temp_file.read_text().strip()
+                max_t = max(max_t, int(t_val) / 1000.0)
+        except Exception:
+            pass
+    return round(max_t, 1)
+
+def probe_tailscale_mesh():
+    nodes = [dict(n) for n in DEFAULT_NODES]
+    raw_ts = run_cmd(["tailscale", "status", "--json"])
+    if not raw_ts:
+        return nodes
+    try:
+        ts_data = json.loads(raw_ts)
+        for _, peer in ts_data.get("Peer", {}).items():
+            hname = peer.get("HostName", "").lower()
+            dns_name = peer.get("DNSName", "").lower()
+            ips = peer.get("TailscaleIPs", [])
+            ip_val = ips[0] if ips else "unknown"
+            online = peer.get("Online", False)
+            for node in nodes:
+                nid = node["device_id"].split("-")[0]
+                if nid in hname or nid in dns_name:
+                    node["ip_address"] = ip_val
+                    if node["device_id"] == "xps13-tianxia" and not online:
+                        node["status"] = "MAINTENANCE_STANDBY"
+                    else:
+                        node["status"] = "ONLINE" if online else "OFFLINE"
+    except Exception:
+        pass
+    return nodes
+
+def read_existing_dynamic_menus():
+    if MANIFEST_FILE.exists():
+        try:
+            return json.loads(MANIFEST_FILE.read_text()).get("dynamic_menus", [])
+        except Exception:
+            pass
+    return []
+
+def build_manifest(dynamic_menus=None):
+    REGISTRY_DIR.mkdir(parents=True, exist_ok=True)
+    DYNAMIC_APP_DIR.mkdir(parents=True, exist_ok=True)
+    if dynamic_menus is None:
+        dynamic_menus = read_existing_dynamic_menus()
+    svc_raw = run_cmd(["systemctl", "list-units", "--type=service", "--state=running", "--no-legend", "--no-pager"])
+    active_services = [line.split()[0] for line in svc_raw.splitlines() if line.strip()]
+    workspace_root = Path("/root/workspace")
+    workspace_nodes = sorted([d for d in os.listdir(workspace_root) if not d.startswith(".")]) if workspace_root.exists() else []
+    max_temp = get_max_temp_c()
+    mesh = probe_tailscale_mesh()
+
+    manifest = {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "host_node": "latitude-tianxia",
+        "architecture": "x86_64-linux",
+        "domains": ["rasaxmachina.com", "rasaxm.com", "airasa.work"],
+        "softem_max_temp_c": max_temp,
+        "hardware_loop": mesh,
+        "active_services": active_services[:60],
+        "workspace_nodes": workspace_nodes,
+        "menu_tiers": {
+            "Tier_1_TianxiaOS": ["tx-t1-cockpit", "tx-t1-monitor"],
+            "Tier_2_Systems": ["tx-t2-operator-tui", "tx-t2-mesh-control", "tx-t2-aethervault"],
+            "Tier_3_Subsystems": ["tx-t3-vuda-softem", "tx-t3-storefront"],
+            "Tier_4_Units": ["tx-t4-tetraledger", "foot", "kate"],
+            "Tier_5_Files": ["tx-t5-workspace-vfs", "tx-t5-nixos-substrate", "dolphin"],
+        },
+        "dynamic_menus": dynamic_menus,
+    }
+    MANIFEST_FILE.write_text(json.dumps(manifest, indent=2))
+    mesh_str = ",".join(f"{n['device_id']}:{n['status']}:{n['ip_address']}" for n in mesh)
+    ws_str = ",".join(workspace_nodes)
+    toon_str = f"TX_MANIFEST_V5|HOST:latitude-tianxia(${TX_HUB_HOST:-127.0.0.1})|ARCH:x86_64|TEMP_MAX:{max_temp}C|MESH:[{mesh_str}]|WS:[{ws_str}]|DYN_COUNT:{len(dynamic_menus)}"
+    SEMANTIC_FILE.write_text(toon_str + "\n")
+    if not LEGACY_MANIFEST_LINK.exists():
+        try:
+            LEGACY_MANIFEST_LINK.symlink_to(MANIFEST_FILE)
+        except Exception:
+            pass
+    return manifest
+
+def sync_desktop_entries(manifest):
+    DYNAMIC_APP_DIR.mkdir(parents=True, exist_ok=True)
+    active_files = set()
+    for item in manifest.get("dynamic_menus", []):
+        safe_id = re.sub(r"[^a-z0-9-]+", "-", item["id"].lower()).strip("-")
+        filename = f"tx-dyn-{safe_id}.desktop"
+        active_files.add(filename)
+        target = DYNAMIC_APP_DIR / filename
+        tier_num = int(item.get("tier", 2))
+        tier_cat = TIER_CATEGORY_MAP.get(tier_num, "Tianxia-Tier-2")
+        content = (
+            "[Desktop Entry]\nType=Application\n"
+            f"Name=0{tier_num} // [AGY] {item.get('label', safe_id)}\n"
+            "GenericName=Dynamic AI Tool\n"
+            f"Comment={item.get('description', 'Autogenerated via agy')}\n"
+            f"Exec={item.get('exec', 'foot')}\n"
+            f"Icon={item.get('icon', 'tianxia-brand')}\n"
+            f"Categories=X-TianxiaOS;{tier_cat};X-Dynamic;\n"
+            "Terminal=false\nX-Tianxia-Dynamic=true\n"
+            f"X-Tianxia-Tier={tier_num}\n"
+        )
+        if not target.exists() or target.read_text() != content:
+            target.write_text(content)
+    for existing in DYNAMIC_APP_DIR.glob("tx-dyn-*.desktop"):
+        if existing.name not in active_files:
+            existing.unlink(missing_ok=True)
+    run_cmd(["kbuildsycoca6"])
+
+def inject_tool(tier_arg, name, exec_cmd, desc, icon="tianxia-brand"):
+    m = re.search(r"([1-5])", str(tier_arg))
+    tier_num = int(m.group(1)) if m else 2
+    safe_id = re.sub(r"[^a-z0-9-]+", "-", name.lower()).strip("-")
+    menus = [i for i in read_existing_dynamic_menus() if i.get("id") != safe_id]
+    menus.append({"id": safe_id, "label": name, "tier": tier_num, "exec": exec_cmd, "icon": icon, "description": desc})
+    manifest = build_manifest(menus)
+    sync_desktop_entries(manifest)
+    print(f"[+] Injected '{name}' (Tier {tier_num}) -> {DYNAMIC_APP_DIR}/tx-dyn-{safe_id}.desktop")
+
+def remove_tool(target_id):
+    safe_id = re.sub(r"[^a-z0-9-]+", "-", target_id.lower()).strip("-")
+    menus = [i for i in read_existing_dynamic_menus() if i.get("id") != safe_id]
+    manifest = build_manifest(menus)
+    sync_desktop_entries(manifest)
+    print(f"[+] Removed dynamic tool '{safe_id}'")
+
+def print_mesh_audit():
+    manifest = build_manifest()
+    print("=== TIANXIAOS v5.0 ACTIVE TAILSCALE MESH TOPOLOGY ===")
+    for n in manifest["hardware_loop"]:
+        print(f" * {n['device_id']:18} | {n['status']:20} | IP: {n['ip_address']:18} | Role: {n['role']}")
+
+def print_vuda_audit():
+    print(f"=== VUDA / SOFTEM THERMAL & COMPUTE ENVELOPE (Max: {get_max_temp_c()} C) ===")
+    for tz in sorted(Path("/sys/class/thermal").glob("thermal_zone*")):
+        try:
+            t_type = (tz / "type").read_text().strip() if (tz / "type").exists() else tz.name
+            t_val = (tz / "temp").read_text().strip() if (tz / "temp").exists() else "0"
+            print(f" * {tz.name:15} ({t_type:12}): {int(t_val)/1000.0:.1f} C")
+        except Exception:
+            pass
+
+def main():
+    action = sys.argv[1] if len(sys.argv) > 1 else "scan"
+    if action == "scan":
+        m = build_manifest()
+        sync_desktop_entries(m)
+        print(f"[+] Synchronized {MANIFEST_FILE} and {SEMANTIC_FILE}")
+    elif action == "semantic-zip":
+        build_manifest()
+        print(SEMANTIC_FILE.read_text().strip())
+    elif action == "inject":
+        inject_tool(
+            sys.argv[2] if len(sys.argv) > 2 else "2",
+            sys.argv[3] if len(sys.argv) > 3 else "CustomAgentTool",
+            sys.argv[4] if len(sys.argv) > 4 else "foot",
+            sys.argv[5] if len(sys.argv) > 5 else "Injected by Gemini 3.8 Flash in agy",
+        )
+    elif action == "remove":
+        remove_tool(sys.argv[2] if len(sys.argv) > 2 else "")
+    elif action == "mesh-audit":
+        print_mesh_audit()
+    elif action == "vuda-audit":
+        print_vuda_audit()
+    elif action == "tui":
+        print_mesh_audit()
+        print_vuda_audit()
+        os.execvp("htop", ["htop"])
+    elif action == "daemon":
+        while True:
+            sync_desktop_entries(build_manifest())
+            time.sleep(15)
+
+if __name__ == "__main__":
+    main()
