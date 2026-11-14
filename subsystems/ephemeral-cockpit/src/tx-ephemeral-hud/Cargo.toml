@@ -9,7 +9,7 @@ wayland-client = "0.31"
 wayland-backend = "0.3"
 calloop = "0.13"
 memmap2 = "0.9"
-rustix = { version = "0.38", features = ["fs", "mm", "net"] }
+rustix = { version = "1.1", features = ["fs", "mm", "net"] }
 
 [profile.release]
 opt-level = 3
