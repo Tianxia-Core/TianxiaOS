@@ -18,7 +18,7 @@ jobs:
     name: Build & Verify Linux Static Executables
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install Rust Toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -36,7 +36,7 @@ jobs:
     name: Build & Verify Windows x86_64 Executable
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install Rust Toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Build Windows PE32+ Executable
