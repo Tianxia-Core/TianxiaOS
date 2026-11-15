@@ -1,3 +1,4 @@
+# ffp: FFP-NIXOS-SUPER-HARNESS declarative nix
 { config, pkgs, lib, ... }:
 let
   txPython = pkgs.python3.withPackages (ps: with ps; [
@@ -103,7 +104,7 @@ in
      MOUSE_WHEEL_CLICK_COUNT=24
   '';
 
-  # System-wide Flat 1:1 Raw Acceleration Profile for Redragon Griffin Ultra M602U-KS
+  # System-wide Input Profiles: Redragon M602U-KS, Logitech Lightspeed, and Dell Latitude 5591 ALPS DualPoint
   environment.etc."xdg/kcminputrc".text = lib.mkForce ''
     [Mouse]
     AccelerationProfile=flat
@@ -114,11 +115,50 @@ in
     MiddleButtonEmulation=false
 
     [Libinput][6700][36863][Shinetek Technology USB Composite Device]
-    PointerAcceleration=0
-    PointerAccelerationProfile=1
-    NaturalScroll=false
-    ScrollFactor=1
+    Enabled=true
+    LeftHanded=false
     MiddleButtonEmulation=false
+    NaturalScroll=false
+    PointerAcceleration=0.000
+    PointerAccelerationProfile=1
+    ScrollFactor=1.0
+
+    [Libinput][1133][50493][Logitech USB Receiver Mouse]
+    Enabled=true
+    LeftHanded=false
+    MiddleButtonEmulation=false
+    NaturalScroll=false
+    PointerAcceleration=0.000
+    PointerAccelerationProfile=1
+    ScrollFactor=1.0
+
+    [Libinput][1102][4639][DELL0819:00 044E:121F Touchpad]
+    ClickMethod=2
+    DisableEventsOnExternalMouse=false
+    DisableWhileTyping=true
+    Enabled=true
+    LeftHanded=false
+    LmrTapButtonMap=false
+    MiddleButtonEmulation=true
+    NaturalScroll=true
+    PointerAcceleration=0.200
+    PointerAccelerationProfile=2
+    ScrollFactor=1.0
+    ScrollMethod=1
+    TapAndDrag=true
+    TapDragLock=false
+    TapToClick=true
+
+    [Libinput][1102][4639][DELL0819:00 044E:121F Mouse]
+    Enabled=true
+    LeftHanded=false
+    MiddleButtonEmulation=true
+    NaturalScroll=false
+    PointerAcceleration=0.200
+    PointerAccelerationProfile=2
+    ScrollButton=274
+    ScrollFactor=1.0
+    ScrollMethod=4
   '';
 
   # Bind KWin Wayland directly to Intel UHD 630 on card1
@@ -194,19 +234,20 @@ in
     ACTION=="add", SUBSYSTEM=="platform", KERNEL=="i8042", ATTR{power/wakeup}="enabled"
     ACTION=="add", SUBSYSTEM=="i2c", ATTR{power/wakeup}="enabled"
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xhci_hcd", ATTR{power/wakeup}="enabled"
-    # Maximize backlight on Intel UHD 630 when driver loads
-    SUBSYSTEM=="backlight", KERNEL=="intel_backlight", ATTR{brightness}="120000"
+    # Grant video-group control over screen & keyboard backlights on add/change (never override user brightness!)
+    ACTION=="add|change", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod 0664 /sys/class/backlight/%k/brightness"
+    ACTION=="add|change", SUBSYSTEM=="leds", KERNEL=="*kbd_backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod 0664 /sys/class/leds/%k/brightness"
   '';
 
-  # Persistent Wakeup and Display Luminance Enforcer on boot and post-resume
+  # Persistent Wakeup and Unblank Safeguard on boot and post-resume (preserves non-zero user brightness)
   systemd.services.tianxia-power-wakeup = {
-    description = "Tianxia Persistent Wakeup and Display Luminance Enforcer";
+    description = "Tianxia Persistent Wakeup and Display Unblank Safeguard";
     wantedBy = [ "multi-user.target" "post-resume.target" ];
     after = [ "systemd-udev-settle.service" ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.bash}/bin/bash -c 'for w in /sys/bus/usb/devices/*/power/wakeup /sys/class/input/input*/device/power/wakeup /sys/bus/i2c/devices/*/power/wakeup /sys/devices/platform/i8042/power/wakeup; do [ -f \"$w\" ] && echo enabled > \"$w\" 2>/dev/null || true; done; if [ -f /sys/class/backlight/intel_backlight/max_brightness ]; then cat /sys/class/backlight/intel_backlight/max_brightness > /sys/class/backlight/intel_backlight/brightness 2>/dev/null || true; fi'";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'for w in /sys/bus/usb/devices/*/power/wakeup /sys/class/input/input*/device/power/wakeup /sys/bus/i2c/devices/*/power/wakeup /sys/devices/platform/i8042/power/wakeup; do [ -f \"$w\" ] && echo enabled > \"$w\" 2>/dev/null || true; done; if [ -f /sys/class/backlight/intel_backlight/brightness ]; then echo 0 > /sys/class/backlight/intel_backlight/bl_power 2>/dev/null || true; cur=$(cat /sys/class/backlight/intel_backlight/brightness 2>/dev/null || echo 0); max=$(cat /sys/class/backlight/intel_backlight/max_brightness 2>/dev/null || echo 120000); if [ \"\${cur:-0}\" -le 0 ]; then echo $(( max * 80 / 100 )) > /sys/class/backlight/intel_backlight/brightness 2>/dev/null || true; fi; fi'";
     };
   };
 

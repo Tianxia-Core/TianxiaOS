@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./modules/tianxia-autologin.nix ./modules/tianxia-super-harness.nix ./modules/tianxia-desktop-ui.nix
+  imports = [ ./modules/tianxia-autologin.nix ./modules/tianxia-super-harness.nix ./modules/tianxia-desktop-ui.nix ./modules/tianxia-kde-brand.nix ./modules/tianxia-hardware-input-backlight.nix
     ./embed-service.nix
     ./tianxia-services.nix
     ./ncm-service.nix

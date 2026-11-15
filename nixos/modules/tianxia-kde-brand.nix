@@ -5,17 +5,16 @@
 let
   tianxiaPlymouthPkg = pkgs.runCommand "tianxiaos-plymouth-theme" {} ''
     mkdir -p $out/share/plymouth/themes/tianxiaos
-    if [ -d /var/lib/tianxia/brand-theme/plymouth/tianxiaos ]; then
-      cp -r /var/lib/tianxia/brand-theme/plymouth/tianxiaos/* $out/share/plymouth/themes/tianxiaos/
-    fi
+    cp -r ${../src/plymouth}/* $out/share/plymouth/themes/tianxiaos/
+    chmod -R u+w $out/share/plymouth/themes/tianxiaos
     substituteInPlace $out/share/plymouth/themes/tianxiaos/tianxiaos.plymouth \
       --replace-quiet "/etc/plymouth/themes/tianxiaos" "$out/share/plymouth/themes/tianxiaos" || true
   '';
 in
 {
   # 1. Sovereign OS Identity (/etc/os-release + KDE About This System)
-  system.nixos.distroName = lib.mkDefault "tianxiaOS";
-  system.nixos.label = lib.mkDefault "Crownforge";
+  system.nixos.distroName = "tianxiaOS";
+  system.nixos.label = "Crownforge";
 
   environment.etc."xdg/kcm-about-distrorc".text = ''
     [General]
