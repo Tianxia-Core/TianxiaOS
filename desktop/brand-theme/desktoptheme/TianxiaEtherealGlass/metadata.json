@@ -1,0 +1,18 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "RASA-X-MACHINA"
+            }
+        ],
+        "Category": "Plasma Theme",
+        "Description": "Ethereal Glass on Deep Space Plasma 6 Shell Theme matching rasaxmachina.com",
+        "EnabledByDefault": true,
+        "Id": "TianxiaEtherealGlass",
+        "License": "LicenseRef-Proprietary",
+        "Name": "RASA-X-MACHINA · tianxiaOS Ethereal Glass",
+        "Version": "8.7.0",
+        "Website": "https://rasaxmachina.com"
+    },
+    "X-Plasma-API": "5.0"
+}

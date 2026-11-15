@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "RASA-X-MACHINA"
+            }
+        ],
+        "Description": "RASA-X-MACHINA · tianxiaOS Ethereal Glass Session & Boot Splash",
+        "Id": "com.rasaxmachina.tianxiaos.splash",
+        "License": "LicenseRef-Proprietary",
+        "Name": "RASA-X-MACHINA · tianxiaOS",
+        "Website": "https://rasaxmachina.com"
+    },
+    "X-Plasma-APIVersion": "2"
+}

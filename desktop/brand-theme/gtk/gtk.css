@@ -1,0 +1,90 @@
+/* ffp: FFP-GTK-ETHEREAL-CSS frontend css */
+@define-color window_bg_color #08080c;
+@define-color window_fg_color #f1f5f9;
+@define-color view_bg_color #050509;
+@define-color view_fg_color #f1f5f9;
+@define-color headerbar_bg_color #0a0a14;
+@define-color headerbar_fg_color #f1f5f9;
+@define-color headerbar_backdrop_color #07070c;
+@define-color card_bg_color #0d0d1a;
+@define-color card_fg_color #f1f5f9;
+@define-color popover_bg_color #0c0c18;
+@define-color popover_fg_color #f1f5f9;
+@define-color dialog_bg_color #0a0a14;
+@define-color dialog_fg_color #f1f5f9;
+@define-color accent_bg_color #7c5cff;
+@define-color accent_fg_color #ffffff;
+@define-color accent_color #a855f7;
+
+window, .background {
+    background-color: #08080c;
+    color: #f1f5f9;
+}
+
+headerbar {
+    background-image: linear-gradient(180deg, #100d22 0%, #0a0a14 100%);
+    color: #f1f5f9;
+    border-bottom: 1px solid rgba(124, 92, 255, 0.42);
+}
+
+headerbar .title {
+    color: #f8fafc;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+}
+
+headerbar button {
+    background-color: rgba(124, 92, 255, 0.14);
+    color: #e2e8f0;
+    border: 1px solid rgba(124, 92, 255, 0.34);
+    border-radius: 10px;
+}
+
+headerbar button:hover {
+    background-color: rgba(124, 92, 255, 0.28);
+    color: #ffffff;
+}
+
+button.suggested-action {
+    background-image: linear-gradient(120deg, #7c5cff 0%, #a855f7 55%, #22d3ee 100%);
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+}
+
+preferencesgroup > box > label.title,
+.heading {
+    color: #c084fc;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+}
+
+preferencesgroup > box > label.description,
+.dim-label,
+row .subtitle {
+    color: #94a3b8;
+}
+
+list.boxed-list,
+.card {
+    background-color: #0c0c18;
+    color: #f1f5f9;
+    border: 1px solid rgba(124, 92, 255, 0.24);
+    border-radius: 14px;
+}
+
+row {
+    color: #f1f5f9;
+}
+
+row .title {
+    color: #f8fafc;
+    font-weight: 600;
+}
+
+entry {
+    background-color: #06060c;
+    color: #22d3ee;
+    border: 1px solid rgba(124, 92, 255, 0.38);
+    border-radius: 10px;
+}

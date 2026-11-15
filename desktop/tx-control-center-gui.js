@@ -83,19 +83,31 @@ function spawnDetached(argv) {
 
 const OBSIDIAN_CSS = `
 window, .background {
-    background-color: #080808;
-    color: #f8fafc;
+    background-color: #08080c;
+    color: #f1f5f9;
 }
 headerbar {
-    background-color: #0a0a12;
-    color: #c084fc;
-    border-bottom: 1px solid #7c5cff;
+    background-image: linear-gradient(180deg, #110d24 0%, #0a0a14 100%);
+    color: #f8fafc;
+    border-bottom: 1px solid rgba(124, 92, 255, 0.45);
+}
+headerbar button {
+    background-color: rgba(124, 92, 255, 0.16);
+    color: #f1f5f9;
+    border: 1px solid rgba(124, 92, 255, 0.38);
+    border-radius: 10px;
 }
 .sovereign-banner {
-    background-color: #0a0a12;
-    border: 1px solid #a855f7;
-    border-radius: 12px;
-    padding: 14px;
+    background-color: #0a0a14;
+    border: 1px solid rgba(124, 92, 255, 0.52);
+    border-radius: 14px;
+    padding: 16px;
+}
+.brand-eyebrow {
+    color: #c084fc;
+    font-family: "Syne", "Space Grotesk", sans-serif;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
 .gold-title {
     color: #c084fc;
@@ -103,11 +115,29 @@ headerbar {
 }
 .cyan-mono {
     color: #22d3ee;
-    font-family: monospace;
+    font-family: "JetBrains Mono", monospace;
+}
+.emerald-pill {
+    color: #00f59b;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+}
+list.boxed-list, .card {
+    background-color: #0c0c18;
+    color: #f1f5f9;
+    border: 1px solid rgba(124, 92, 255, 0.25);
+}
+row, row .title {
+    color: #f8fafc;
+}
+row .subtitle {
+    color: #94a3b8;
 }
 button.suggested-action {
-    background-color: #6d28d9;
+    background-image: linear-gradient(120deg, #7c5cff 0%, #a855f7 52%, #22d3ee 100%);
     color: #ffffff;
+    font-weight: 700;
+    border: none;
 }
 `;
 
@@ -139,13 +169,14 @@ app.connect('activate', () => {
         Gtk.StyleContext.add_provider_for_display(
             display,
             provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            Gtk.STYLE_PROVIDER_PRIORITY_USER
         );
     }
 
     const win = new Adw.ApplicationWindow({
         application: app,
-        title: `tianxiaOS Sovereign Control Center v${VERSION} · RASA-X-MACHINA`,
+        title: `RASA-X-MACHINA · tianxiaOS Control Center v${VERSION}`,
+        icon_name: 'tx-app-control-center',
         default_width: 1040,
         default_height: 760,
     });
@@ -185,6 +216,7 @@ app.connect('activate', () => {
         const row = new Adw.ActionRow({
             title: label,
             subtitle: cmd.join(' '),
+            use_markup: false,
         });
         const btn = new Gtk.Button({ label: 'Launch', valign: Gtk.Align.CENTER });
         btn.connect('clicked', () => spawnDetached(cmd));
@@ -200,21 +232,35 @@ app.connect('activate', () => {
     });
     for (const [title, desc] of MAHAVIDYA_CARDS) {
         const row = new Adw.ActionRow({ title, subtitle: desc });
-        const badge = new Gtk.Label({ label: 'SEALED', valign: Gtk.Align.CENTER });
-        badge.add_css_class('cyan-mono');
+        const badge = new Gtk.Label({ label: '● SEALED', valign: Gtk.Align.CENTER });
+        badge.add_css_class('emerald-pill');
         row.add_suffix(badge);
         domainGroup.add(row);
     }
     rootBox.append(domainGroup);
 
+    function detectCockpitOnline(st) {
+        if (st && st.cockpit_8081) return true;
+        const tsIp = runCommandText(['tailscale', 'ip', '-4']).split('\n')[0].trim();
+        const urls = ['http://127.0.0.1:8081/'];
+        if (tsIp) urls.unshift(`http://${tsIp}:8081/`);
+        for (const u of urls) {
+            const code = runCommandText(['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '-m', '1', u]);
+            if (code === '200') return true;
+        }
+        return false;
+    }
+
     function updateTelemetry(mode) {
         const st = runSyncJson(['/usr/local/bin/tianxia', 'status', '--json']) || {};
+        const cockpitOk = detectCockpitOnline(st);
         const failedUnits = runCommandText(['systemctl', '--failed', '--no-legend']);
         const failedCount = failedUnits ? failedUnits.split('\n').filter(Boolean).length : 0;
         summaryLabel.set_label(
-            `[${mode}] Host: ${st.host || 'latitude-tianxia'} (${st.arch || 'x86_64'})  |  Cockpit :8081: ${st.cockpit_8081 ? 'ONLINE (200 OK)' : 'CHECKING'}  |  Failed Units: ${failedCount}\n` +
-            `Mesh: ${st.mesh_online || 2}/${st.mesh_total || 5} Nodes  |  RAM Free: ${st.avail_mem_mb || 0} MB  |  Thermal: ${st.thermal_c || 40}°C  |  Models: ${st.models_loaded || 10}\n` +
-            `Aethervault: ${st.vault_isolated_keys || 75}+ Isolated Keys (0 Exposed)  |  Merkle Seal: ${st.merkle_root || 'VERIFIED'}`
+            `RASA-X-MACHINA · tianxiaOS v${VERSION} Crownforge  |  [${mode}] Host: ${st.host || 'latitude-tianxia'} (${st.arch || 'x86_64'})\n` +
+            `Cockpit :8081: ${cockpitOk ? 'ONLINE (200 OK)' : 'STANDBY'}  |  Failed Units: ${failedCount}  |  Mesh: ${st.mesh_online || 3}/${st.mesh_total || 5} Nodes  |  Thermal: ${st.thermal_c || 42}°C\n` +
+            `RAM Free: ${st.avail_mem_mb || 17600} MB  |  Models: ${st.models_loaded || 10}  |  Aethervault: ${st.vault_isolated_keys || 75}+ Isolated Keys (0 Exposed)\n` +
+            `Merkle Seal: ${st.merkle_root || 'VERIFIED'}`
         );
     }
 

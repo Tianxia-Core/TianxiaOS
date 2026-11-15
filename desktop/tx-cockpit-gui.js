@@ -9,7 +9,33 @@ import Gtk from 'gi://Gtk?version=4.0';
 import Adw from 'gi://Adw?version=1';
 import System from 'system';
 
-const COCKPIT_URL = GLib.getenv('TX_COCKPIT_URL') || 'http://127.0.0.1:8081';
+function resolveCockpitUrl() {
+    const envUrl = GLib.getenv('TX_COCKPIT_URL');
+    if (envUrl) return envUrl;
+    const candidates = ['http://127.0.0.1:8081'];
+    try {
+        const ts = Gio.Subprocess.new(
+            ['tailscale', 'ip', '-4'],
+            Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+        );
+        const [, out] = ts.communicate_utf8(null, null);
+        const ip = (out || '').split('\n')[0].trim();
+        if (ip) candidates.unshift(`http://${ip}:8081`);
+    } catch (_e) {}
+    for (const url of candidates) {
+        try {
+            const p = Gio.Subprocess.new(
+                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '-m', '1', `${url}/`],
+                Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+            );
+            const [, code] = p.communicate_utf8(null, null);
+            if ((code || '').trim() === '200') return url;
+        } catch (_e) {}
+    }
+    return candidates[0];
+}
+
+const COCKPIT_URL = resolveCockpitUrl();
 
 function probeCockpitHttp() {
     try {
@@ -54,7 +80,10 @@ if (browserBin && !args.includes('--native')) {
         Gio.Subprocess.new(
             [
                 browserBin,
-                '--ozone-platform-hint=auto',
+                '--no-first-run',
+                '--no-default-browser-check',
+                '--password-store=basic',
+                '--ozone-platform=wayland',
                 `--app=${COCKPIT_URL}`,
                 '--class=TianxiaCockpitPWA',
             ],

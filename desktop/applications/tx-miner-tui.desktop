@@ -4,8 +4,8 @@ Type=Application
 Name=tianxiaOS Opportunity Miner TUI
 Comment=SFI Priority Matrix (Rank=P+C+A+E+F) & B2B Vacancy-to-Sprint Pipeline
 Exec=foot -T "tianxiaOS Opportunity Miner TUI" /usr/local/bin/tianxia tui --app miner
-Icon=utilities-terminal
+Icon=tx-app-miner
 Terminal=false
 Categories=Office;Finance;ConsoleOnly;
-StartupWMClass=foot
+StartupWMClass=tianxiaos-terminal
 Keywords=Tianxia;Sovereign;RasaXMachina;Security;Mesh;TUI;GUI;

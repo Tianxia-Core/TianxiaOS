@@ -2,9 +2,9 @@
 Version=1.5
 Type=Application
 Name=tianxiaOS Control Center
-Comment=14 Mahavidya Domains, Build Law Seal, Systemd Health & 1-Click App Matrix
+Comment=RASA-X-MACHINA · 14 Mahavidya Domains, Build Law Seal & 1-Click Sovereign Matrix
 Exec=/usr/local/bin/tx-control-center-gui
-Icon=preferences-system
+Icon=tx-app-control-center
 Terminal=false
 Categories=System;Settings;Utility;
 StartupWMClass=com.rasaxmachina.TianxiaControlCenter

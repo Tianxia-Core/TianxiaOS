@@ -1,0 +1,9 @@
+# ffp: FFP-BOOT-PLYMOUTH-DESC declarative ini
+[Plymouth Theme]
+Name=RASA-X-MACHINA · tianxiaOS Ethereal Boot
+Description=Sovereign Polyglot AI Operating Substrate Boot Splash (Ethereal Glass on Deep Space)
+ModuleName=script
+
+[script]
+ImageDir=/etc/plymouth/themes/tianxiaos
+ScriptFile=/etc/plymouth/themes/tianxiaos/tianxiaos.script

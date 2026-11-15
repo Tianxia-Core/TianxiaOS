@@ -58,9 +58,9 @@ generate_all_desktop_files() {
 
     write_desktop_entry "${dir}/tx-control-center-gui.desktop" \
         "tianxiaOS Control Center" \
-        "14 Mahavidya Domains, Build Law Seal, Systemd Health & 1-Click App Matrix" \
+        "RASA-X-MACHINA · 14 Mahavidya Domains, Build Law Seal & 1-Click Sovereign Matrix" \
         "/usr/local/bin/tx-control-center-gui" \
-        "preferences-system" \
+        "tx-app-control-center" \
         "System;Settings;Utility;" \
         "com.rasaxmachina.TianxiaControlCenter"
 
@@ -68,7 +68,7 @@ generate_all_desktop_files() {
         "tianxiaOS Aethervault & GDPR++" \
         "Zero-Knowledge Vault Health, Live SecretShield Scrubber & <50ms Cryptoshred Verifier" \
         "/usr/local/bin/tx-vault-gui" \
-        "security-high" \
+        "tx-app-vault" \
         "System;Security;" \
         "com.rasaxmachina.TianxiaVault"
 
@@ -76,15 +76,15 @@ generate_all_desktop_files() {
         "tianxiaOS Mesh & Murua Topology" \
         "5-Node Sovereign Mesh, Rosenpass PQ Transit, Thermal Readout & Murua Tracer" \
         "/usr/local/bin/tx-topology-gui" \
-        "network-workgroup" \
+        "tx-app-topology" \
         "Network;System;Monitor;" \
         "com.rasaxmachina.TianxiaTopology"
 
     write_desktop_entry "${dir}/tx-cockpit-gui.desktop" \
         "tianxiaOS Sovereign Cockpit PWA" \
-        "Dedicated Sovereign Cockpit (:8081) Wayland Chromeless Dashboard" \
+        "RASA-X-MACHINA · Dedicated Sovereign Cockpit (:8081) Wayland Chromeless Dashboard" \
         "/usr/local/bin/tx-cockpit-gui" \
-        "web-browser" \
+        "tx-app-cockpit" \
         "Network;System;" \
         "TianxiaCockpitPWA"
 
@@ -92,73 +92,73 @@ generate_all_desktop_files() {
         "tianxiaOS Sovereign Suite (9-App TUI)" \
         "Full 9-Tab Raw-Terminal Sovereign TUI (Overview, Scour, Miner, Ledger, DSS-14, Models, Tracer)" \
         "foot -T \"tianxiaOS Sovereign Suite (9-App TUI)\" /usr/local/bin/tianxia tui --app overview" \
-        "utilities-terminal" \
+        "tx-app-tui" \
         "System;Monitor;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-scour-tui.desktop" \
         "tianxiaOS Scour Intelligence TUI" \
         "Real-Time ArXiv, GitHub, DeFiLlama, Threat & x402 Merged Signal Feed" \
         "foot -T \"tianxiaOS Scour Intelligence TUI\" /usr/local/bin/tianxia tui --app scour" \
-        "utilities-terminal" \
+        "tx-app-scour" \
         "Network;System;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-miner-tui.desktop" \
         "tianxiaOS Opportunity Miner TUI" \
         "SFI Priority Matrix (Rank=P+C+A+E+F) & B2B Vacancy-to-Sprint Pipeline" \
         "foot -T \"tianxiaOS Opportunity Miner TUI\" /usr/local/bin/tianxia tui --app miner" \
-        "utilities-terminal" \
+        "tx-app-miner" \
         "Office;Finance;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-ledger-tui.desktop" \
         "tianxiaOS TetraLedger 4-Way TUI" \
         "4-Way Cryptographic Settlement (Payfac, Web3 Base L2, SQLite WAL, Open Banking)" \
         "foot -T \"tianxiaOS TetraLedger 4-Way TUI\" /usr/local/bin/tianxia tui --app ledger" \
-        "utilities-terminal" \
+        "tx-app-ledger" \
         "Finance;System;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-dss14-tui.desktop" \
         "tianxiaOS DSS-14.2 Domains TUI" \
         "14 Mahavidya Domains & Dasavidyayana NL PARAMASIVA Release Gate" \
         "foot -T \"tianxiaOS DSS-14.2 Domains TUI\" /usr/local/bin/tianxia tui --app dss14" \
-        "utilities-terminal" \
+        "tx-app-dss14" \
         "System;Security;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-etamanga-tui.desktop" \
         "tianxiaOS Etamanga & x402 TUI" \
         "Base L2 Efemera (EFM) Contracts, x402 Micropayment Gateway & Multi-Fiat Compliance" \
         "foot -T \"tianxiaOS Etamanga & x402 TUI\" /usr/local/bin/tianxia tui --app etamanga" \
-        "utilities-terminal" \
+        "tx-app-etamanga" \
         "Finance;Network;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-fortress-tui.desktop" \
         "tianxiaOS Faery Fortress TUI" \
         "Cgroup v2 Containment, Wayland virtwl Gate, Rosenpass PQ & SecretShield Posture" \
         "foot -T \"tianxiaOS Faery Fortress TUI\" /usr/local/bin/tianxia tui --app fortress" \
-        "utilities-terminal" \
+        "tx-app-fortress" \
         "Security;System;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-models-tui.desktop" \
         "tianxiaOS Sovereign LLM Swarm TUI" \
         "Constructal Sine-Meander Router & 10 Local Quantized Sovereign Models" \
         "foot -T \"tianxiaOS Sovereign LLM Swarm TUI\" /usr/local/bin/tianxia tui --app models" \
-        "utilities-terminal" \
+        "tx-app-models" \
         "Development;Science;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 
     write_desktop_entry "${dir}/tx-tracer-tui.desktop" \
         "tianxiaOS Murua Consignment TUI" \
         "Bayesian Untracked Consignment Tracer & UPU 2IPD Corridor Engine" \
         "foot -T \"tianxiaOS Murua Consignment TUI\" /usr/local/bin/tianxia tui --app tracer" \
-        "utilities-terminal" \
+        "tx-app-tracer" \
         "Network;Utility;ConsoleOnly;" \
-        "foot"
+        "tianxiaos-terminal"
 }
 
 generate_all_desktop_files "${LOCAL_APPS_DIR}"

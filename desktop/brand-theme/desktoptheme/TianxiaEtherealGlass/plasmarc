@@ -1,0 +1,16 @@
+# ffp: FFP-PLASMA-THEME-FALLBACK declarative ini
+[Desktop Entry]
+Name=RASA-X-MACHINA · tianxiaOS Ethereal Glass
+Comment=Ethereal Glass on Deep Space
+
+[Settings]
+FallbackTheme=breeze-dark
+
+[ContrastEffect]
+enabled=true
+contrast=0.35
+intensity=1.15
+saturation=1.35
+
+[BlurBehindEffect]
+enabled=true

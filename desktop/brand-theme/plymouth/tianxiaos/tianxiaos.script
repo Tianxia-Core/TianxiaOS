@@ -1,0 +1,66 @@
+// ffp: FFP-BOOT-PLYMOUTH-SCRIPT frontend plymouth
+Window.SetBackgroundTopColor(0.020, 0.020, 0.031);
+Window.SetBackgroundBottomColor(0.020, 0.020, 0.035);
+
+screen_w = Window.GetWidth();
+screen_h = Window.GetHeight();
+screen_x = Window.GetX();
+screen_y = Window.GetY();
+
+bg_raw = Image("background.png");
+bg_scaled = bg_raw.Scale(screen_w, screen_h);
+bg_sprite = Sprite(bg_scaled);
+bg_sprite.SetX(screen_x);
+bg_sprite.SetY(screen_y);
+bg_sprite.SetZ(-100);
+
+logo_img = Image("logo.png");
+logo_sprite = Sprite(logo_img);
+logo_sprite.SetX(screen_x + (screen_w - logo_img.GetWidth()) / 2);
+logo_sprite.SetY(screen_y + (screen_h * 0.43) - (logo_img.GetHeight() / 2));
+logo_sprite.SetZ(10);
+
+progress_box.image = Image("progress_box.png");
+progress_box.sprite = Sprite(progress_box.image);
+progress_box.x = screen_x + (screen_w - progress_box.image.GetWidth()) / 2;
+progress_box.y = screen_y + Math.Int(screen_h * 0.70);
+progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 12);
+
+progress_bar.original_image = Image("progress_bar.png");
+progress_bar.sprite = Sprite();
+progress_bar.sprite.SetPosition(progress_box.x, progress_box.y, 14);
+
+badge_img = Image("status_badge.png");
+badge_sprite = Sprite(badge_img);
+badge_sprite.SetX(screen_x + (screen_w - badge_img.GetWidth()) / 2);
+badge_sprite.SetY(progress_box.y + 26);
+badge_sprite.SetZ(12);
+
+tick = 0;
+fun refresh_callback() {
+    tick++;
+    pulse = 0.88 + 0.12 * Math.Sin(tick / 18.0);
+    logo_sprite.SetOpacity(pulse);
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+fun boot_progress_cb(duration, progress) {
+    clamped = progress;
+    if (clamped < 0.06) clamped = 0.06;
+    if (clamped > 1.0) clamped = 1.0;
+    target_w = Math.Int(progress_bar.original_image.GetWidth() * clamped);
+    if (target_w > 0) {
+        progress_bar.image = progress_bar.original_image.Scale(target_w, progress_bar.original_image.GetHeight());
+        progress_bar.sprite.SetImage(progress_bar.image);
+    }
+}
+Plymouth.SetBootProgressFunction(boot_progress_cb);
+
+msg_sprite = Sprite();
+msg_sprite.SetPosition(screen_x + 32, screen_y + screen_h - 42, 20);
+fun message_callback(text) {
+    msg_img = Image.Text(text, 0.58, 0.64, 0.72);
+    msg_sprite.SetImage(msg_img);
+    msg_sprite.SetX(screen_x + (screen_w - msg_img.GetWidth()) / 2);
+}
+Plymouth.SetMessageFunction(message_callback);

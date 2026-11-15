@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# ffp: FFP-OS-BANNER content-pipeline bash
+# RASA-X-MACHINA · tianxiaOS Sovereign System Fetch & Substrate Crest (SLECO-SO++)
+set +e
+set +u
+
+HOST_STR="${HOSTNAME:-$(uname -n 2>/dev/null || printf 'latitude-tianxia')}"
+KERNEL_STR="$(uname -sr 2>/dev/null || printf 'Linux')"
+UPTIME_STR="$(uptime -p 2>/dev/null || printf 'up active')"
+UPTIME_STR="${UPTIME_STR#up }"
+
+CPU_STR="x86_64 Sovereign Node"
+if [ -r /proc/cpuinfo ]; then
+    while IFS=':' read -r k v; do
+        case "${k}" in
+            "model name"*)
+                CPU_STR="${v# }"
+                CPU_STR="${CPU_STR//(R)/}"
+                CPU_STR="${CPU_STR//(TM)/}"
+                CPU_STR="${CPU_STR%% @*}"
+                break
+                ;;
+        esac
+    done < /proc/cpuinfo
+fi
+
+MEM_STR="Active"
+if [ -r /proc/meminfo ]; then
+    MEM_TOTAL_KB=0
+    MEM_AVAIL_KB=0
+    while read -r mk mv _; do
+        case "${mk}" in
+            MemTotal:) MEM_TOTAL_KB="${mv}" ;;
+            MemAvailable:) MEM_AVAIL_KB="${mv}" ;;
+        esac
+    done < /proc/meminfo
+    if [ "${MEM_TOTAL_KB}" -gt 0 ] 2>/dev/null; then
+        MEM_USED_MB=$(( (MEM_TOTAL_KB - MEM_AVAIL_KB) / 1024 ))
+        MEM_TOT_MB=$(( MEM_TOTAL_KB / 1024 ))
+        MEM_STR="${MEM_USED_MB} MiB / ${MEM_TOT_MB} MiB"
+    fi
+fi
+
+V1=$'\033[38;2;124;92;255m'
+V2=$'\033[38;2;168;85;247m'
+V3=$'\033[38;2;192;132;252m'
+CY=$'\033[38;2;34;211;238m'
+EM=$'\033[38;2;0;245;155m'
+INK=$'\033[38;2;241;245;249m'
+DIM=$'\033[38;2;148;163;184m'
+BD=$'\033[1m'
+RS=$'\033[0m'
+
+printf '\n'
+printf "  ${V1}╭──────────────────╮${RS}   ${BD}${V1}RASA${V2}-X-${CY}MACHINA${RS} ${DIM}·${RS} ${BD}${V3}tianxiaOS${RS} ${EM}v8.7.0 Crownforge${RS}\n"
+printf "  ${V1}│${RS}  ${V2}╭────────────╮${RS}  ${V1}│${RS}   ${DIM}──────────────────────────────────────────────────────────${RS}\n"
+printf "  ${V2}│${RS}  ${V2}│${RS}            ${CY}│${RS}  ${V2}│${RS}   ${V3}OS Substrate${RS}   ${DIM}:${RS} ${INK}tianxiaOS 8.7.0 (NixOS 26.11 Wayland)${RS}\n"
+printf "  ${V2}│${RS}  ${V3}│${RS}   ${BD}${V3}tx${CY}OS${RS}     ${CY}│${RS}  ${CY}│${RS}   ${V3}Host Node${RS}      ${DIM}:${RS} ${INK}${HOST_STR}${RS} ${EM}[VERITAS SEALED]${RS}\n"
+printf "  ${V2}│${RS}  ${V3}│${RS}   ${V1}▀▀▀▀${RS}     ${CY}│${RS}  ${CY}│${RS}   ${V3}Desktop Shell${RS}  ${DIM}:${RS} ${INK}KDE Plasma 6.7.4 · Ethereal Glass${RS}\n"
+printf "  ${CY}│${RS}  ${CY}╰────────────╯${RS}  ${CY}│${RS}   ${V3}Kernel & CPU${RS}   ${DIM}:${RS} ${INK}${KERNEL_STR} · ${CPU_STR}${RS}\n"
+printf "  ${CY}╰──────────────────╯${RS}   ${V3}Memory & Up${RS}    ${DIM}:${RS} ${INK}${MEM_STR} · ${UPTIME_STR}${RS}\n"
+printf "                         ${V3}Zero-Trust PQ${RS}  ${DIM}:${RS} ${CY}Rosenpass McEliece+Kyber${RS} ${DIM}+${RS} ${EM}Aethervault (75+ Keys)${RS}\n"
+printf "                         ${V3}Build Law Gate${RS} ${DIM}:${RS} ${EM}● DSS-14.2 PARAMASIVA (14/14 Mahāvidyā Sealed)${RS}\n"
+printf "                         ${V1}███${RS} ${V2}███${RS} ${V3}███${RS} ${CY}███${RS} ${EM}███${RS}  ${DIM}https://rasaxmachina.com${RS}\n\n"
