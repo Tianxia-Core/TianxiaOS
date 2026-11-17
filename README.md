@@ -15,8 +15,30 @@
 > **Production Portal (28+ Polyglot Web Apps):** [https://rasaxmachina.com](https://rasaxmachina.com) · **Official Press, Media & Brand Kit:** [rasaxmachina.com/press](https://rasaxmachina.com/press) ([Local `./brand-kit/`](./brand-kit/README.md)) · **Estonia Committee Dossiers:** [rasaxmachina.com/estonia](https://rasaxmachina.com/estonia) · **Cockpit GUI:** [rasaxmachina.com/cockpit](https://rasaxmachina.com/cockpit) · **Reality Ledger:** [rasaxmachina.com/ledger](https://rasaxmachina.com/ledger)
 > **Public Signed Release Mirror:** [`github.com/Tianxia-Core/tianxiaos-releases`](https://github.com/Tianxia-Core/tianxiaos-releases/releases/tag/v8.7.0) · **Enterprise Governance:** [SECURITY.md](SECURITY.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [GOVERNANCE.md](GOVERNANCE.md) · [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) · [SUPPORT.md](SUPPORT.md) · [CHANGELOG.md](CHANGELOG.md) · [CITATION.cff](CITATION.cff) · [LICENSE](LICENSE)
 
+<!-- BUILD_LAW_SHOWCASE_START -->
+
 ---
 
+## 🌍 In Plain English — What `TianxiaOS` Is & Why It Matters (Layman's Guide)
+
+- **The Everyday Problem:** Modern AI workflows run on fragile tangles of cloud scripts, Docker containers, and browser tabs that leak data, drift out of sync after updates, and rack up unpredictable cloud bills.
+- **How It Works (Without the Jargon):** `tianxiaOS` is a self-contained, reproducible operating system built on NixOS, Rust, C (AVX2), and OCaml. Every configuration is declared in one verifiable blueprint, security gates run in microseconds before untrusted actions execute, and user data is protected by sub-50-millisecond cryptographic erasure (`GDPR++`).
+- **Why It Is Different:** Unlike conventional Linux distributions bolted onto cloud AI APIs, `tianxiaOS` was engineered from the ground up under **[Build Law](https://github.com/Tianxia-Core/Build-Law)**—matching nine programming languages to the exact hardware tasks they do best.
+- **How It Benefits You:** Operators, enterprises, and privacy-conscious builders get deterministic rebuilds, hardware-isolated security, 4-surface parity (CLI, Web, 9-Tab TUI, and Wayland Desktop GUI), and near-zero marginal cloud overhead.
+- **How to Install & Use It in 60 Seconds:** Install the standalone signed CLI/TUI on any Linux, Windows, or Android device from **[`tianxiaos-releases`](https://github.com/Tianxia-Core/tianxiaos-releases/releases/latest)** (`dpkg -i`, `rpm -Uvh`, `.AppImage`, `nix run github:Tianxia-Core/tianxiaos-releases`, or `.exe`/`.apk`).
+
+---
+
+## 🏛️ Governed by [`Build Law`](https://github.com/Tianxia-Core/Build-Law) — Engineering Philosophy & Stakeholder Pathways
+
+This repository is a live production showcase of **[`Build Law`](https://github.com/Tianxia-Core/Build-Law)**—the open-source (`MIT`) **4-Pillar, 14-Gate Constitutional Engineering & `5.0×–8.8×` Token-Efficiency Standard** created by **[Collins Takem](https://rasaxmachina.com/collins)** (**RASA-X-MACHINA**):
+- **Developers & AI Builders:** Drop **[`Build Law`](https://github.com/Tianxia-Core/Build-Law)** into Claude Code, Cursor, OpenCode, VS Code (`.vsix`), GitHub Copilot, Windsurf, Cline, Aider, or any chat LLM in 60 seconds.
+- **CTOs & B2B Engineering Leaders:** Need similar `Rust`/`Go`/`Nix`/Security/FinOps rigor applied to your infrastructure? Scope a fixed-price **72-Hour `VRTTI` Architecture Sprint** at **[vrtti.rasaxmachina.com](https://vrtti.rasaxmachina.com)**.
+- **Investors, Researchers, Press & Executive Hiring Committees:** Inspect our cryptographic release proofs across **[`@Tianxia-Core`](https://github.com/Tianxia-Core)**, press assets at **[rasaxmachina.com/press](https://rasaxmachina.com/press)**, and founder dossier at **[rasaxmachina.com/collins](https://rasaxmachina.com/collins)**.
+
+<!-- BUILD_LAW_SHOWCASE_END -->
+
+---
 ## 0. 4-Surface Ecosystem Cohesion Matrix (100% Real-Time Sync)
 
 | Ecosystem Surface | Canonical Entry Point / Command | Active Architecture & Capabilities | Live Status |
@@ -72,7 +94,7 @@ Developed through sustained polyglot systems engineering, `tianxiaOS` operates *
 ### Two-Tranche Institutional Capital & Technical Summary
 | Parameter | Verified Specification |
 | :--- | :--- |
-| **Brand & Proposed Jurisdiction** | **Rasa-X-Machina** · Dealum #179423 Under Estonian Startup Committee Evaluation (*Välismaalaste seadus* § 100¹ · Proposed Entity upon Approval: **RASA-X-MACHINA OÜ**, Tallinn; €2,500 paid-in nominal share capital, 100% founder-owned) |
+| **Brand & Proposed Jurisdiction** | **Rasa-X-Machina** · Dealum #179423 Under Estonian Startup Committee Evaluation (*Välismaalaste seadus* VMS § 62⁴(2) & § 192 · Proposed Entity upon Approval: **RASA-X-MACHINA OÜ**, Tallinn; €2,500 paid-in nominal share capital, 100% founder-owned) |
 | **Tranche 1 (Tallinn Seed Round)** | **€350,000 EUR** at **€2,500,000 Pre-Money Valuation** (Tallinn OÜ incorporation, TalTech R&D hires, EU sovereign nodes) |
 | **Tranche 2 (Institutional Expansion)** | **€1.5M – €2.5M EUR** (Convertible Note / SAFE at **€10,000,000 Cap**; long-term post-scale target **€25M–€35M**) |
 | **Active Physical Mesh & Omni-Lattice** | **4/5 Physical Sovereign Mesh Nodes Active** (`latitude-tianxia`, `tianxia-relay`, `pixel8pro`, `poco-x5-pro-5g`) + **2,816 Virtualized Execution Cells** |
