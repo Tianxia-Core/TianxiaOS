@@ -80,7 +80,7 @@ trap cleanup_session EXIT INT TERM
 normalize_mission_payload() {
     cd "${WORKSPACE_ROOT}"
 
-    # Recover if 'mv /sdcard/Download/tianxia_kde_ui_super_harness.md missions'
+    # Recover if 'mv ./downloads/tianxia_kde_ui_super_harness.md missions'
     # created 'missions' as a flat file instead of a directory
     if [ -f "${WORKSPACE_ROOT}/missions" ] && [ ! -d "${WORKSPACE_ROOT}/missions" ]; then
         log_event "WARN" "Detected 'missions' as a flat file. Converting to missions/ directory..."
@@ -102,7 +102,7 @@ normalize_mission_payload() {
             "${WORKSPACE_ROOT}/${MISSION_NAME}" \
             "${HOME}/workspace/${MISSION_NAME}" \
             "${HOME}/workspace/tianxiaos_super_harness_master.md" \
-            "/sdcard/Download/tianxiaos_super_harness_master.md"; do
+            "./downloads/tianxiaos_super_harness_master.md"; do
             if [ -f "${candidate}" ]; then
                 cp -f "${candidate}" "${MISSION_FILE}"
                 log_event "INFO" "Copied mission payload from ${candidate} -> ${MISSION_FILE}"

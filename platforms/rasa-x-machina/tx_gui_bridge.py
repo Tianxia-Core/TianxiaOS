@@ -1512,7 +1512,7 @@ def _get_mesh_data() -> dict:
         {
             "id": "pixel",
             "name": "pixel8pro",
-            "ip": "100.73.220.60",
+            "ip": "127.0.0.1",
             "dns": "pixel8pro.tail7a45a7.ts.net",
             "role": "Mobile Sovereign Node & Orchestrator",
             "device": "Google Pixel 8 Pro (Tensor G3)",
@@ -1523,7 +1523,7 @@ def _get_mesh_data() -> dict:
         {
             "id": "poco",
             "name": "poco-x5-pro-5g",
-            "ip": "100.75.227.36",
+            "ip": "127.0.0.1",
             "dns": "poco-x5-pro-5g.tail7a45a7.ts.net",
             "role": "Mobile Auxiliary Mesh Worker",
             "device": "Poco X5 Pro 5G",
@@ -1534,7 +1534,7 @@ def _get_mesh_data() -> dict:
         {
             "id": "xps",
             "name": "xps13-tianxia",
-            "ip": "100.66.240.20",
+            "ip": "127.0.0.1",
             "dns": "xps13-tianxia.tail7a45a7.ts.net",
             "role": "Secondary Cluster Anchor (Deferred)",
             "device": "Dell XPS 13",
@@ -2426,9 +2426,9 @@ def _get_public_telemetry_radar() -> dict:
     nodes = {
         "latitude-tianxia": {"ip": "${TX_HUB_HOST:-127.0.0.1}", "status": "ONLINE", "role": "Primary Sovereign Cluster Anchor (NixOS 25.05)"},
         "tianxia-relay": {"ip": "10.0.99.254", "public_ip": "<TX_RELAY_IPV4>", "wg_ip": "10.0.99.254", "status": "ONLINE", "role": "Hetzner EU Edge Ingress, Rosenpass PQ & x402 Gateway"},
-        "pixel8pro": {"ip": "100.73.220.60", "status": "ONLINE", "role": "Mobile Sovereign Node & Tensor G3 Enclave"},
-        "poco-x5-pro-5g": {"ip": "100.75.227.36", "status": "ONLINE", "role": "Mobile Auxiliary Mesh Worker"},
-        "xps13-tianxia": {"ip": "100.66.240.20", "status": "DEFERRED", "role": "Secondary Cluster Anchor (Pending Hardware Reset)"},
+        "pixel8pro": {"ip": "127.0.0.1", "status": "ONLINE", "role": "Mobile Sovereign Node & Tensor G3 Enclave"},
+        "poco-x5-pro-5g": {"ip": "127.0.0.1", "status": "ONLINE", "role": "Mobile Auxiliary Mesh Worker"},
+        "xps13-tianxia": {"ip": "127.0.0.1", "status": "DEFERRED", "role": "Secondary Cluster Anchor (Pending Hardware Reset)"},
     }
 
     return {

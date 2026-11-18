@@ -45,7 +45,7 @@ fi
 
 if [ ! -s "${MISSION_FILE}" ]; then
   for candidate in \
-    "/sdcard/Download/tianxia_kde_ui_super_harness.md" \
+    "./downloads/tianxia_kde_ui_super_harness.md" \
     "${WORKSPACE_ROOT}/tianxia_kde_ui_super_harness.md" \
     "${HOME}/workspace/tianxia_kde_ui_super_harness.md" \
     "${MISSIONS_DIR}/.augmented_"*.md; do

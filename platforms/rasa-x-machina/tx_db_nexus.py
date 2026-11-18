@@ -116,7 +116,7 @@ MESH_NODES: List[Dict[str, Any]] = [
     {
         "node_id": "NODE-pixel8pro",
         "hostname": "pixel8pro",
-        "tailscale_ip": "100.73.220.60",
+        "tailscale_ip": "127.0.0.1",
         "role": "mobile_command_termux",
         "os": "Android 16 / Termux",
         "expected_online": True,
@@ -124,7 +124,7 @@ MESH_NODES: List[Dict[str, Any]] = [
     {
         "node_id": "NODE-poco-x5-pro-5g",
         "hostname": "poco-x5-pro-5g",
-        "tailscale_ip": "100.75.227.36",
+        "tailscale_ip": "127.0.0.1",
         "role": "mobile_mesh_sentinel",
         "os": "Android / Tailscale Mesh",
         "expected_online": True,
@@ -132,7 +132,7 @@ MESH_NODES: List[Dict[str, Any]] = [
     {
         "node_id": "NODE-xps13-tianxia",
         "hostname": "xps13-tianxia",
-        "tailscale_ip": "100.66.240.20",
+        "tailscale_ip": "127.0.0.1",
         "role": "deferred_cold_standby_laptop",
         "os": "Linux Standby Node (Deferred / Exponential Backoff)",
         "expected_online": False,

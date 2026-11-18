@@ -315,9 +315,9 @@ tianxiaos_arch_menu_system/
 | :--- | :--- | :--- | :--- | :--- |
 | `latitude-tianxia` | `10.0.99.2` | `<TX_LAN_IPV4>` / `10.0.99.2` | Primary Sovereign Cluster Anchor (NixOS 25.05, Hyprland on seat0 `eDP-1` + `DP-1`, WayVNC :5900/:5901, Broker, VirtWL Proxy, Cockpit PWA & Storefront :8081) | **Active & Healthy (1/5)** |
 | `tianxia-relay` | `10.0.99.254` | `<TX_RELAY_IPV4>` / `10.0.99.254` | European Sovereign Cloud Edge & Post-Quantum Relay (Hetzner Debian 13 Cloud x86_64, Caddy TLS Edge `:80/:443/:8080`, `x402.rasaxmachina.com`, WireGuard Hub `wg0`, `wstunnel :8443`, Unbound DNS Sinkhole, Tor `:9050`) | **Active & Healthy (2/5)** |
-| `pixel8pro` | `100.73.220.60` | Tailscale Exit Node | Mobile Sovereign Orchestrator Node (Termux workspace orchestrator, `google-agents-cli` ADC `TianxiaOS`, authenticated Chrome host for Dealum #179423) | **Active & Healthy (3/5)** |
-| `poco-x5-pro-5g` | `100.75.227.36` | Mesh Client | Mobile Auxiliary Sovereign Node (Mesh telemetry & edge verification client) | **Active & Healthy (4/5)** |
-| `xps13-tianxia` | `100.66.240.20` | `10.0.99.3` | Secondary Cluster Anchor (Hardware bootloop / pending battery disconnect) | **Offline — Deferred (5/5)** |
+| `pixel8pro` | `127.0.0.1` | Tailscale Exit Node | Mobile Sovereign Orchestrator Node (Termux workspace orchestrator, `google-agents-cli` ADC `TianxiaOS`, authenticated Chrome host for Dealum #179423) | **Active & Healthy (3/5)** |
+| `poco-x5-pro-5g` | `127.0.0.1` | Mesh Client | Mobile Auxiliary Sovereign Node (Mesh telemetry & edge verification client) | **Active & Healthy (4/5)** |
+| `xps13-tianxia` | `127.0.0.1` | `10.0.99.3` | Secondary Cluster Anchor (Hardware bootloop / pending battery disconnect) | **Offline — Deferred (5/5)** |
 
 ---
 

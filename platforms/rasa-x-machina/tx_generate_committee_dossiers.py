@@ -28,13 +28,13 @@ from xml.sax.saxutils import escape as xml_escape
 
 WORKSPACE = Path("${TX_WORKSPACE:-/var/lib/tianxia}")
 TIANXIA = WORKSPACE / "tianxia"
-LOGO_SRC = Path("/sdcard/Download/rasa_x_machina_logo.svg")
+LOGO_SRC = Path("./downloads/rasa_x_machina_logo.svg")
 OUT_DIRS = [
     TIANXIA / "docs" / "estonia_committee_packet",
     TIANXIA / "ui" / "dossier",
     WORKSPACE / "TianxiaOS" / "platforms" / "rasa-x-machina" / "docs" / "estonia_committee_packet",
     WORKSPACE / "TianxiaOS" / "platforms" / "rasa-x-machina" / "ui" / "dossier",
-    Path("/sdcard/Download/Estonia_Dealum_179423_Submission_Ready"),
+    Path("./downloads/Estonia_Dealum_179423_Submission_Ready"),
 ]
 SLIDES_PNG_OUT = Path("${TX_HOME:-/var/lib/tianxia}/.gemini/antigravity-cli/brain/a83391c9-32d2-43d2-b3b1-7de5fd36e19a/scratch/slides_1080p")
 X_ASSETS_DIR = TIANXIA / "docs" / "commercial" / "x_brand_assets"
@@ -556,7 +556,7 @@ DEALUM_GUIDE_MD = """# Dealum Application `#179423` — Zero-Data-Loss Surgical 
 ---
 
 ## All Ready-to-Upload Files Staged on Your Phone
-Every file below is already saved in `/sdcard/Download/Estonia_Dealum_179423_Submission_Ready/` on this Pixel 8 Pro (and mirrored live at `https://rasaxmachina.com/estonia#committee-dossiers`):
+Every file below is already saved in `./downloads/Estonia_Dealum_179423_Submission_Ready/` on this Pixel 8 Pro (and mirrored live at `https://rasaxmachina.com/estonia#committee-dossiers`):
 
 1. **`rasa_x_machina_logo.svg`** -> Upload in **Step 1 (Overview) → Company logo**
 2. **`Rasa-X-Machina_TianxiaOS_Pitch_Deck_2026.pdf`** (12-slide 16:9 Brand-Kit PDF, updated Frontline-to-Founder Slide 10) -> Upload in **Step 1 / Deck slot**
@@ -923,7 +923,7 @@ ls -la {remote_tmp}/*.pdf {remote_tmp}/slides_1080p/*.png | head -n 30
             if src.exists():
                 shutil.copyfile(src, dest_dir / fname)
 
-    dl_x = Path("/sdcard/Download/Estonia_Dealum_179423_Submission_Ready/X_Social_Brand_Kit")
+    dl_x = Path("./downloads/Estonia_Dealum_179423_Submission_Ready/X_Social_Brand_Kit")
     dl_x.mkdir(parents=True, exist_ok=True)
     for f in X_ASSETS_DIR.iterdir():
         if f.is_file():

@@ -47,9 +47,9 @@ def get_mesh_data():
         return peers
     except Exception:
         return [
-            {"host": "pixel8pro-tianxia", "ip": "100.73.220.60", "online": True, "os": "android"},
+            {"host": "pixel8pro-tianxia", "ip": "127.0.0.1", "online": True, "os": "android"},
             {"host": "pocox5pro-tianxia", "ip": "tailscale-mesh", "online": True, "os": "android"},
-            {"host": "xps13-tianxia", "ip": "100.66.240.20", "online": False, "os": "linux"}
+            {"host": "xps13-tianxia", "ip": "127.0.0.1", "online": False, "os": "linux"}
         ]
 
 # --- TUI ENGINES ---

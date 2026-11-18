@@ -514,9 +514,9 @@ class TianxiaTUI:
         nodes_meta = [
             ("⚡ latitude-tianxia", "${TX_HUB_HOST:-127.0.0.1} / <TX_LAN_IPV4>", "NixOS 25.05 Anchor (Hyprland + Cockpit :8081)", "ACTIVE & HEALTHY (1/5)"),
             ("🌐 tianxia-relay", "10.0.99.254 / <TX_RELAY_IPV4>", "EU Hetzner PQ WireGuard & Caddy TLS Edge", "ACTIVE & HEALTHY (2/5)"),
-            ("📱 pixel8pro", "100.73.220.60", "Mobile Orchestrator & Dealum Chrome Host", "ACTIVE & HEALTHY (3/5)"),
-            ("📻 poco-x5-pro-5g", "100.75.227.36", "Mobile Auxiliary Sovereign Mesh Client", "ACTIVE & HEALTHY (4/5)"),
-            ("💻 xps13-tianxia", "100.66.240.20 / 10.0.99.3", "Secondary Cluster Anchor (Battery Reset)", "OFFLINE — DEFERRED (5/5)")
+            ("📱 pixel8pro", "127.0.0.1", "Mobile Orchestrator & Dealum Chrome Host", "ACTIVE & HEALTHY (3/5)"),
+            ("📻 poco-x5-pro-5g", "127.0.0.1", "Mobile Auxiliary Sovereign Mesh Client", "ACTIVE & HEALTHY (4/5)"),
+            ("💻 xps13-tianxia", "127.0.0.1 / 10.0.99.3", "Secondary Cluster Anchor (Battery Reset)", "OFFLINE — DEFERRED (5/5)")
         ]
 
         self.safe_addstr(6, 4, f"{'NODE NAME':<22} {'IP / OVERLAY':<30} {'ROLE':<42} {'STATUS'}", self.color(1, curses.A_BOLD))
@@ -805,9 +805,9 @@ def render_ansi_snapshot() -> None:
     print("\033[1;35m║\033[0m \033[1;33m[2] ACTIVE MESH TOPOLOGY (4/5 NODES ONLINE)\033[0m                                              \033[1;35m║\033[0m")
     print("\033[1;35m║\033[0m   • ⚡ latitude-tianxia (${TX_HUB_HOST:-127.0.0.1} / <TX_LAN_IPV4>) -> ACTIVE & HEALTHY (1/5)          \033[1;35m║\033[0m")
     print("\033[1;35m║\033[0m   • 🌐 tianxia-relay    (10.0.99.254 / <TX_RELAY_IPV4>) -> ACTIVE & HEALTHY (2/5)          \033[1;35m║\033[0m")
-    print("\033[1;35m║\033[0m   • 📱 pixel8pro        (100.73.220.60 · Dealum Host) -> ACTIVE & HEALTHY (3/5)          \033[1;35m║\033[0m")
-    print("\033[1;35m║\033[0m   • 📻 poco-x5-pro-5g   (100.75.227.36 · Edge Client) -> ACTIVE & HEALTHY (4/5)          \033[1;35m║\033[0m")
-    print("\033[1;35m║\033[0m   • 💻 xps13-tianxia    (100.66.240.20 · Secondary)   -> OFFLINE / DEFERRED (5/5)        \033[1;35m║\033[0m")
+    print("\033[1;35m║\033[0m   • 📱 pixel8pro        (127.0.0.1 · Dealum Host) -> ACTIVE & HEALTHY (3/5)          \033[1;35m║\033[0m")
+    print("\033[1;35m║\033[0m   • 📻 poco-x5-pro-5g   (127.0.0.1 · Edge Client) -> ACTIVE & HEALTHY (4/5)          \033[1;35m║\033[0m")
+    print("\033[1;35m║\033[0m   • 💻 xps13-tianxia    (127.0.0.1 · Secondary)   -> OFFLINE / DEFERRED (5/5)        \033[1;35m║\033[0m")
     print("\033[1;35m╠══════════════════════════════════════════════════════════════════════════════════════════╣\033[0m")
     print(f"\033[1;35m║\033[0m \033[1;33m[3] BUILD LAW v5.0 & GDPR++ HORIZON SEAL:\033[0m \033[1;32m{seal_status:<42}\033[0m \033[1;35m║\033[0m")
     print(f"\033[1;35m║\033[0m   • Merkle Root: {merkle_root}        \033[1;35m║\033[0m")
